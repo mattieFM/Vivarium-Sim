@@ -478,28 +478,15 @@ class BaseApp(ShowBase):
         self.picker.add_collider(self.picker_np, self.queue)
         
         self.taskMgr.add(self.updateTask, "update")
-        #self.taskMgr.add(self.update_no_fall_through_floor, "update")
         self.taskMgr.add(self.update_grav, "Update_Grav")
         
         
         self.task_mgr.add(self.handle_terrain_edit, "handleEnvironmentChange")
         
-        #self.task_mgr.add(self.handle_add_guy, "handleAddGuy")
-        
-        #handles unfocusing from inputs when user clicks out of them
+        #handles un-focusing from inputs when user clicks out of them
         self.accept("mouse1-up", self.handle_add_guy)
         
         self.task_mgr.add(self.handle_unfocus, "handle_unfocus")
-        
-        # gravityFN=ForceNode('world-forces')
-        # gravityFNP=self.render.attachNewNode(gravityFN)
-        # gravityForce=LinearVectorForce(0,0,-9.81) #gravity acceleration
-        # gravityFN.addForce(gravityForce)
-        
-        # self.enableParticles()
-        # self.physicsMgr.add_linear_force(gravityForce)
-
-        #physicsMgr.addLinearForce(gravityForce)
         
         self.world = BulletWorld()
         self.world.setGravity(Vec3(0, 0, -9.81))
@@ -514,22 +501,7 @@ class BaseApp(ShowBase):
         # debug_np.show()  # Make sure it's visible
         # self.world.setDebugNode(debug_node)
         
-        shape = BulletBoxShape(Vec3(0.5, 0.5, .5))
-
-        node = BulletRigidBodyNode('Box')
-        node.setMass(1.0)
-        node.addShape(shape)
-
-        np = self.render.attachNewNode(node)
-        np.setPos(50, 50, 50)
-        
-        model = self.loader.loadModel("./assets/models/critter.obj")
-        model.flattenLight()
-        model.reparentTo(np)
-        model.setScale(10)
-
-        self.world.attachRigidBody(node)
-        
+        #call once to ensure that collision works without editing        
         self.create_heightFieldMap_Collider()
         
         
@@ -567,24 +539,23 @@ class BaseApp(ShowBase):
         
     
     def update_grav(self,task):
+        """update the gravity phys of the world, use delta time to account for fps differences"""
         dt = globalClock.getDt()
         self.world.doPhysics(dt)
         #self.create_heightFieldMap_Collider()
         return task.cont
-        
-        #self.accept("mouse1", self.on_click)
-    def update_no_fall_through_floor(self,task):
-        updating_terrain = self.terrain.update()
-        if(updating_terrain): print("terrain update")
-        return task.cont
-        
+                
     # Add a task to keep updating the terrain
     def updateTask(self,task):
+        """ensure the terrain updates to match the edits being made to the height map"""
         updating_terrain = self.terrain.update()
         if(updating_terrain): print("terrain update")
         return task.cont
     
     def edit_terrain(self, modifier):
+        """the function that handles modifying the terrain, when called finds the mouse and raycasts to the terrain
+        then finds the pixel and real world coord of the collision. for sake of sanity I have mapped it such that 1 pixel of the height map
+        is one world unit so these should mostly line up"""
         if self.mouseWatcherNode.hasMouse():
             # Get mouse position
             mpos = self.mouseWatcherNode.getMouse()
@@ -606,11 +577,22 @@ class BaseApp(ShowBase):
                 self.create_heightFieldMap_Collider()
                 
     def handle_unfocus(self,task):
+        """a simple task called every frame, if either mouse button clicks outside of the UI unfocus all UI elements"""
         if(self.input.mouse_held or self.input.mouse3_held):
             self.ui.unfocus_all()
         return Task.cont
         
     def handle_terrain_edit(self, task, modifier=None):
+        """the task that handles actually calling the terrain editor method. called every frame
+        if edit is enabled and mouse is held then do the thing
+
+        Args:
+            task (PandaTask): the task
+            modifier (float, optional): float to be how big the edit is max 1 min -1, but it wont break with bigger or smaller vals, it just will floor them. Defaults to self.edit_power.
+
+        Returns:
+            Task: run every tick
+        """
         if(modifier == None): modifier = self.edit_power
         if(self.edit_terrain_enabled):
             if(self.input.mouse_held):
@@ -621,17 +603,22 @@ class BaseApp(ShowBase):
         return Task.cont
                 
     def handle_add_guy(self):
+        """a method that handles adding a little buddy wherever the user clicks
+        called every frame, if add blob is enabled and the user left clicks we will spawn a physics enabled buddy at their cursor location
+
+        Returns:
+            Task: run every frame
+        """
         if(self.add_blob_enabled):
             # Get mouse position
             mpos = self.mouseWatcherNode.getMouse()
             print(f"mpos:{mpos}")
             
+            #TODO: ray tracing picker function needs to be moved to a helper func
             # Update ray position
             self.picker_ray.setFromLens(self.cam.node(), mpos.x, mpos.y)
-            print("here2")
             self.picker.traverse(self.render)
             if self.queue.getNumEntries() > 0:
-                print("collide")
                 # Get the first collision
                 self.queue.sortEntries()
                 entry = self.queue.getEntry(0)
@@ -666,6 +653,13 @@ class BaseApp(ShowBase):
             
                 
     def raise_point(self, point, max_range=None,power=.1):
+        """the method that handles editing the 2d png height map
+
+        Args:
+            point (x,y): tuple, ints. the pixel to edit
+            max_range (int, optional): how many pixels away to effect. Defaults to None.
+            power (float, optional): how powerful the effect is, min -1 max 1. Defaults to .1.
+        """
         if(max_range == None): max_range = self.edit_radius
         # Convert the world point to heightmap coordinates
         print(f"pointx:{point.x}, pointy:{point.y}")
@@ -686,8 +680,6 @@ class BaseApp(ShowBase):
                     new_height = min(1.0, current_height + .1*power)  # Increase height, max 1.0
                     self.heightmap.setGray(x, y, new_height)
         
-
-                    
         # Update the terrain
         self.terrain.setHeightfield(self.heightmap)
         #self.terrain.generate()
