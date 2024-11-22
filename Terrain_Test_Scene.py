@@ -381,12 +381,79 @@ class BaseApp(ShowBase):
     def __init__(self):
         ShowBase.__init__(self)
         
-        #disable default mouse orbiting
+        #disable default mouse orbiting. it is bad we want our own system.
         self.disable_mouse()
         
         #init our input handler class
         self.input = Input(self)
         
+        #init our UI
+        self.create_UI()
+        
+        #create our lights
+        self.create_lights()
+        
+        #setup our terrain
+        self.init_terrain()
+
+        #set up colliders and picker
+        self.picker_setup()
+        
+        #set up bullet grav and phys engine
+        self.init_gravity()
+        
+        #init our camera controller
+        self.camera_controller = CameraController(
+            self,
+            self.get_terrain_center,
+            self.input,
+            self.cam,
+            self.task_mgr
+            )
+        
+        #turn on camera control
+        self.camera_controller.setupCamControls()
+        
+        #--Event Handlers--
+        self.event_handlers_setup()
+        
+        
+    def event_handlers_setup(self):
+        """set up all event handlers for the app"""
+        #handles updating the terrain, that is when the Image is edited update the mesh
+        self.taskMgr.add(self.terrain_update_task, "update")
+        
+        #this makes sure when we stop looking at the ui it becomes unfocused
+        self.task_mgr.add(self.handle_unfocus, "handle_unfocus")
+        
+        #handles all terrain editing 
+        self.task_mgr.add(self.handle_terrain_edit, "handleEnvironmentChange")
+        
+        #handles un-focusing from inputs when user clicks out of them
+        self.accept("mouse1-up", self.handle_add_guy)
+        
+    def picker_setup(self):
+        """set up everything we need for collisions and our picker.
+        this is used for the raytracing to draw on our map and to pick objects
+        this can also allow us to select individual critters and such if we ever
+        want to target them
+        """
+        # Set up collision detection and click handler
+        self.picker = CollisionTraverser()
+        self.queue = CollisionHandlerQueue()
+        self.pusher = CollisionHandlerPusher()
+        
+        #setup selection/picker handlers so we can click on objects and do things
+        self.picker_node = CollisionNode('mouseRay')
+        self.picker_np = self.cam.attach_new_node(self.picker_node)
+        self.picker_node.setFromCollideMask(GeomNode.getDefaultCollideMask())
+        self.picker_ray = CollisionRay()
+        self.picker_node.add_solid(self.picker_ray)
+        self.picker.add_collider(self.picker_np, self.queue)
+        
+    def create_UI(self):
+        """initialize the UI
+        """
         self.ui = UI()
         self.ui.setup()
         
@@ -412,28 +479,13 @@ class BaseApp(ShowBase):
         
         self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Guy", True))
         
+        return self.ui
+        
+        
+    def init_terrain(self):
+        """set up our heightmap terrain stuff"""
         #--terrain setup--
         self.terrain = GeoMipTerrain("worldTerrain")
-        
-        # Create a directional light (like sunlight)
-        self.dlight = DirectionalLight('dlight')
-        self.dlight.setColor((3, 3, 3, 1))
-        self.dlight.set_shadow_caster(True)
-        self.dlnp = self.render.attachNewNode(self.dlight)
-        self.dlnp.setHpr(0, -35, 0)
-        self.dlight.getLens().setNearFar(1000,1500)
-        self.dlight.getLens().setFilmSize(30, 30)
-        self.render.setLight(self.dlnp)
-        
-        self.alight = self.render.attachNewNode(AmbientLight("Ambient"))
-        self.alight.node().setColor(LVector4(.6, .6, .6, 1))
-        self.render.setLight(self.alight)
-        
-        self.render.setShaderAuto()
-            
-        # Load and compile the shader
-        #self.shader = Shader.load(Shader.SL_GLSL, "./assets/shaders/shadow_shader.vert", "./assets/shaders/shadow_shader.frag")
-        
         #create the img height map
         self.heightmap = PNMImage(1025,1025,1)
         #self.heightmap.read("test.png")
@@ -459,80 +511,90 @@ class BaseApp(ShowBase):
         
         #create the actual terrain
         self.terrain.generate()
-
-        #click handler
-        # Set up collision detection
+    
+    def create_lights(self):
+        """lights... idk what to tell you they are lights"""
+        # Create a directional light (like sunlight)
+        self.dlight = DirectionalLight('dlight')
+        self.dlight.setColor((3, 3, 3, 1))
+        self.dlight.set_shadow_caster(True)
+        self.dlnp = self.render.attachNewNode(self.dlight)
+        self.dlnp.setHpr(0, -35, 0)
+        self.dlight.getLens().setNearFar(1000,1500)
+        self.dlight.getLens().setFilmSize(30, 30)
+        self.render.setLight(self.dlnp)
         
-        # Set up collision detection
-        self.picker = CollisionTraverser()
-        self.queue = CollisionHandlerQueue()
-        self.pusher = CollisionHandlerPusher()
+        self.alight = self.render.attachNewNode(AmbientLight("Ambient"))
+        self.alight.node().setColor(LVector4(.6, .6, .6, 1))
+        self.render.setLight(self.alight)
         
+        self.render.setShaderAuto()
         
-        #setup selection/picker handlers so we can click on objects and do things
-        self.picker_node = CollisionNode('mouseRay')
-        self.picker_np = self.cam.attach_new_node(self.picker_node)
-        self.picker_node.setFromCollideMask(GeomNode.getDefaultCollideMask())
-        self.picker_ray = CollisionRay()
-        self.picker_node.add_solid(self.picker_ray)
-        self.picker.add_collider(self.picker_np, self.queue)
-        
-        self.taskMgr.add(self.updateTask, "update")
-        self.taskMgr.add(self.update_grav, "Update_Grav")
-        
-        
-        self.task_mgr.add(self.handle_terrain_edit, "handleEnvironmentChange")
-        
-        #handles un-focusing from inputs when user clicks out of them
-        self.accept("mouse1-up", self.handle_add_guy)
-        
-        self.task_mgr.add(self.handle_unfocus, "handle_unfocus")
-        
+    def init_gravity(self):
+        """set up our bullet phys and grav
+        """
+        #create world
         self.world = BulletWorld()
         self.world.setGravity(Vec3(0, 0, -9.81))
-                
-        # Set up debug rendering
-        #this works for debug rendering but will be slow as hell
-        # debug_node = BulletDebugNode("Debug")
-        # debug_node.showWireframe(True)
-        # debug_node.showConstraints(True)
-        # debug_node.showBoundingBoxes(False)
-        # debug_np = self.render.attachNewNode(debug_node)
-        # debug_np.show()  # Make sure it's visible
-        # self.world.setDebugNode(debug_node)
         
-        #call once to ensure that collision works without editing        
+        #set to update every frame. delta time is handled inside the update.
+        self.taskMgr.add(self.update_grav, "Update_Grav")
+        
+        #call once to ensure that collision works without editing     
+        #IE: create our terrain collision mesh once here   
         self.create_heightFieldMap_Collider()
         
+    def bullet_debugger_ON(self):
+        """rip all frames if this is on... but it does show the colliders. but 1 fps. idc enough to figure out how to make it a toggle so this just turns it on."""
+        # Set up debug rendering
+        #this works for debug rendering but will be slow as hell
+        debug_node = BulletDebugNode("Debug")
+        debug_node.showWireframe(True)
+        debug_node.showConstraints(True)
+        debug_node.showBoundingBoxes(False)
+        debug_np = self.render.attachNewNode(debug_node)
+        debug_np.show()  # Make sure it's visible
+        self.world.setDebugNode(debug_node)
         
-        #init our camera controller
-        self.camera_controller = CameraController(
-            self,
-            self.get_terrain_center,
-            self.input,
-            self.cam,
-            self.task_mgr
-            )
-        
-        #turn on camera control
-        self.camera_controller.setupCamControls()
         
     def create_heightFieldMap_Collider(self):
         """create/update our terrain collider"""
+        #not the best solution but im not editing their engine code
+        #BulletHeightfieldShape does not refresh the collision mesh when the hieght map img updates
+        #so we just kill and rebuild it any time we edit
+        #TODO: make this only update when a user stops holding mouse, right now it just edits after reach brush gradient finishes.
         if(hasattr(self,"ground")):
             self.world.remove(self.ground)
+            
+        #create container for our thingo
         self.ground = BulletRigidBodyNode('Ground')
+        
+        #the thingo in question --collider mapped to our height map
         self.shape = BulletHeightfieldShape(self.heightmap, self.z_scale, ZUp)
+        
+        #draw
         self.ground.addShape(self.shape)
-        self.ground.draw_show_mask
         self.np = self.render.attachNewNode(self.ground)
         pos = self.get_terrain_center()
+        #TODO: WHY IS THIS NUMBER NEEDED. IDK. but it yeah... it works with this here. >:3
         pos[2]=265
+        
+        #set to our new cool pos.
         self.np.setPos(pos)
         self.world.attachRigidBody(self.ground)
         
         for node in self.tmpBlobs:
-            node.setLinearVelocity(Vec3(0, 0, .001))
+            #when a node settles IE stops moving --comes to rest, it stops being thunk about by the engine
+            #so we give it a bit of upward force to ensure that the thinker starts thunking again about 
+            #our critter
+            node.setLinearVelocity(Vec3(0, 0, .005))
+            
+            #this line might be enough to get it working. but the combo of them seems better? idk should be harmless to have both
+            node.active=True
+            
+            #alternatively just move it up a little bit, but idk it wasnt working. this is a bit odd cus things fall slow if you are editing
+            #but w/e its okay for now, worst case just increese gravity to fix this.
+            
             #node.setAngularVelocity(Vec3(0, 0, 1))
             #node.body_np.setPos(node.body_np.getPos() + Vec3(0, 0, 0.01))
         
@@ -546,16 +608,20 @@ class BaseApp(ShowBase):
         return task.cont
                 
     # Add a task to keep updating the terrain
-    def updateTask(self,task):
+    def terrain_update_task(self,task):
         """ensure the terrain updates to match the edits being made to the height map"""
         updating_terrain = self.terrain.update()
         if(updating_terrain): print("terrain update")
         return task.cont
     
-    def edit_terrain(self, modifier):
-        """the function that handles modifying the terrain, when called finds the mouse and raycasts to the terrain
-        then finds the pixel and real world coord of the collision. for sake of sanity I have mapped it such that 1 pixel of the height map
-        is one world unit so these should mostly line up"""
+    def click_on_map_and_call(self,callback):
+        """cast a ray from the user's camera to their cursor, if the ray
+        hits the terrain then we calculate the pos of that collision and pass the point of collision (x,y,z) Vec3
+        into the callback
+
+        Args:
+            callback (function(Vec3)): the callback to call if we find the intersection point
+        """
         if self.mouseWatcherNode.hasMouse():
             # Get mouse position
             mpos = self.mouseWatcherNode.getMouse()
@@ -573,8 +639,21 @@ class BaseApp(ShowBase):
                 
                 # Find the collision point
                 point = entry.getSurfacePoint(self.terrain_np)
-                self.raise_point(point,power=modifier)
-                self.create_heightFieldMap_Collider()
+                callback(point)
+    
+    def edit_terrain(self, modifier):
+        """the function that handles modifying the terrain, when called finds the mouse and raycasts to the terrain
+        then finds the pixel and real world coord of the collision. for sake of sanity I have mapped it such that 1 pixel of the height map
+        is one world unit so these should mostly line up"""
+        
+        #define our success function
+        def on_click_success(point):
+            self.raise_point(point,power=modifier)
+            self.create_heightFieldMap_Collider()
+            
+        #cast our ray
+        self.click_on_map_and_call(on_click_success)
+                
                 
     def handle_unfocus(self,task):
         """a simple task called every frame, if either mouse button clicks outside of the UI unfocus all UI elements"""
@@ -601,6 +680,42 @@ class BaseApp(ShowBase):
                 self.edit_terrain(modifier*-1)
             
         return Task.cont
+    
+    def summon_critter(self,x,y):
+        """a method to bring forth a phys enabled critter at chosen pos, height is automatic based on height map
+
+        Args:
+            x (float): _description_
+            y (float): _description_
+        """
+        blob = self.loader.loadModel("./assets/models/critter.obj")
+        blob.setHpr(0,90,0)
+        shape = BulletBoxShape(Vec3(0.5, 0.5, .5))
+
+        node = BulletRigidBodyNode(f'Box-{self.blobi}')
+        
+        #increment blobie
+        self.blobi+=1
+        
+        #uhhh mass?
+        node.setMass(1.0)
+        node.addShape(shape)
+
+        #create phys ctrl ish, intermediate connected to real phys controller
+        blob_np = self.render.attachNewNode(node)
+        
+        #lights??!?! idk
+        blob.flattenLight()
+        
+        #set parent to phys ctrl
+        blob.reparentTo(blob_np)
+
+        self.world.attachRigidBody(node)
+    
+        blob_np.set_pos(x,y,self.heightmap.get_gray(int(x),int(np.abs(y - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10)
+        
+        self.tmpBlobs.append(node)
+        blob.set_scale(10)
                 
     def handle_add_guy(self):
         """a method that handles adding a little buddy wherever the user clicks
@@ -610,45 +725,14 @@ class BaseApp(ShowBase):
             Task: run every frame
         """
         if(self.add_blob_enabled):
-            # Get mouse position
-            mpos = self.mouseWatcherNode.getMouse()
-            print(f"mpos:{mpos}")
-            
-            #TODO: ray tracing picker function needs to be moved to a helper func
-            # Update ray position
-            self.picker_ray.setFromLens(self.cam.node(), mpos.x, mpos.y)
-            self.picker.traverse(self.render)
-            if self.queue.getNumEntries() > 0:
-                # Get the first collision
-                self.queue.sortEntries()
-                entry = self.queue.getEntry(0)
+            #define our success function
+            def on_click_success(point):
+                #ceaseless watcher turn your gaze upon this critter :p
+                self.summon_critter(int(point[0]),int(point[1]))
                 
-                # Find the collision point
-                point = entry.getSurfacePoint(self.terrain_np)
-                
-                blob = self.loader.loadModel("./assets/models/critter.obj")
-                blob.setHpr(0,90,0)
-                shape = BulletBoxShape(Vec3(0.5, 0.5, .5))
-
-                node = BulletRigidBodyNode(f'Box-{self.blobi}')
-                self.blobi+=1
-                node.setMass(1.0)
-                node.addShape(shape)
-
-                blob_np = self.render.attachNewNode(node)
-                
-                blob.flattenLight()
-                blob.reparentTo(blob_np)
-
-                self.world.attachRigidBody(node)
-                #self.blob.reparent_to(self.render)
-                blob_np.set_pos(point[0],point[1],self.heightmap.get_gray(int(point[0]),int(np.abs(point[1] - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10)
-                #blob_np.set_pos(point[0],point[1],self.heightmap.get_gray(int(point[0]),int(np.abs(point[1] - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z)
-                self.tmpBlobs.append(node)
-                
-                blob.set_scale(10)
-                # Reparent the model to render.
-                #self.blob.reparentTo(self.render)
+            #cast our ray
+            self.click_on_map_and_call(on_click_success)
+        
         return Task.cont
             
                 
