@@ -180,11 +180,9 @@ class Input(DirectObject):
     #for converting the event based mouse scroll wheel interrupts into polling able
     stored_scroll_value = 0
     
-    
     #both of these are always updated per tick
     mouse_held = False
     mouse3_held = False
-    
     
     def __init__(self, base):
         """_summary_
@@ -353,11 +351,20 @@ class BaseApp(ShowBase):
     #so that it can be turned off if we want to
     edit_terrain_enabled = False
     
+    #toggle add blobs
+    add_blob_enabled = False
+    
     #how fast to build terrain
     edit_power = .5
     
     #how big to edit 
     edit_radius = 50
+    
+    #the scale of z
+    z_scale=500
+    
+    #little buddy offset
+    critter_offset_z=12
       
     def __init__(self):
         ShowBase.__init__(self)
@@ -374,6 +381,9 @@ class BaseApp(ShowBase):
         def edit_terrain_toggle(val):
             self.edit_terrain_enabled=val
             
+        def add_blob_toggle(val):
+            self.add_blob_enabled=val
+            
         def edit_speed(val):
             self.edit_power=float(val)
             self.ui.unfocus_all
@@ -387,6 +397,8 @@ class BaseApp(ShowBase):
         self.ui.add_option(ConfigurableValue(edit_speed, "edit speed", False, placeholder=self.edit_power))
         
         self.ui.add_option(ConfigurableValue(edit_radius, "edit radius", False, placeholder=self.edit_radius))
+        
+        self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Guy", True))
         
         #--terrain setup--
         self.terrain = GeoMipTerrain("worldTerrain")
@@ -431,7 +443,7 @@ class BaseApp(ShowBase):
         self.terrain_np.setTexture(TextureStage.getDefault(), self.grass_terrain_texture)
         self.terrain_np.setTexScale(TextureStage.getDefault(), 1)
         self.terrain_np.reparent_to(self.render)
-        self.terrain_np.setSz(500)
+        self.terrain_np.setSz(self.z_scale)
         
         #create the actual terrain
         self.terrain.generate()
@@ -453,10 +465,13 @@ class BaseApp(ShowBase):
         self.picker.add_collider(self.picker_np, self.queue)
         
         self.taskMgr.add(self.updateTask, "update")
+        
         self.task_mgr.add(self.handle_terrain_edit, "handleEnvironmentChange")
         
+        #self.task_mgr.add(self.handle_add_guy, "handleAddGuy")
+        
         #handles unfocusing from inputs when user clicks out of them
-        #self.accept("mouse1-up", self.ui.unfocus_all, ['mouse1-up'])
+        self.accept("mouse1-up", self.handle_add_guy)
         
         self.task_mgr.add(self.handle_unfocus, "handle_unfocus")
         
@@ -488,7 +503,6 @@ class BaseApp(ShowBase):
             print(f"mpos:{mpos}")
             
             # Update ray position
-            
             self.picker_ray.setFromLens(self.cam.node(), mpos.x, mpos.y)
             print("here2")
             self.picker.traverse(self.render)
@@ -517,6 +531,35 @@ class BaseApp(ShowBase):
             
         return Task.cont
                 
+    def handle_add_guy(self):
+        if(self.add_blob_enabled):
+            # Get mouse position
+            mpos = self.mouseWatcherNode.getMouse()
+            print(f"mpos:{mpos}")
+            
+            # Update ray position
+            self.picker_ray.setFromLens(self.cam.node(), mpos.x, mpos.y)
+            print("here2")
+            self.picker.traverse(self.render)
+            if self.queue.getNumEntries() > 0:
+                print("collide")
+                # Get the first collision
+                self.queue.sortEntries()
+                entry = self.queue.getEntry(0)
+                
+                # Find the collision point
+                point = entry.getSurfacePoint(self.terrain_np)
+                
+                self.blob = self.loader.loadModel("./assets/models/critter.obj")
+                self.blob.setHpr(0,90,0)
+                self.blob.set_pos(point[0],point[1],self.heightmap.get_gray(int(point[0]),int(np.abs(point[1] - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z)
+                
+                self.blob.set_scale(10)
+                # Reparent the model to render.
+                self.blob.reparentTo(self.render)
+        return Task.cont
+            
+                
     def raise_point(self, point, max_range=None,power=.1):
         if(max_range == None): max_range = self.edit_radius
         # Convert the world point to heightmap coordinates
@@ -537,7 +580,6 @@ class BaseApp(ShowBase):
                     current_height = self.heightmap.getGray(x, y)
                     new_height = min(1.0, current_height + .1*power)  # Increase height, max 1.0
                     self.heightmap.setGray(x, y, new_height)
-                
         
 
                     
