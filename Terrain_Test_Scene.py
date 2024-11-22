@@ -361,6 +361,8 @@ class BaseApp(ShowBase):
     
     #toggle add blobs
     add_blob_enabled = False
+    #since a click is required to toggle on the blob mode this stops a critter from spawning when blob is toggled on via the button
+    add_first_blob_enabled = False
     
     #how fast to build terrain
     edit_power = .5
@@ -462,6 +464,7 @@ class BaseApp(ShowBase):
             
         def add_blob_toggle(val):
             self.add_blob_enabled=val
+            self.add_first_blob_enabled=val
             
         def edit_speed(val):
             self.edit_power=float(val)
@@ -750,13 +753,16 @@ class BaseApp(ShowBase):
             Task: run every frame
         """
         if(self.add_blob_enabled and not self.edit_terrain_enabled):
-            #define our success function
-            def on_click_success(point):
-                #ceaseless watcher turn your gaze upon this critter :p
-                self.summon_critter(int(point[0]),int(point[1]))
-                
-            #cast our ray
-            self.click_on_map_and_call(on_click_success)
+            if(not self.add_first_blob_enabled):
+                #define our success function
+                def on_click_success(point):
+                    #ceaseless watcher turn your gaze upon this critter :p
+                    self.summon_critter(int(point[0]),int(point[1]))
+                    
+                #cast our ray
+                self.click_on_map_and_call(on_click_success)
+            else:
+                self.add_first_blob_enabled=False
         
         return Task.cont
             
