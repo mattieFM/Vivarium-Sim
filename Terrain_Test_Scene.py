@@ -583,7 +583,7 @@ class BaseApp(ShowBase):
         self.np.setPos(pos)
         self.world.attachRigidBody(self.ground)
         
-        for node in self.tmpBlobs:
+        for node,np in self.tmpBlobs:
             #when a node settles IE stops moving --comes to rest, it stops being thunk about by the engine
             #so we give it a bit of upward force to ensure that the thinker starts thunking again about 
             #our critter
@@ -640,6 +640,26 @@ class BaseApp(ShowBase):
                 # Find the collision point
                 point = entry.getSurfacePoint(self.terrain_np)
                 callback(point)
+                
+    def ascend_critter_with_terrain(self,point, radius=None):
+        """when a terrain point is elevated, check all critters within radius and ascend them with the terrain if applicable"
+
+        Args:
+            point (_type_): _description_
+        """
+        
+        if(radius==None): radius = self.edit_radius*2
+        
+        for node,body_np in self.tmpBlobs:
+            print(node)
+            print(body_np)
+            body_pos=body_np.get_pos()
+            if(np.linalg.norm(body_pos-point)<radius):
+                self.set_critter_height(body_np,body_pos[0],body_pos[1])
+                
+                
+        
+        
     
     def edit_terrain(self, modifier):
         """the function that handles modifying the terrain, when called finds the mouse and raycasts to the terrain
@@ -650,6 +670,7 @@ class BaseApp(ShowBase):
         def on_click_success(point):
             self.raise_point(point,power=modifier)
             self.create_heightFieldMap_Collider()
+            self.ascend_critter_with_terrain(point)
             
         #cast our ray
         self.click_on_map_and_call(on_click_success)
@@ -712,10 +733,14 @@ class BaseApp(ShowBase):
 
         self.world.attachRigidBody(node)
     
-        blob_np.set_pos(x,y,self.heightmap.get_gray(int(x),int(np.abs(y - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10)
+        self.set_critter_height(blob_np,x,y)
+        blob_np.get_pos
         
-        self.tmpBlobs.append(node)
+        self.tmpBlobs.append((node,blob_np))
         blob.set_scale(10)
+        
+    def set_critter_height(self,blob_np,x,y):
+        blob_np.set_pos(x,y,self.heightmap.get_gray(int(x),int(np.abs(y - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10)
                 
     def handle_add_guy(self):
         """a method that handles adding a little buddy wherever the user clicks
