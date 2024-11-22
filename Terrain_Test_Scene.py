@@ -1,7 +1,15 @@
 from direct.showbase.ShowBase import ShowBase
 from direct.showbase.DirectObject import DirectObject
+from direct.showbase.ShowBaseGlobal import globalClock
+from panda3d.bullet import BulletHeightfieldShape, BulletDebugNode
+from panda3d.bullet import BulletBoxShape
+from panda3d.bullet import BulletPlaneShape
+from panda3d.bullet import BulletRigidBodyNode
+from panda3d.bullet import ZUp
+from panda3d.bullet import BulletWorld
 from direct.gui.DirectGui import *
 from panda3d.core import *
+from panda3d.physics import *
 from direct.task import Task
 from direct.actor.Actor import Actor
 import numpy as np
@@ -363,6 +371,10 @@ class BaseApp(ShowBase):
     #the scale of z
     z_scale=500
     
+    blobi=0
+    
+    tmpBlobs = []
+    
     #little buddy offset
     critter_offset_z=12
       
@@ -425,8 +437,8 @@ class BaseApp(ShowBase):
         #create the img height map
         self.heightmap = PNMImage(1025,1025,1)
         #self.heightmap.read("test.png")
-        self.heightmap.write("test.png")
-        self.terrain.set_heightfield("./test.png")
+        self.heightmap.write("terrain.png")
+        self.terrain.set_heightfield("./terrain.png")
         #self.terrain.set_color_map("./test.png")
         
         self.grass_terrain_texture = self.loader.loadTexture("assets/textures/Grass001_1K-PNG_Color.png")
@@ -454,6 +466,7 @@ class BaseApp(ShowBase):
         # Set up collision detection
         self.picker = CollisionTraverser()
         self.queue = CollisionHandlerQueue()
+        self.pusher = CollisionHandlerPusher()
         
         
         #setup selection/picker handlers so we can click on objects and do things
@@ -465,6 +478,9 @@ class BaseApp(ShowBase):
         self.picker.add_collider(self.picker_np, self.queue)
         
         self.taskMgr.add(self.updateTask, "update")
+        #self.taskMgr.add(self.update_no_fall_through_floor, "update")
+        self.taskMgr.add(self.update_grav, "Update_Grav")
+        
         
         self.task_mgr.add(self.handle_terrain_edit, "handleEnvironmentChange")
         
@@ -474,6 +490,45 @@ class BaseApp(ShowBase):
         self.accept("mouse1-up", self.handle_add_guy)
         
         self.task_mgr.add(self.handle_unfocus, "handle_unfocus")
+        
+        # gravityFN=ForceNode('world-forces')
+        # gravityFNP=self.render.attachNewNode(gravityFN)
+        # gravityForce=LinearVectorForce(0,0,-9.81) #gravity acceleration
+        # gravityFN.addForce(gravityForce)
+        
+        # self.enableParticles()
+        # self.physicsMgr.add_linear_force(gravityForce)
+
+        #physicsMgr.addLinearForce(gravityForce)
+        
+        self.world = BulletWorld()
+        self.world.setGravity(Vec3(0, 0, -9.81))
+                
+        # Set up debug rendering
+        #this works for debug rendering but will be slow as hell
+        # debug_node = BulletDebugNode("Debug")
+        # debug_node.showWireframe(True)
+        # debug_node.showConstraints(True)
+        # debug_node.showBoundingBoxes(False)
+        # debug_np = self.render.attachNewNode(debug_node)
+        # debug_np.show()  # Make sure it's visible
+        # self.world.setDebugNode(debug_node)
+        
+        shape = BulletBoxShape(Vec3(0.5, 0.5, .5))
+
+        node = BulletRigidBodyNode('Box')
+        node.setMass(1.0)
+        node.addShape(shape)
+
+        np = self.render.attachNewNode(node)
+        np.setPos(50, 50, 50)
+        
+        model = self.loader.loadModel("./assets/models/critter.obj")
+        model.flattenLight()
+        model.reparentTo(np)
+        model.setScale(10)
+
+        self.world.attachRigidBody(node)
         
         
         #init our camera controller
@@ -488,7 +543,38 @@ class BaseApp(ShowBase):
         #turn on camera control
         self.camera_controller.setupCamControls()
         
+    def create_heightFieldMap_Collider(self):
+        """create/update our terrain collider"""
+        if(hasattr(self,"ground")):
+            self.world.remove(self.ground)
+        self.ground = BulletRigidBodyNode('Ground')
+        self.shape = BulletHeightfieldShape(self.heightmap, self.z_scale, ZUp)
+        self.ground.addShape(self.shape)
+        self.ground.draw_show_mask
+        self.np = self.render.attachNewNode(self.ground)
+        pos = self.get_terrain_center()
+        pos[2]=265
+        self.np.setPos(pos)
+        self.world.attachRigidBody(self.ground)
+        
+        for node in self.tmpBlobs:
+            node.setLinearVelocity(Vec3(0, 0, .001))
+            #node.setAngularVelocity(Vec3(0, 0, 1))
+            #node.body_np.setPos(node.body_np.getPos() + Vec3(0, 0, 0.01))
+        
+        
+    
+    def update_grav(self,task):
+        dt = globalClock.getDt()
+        self.world.doPhysics(dt)
+        #self.create_heightFieldMap_Collider()
+        return task.cont
+        
         #self.accept("mouse1", self.on_click)
+    def update_no_fall_through_floor(self,task):
+        updating_terrain = self.terrain.update()
+        if(updating_terrain): print("terrain update")
+        return task.cont
         
     # Add a task to keep updating the terrain
     def updateTask(self,task):
@@ -515,6 +601,7 @@ class BaseApp(ShowBase):
                 # Find the collision point
                 point = entry.getSurfacePoint(self.terrain_np)
                 self.raise_point(point,power=modifier)
+                self.create_heightFieldMap_Collider()
                 
     def handle_unfocus(self,task):
         if(self.input.mouse_held or self.input.mouse3_held):
@@ -550,13 +637,29 @@ class BaseApp(ShowBase):
                 # Find the collision point
                 point = entry.getSurfacePoint(self.terrain_np)
                 
-                self.blob = self.loader.loadModel("./assets/models/critter.obj")
-                self.blob.setHpr(0,90,0)
-                self.blob.set_pos(point[0],point[1],self.heightmap.get_gray(int(point[0]),int(np.abs(point[1] - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z)
+                blob = self.loader.loadModel("./assets/models/critter.obj")
+                blob.setHpr(0,90,0)
+                shape = BulletBoxShape(Vec3(0.5, 0.5, .5))
+
+                node = BulletRigidBodyNode(f'Box-{self.blobi}')
+                self.blobi+=1
+                node.setMass(1.0)
+                node.addShape(shape)
+
+                blob_np = self.render.attachNewNode(node)
                 
-                self.blob.set_scale(10)
+                blob.flattenLight()
+                blob.reparentTo(blob_np)
+
+                self.world.attachRigidBody(node)
+                #self.blob.reparent_to(self.render)
+                blob_np.set_pos(point[0],point[1],self.heightmap.get_gray(int(point[0]),int(np.abs(point[1] - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10)
+                #blob_np.set_pos(point[0],point[1],self.heightmap.get_gray(int(point[0]),int(np.abs(point[1] - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z)
+                self.tmpBlobs.append(node)
+                
+                blob.set_scale(10)
                 # Reparent the model to render.
-                self.blob.reparentTo(self.render)
+                #self.blob.reparentTo(self.render)
         return Task.cont
             
                 
@@ -586,7 +689,7 @@ class BaseApp(ShowBase):
         # Update the terrain
         self.terrain.setHeightfield(self.heightmap)
         #self.terrain.generate()
-        self.heightmap.write("save.png")
+        self.heightmap.write("terrain.png")
         
     def get_terrain_center(self):
         """return the center point of the terrain (x,y,z) tuple"""
