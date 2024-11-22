@@ -30,6 +30,8 @@ class Input():
     #for converting the event based mouse scroll wheel interrupts into polling able
     stored_scroll_value = 0
     
+    
+    #both of these are always updated per tick
     mouse_held = False
     mouse3_held = False
     
@@ -197,7 +199,10 @@ class CameraController():
         self.cam.set_pos(pos)
         self.cam.look_at(self.get_orbit_point())
 
-class BaseApp(ShowBase):        
+class BaseApp(ShowBase):     
+    #so that it can be turned off if we want to
+    edit_terrain_enabled = True
+      
     def __init__(self):
         ShowBase.__init__(self)
         
@@ -276,7 +281,7 @@ class BaseApp(ShowBase):
         self.picker.add_collider(self.picker_np, self.queue)
         
         self.taskMgr.add(self.updateTask, "update")
-        self.task_mgr.add(self.on_click, "handleEnvironmentChange")
+        self.task_mgr.add(self.handle_terrain_edit, "handleEnvironmentChange")
         
         #init our camera controller
         self.camera_controller = CameraController(
@@ -319,11 +324,12 @@ class BaseApp(ShowBase):
                 point = entry.getSurfacePoint(self.terrain_np)
                 self.raise_point(point,power=modifier)
         
-    def on_click(self, task, modifier=.5):
-        if(self.input.mouse_held):
-            self.edit_terrain(modifier)
-        elif(self.input.mouse3_held):
-            self.edit_terrain(modifier*-1)
+    def handle_terrain_edit(self, task, modifier=.5):
+        if(self.edit_terrain_enabled):
+            if(self.input.mouse_held):
+                self.edit_terrain(modifier)
+            elif(self.input.mouse3_held):
+                self.edit_terrain(modifier*-1)
             
         return Task.cont
                 
@@ -336,6 +342,7 @@ class BaseApp(ShowBase):
         for x in range(int(center_x-max_range),int(center_x+max_range)):
             for y in range(int(center_y-max_range),int(center_y+max_range)):
                 if(x>0 and y>0 and x<self.heightmap.getXSize() and y<self.heightmap.getYSize()):
+                    #TODO: fix this fall off, it works in reverse currently.
                     # Calculate the distance from the center pixel
                     distance = math.sqrt((x - center_x)**2 + (y - center_y)**2)
                     
