@@ -31,6 +31,7 @@ class Input():
     stored_scroll_value = 0
     
     mouse_held = False
+    mouse3_held = False
     
     
     def __init__(self, base):
@@ -48,12 +49,22 @@ class Input():
         self.base.accept("mouse1", self.on_mouse_click, ['mouse1'])
         self.base.accept("mouse1-up", self.on_mouse_click, ['mouse1-up'])
         
+        self.base.accept("mouse3", self.on_mouse3_click, ['mouse3'])
+        self.base.accept("mouse3-up", self.on_mouse3_click, ['mouse3-up'])
+        
     def on_mouse_click(self,event):
         print(f"event:{event}")
         if event == 'mouse1':
             self.mouse_held=True
         elif event == 'mouse1-up':
             self.mouse_held=False
+            
+    def on_mouse3_click(self,event):
+        print(f"event:{event}")
+        if event == 'mouse3':
+            self.mouse3_held=True
+        elif event == 'mouse3-up':
+            self.mouse3_held=False
         
     def on_mouse_scroll(self, event):
         """handle mouse scroll wheel event by adding it into the stored value to be retrieved next time the axis is called
@@ -286,28 +297,34 @@ class BaseApp(ShowBase):
         updating_terrain = self.terrain.update()
         if(updating_terrain): print("terrain update")
         return task.cont
+    
+    def edit_terrain(self, modifier):
+        if self.mouseWatcherNode.hasMouse():
+            # Get mouse position
+            mpos = self.mouseWatcherNode.getMouse()
+            print(f"mpos:{mpos}")
+            
+            # Update ray position
+            
+            self.picker_ray.setFromLens(self.cam.node(), mpos.x, mpos.y)
+            print("here2")
+            self.picker.traverse(self.render)
+            if self.queue.getNumEntries() > 0:
+                print("collide")
+                # Get the first collision
+                self.queue.sortEntries()
+                entry = self.queue.getEntry(0)
+                
+                # Find the collision point
+                point = entry.getSurfacePoint(self.terrain_np)
+                self.raise_point(point,power=modifier)
         
-    def on_click(self, task):
+    def on_click(self, task, modifier=.5):
         if(self.input.mouse_held):
-            if self.mouseWatcherNode.hasMouse():
-                # Get mouse position
-                mpos = self.mouseWatcherNode.getMouse()
-                print(f"mpos:{mpos}")
-                
-                # Update ray position
-                
-                self.picker_ray.setFromLens(self.cam.node(), mpos.x, mpos.y)
-                print("here2")
-                self.picker.traverse(self.render)
-                if self.queue.getNumEntries() > 0:
-                    print("collide")
-                    # Get the first collision
-                    self.queue.sortEntries()
-                    entry = self.queue.getEntry(0)
-                    
-                    # Find the collision point
-                    point = entry.getSurfacePoint(self.terrain_np)
-                    self.raise_point(point)
+            self.edit_terrain(modifier)
+        elif(self.input.mouse3_held):
+            self.edit_terrain(modifier*-1)
+            
         return Task.cont
                 
     def raise_point(self, point, max_range=50,power=.1):
