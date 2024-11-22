@@ -530,6 +530,8 @@ class BaseApp(ShowBase):
 
         self.world.attachRigidBody(node)
         
+        self.create_heightFieldMap_Collider()
+        
         
         #init our camera controller
         self.camera_controller = CameraController(
