@@ -482,8 +482,6 @@ class BaseApp(ShowBase):
         
         self.ui.add_option(ConfigurableValue(edit_radius, "edit radius", False, placeholder=self.edit_radius))
         
-        
-        
         return self.ui
         
         
@@ -588,7 +586,7 @@ class BaseApp(ShowBase):
         self.np.setPos(pos)
         self.world.attachRigidBody(self.ground)
         
-        for node,np in self.tmpBlobs:
+        for node,np in self.critters:
             #when a node settles IE stops moving --comes to rest, it stops being thunk about by the engine
             #so we give it a bit of upward force to ensure that the thinker starts thunking again about 
             #our critter
@@ -655,7 +653,7 @@ class BaseApp(ShowBase):
         
         if(radius==None): radius = self.edit_radius*2
         
-        for node,body_np in self.tmpBlobs:
+        for node,body_np in self.critters:
             print(node)
             print(body_np)
             body_pos=body_np.get_pos()
@@ -741,7 +739,7 @@ class BaseApp(ShowBase):
         self.set_critter_height(blob_np,x,y)
         blob_np.get_pos
         
-        self.tmpBlobs.append((node,blob_np))
+        self.critters.append((node,blob_np))
         blob.set_scale(10)
         
     def set_critter_height(self,blob_np,x,y):
