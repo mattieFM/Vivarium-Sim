@@ -476,11 +476,13 @@ class BaseApp(ShowBase):
             
         self.ui.add_option(ConfigurableValue(edit_terrain_toggle, "edit", True))
         
+        self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Critter", True))
+        
         self.ui.add_option(ConfigurableValue(edit_speed, "edit speed", False, placeholder=self.edit_power))
         
         self.ui.add_option(ConfigurableValue(edit_radius, "edit radius", False, placeholder=self.edit_radius))
         
-        self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Critter", True))
+        
         
         return self.ui
         
