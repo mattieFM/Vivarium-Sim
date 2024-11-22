@@ -1,3 +1,4 @@
+import random
 from direct.showbase.ShowBase import ShowBase
 from direct.showbase.DirectObject import DirectObject
 from direct.showbase.ShowBaseGlobal import globalClock
@@ -422,6 +423,21 @@ class BaseApp(ShowBase):
         #--Event Handlers--
         self.event_handlers_setup()
         
+        # List to keep track of food in the world  
+        self.max_food_count = 20  # The maximum number of food items allowed in the world     
+        self.food_items = []
+        
+        # Spawn initial foods - 5 for now, can adjust to modify balancing
+        for _ in range(5):
+            self.spawn_food()
+            
+        # Start the periodic food spawning task
+        self.taskMgr.doMethodLater(
+            random.uniform(3, 5),  # Initial delay
+            self.spawn_food_periodically,
+            "FoodSpawnTask"
+        )
+     
         
     def event_handlers_setup(self):
         """set up all event handlers for the app"""
@@ -436,6 +452,14 @@ class BaseApp(ShowBase):
         
         #handles un-focusing from inputs when user clicks out of them
         self.accept("mouse1-up", self.handle_add_guy)
+        
+        # Press 'f' to manually spawn food
+        self.accept('f', self.spawn_food)
+        
+        # Press 'r' to reset all food in the world
+        self.accept('r', self.reset_all_food)
+
+
         
     def picker_setup(self):
         """set up everything we need for collisions and our picker.
@@ -820,7 +844,7 @@ class BaseApp(ShowBase):
         normal = GeomVertexWriter(vdata, 'normal')
         uv = GeomVertexWriter(vdata, 'texcoord')
 
-        # Define vertices, UVs, and normals for each face
+        # Vertices, UVs, and normals for each face
         vertices = [
             # Front face (inward)
             (-1, -1, -1), (0, 0), (0, 0, -1),
@@ -866,7 +890,7 @@ class BaseApp(ShowBase):
             uv.addData2(*tex)
             normal.addData3(*norm)
 
-        # Define the 12 triangles of a cube
+        # The 12 triangles of a cube
         indices = [
             # Front face
             0, 1, 2, 2, 3, 0,
@@ -892,8 +916,6 @@ class BaseApp(ShowBase):
         node = GeomNode('cube')
         node.addGeom(cube)
         
-        print(f"UV mapping for vertices: {[vertices[i + 1] for i in range(0, len(vertices), 3)]}")
-        
         return NodePath(node)
 
 
@@ -901,11 +923,11 @@ class BaseApp(ShowBase):
         """Create and add a textured skybox."""
         # Create the cube programmatically
         self.skybox = self.create_cube()
-    
+
         # Scale and center the cube
         self.skybox.setScale(10000)
         self.skybox.setPos(0, 0, 0)
-    
+
         # Apply textures to each face
         faces = [
             'assets/textures/bluecloud_ft.jpg',  # Front
@@ -915,7 +937,7 @@ class BaseApp(ShowBase):
             'assets/textures/bluecloud_lf.jpg',  # Left
             'assets/textures/bluecloud_rt.jpg',  # Right
         ]
-    
+
         # Load and apply textures to the cube directly
         for i, face in enumerate(faces):
             tex = self.loader.loadTexture(face)
@@ -924,15 +946,70 @@ class BaseApp(ShowBase):
             else:
                 # Assign the texture to the appropriate face
                 self.skybox.setTexture(tex, i)
-    
+
         # Disable backface culling and ensure the skybox is unaffected by lighting
         self.skybox.setTwoSided(True)
         self.skybox.setLightOff()
         self.skybox.setBin('background', 0)
         self.skybox.setDepthWrite(False)
-    
+
         # Reparent the skybox to render
         self.skybox.reparentTo(self.render)
+
+
+    def spawn_food(self, x=None, y=None):
+        """Spawn a food item at a random position on the terrain. Including elevated terrain."""
+        
+        # Check if we have reached the food limit
+        if len(self.food_items) >= self.max_food_count:
+            print(f"Food limit reached: {self.max_food_count}. No new food spawned.")
+            return  # Prevent spawning more food
+        
+        # Choose random x and y within the terrain bounds
+        if x is None or y is None:
+            x = random.uniform(0, self.heightmap.getXSize())
+            y = random.uniform(0, self.heightmap.getYSize())
+        
+        # Convert heightmap coordinates to world coordinates
+        z = self.heightmap.getGray(
+            int(x), int(self.heightmap.getYSize() - y)
+        ) * self.z_scale  # Terrain height at (x, y)
+    
+        # Load the food model - just used the cube that was already there for now
+        food = self.loader.loadModel("assets/models/cube.stl")
+        food.setScale(4)  # Scale the food
+        food.setColor(1, 0, 0, 1)
+                
+        # Position the food in the world
+        food.setPos(x, y, z + 5)  # Slight offset above the terrain to avoid clipping
+    
+        # Reparent the food to render so it appears in the scene
+        food.reparentTo(self.render)
+    
+        # Add the food to the tracking list
+        self.food_items.append(food)
+
+
+    def spawn_food_periodically(self, task):
+        """Spawn a food item at random intervals and reschedule dynamically."""
+        self.spawn_food()
+
+        # Schedule the next spawn between 3-5 seconds - Can adjust the timings based on how the GA works.
+        next_spawn_time = random.uniform(3, 5)
+        self.taskMgr.doMethodLater(
+            next_spawn_time,
+            self.spawn_food_periodically,
+            "FoodSpawnTask"
+        )
+        return task.done
+    
+    
+    def reset_all_food(self):
+        """Remove all food items from the scene and reset the list. Can be called on round resets or user-input."""
+        for food in self.food_items:
+            food.removeNode()  # Remove the food from the scene
+        self.food_items.clear()  # Clear the tracking list
+        print("All food has been removed.")
 
 
 
