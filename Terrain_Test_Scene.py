@@ -395,6 +395,9 @@ class BaseApp(ShowBase):
         #create our lights
         self.create_lights()
         
+        # Create our skybox
+        self.add_skybox()
+        
         #setup our terrain
         self.init_terrain()
 
@@ -807,6 +810,131 @@ class BaseApp(ShowBase):
         #update the terrain so we have accurate pos
         return self.terrain.getRoot().getBounds().getCenter()
     
+    
+    def create_cube(self):
+        """Programmatically create a cube geometry for the skybox with inward-facing normals and UV mapping."""
+        format = GeomVertexFormat.getV3n3t2()  # Include vertex, normal, and UV data
+        vdata = GeomVertexData('cube', format, Geom.UHStatic)
+
+        vertex = GeomVertexWriter(vdata, 'vertex')
+        normal = GeomVertexWriter(vdata, 'normal')
+        uv = GeomVertexWriter(vdata, 'texcoord')
+
+        # Define vertices, UVs, and normals for each face
+        vertices = [
+            # Front face (inward)
+            (-1, -1, -1), (0, 0), (0, 0, -1),
+            (1, -1, -1), (1, 0), (0, 0, -1),
+            (1, 1, -1), (1, 1), (0, 0, -1),
+            (-1, 1, -1), (0, 1), (0, 0, -1),
+
+            # Back face (inward)
+            (1, -1, 1), (0, 0), (0, 0, 1),
+            (-1, -1, 1), (1, 0), (0, 0, 1),
+            (-1, 1, 1), (1, 1), (0, 0, 1),
+            (1, 1, 1), (0, 1), (0, 0, 1),
+
+            # Left face (inward)
+            (-1, -1, 1), (0, 0), (-1, 0, 0),
+            (-1, -1, -1), (1, 0), (-1, 0, 0),
+            (-1, 1, -1), (1, 1), (-1, 0, 0),
+            (-1, 1, 1), (0, 1), (-1, 0, 0),
+
+            # Right face (inward)
+            (1, -1, -1), (0, 0), (1, 0, 0),
+            (1, -1, 1), (1, 0), (1, 0, 0),
+            (1, 1, 1), (1, 1), (1, 0, 0),
+            (1, 1, -1), (0, 1), (1, 0, 0),
+
+            # Top face (inward)
+            (-1, 1, -1), (0, 1), (0, 1, 0),
+            (1, 1, -1), (1, 1), (0, 1, 0),
+            (1, 1, 1), (1, 0), (0, 1, 0),
+            (-1, 1, 1), (0, 0), (0, 1, 0),
+
+            # Bottom face (inward)
+            (-1, -1, -1), (0, 0), (0, -1, 0),
+            (1, -1, -1), (1, 0), (0, -1, 0),
+            (1, -1, 1), (1, 1), (0, -1, 0),
+            (-1, -1, 1), (0, 1), (0, -1, 0)
+        ]
+
+        # Write vertices, UVs, and normals
+        for i in range(0, len(vertices), 3):
+            vert, tex, norm = vertices[i], vertices[i + 1], vertices[i + 2]
+            vertex.addData3(*vert)
+            uv.addData2(*tex)
+            normal.addData3(*norm)
+
+        # Define the 12 triangles of a cube
+        indices = [
+            # Front face
+            0, 1, 2, 2, 3, 0,
+            # Back face
+            4, 5, 6, 6, 7, 4,
+            # Left face
+            8, 9, 10, 10, 11, 8,
+            # Right face
+            12, 13, 14, 14, 15, 12,
+            # Top face
+            16, 17, 18, 18, 19, 16,
+            # Bottom face
+            20, 21, 22, 22, 23, 20
+        ]
+
+        tris = GeomTriangles(Geom.UHStatic)
+        for i in range(0, len(indices), 3):
+            tris.addVertices(indices[i], indices[i + 1], indices[i + 2])
+
+        cube = Geom(vdata)
+        cube.addPrimitive(tris)
+
+        node = GeomNode('cube')
+        node.addGeom(cube)
+        
+        print(f"UV mapping for vertices: {[vertices[i + 1] for i in range(0, len(vertices), 3)]}")
+        
+        return NodePath(node)
+
+
+    def add_skybox(self):
+        """Create and add a textured skybox."""
+        # Create the cube programmatically
+        self.skybox = self.create_cube()
+    
+        # Scale and center the cube
+        self.skybox.setScale(10000)
+        self.skybox.setPos(0, 0, 0)
+    
+        # Apply textures to each face
+        faces = [
+            'assets/textures/bluecloud_ft.jpg',  # Front
+            'assets/textures/bluecloud_bk.jpg',  # Back
+            'assets/textures/bluecloud_up.jpg',  # Top
+            'assets/textures/bluecloud_dn.jpg',  # Bottom
+            'assets/textures/bluecloud_lf.jpg',  # Left
+            'assets/textures/bluecloud_rt.jpg',  # Right
+        ]
+    
+        # Load and apply textures to the cube directly
+        for i, face in enumerate(faces):
+            tex = self.loader.loadTexture(face)
+            if tex is None:
+                print(f"Error: Could not load texture {face}")
+            else:
+                # Assign the texture to the appropriate face
+                self.skybox.setTexture(tex, i)
+    
+        # Disable backface culling and ensure the skybox is unaffected by lighting
+        self.skybox.setTwoSided(True)
+        self.skybox.setLightOff()
+        self.skybox.setBin('background', 0)
+        self.skybox.setDepthWrite(False)
+    
+        # Reparent the skybox to render
+        self.skybox.reparentTo(self.render)
+
+
 
 app = BaseApp()
 app.run()
