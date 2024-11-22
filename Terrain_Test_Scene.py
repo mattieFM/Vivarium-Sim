@@ -477,7 +477,7 @@ class BaseApp(ShowBase):
         
         self.ui.add_option(ConfigurableValue(edit_radius, "edit radius", False, placeholder=self.edit_radius))
         
-        self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Guy", True))
+        self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Critter", True))
         
         return self.ui
         
@@ -749,7 +749,7 @@ class BaseApp(ShowBase):
         Returns:
             Task: run every frame
         """
-        if(self.add_blob_enabled):
+        if(self.add_blob_enabled and not self.edit_terrain_enabled):
             #define our success function
             def on_click_success(point):
                 #ceaseless watcher turn your gaze upon this critter :p
