@@ -380,6 +380,13 @@ class BaseApp(ShowBase):
     
     #little buddy offset
     critter_offset_z=12
+    
+    CRITTER_COLORS = [
+    (1, 0, 0, 1),  # Red
+    (0, 1, 0, 1),  # Green
+    (0, 0, 1, 1),  # Blue
+    (1, 1, 0, 1),  # Yellow
+]
       
     def __init__(self):
         ShowBase.__init__(self)
@@ -437,7 +444,7 @@ class BaseApp(ShowBase):
             self.spawn_food_periodically,
             "FoodSpawnTask"
         )
-     
+    
         
     def event_handlers_setup(self):
         """set up all event handlers for the app"""
@@ -458,7 +465,6 @@ class BaseApp(ShowBase):
         
         # Press 'r' to reset all food in the world
         self.accept('r', self.reset_all_food)
-
 
         
     def picker_setup(self):
@@ -481,37 +487,33 @@ class BaseApp(ShowBase):
         self.picker.add_collider(self.picker_np, self.queue)
         
     def create_UI(self):
-        """initialize the UI
-        """
+        """Initialize the UI."""
         self.ui = UI()
         self.ui.setup()
-        
+
         def edit_terrain_toggle(val):
-            self.edit_terrain_enabled=val
-            
+            self.edit_terrain_enabled = val
+
         def add_blob_toggle(val):
-            self.add_blob_enabled=val
-            self.add_first_blob_enabled=val
-            
+            self.add_blob_enabled = val
+            self.add_first_blob_enabled = val
+
         def edit_speed(val):
-            self.edit_power=float(val)
-            self.ui.unfocus_all
-            
+            self.edit_power = float(val)
+            self.ui.unfocus_all()
+
         def edit_radius(val):
-            self.edit_radius=float(val)
-            self.ui.unfocus_all
-            
+            self.edit_radius = float(val)
+            self.ui.unfocus_all()
+
         self.ui.add_option(ConfigurableValue(edit_terrain_toggle, "edit", True))
-        
         self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Critter", True))
-        
         self.ui.add_option(ConfigurableValue(edit_speed, "edit speed", False, placeholder=self.edit_power))
-        
         self.ui.add_option(ConfigurableValue(edit_radius, "edit radius", False, placeholder=self.edit_radius))
-        
-        
-        
+
+        # Return the UI
         return self.ui
+
         
         
     def init_terrain(self):
@@ -689,10 +691,7 @@ class BaseApp(ShowBase):
             if(np.linalg.norm(body_pos-point)<radius):
                 self.set_critter_height(body_np,body_pos[0],body_pos[1])
                 
-                
         
-        
-    
     def edit_terrain(self, modifier):
         """the function that handles modifying the terrain, when called finds the mouse and raycasts to the terrain
         then finds the pixel and real world coord of the collision. for sake of sanity I have mapped it such that 1 pixel of the height map
@@ -734,12 +733,14 @@ class BaseApp(ShowBase):
             
         return Task.cont
     
-    def summon_critter(self,x,y):
+    
+    def summon_critter(self,x,y, color=None):
         """a method to bring forth a phys enabled critter at chosen pos, height is automatic based on height map
 
         Args:
             x (float): _description_
             y (float): _description_
+            color (tuple, optional): The color of the critter. Randomized if not provided.
         """
         blob = self.loader.loadModel("./assets/models/critter.obj")
         blob.setHpr(0,90,0)
@@ -770,6 +771,12 @@ class BaseApp(ShowBase):
         
         self.tmpBlobs.append((node,blob_np))
         blob.set_scale(10)
+        
+        # Assign a random color if none is given
+        if color is None:
+            color = random.choice(self.CRITTER_COLORS)
+        blob.setColor(*color)
+        
         
     def set_critter_height(self,blob_np,x,y):
         blob_np.set_pos(x,y,self.heightmap.get_gray(int(x),int(np.abs(y - self.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10)
@@ -921,7 +928,7 @@ class BaseApp(ShowBase):
 
     def add_skybox(self):
         """Create and add a textured skybox."""
-        # Create the cube programmatically
+        # Create the cube programmatically (instead of downloading one online)
         self.skybox = self.create_cube()
 
         # Scale and center the cube
@@ -947,7 +954,7 @@ class BaseApp(ShowBase):
                 # Assign the texture to the appropriate face
                 self.skybox.setTexture(tex, i)
 
-        # Disable backface culling and ensure the skybox is unaffected by lighting
+        # Disable backface culling and make sure the skybox is unaffected by lighting
         self.skybox.setTwoSided(True)
         self.skybox.setLightOff()
         self.skybox.setBin('background', 0)
