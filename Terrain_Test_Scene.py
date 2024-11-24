@@ -28,6 +28,155 @@ UI_Y_WIDTH = np.abs(MIN_UI_Y)+np.abs(MAX_UI_Y)
 UI_X_WIDTH = np.abs(MIN_UI_X)+np.abs(MAX_UI_X)
 
 
+
+class Gene:
+    """Class representing a single gene in a critter's genetic makeup."""
+
+    def __init__(self, name, value, min_value=None, max_value=None, mutation_rate=0.1, mutation_step=0.1,
+                 options=None, dominance=1, generation=0, parent_ids=None):
+        """
+        Initialize a new gene with its properties.
+        
+        Args:
+            name (str): The name of the gene (something like "Strength").
+            value (int, float, or str): The initial value of the gene.
+            min_value (int or float, optional): Minimum value for the gene (if numeric).
+            max_value (int or float, optional): Maximum value for the gene (if numeric).
+            mutation_rate (float): Probability of mutation (0 to 1).
+            mutation_step (float): Step size for numeric mutations.
+            options (list, optional): Allowed values for categorical genes (if applicable).
+            dominance (int, optional): Priority for crossover (higher value dominates).
+            generation (int, optional): Generation in which this gene was created.
+            parent_ids (list, optional): List of parent gene names for lineage tracking.
+        """
+        self.name = name
+        self.value = value
+        self.min_value = min_value
+        self.max_value = max_value
+        self.mutation_rate = mutation_rate
+        self.mutation_step = mutation_step
+        self.options = options or []  # For categorical genes
+        self.dominance = dominance
+        self.generation = generation
+        self.parent_ids = parent_ids or []
+        self.active = True  # By default, the gene is active
+
+    def mutate(self):
+        """
+        Mutate the gene's value based on its mutation rate and step size.
+        
+        Numeric genes are incremented/decremented within their bounds.
+        Categorical genes are randomly changed within their options.
+        """
+        if not self.active:
+            return  # Skip mutation if the gene is inactive
+
+        if random.random() < self.mutation_rate:  # Check if mutation occurs
+            if isinstance(self.value, (int, float)):  # Numeric mutation
+                mutation = random.uniform(-self.mutation_step, self.mutation_step)
+                new_value = self.value + mutation
+                if self.min_value is not None and self.max_value is not None:
+                    self.value = max(self.min_value, min(new_value, self.max_value))
+                else:
+                    self.value = new_value
+            elif isinstance(self.value, str) and self.options:  # Categorical mutation
+                self.value = random.choice(self.options)
+
+    def crossover(self, other):
+        """
+        Perform crossover with another gene to create an offspring gene.
+        
+        Args:
+            other (Gene): The other parent gene.
+        
+        Returns:
+            Gene: A new gene combining properties from both parents.
+        """
+        if not isinstance(other, Gene):
+            raise ValueError("Crossover requires another Gene instance.")
+        
+        # Value inheritance based on dominance
+        new_value = self.value if self.dominance >= other.dominance else other.value
+        
+        return Gene(
+            name=self.name,
+            value=new_value,
+            min_value=self.min_value,
+            max_value=self.max_value,
+            mutation_rate=(self.mutation_rate + other.mutation_rate) / 2,
+            mutation_step=(self.mutation_step + other.mutation_step) / 2,
+            dominance=max(self.dominance, other.dominance),
+            generation=max(self.generation, other.generation) + 1,
+            parent_ids=[self.name, other.name]
+        )
+
+    def decay(self, rate=0.01):
+        """
+        Simulate gene decay by gradually decreasing its value.
+        
+        Args:
+            rate (float): The rate of decay (default is 0.01).
+        """
+        if isinstance(self.value, (int, float)):
+            self.value = max(self.min_value, self.value - rate)
+
+    def __str__(self):
+        """Return a string of the gene."""
+        return (f"Gene(Name={self.name}, Value={self.value}, Min={self.min_value}, Max={self.max_value}, "
+                f"MutationRate={self.mutation_rate}, MutationStep={self.mutation_step}, "
+                f"Dominance={self.dominance}, Generation={self.generation})")
+
+
+class Critter:
+    """Class representing a critter in the simulation."""
+
+    _id_counter = 0  # Class-level counter to assign unique IDs to each critter
+
+    def __init__(self, position=(0, 0, 0), strength=1.0, color=(1, 1, 1, 1), genes=None):
+        """
+        Initialize a new critter.
+        
+        Args:
+            position (tuple): Initial (x, y, z) position of the critter.
+            strength (float): Ability to climb steep terrain.
+            color (tuple): RGBA color representing the critter visually.
+            genes (list or dict): List of Gene objects representing the critter's genetic makeup.
+        """
+        self.id = Critter._id_counter  # Assign a unique ID
+        Critter._id_counter += 1  # Increment ID counter
+        self.position = position
+        self.strength = strength
+        self.color = color
+        self.genes = genes if genes is not None else [
+            Gene("Strength", strength, min_value=0.5, max_value=2.0)
+        ]  # Default to a strength gene
+        self.fitness = 0  # Initialize fitness score
+
+    def move(self, new_x, new_y):
+        """
+        Update the critter's position.
+        
+        Args:
+            new_x (float): New X-coordinate.
+            new_y (float): New Y-coordinate.
+        """
+        self.position = (new_x, new_y, self.position[2])
+
+    def adjust_fitness(self, amount):
+        """
+        Adjust the critter's fitness score.
+        
+        Args:
+            amount (float): Amount to adjust fitness by (positive or negative).
+        """
+        self.fitness += amount
+
+    def __str__(self):
+        """Return a string representation of the critter for debugging."""
+        return (f"Critter(ID={self.id}, Position={self.position}, Strength={self.strength}, "
+                f"Color={self.color}, Fitness={self.fitness})")
+
+
 class ConfigurableValue():
     """a class for values that can be configured via the UI"""
     def __init__(
@@ -386,7 +535,7 @@ class BaseApp(ShowBase):
     (0, 1, 0, 1),  # Green
     (0, 0, 1, 1),  # Blue
     (1, 1, 0, 1),  # Yellow
-]
+    ]
       
     def __init__(self):
         ShowBase.__init__(self)
@@ -444,6 +593,9 @@ class BaseApp(ShowBase):
             self.spawn_food_periodically,
             "FoodSpawnTask"
         )
+        
+        # List to track all critters
+        self.critters = []
     
         
     def event_handlers_setup(self):
@@ -465,6 +617,10 @@ class BaseApp(ShowBase):
         
         # Press 'r' to reset all food in the world
         self.accept('r', self.reset_all_food)
+        
+            
+        # Print critters with 'p'
+        self.accept('p', lambda: [print(critter) for critter in self.critters])
 
         
     def picker_setup(self):
@@ -734,7 +890,7 @@ class BaseApp(ShowBase):
         return Task.cont
     
     
-    def summon_critter(self,x,y, color=None):
+    def summon_critter(self, x, y, color=None):
         """a method to bring forth a phys enabled critter at chosen pos, height is automatic based on height map
 
         Args:
@@ -742,40 +898,52 @@ class BaseApp(ShowBase):
             y (float): _description_
             color (tuple, optional): The color of the critter. Randomized if not provided.
         """
+        # Load the visual model for the critter
         blob = self.loader.loadModel("./assets/models/critter.obj")
-        blob.setHpr(0,90,0)
-        shape = BulletBoxShape(Vec3(0.5, 0.5, .5))
+        blob.setHpr(0, 90, 0)
+        shape = BulletBoxShape(Vec3(0.5, 0.5, 0.5))
 
+        # Create a BulletRigidBodyNode for physics
         node = BulletRigidBodyNode(f'Box-{self.blobi}')
-        
-        #increment blobie
-        self.blobi+=1
-        
-        #uhhh mass?
+
+        # Increment blobie (unique identifier for each physics node)
+        self.blobi += 1
+
+        # uhhh mass?
         node.setMass(1.0)
         node.addShape(shape)
 
-        #create phys ctrl ish, intermediate connected to real phys controller
+        # Create phys ctrl ish, intermediate connected to real phys controller
         blob_np = self.render.attachNewNode(node)
-        
-        #lights??!?! idk
+
+        # lights??!?! idk
         blob.flattenLight()
-        
-        #set parent to phys ctrl
+
+        # Set parent to phys ctrl
         blob.reparentTo(blob_np)
 
+        # Attach to the Bullet physics world
         self.world.attachRigidBody(node)
-    
-        self.set_critter_height(blob_np,x,y)
+
+        # Adjust the critter's height based on the terrain
+        self.set_critter_height(blob_np, x, y)
         blob_np.get_pos
-        
-        self.tmpBlobs.append((node,blob_np))
+
+        # Append to temporary blob tracking
+        self.tmpBlobs.append((node, blob_np))
         blob.set_scale(10)
-        
-        # Assign a random color if none is given
+
+        # Assign a random color if none is provided
         if color is None:
             color = random.choice(self.CRITTER_COLORS)
         blob.setColor(*color)
+
+        # Create the critter instance and append to the critter list
+        critter = Critter(position=(x, y, 0), strength=random.uniform(0.5, 2.0), color=color)
+        self.critters.append(critter)
+
+        print(f"Spawned {critter}")
+
         
         
     def set_critter_height(self,blob_np,x,y):
