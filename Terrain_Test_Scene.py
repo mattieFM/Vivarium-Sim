@@ -28,6 +28,195 @@ UI_Y_WIDTH = np.abs(MIN_UI_Y)+np.abs(MAX_UI_Y)
 UI_X_WIDTH = np.abs(MIN_UI_X)+np.abs(MAX_UI_X)
 
 
+class RoundManager:
+    """Manages the lifecycle phases of a simulation round."""
+
+    PHASES = ["Initialization", "Simulation", "Evaluation", "Reproduction"]
+
+    def __init__(self, base_app, population_cap=100):
+        """
+        Initialize the round manager.
+
+        Args:
+            base_app (BaseApp): Reference to the main app.
+            population_cap (int): Maximum number of critters allowed.
+        """
+        self.base_app = base_app
+        self.current_phase_index = 0
+        self.population_cap = population_cap
+
+    def get_current_phase(self):
+        """Return the current phase name."""
+        return self.PHASES[self.current_phase_index]
+
+    def next_phase(self):
+        """Advance to the next phase in the cycle."""
+        self.current_phase_index = (self.current_phase_index + 1) % len(self.PHASES)
+        self.trigger_phase_start()
+
+    def trigger_phase_start(self):
+        """Trigger the start of the current phase."""
+        phase = self.get_current_phase()
+        print(f"Starting Phase: {phase}")
+        if phase == "Initialization":
+            self.base_app.initialize_round()
+        elif phase == "Simulation":
+            self.base_app.simulate_round()
+        elif phase == "Evaluation":
+            self.base_app.evaluate_round()
+        elif phase == "Reproduction":
+            self.base_app.reproduce_round()
+
+
+class Gene:
+    """Class representing a single gene in a critter's genetic makeup."""
+
+    def __init__(self, name, value, min_value=None, max_value=None, mutation_rate=0.1, mutation_step=0.1,
+                 options=None, dominance=1, generation=0, parent_ids=None):
+        """
+        Initialize a new gene with its properties.
+        
+        Args:
+            name (str): The name of the gene (something like "Strength").
+            value (int, float, or str): The initial value of the gene.
+            min_value (int or float, optional): Minimum value for the gene (if numeric).
+            max_value (int or float, optional): Maximum value for the gene (if numeric).
+            mutation_rate (float): Probability of mutation (0 to 1).
+            mutation_step (float): Step size for numeric mutations.
+            options (list, optional): Allowed values for categorical genes (if applicable).
+            dominance (int, optional): Priority for crossover (higher value dominates).
+            generation (int, optional): Generation in which this gene was created.
+            parent_ids (list, optional): List of parent gene names for lineage tracking.
+        """
+        self.name = name
+        self.value = value
+        self.min_value = min_value
+        self.max_value = max_value
+        self.mutation_rate = mutation_rate
+        self.mutation_step = mutation_step
+        self.options = options or []  # For categorical genes
+        self.dominance = dominance
+        self.generation = generation
+        self.parent_ids = parent_ids or []
+        self.active = True  # By default, the gene is active
+
+    def mutate(self):
+        """
+        Mutate the gene's value based on its mutation rate and step size.
+        
+        Numeric genes are incremented/decremented within their bounds.
+        Categorical genes are randomly changed within their options.
+        """
+        if not self.active:
+            return  # Skip mutation if the gene is inactive
+
+        if random.random() < self.mutation_rate:  # Check if mutation occurs
+            if isinstance(self.value, (int, float)):  # Numeric mutation
+                mutation = random.uniform(-self.mutation_step, self.mutation_step)
+                new_value = self.value + mutation
+                if self.min_value is not None and self.max_value is not None:
+                    self.value = max(self.min_value, min(new_value, self.max_value))
+                else:
+                    self.value = new_value
+            elif isinstance(self.value, str) and self.options:  # Categorical mutation
+                self.value = random.choice(self.options)
+
+    def crossover(self, other):
+        """
+        Perform crossover with another gene to create an offspring gene.
+        
+        Args:
+            other (Gene): The other parent gene.
+        
+        Returns:
+            Gene: A new gene combining properties from both parents.
+        """
+        if not isinstance(other, Gene):
+            raise ValueError("Crossover requires another Gene instance.")
+        
+        # Value inheritance based on dominance
+        new_value = self.value if self.dominance >= other.dominance else other.value
+        
+        return Gene(
+            name=self.name,
+            value=new_value,
+            min_value=self.min_value,
+            max_value=self.max_value,
+            mutation_rate=(self.mutation_rate + other.mutation_rate) / 2,
+            mutation_step=(self.mutation_step + other.mutation_step) / 2,
+            dominance=max(self.dominance, other.dominance),
+            generation=max(self.generation, other.generation) + 1,
+            parent_ids=[self.name, other.name]
+        )
+
+    def decay(self, rate=0.01):
+        """
+        Simulate gene decay by gradually decreasing its value.
+        
+        Args:
+            rate (float): The rate of decay (default is 0.01).
+        """
+        if isinstance(self.value, (int, float)):
+            self.value = max(self.min_value, self.value - rate)
+
+    def __str__(self):
+        """Return a string of the gene."""
+        return (f"Gene(Name={self.name}, Value={self.value}, Min={self.min_value}, Max={self.max_value}, "
+                f"MutationRate={self.mutation_rate}, MutationStep={self.mutation_step}, "
+                f"Dominance={self.dominance}, Generation={self.generation})")
+
+
+class Critter:
+    """Class representing a critter in the simulation."""
+
+    _id_counter = 0  # Class-level counter to assign unique IDs to each critter
+
+    def __init__(self, position=(0, 0, 0), strength=1.0, color=(1, 1, 1, 1), genes=None, node=None):
+        """
+        Initialize a new critter.
+        
+        Args:
+            position (tuple): Initial (x, y, z) position of the critter.
+            strength (float): Ability to climb steep terrain.
+            color (tuple): RGBA color representing the critter visually.
+            genes (list or dict): List of Gene objects representing the critter's genetic makeup.
+        """
+        self.id = Critter._id_counter  # Assign a unique ID
+        Critter._id_counter += 1  # Increment ID counter
+        self.position = position
+        self.strength = strength
+        self.color = color
+        self.genes = genes if genes is not None else [
+            Gene("Strength", strength, min_value=0.5, max_value=2.0)
+        ]  # Default to a strength gene
+        self.fitness = 0  # Initialize fitness score
+        self.node = node
+
+    def move(self, new_x, new_y):
+        """
+        Update the critter's position.
+        
+        Args:
+            new_x (float): New X-coordinate.
+            new_y (float): New Y-coordinate.
+        """
+        self.position = (new_x, new_y, self.position[2])
+
+    def adjust_fitness(self, amount):
+        """
+        Adjust the critter's fitness score.
+        
+        Args:
+            amount (float): Amount to adjust fitness by (positive or negative).
+        """
+        self.fitness += amount
+
+    def __str__(self):
+        """Return a string representation of the critter for debugging."""
+        return (f"Critter(ID={self.id}, Position={self.position}, Strength={self.strength}, "
+                f"Color={self.color}, Fitness={self.fitness})")
+
+
 class ConfigurableValue():
     """a class for values that can be configured via the UI"""
     def __init__(
@@ -386,7 +575,7 @@ class BaseApp(ShowBase):
     (0, 1, 0, 1),  # Green
     (0, 0, 1, 1),  # Blue
     (1, 1, 0, 1),  # Yellow
-]
+    ]
       
     def __init__(self):
         ShowBase.__init__(self)
@@ -444,7 +633,16 @@ class BaseApp(ShowBase):
             self.spawn_food_periodically,
             "FoodSpawnTask"
         )
-    
+        
+        # List to track all critters
+        self.critters = []
+        
+        
+        self.round_manager = RoundManager(self)
+        
+        # task to advance phases every 20 seconds
+        self.taskMgr.doMethodLater(20, self.advance_round_phase, "AdvancePhaseTask")
+
         
     def event_handlers_setup(self):
         """set up all event handlers for the app"""
@@ -465,8 +663,14 @@ class BaseApp(ShowBase):
         
         # Press 'r' to reset all food in the world
         self.accept('r', self.reset_all_food)
-
         
+            
+        # Print critters with 'p'
+        self.accept('p', lambda: [print(critter) for critter in self.critters])
+        
+        # Press spacebar to start the round manager
+        self.accept('space', self.start_round_manager)
+
     def picker_setup(self):
         """set up everything we need for collisions and our picker.
         this is used for the raytracing to draw on our map and to pick objects
@@ -734,7 +938,7 @@ class BaseApp(ShowBase):
         return Task.cont
     
     
-    def summon_critter(self,x,y, color=None):
+    def summon_critter(self, x, y, color=None):
         """a method to bring forth a phys enabled critter at chosen pos, height is automatic based on height map
 
         Args:
@@ -742,40 +946,51 @@ class BaseApp(ShowBase):
             y (float): _description_
             color (tuple, optional): The color of the critter. Randomized if not provided.
         """
+        # Load the visual model for the critter
         blob = self.loader.loadModel("./assets/models/critter.obj")
-        blob.setHpr(0,90,0)
-        shape = BulletBoxShape(Vec3(0.5, 0.5, .5))
+        blob.setHpr(0, 90, 0)
+        shape = BulletBoxShape(Vec3(0.5, 0.5, 0.5))
 
+        # Create a BulletRigidBodyNode for physics
         node = BulletRigidBodyNode(f'Box-{self.blobi}')
-        
-        #increment blobie
-        self.blobi+=1
-        
-        #uhhh mass?
+
+        # Increment blobie (unique identifier for each physics node)
+        self.blobi += 1
+
+        # uhhh mass?
         node.setMass(1.0)
         node.addShape(shape)
 
-        #create phys ctrl ish, intermediate connected to real phys controller
+        # Create phys ctrl ish, intermediate connected to real phys controller
         blob_np = self.render.attachNewNode(node)
-        
-        #lights??!?! idk
+
+        # lights??!?! idk
         blob.flattenLight()
-        
-        #set parent to phys ctrl
+
+        # Set parent to phys ctrl
         blob.reparentTo(blob_np)
 
+        # Attach to the Bullet physics world
         self.world.attachRigidBody(node)
-    
-        self.set_critter_height(blob_np,x,y)
+
+        # Adjust the critter's height based on the terrain
+        self.set_critter_height(blob_np, x, y)
         blob_np.get_pos
         
         self.critters.append((node,blob_np))
         blob.set_scale(10)
-        
-        # Assign a random color if none is given
+
+        # Assign a random color if none is provided
         if color is None:
             color = random.choice(self.CRITTER_COLORS)
         blob.setColor(*color)
+
+        # Create the critter instance and append to the critter list
+        critter = Critter(position=(x, y, 0), strength=random.uniform(0.5, 2.0), color=color, node=blob_np)
+        self.critters.append(critter)
+
+        print(f"Spawned {critter}")
+
         
         
     def set_critter_height(self,blob_np,x,y):
@@ -969,7 +1184,6 @@ class BaseApp(ShowBase):
         
         # Check if we have reached the food limit
         if len(self.food_items) >= self.max_food_count:
-            print(f"Food limit reached: {self.max_food_count}. No new food spawned.")
             return  # Prevent spawning more food
         
         # Choose random x and y within the terrain bounds
@@ -1017,7 +1231,140 @@ class BaseApp(ShowBase):
             food.removeNode()  # Remove the food from the scene
         self.food_items.clear()  # Clear the tracking list
         print("All food has been removed.")
+        
+    ### Round Based Methods ###
+    def initialize_round(self):
+        """Handle initialization tasks, such as spawning food and resetting critters."""
+        print("Setting up a new round...")
 
+        if len(self.critters) == 0:
+            # If no critters exist, spawn a default population
+            print("No critters found! Spawning initial critter population...")
+            self.spawn_initial_population()
+
+        # Reset fitness scores and reposition existing critters
+        for critter in self.critters:
+            critter.fitness = 0  # Reset fitness scores
+            if critter.node:
+                self.set_critter_height(critter.node, critter.position[0], critter.position[1])  # Reset positions
+        print(f"{len(self.critters)} critters reset for the new round.")
+        
+    def spawn_initial_population(self, count=10):
+        """Spawn an initial population of critters randomly within the terrain."""
+        for _ in range(count):
+            # Generate random positions on the map
+            x = random.uniform(0, self.heightmap.getXSize())
+            y = random.uniform(0, self.heightmap.getYSize())
+            self.summon_critter(x, y)
+        print(f"Spawned {count} critters for the initial population.")
+        
+    def simulate_round(self):
+        """Simulate critter movement and interactions."""
+        print("Beginning simulation!")
+        # TODO: Implement critter movement logic
+        print("Simulation complete!")
+
+    def is_touching(self, critter_pos, food_pos, threshold=10):
+        """
+        Check if a critter is touching a food item.
+    
+        Args:
+            critter_pos (Vec3): Position of the critter.
+            food_pos (Vec3): Position of the food.
+            threshold (float): Distance within which touching is detected.
+    
+        Returns:
+            bool: True if touching, False otherwise.
+        """
+        distance = np.linalg.norm(
+            np.array([critter_pos.getX(), critter_pos.getY()]) -
+            np.array([food_pos.getX(), food_pos.getY()])
+        )
+        return distance <= threshold
+
+
+    def evaluate_round(self):
+        """Evaluate critter fitness based on their interactions."""
+        print("Evaluating critters...")
+
+        # Update critter positions from physics nodes
+        for critter in self.critters:
+            critter.position = critter.node.get_pos()
+            print(f"  - Critter {critter.id}: Position updated to {critter.position}")
+
+        for critter in self.critters:
+            # Reset fitness for the round
+            critter.fitness = 0
+
+            # Iterate over a copy of food_items to allow safe removal
+            for food in self.food_items[:]:
+                if self.is_touching(critter.position, food.getPos()):
+                    print(f"  - Critter {critter.id} touched food at {food.getPos()}. Incrementing fitness.")
+                    food.removeNode()
+                    self.food_items.remove(food)
+
+                    # Increment fitness randomly between 0.5 and 1.0
+                    fitness_gain = random.uniform(0.5, 1.0)
+                    critter.fitness += fitness_gain
+                    print(f"    > Fitness increased by {fitness_gain:.2f}. Total fitness: {critter.fitness:.2f}")
+        print("Finished evaluating critters.")
+
+
+    def reproduce_round(self):
+        """Handle reproduction and replace less-fit critters."""
+        print("Handling reproduction...")
+
+        # Sort critters by fitness
+        self.critters.sort(key=lambda c: c.fitness, reverse=True)
+        print("  - Critters sorted by fitness.")
+
+        # Select the top critters for reproduction
+        top_critters = self.critters[:len(self.critters) // 2]
+        print(f"  - Top {len(top_critters)} critters selected for reproduction.")
+
+        # Generate offspring to replace the parents
+        offspring = []
+        for i in range(0, len(top_critters), 2):
+            if i + 1 < len(top_critters):  # Ensure we have pairs
+                parent1 = top_critters[i]
+                parent2 = top_critters[i + 1]
+                child = self.create_offspring(parent1, parent2)
+                offspring.append(child)
+                print(f"    > Offspring created from Critter {parent1.id} and Critter {parent2.id}.")
+
+        # Replace the population with offspring
+        self.critters = offspring
+        print(f"Reproduction complete. New population size: {len(self.critters)}.")
+
+              
+    def create_offspring(self, parent1, parent2):
+        """Create an offspring critter using two parents."""
+        print(f"Creating offspring from parents {parent1.id} and {parent2.id}...")
+
+        new_genes = []
+        for gene1, gene2 in zip(parent1.genes, parent2.genes):
+            new_gene = gene1.crossover(gene2)
+            new_gene.mutate()
+            new_genes.append(new_gene)
+
+        # Spawn the offspring near one of the parents
+        x = (parent1.position[0] + parent2.position[0]) / 2 + random.uniform(-10, 10)
+        y = (parent1.position[1] + parent2.position[1]) / 2 + random.uniform(-10, 10)
+        offspring = Critter(position=(x, y, 0), genes=new_genes)
+
+        print(f"  - Offspring created at position ({x:.2f}, {y:.2f}).")
+        return offspring
+
+
+    def advance_round_phase(self, task):
+        """Advance to the next phase in the round lifecycle."""
+        self.round_manager.next_phase()
+        return task.again
+    
+    def start_round_manager(self):
+        """Kick off the round lifecycle using the RoundManager."""
+        print("Starting the first round...")
+        self.round_manager.trigger_phase_start()  # Start the first phase
 
 
 app = BaseApp()
