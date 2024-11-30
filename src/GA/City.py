@@ -2,14 +2,14 @@ from GA.Gene import Gene
 from CORE.entity import Entity
 import random
 
-class Food(Entity):
-    """Class representing a food in the simulation."""
+class City(Entity):
+    """Class representing a city in the simulation."""
     
-    foods = []
+    cities = []
 
     def __init__(self, base, position=(0, 0, 0), strength=1.0, color=None, genes=None):
         """
-        Initialize a new food.
+        Initialize a new city.
         
         Args:
             position (tuple): Initial (x, y, z) position of the critter.
@@ -21,16 +21,16 @@ class Food(Entity):
             base=base,
             color=color,
             position=position,
-            model="./assets/models/cube.obj"
+            model="./assets/models/house.obj"
             )
 
         self.get_rand_color() #update if none
         self.base=base
         
     def spawn(self, x=None, y=None, color=None):
-        food = super().spawn(x, y, color)
-        Food.foods.append(food)
-        return food
+        city = super().spawn(x, y, color)
+        City.cities.append(city)
+        return city
         
     def get_rand_color(self):
         from main import BaseApp

@@ -3,10 +3,9 @@ from CORE.entity import Entity
 import random
 
 class Critter(Entity):
+    critters = []
+    
     """Class representing a critter in the simulation."""
-
-    _id_counter = 0  # Class-level counter to assign unique IDs to each critter
-
     def __init__(self, base, position=(0, 0, 0), strength=1.0, color=None, genes=None):
         """
         Initialize a new critter.
@@ -34,6 +33,11 @@ class Critter(Entity):
         
         self.fitness = 0  # Initialize fitness score
         self.base=base
+        
+    def spawn(self, x=None, y=None, color=None):
+        critter = super().spawn(x, y, color)
+        Critter.critters.append(critter)
+        return critter
         
     def get_rand_color(self):
         from main import BaseApp

@@ -17,9 +17,6 @@ import numpy as np
 from math import pi, sin, cos
 import math
 
-
-
-
 #our imports
 from CORE.util import Util
 from GA.Gene import Gene
@@ -32,6 +29,7 @@ from CORE.camera import CameraController
 from CORE.Terrain import TerrainController
 from CORE.entity import Entity
 from GA.Food import Food
+from GA.City import City
 
 class BaseApp(ShowBase):     
     #so that it can be turned off if we want to
@@ -39,6 +37,10 @@ class BaseApp(ShowBase):
     
     #toggle add blobs
     add_blob_enabled = False
+    
+    #toggle add cities
+    add_city_enabled = False
+    
     #since a click is required to toggle on the blob mode this stops a critter from spawning when blob is toggled on via the button
     add_first_blob_enabled = False
     
@@ -144,8 +146,8 @@ class BaseApp(ShowBase):
         #handles all terrain editing 
         #self.task_mgr.add(self.handle_terrain_edit, "handleEnvironmentChange")
         
-        #handles un-focusing from inputs when user clicks out of them
-        self.accept("mouse1-up", self.handle_add_guy)
+        #handles mouse down
+        self.accept("mouse1-up", self.on_mouse_1_down)
         
         # Press 'f' to manually spawn food
         self.accept('f', self.spawn_food)
@@ -155,7 +157,7 @@ class BaseApp(ShowBase):
         
             
         # Print critters with 'p'
-        self.accept('p', lambda: [print(critter) for critter in self.critters])
+        self.accept('p', lambda: [print(critter) for critter in Critter.critters])
         
         # Press spacebar to start the round manager
         self.accept('space', self.start_round_manager)
@@ -198,9 +200,14 @@ class BaseApp(ShowBase):
         def edit_radius(val):
             self.edit_radius = float(val)
             self.ui.unfocus_all()
+            
+        def add_city_toggle(val):
+            self.add_city_enabled = val
+            self.add_first_blob_enabled = val
 
         self.ui.add_option(ConfigurableValue(edit_terrain_toggle, "edit", True))
         self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Critter", True))
+        self.ui.add_option(ConfigurableValue(add_city_toggle, "Add City", True))
         self.ui.add_option(ConfigurableValue(edit_speed, "edit speed", False, placeholder=self.edit_power))
         self.ui.add_option(ConfigurableValue(edit_radius, "edit radius", False, placeholder=self.edit_radius))
 
@@ -319,6 +326,36 @@ class BaseApp(ShowBase):
         z = self.terrainController.heightmap.get_gray(int(x),int(np.abs(y - self.terrainController.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10
         blob_np.set_pos(x,y,z)
         return z
+    
+    def on_mouse_1_down(self):
+        if(not self.add_first_blob_enabled):
+            if(self.add_city_enabled):
+                self.handle_add_city()
+            elif(self.add_blob_enabled):
+                self.handle_add_guy()
+        else:
+            self.add_first_blob_enabled=False
+    
+    def spawn_city(self, x, y, color=None):
+        city = City(base=self).spawn(x=x,y=y,color=color)
+    
+    def handle_add_city(self):
+        """a method that handles adding a little buddy wherever the user clicks
+        called every frame, if add blob is enabled and the user left clicks we will spawn a physics enabled buddy at their cursor location
+
+        Returns:
+            Task: run every frame
+        """
+        if(self.add_city_enabled):
+            def on_click_success(point):
+                #ceaseless watcher turn your gaze upon this critter :p
+                self.spawn_city(int(point[0]),int(point[1]))
+                
+            #cast our ray
+            self.click_on_map_and_call(on_click_success)
+  
+        
+        return Task.cont
                 
     def handle_add_guy(self):
         """a method that handles adding a little buddy wherever the user clicks
@@ -328,16 +365,15 @@ class BaseApp(ShowBase):
             Task: run every frame
         """
         if(self.add_blob_enabled and not self.edit_terrain_enabled):
-            if(not self.add_first_blob_enabled):
-                #define our success function
-                def on_click_success(point):
-                    #ceaseless watcher turn your gaze upon this critter :p
-                    self.summon_critter(int(point[0]),int(point[1]))
-                    
-                #cast our ray
-                self.click_on_map_and_call(on_click_success)
-            else:
-                self.add_first_blob_enabled=False
+            
+            #define our success function
+            def on_click_success(point):
+                #ceaseless watcher turn your gaze upon this critter :p
+                self.summon_critter(int(point[0]),int(point[1]))
+                
+            #cast our ray
+            self.click_on_map_and_call(on_click_success)
+            
         
         return Task.cont
             
