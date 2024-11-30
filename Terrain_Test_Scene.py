@@ -376,7 +376,7 @@ class BaseApp(ShowBase):
     
     blobi=0
     
-    tmpBlobs = []
+    critters = []
     
     #little buddy offset
     critter_offset_z=12
