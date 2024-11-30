@@ -64,7 +64,7 @@ class BaseApp(ShowBase):
     critters = []
     
     #little buddy offset
-    critter_offset_z=12
+    critter_offset_z=37
     
     CRITTER_COLORS = [
     (1, 0, 0, 1),  # Red
@@ -145,6 +145,12 @@ class BaseApp(ShowBase):
         self.accept('f', self.spawn_food)
         
         self.accept('n',self.round_manager.next_phase)
+        
+        def move_entity_1_towards_00():
+            Entity.entities[1].move_to(Vec3(50,50,70))
+        
+        # Press 'm' to move entity 1 towards 0 0 0 by one movement tick
+        self.accept('m', move_entity_1_towards_00)
         
         # Press 'r' to reset all food in the world
         self.accept('r', self.reset_all_food)
@@ -323,7 +329,7 @@ class BaseApp(ShowBase):
         """
         z=0
         if(x > 0 and x < self.terrainController.heightmap.getXSize() and y > 0 and y < self.terrainController.heightmap.getYSize()):
-            z = self.terrainController.heightmap.get_gray(int(x),int(np.abs(y - self.terrainController.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10
+            z = self.terrainController.get_height_at(x,y)+self.critter_offset_z
             blob_np.set_pos(x,y,z)
         return z
     

@@ -89,7 +89,7 @@ class TerrainController(DirectObject):
             #alternatively just move it up a little bit, but idk it wasnt working. this is a bit odd cus things fall slow if you are editing
             #but w/e its okay for now, worst case just increese gravity to fix this.
             
-            #node.setAngularVelocity(Vec3(0, 0, 1))
+            node.setAngularVelocity(Vec3(0, 0, 0))
             #node.body_np.setPos(node.body_np.getPos() + Vec3(0, 0, 0.01))
     
     # Add a task to keep updating the terrain
@@ -98,6 +98,11 @@ class TerrainController(DirectObject):
         updating_terrain = self.terrain.update()
         if(updating_terrain): print("terrain update")
         return task.cont
+    
+    def get_height_at(self, x, y):
+        """Get the height at a given x, y coordinate on the heightfield."""
+        from main import BaseApp
+        return self.terrain.get_elevation(int(x),int(y)) * BaseApp.z_scale
     
     def ascend_objs_with_terrain(self, point, radius=None, objects=[]):
         """when a terrain point is elevated, check all critters within radius and ascend them with the terrain if applicable"
@@ -111,6 +116,7 @@ class TerrainController(DirectObject):
         for critter in objects:
             body_np = critter.body_np or critter
             body_pos=body_np.get_pos()
+            point[2] = body_pos[2]
             if(np.linalg.norm(body_pos-point)<radius):
                 self.base.set_critter_height(body_np,body_pos[0],body_pos[1])
     

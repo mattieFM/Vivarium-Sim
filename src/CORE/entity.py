@@ -1,6 +1,8 @@
 from direct.showbase.DirectObject import DirectObject
 from direct.task import Task
 from panda3d.core import Vec3
+import numpy as np
+from direct.showbase.ShowBaseGlobal import globalClock
 from panda3d.bullet import BulletBoxShape,BulletRigidBodyNode
 import random
 
@@ -29,7 +31,12 @@ class Entity(DirectObject):
         self.position = position
         self.spawned=False
         self.model=model
+        self.speed=100
         self.children = []
+        
+        self.currentPath = [] #an array of the current path of vector3 nodes to follow
+        self.currentDirection = (0,0,0)
+        self.currentGoal = (0,0,0)
     
     @staticmethod
     def get_entities():
@@ -87,6 +94,76 @@ class Entity(DirectObject):
                 list_size=len(entities)
             else:
                 i+=1
+                
+    def move_to(self,vec2):
+        """move from pos to target vec2 over s seconds
+
+        Args:
+            vec2 (vec2): vector2
+        """
+        
+        self.currentGoal=vec2
+        self.base.task_mgr.add(self.move_task, f"entity{self.id}-move-task-to{vec2}")
+        
+    def dist_to_point(self, point, threshold=10):
+        """
+        Check if a critter is within threshhold of point
+    
+        Args:
+            food_pos (Vec3): Position of the goal point.
+            threshold (float): Distance within which touching is detected.
+    
+        Returns:
+            bool: True if within range, False otherwise.
+        """
+        distance = np.linalg.norm(
+            np.array([self.get_pos().getX(), self.get_pos().getY()]) -
+            np.array([point.getX(), point.getY()])
+        )
+        return distance <= threshold
+        
+    def move_task(self,task):
+        if(not self.currentGoal or self.dist_to_point(self.currentGoal,100)):
+            #reached goal
+            self.currentGoal=None
+            self.base.set_critter_height(self.body_np, self.get_pos().getX(), self.get_pos().getY())
+            self.node.setLinearVelocity(Vec3(0, 0, .005))
+            self.node.setAngularVelocity(Vec3(0, 0, 0))
+            return Task.done
+            
+        else:
+            #has not reached goal
+            self.move_tick(self.currentGoal)
+            return Task.cont
+        
+    def move_tick(self,goal_point,extra_speed_mod=1,phys=True):
+        direction = (goal_point - self.get_pos()).normalized()
+        jump_strength = 1
+        up_vector = Vec3(0,0,1)
+        
+        distance_to_move = self.speed * globalClock.getDt() * extra_speed_mod
+        target_pos = self.get_pos() + (direction*3)
+        
+        ahead_z_pos = self.base.terrainController.get_height_at(int(target_pos.getX()), int(target_pos.getY())) - self.base.terrainController.get_height_at(int(self.get_pos().getX()), int(self.get_pos().getY()))
+        z_difference = self.get_pos().getZ() - self.base.terrainController.get_height_at(int(self.get_pos().getX()), int(self.get_pos().getY()))
+        
+        #print(f"aheadz:{ahead_z_pos}")
+        if(ahead_z_pos>0):
+            #print("jump")
+            self.node.apply_central_impulse(up_vector*jump_strength)
+        elif(z_difference > 30):
+            print("fall faster")
+            self.node.apply_central_impulse(-up_vector*jump_strength)
+        
+        self.node.active=True
+        
+        if(phys):
+            self.node.applyCentralForce(direction*distance_to_move*75)
+           
+        else:
+            new_pos = self.get_pos() + (direction*distance_to_move)
+            #print(f"direction:{direction}.new_pos={new_pos}")
+            self.body_np.set_pos(new_pos)
                 
     def add_child(self,child):
         """add a child to the list of children
@@ -149,6 +226,10 @@ class Entity(DirectObject):
             color (tuple, optional): The color of the critter. Randomized if not provided.
         """
         from main import BaseApp
+        
+        if(self.node != None):
+            self.node.setCcdMotionThreshold(0.1)  # Set threshold for continuous collision detection
+            self.node.setCcdSweptSphereRadius(.1)
         
         if(x==None): x = self.position[0]
         if(y==None): y = self.position[1]
