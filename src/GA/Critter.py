@@ -6,7 +6,7 @@ class Critter(Entity):
     critters = []
     
     """Class representing a critter in the simulation."""
-    def __init__(self, base, position=(0, 0, 0), strength=1.0, color=None, genes=None):
+    def __init__(self, base, city, position=(0, 0, 0), strength=1.0, color=None, genes=None):
         """
         Initialize a new critter.
         
@@ -23,6 +23,7 @@ class Critter(Entity):
             model="./assets/models/critter.obj"
             )
 
+        self.city = city
         self.strength = strength
         self.color = color
         self.get_rand_color() #update if none
@@ -34,10 +35,20 @@ class Critter(Entity):
         self.fitness = 0  # Initialize fitness score
         self.base=base
         
+    @staticmethod
+    def remove_all_critters():
+        Entity.remove_list_of_entities(Critter.critters)
+        
     def spawn(self, x=None, y=None, color=None):
-        critter = super().spawn(x, y, color)
-        Critter.critters.append(critter)
-        return critter
+        if(self.base.valid_x_y(x,y)):
+            critter = super().spawn(x, y, color)
+            Critter.critters.append(critter)
+            self.city.add_child(critter)
+            return critter
+    
+    def remove(self):
+        Entity.remove_entity_from_list(self,Critter.critters)
+        return super().remove()
         
     def get_rand_color(self):
         from main import BaseApp

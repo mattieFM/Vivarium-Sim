@@ -29,6 +29,7 @@ class Entity(DirectObject):
         self.position = position
         self.spawned=False
         self.model=model
+        self.children = []
     
     @staticmethod
     def get_entities():
@@ -43,10 +44,101 @@ class Entity(DirectObject):
             entity (Entity): the entity to add
         """
         Entity.entities.append(entity)
+    
+    @staticmethod
+    def remove_entity(entity):
+        """Remove an entity from the global array of all entities.
+
+        Args:
+            entity (Entity): The entity to remove
+        """
+        Entity.remove_entity_from_list(entity,Entity.entities)
+            
+    @staticmethod
+    def remove_entity_from_list(entity,list):
+        """Remove an entity from the global array of all entities.
+
+        Args:
+            entity (Entity): The entity to remove
+        """
+        try:
+            list.remove(entity)
+            print(f"Entity {entity} removed successfully.")
+        except ValueError:
+            print(f"Entity {entity} not found in the list.")
+    
+    @staticmethod        
+    def remove_list_of_entities(entities):
+        """loop through a list of entities and remove each
+        
+
+        Args:
+            entities (_type_): _description_
+        """
+        #TODO: refactor this it is bad
+        i=0
+        list_size = len(entities)
+        while i in range(list_size):
+            entity = entities[i]
+            print(entities)
+            entity.remove()
+            
+            if(list_size != len(entities)):
+                list_size=len(entities)
+            else:
+                i+=1
+                
+    def add_child(self,child):
+        """add a child to the list of children
+
+        Args:
+            child (Entity): _description_
+        """
+        self.children.append(child)
+    
+    def remove_child(self, child):
+        """remove a child if one exists from the list of children
+
+        Args:
+            child (Entity): _description_
+        """
+        self.remove_entity_from_list(child,self.children)
         
     def set_id(self,id=None):
         if(id==None): id = len(Entity.entities)
         self.id=id
+        
+    def remove(self):
+        """Remove the spawned entity from the scene and physics world."""
+        if not self.spawned:
+            return  # If not spawned, nothing to remove
+
+        # Remove the entity's physics node from the physics world
+        if self.node is not None:
+            self.base.world.removeRigidBody(self.node)
+            self.node = None
+
+        # Detach the entity's NodePath from the scene graph
+        if self.body_np is not None:
+            self.body_np.removeNode()
+            self.body_np = None
+
+        # Clear additional references
+        self.spawned = False
+        self.position = None
+        self.color = None
+
+        # Remove from the entity list
+        Entity.remove_entity(self)  # Assuming there's a method to manage entity cleanup
+        
+    def get_pos(self):
+        """get the (x,y,z) pos of this critter
+
+        Returns:
+            _type_: _description_
+        """
+        self.position = self.body_np.get_pos()
+        return self.position
     
     def spawn(self, x=None, y=None, color=None):
         """a method to bring forth a phys enabled entity at chosen pos, height is automatic based on height map
@@ -64,52 +156,54 @@ class Entity(DirectObject):
         
         if(self.spawned): return self
         
-        # Load the visual model for the critter
-        blob = self.base.loader.loadModel(self.model)
-        blob.setHpr(0, 0, 0)
-        shape = BulletBoxShape(Vec3(0.5, 0.5, 0.5))
-
-        # Create a BulletRigidBodyNode for physics
-        self.set_id()
-        node = BulletRigidBodyNode(f'Entity-{self.id}')
-
-        # uhhh mass?
-        node.setMass(1.0)
-        node.addShape(shape)
-
-        # Create phys ctrl ish, intermediate connected to real phys controller
-        blob_np = self.base.render.attachNewNode(node)
-
-        # lights??!?! idk
-        blob.flattenLight()
-
-        # Set parent to phys ctrl
-        blob.reparentTo(blob_np)
-
-        # Attach to the Bullet physics world
-        self.base.world.attachRigidBody(node)
-
-        # Adjust the critter's height based on the terrain
-        z = self.base.set_critter_height(blob_np, x, y)
-        blob_np.get_pos
+        if(self.base.valid_x_y(x,y)):
         
-        #self.critters.append((node,blob_np))
-        blob.set_scale(10)
+            # Load the visual model for the critter
+            blob = self.base.loader.loadModel(self.model)
+            blob.setHpr(0, 0, 0)
+            shape = BulletBoxShape(Vec3(0.5, 0.5, 0.5))
 
-        # Assign a random color if none is provided
-        if color is None:
-            color = random.choice(BaseApp.CRITTER_COLORS)
+            # Create a BulletRigidBodyNode for physics
+            self.set_id()
+            node = BulletRigidBodyNode(f'Entity-{self.id}')
+
+            # uhhh mass?
+            node.setMass(1.0)
+            node.addShape(shape)
+
+            # Create phys ctrl ish, intermediate connected to real phys controller
+            blob_np = self.base.render.attachNewNode(node)
+
+            # lights??!?! idk
+            blob.flattenLight()
+
+            # Set parent to phys ctrl
+            blob.reparentTo(blob_np)
+
+            # Attach to the Bullet physics world
+            self.base.world.attachRigidBody(node)
+
+            # Adjust the critter's height based on the terrain
+            z = self.base.set_critter_height(blob_np, x, y)
+            blob_np.get_pos
             
-        blob.setColor(*color)
-        
-        self.color = color
-        self.node = node
-        self.body_np = blob_np
-        self.position=(x, y, z)
-        self.spawned=True
+            #self.critters.append((node,blob_np))
+            blob.set_scale(10)
 
-        # Create the critter instance and append to the critter list
-        Entity.add_entity(self)
+            # Assign a random color if none is provided
+            if color is None:
+                color = random.choice(BaseApp.CRITTER_COLORS)
+                
+            blob.setColor(*color)
+            
+            self.color = color
+            self.node = node
+            self.body_np = blob_np
+            self.position=(x, y, z)
+            self.spawned=True
+
+            # Create the critter instance and append to the critter list
+            Entity.add_entity(self)
         
         return self
     

@@ -44,6 +44,9 @@ class BaseApp(ShowBase):
     #since a click is required to toggle on the blob mode this stops a critter from spawning when blob is toggled on via the button
     add_first_blob_enabled = False
     
+    #enable simulation
+    simulation_enabled = False
+    
     #how fast to build terrain
     edit_power = .5
     
@@ -52,6 +55,9 @@ class BaseApp(ShowBase):
     
     #the scale of z
     z_scale=500
+    
+    #max number of foods per round
+    max_food_count = 20
     
     blobi=0
     
@@ -75,6 +81,8 @@ class BaseApp(ShowBase):
         
         #init our input handler class
         self.input = Input(self)
+        
+        self.round_manager = RoundManager(self)
         
         #init our UI
         self.create_UI()
@@ -110,30 +118,14 @@ class BaseApp(ShowBase):
         #--Event Handlers--
         self.event_handlers_setup()
         
-        # List to keep track of food in the world  
-        self.max_food_count = 20  # The maximum number of food items allowed in the world     
+        # List to keep track of food in the world     
         self.food_items = []
-        
-        # Spawn initial foods - 5 for now, can adjust to modify balancing
-        for _ in range(5):
-            self.spawn_food()
             
-        # Start the periodic food spawning task
-        self.taskMgr.doMethodLater(
-            random.uniform(3, 5),  # Initial delay
-            self.spawn_food_periodically,
-            "FoodSpawnTask"
-        )
-        
         # List to track all critters
         self.critters = []
         
         
-        self.round_manager = RoundManager(self)
         
-        # task to advance phases every 20 seconds
-        self.taskMgr.doMethodLater(20, self.advance_round_phase, "AdvancePhaseTask")
-
         
     def event_handlers_setup(self):
         """set up all event handlers for the app"""
@@ -151,6 +143,8 @@ class BaseApp(ShowBase):
         
         # Press 'f' to manually spawn food
         self.accept('f', self.spawn_food)
+        
+        self.accept('n',self.round_manager.next_phase)
         
         # Press 'r' to reset all food in the world
         self.accept('r', self.reset_all_food)
@@ -204,12 +198,16 @@ class BaseApp(ShowBase):
         def add_city_toggle(val):
             self.add_city_enabled = val
             self.add_first_blob_enabled = val
+            
+        def simulation_toggle(val):
+            self.simulation_enabled=val
 
         self.ui.add_option(ConfigurableValue(edit_terrain_toggle, "edit", True))
         self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Critter", True))
         self.ui.add_option(ConfigurableValue(add_city_toggle, "Add City", True))
         self.ui.add_option(ConfigurableValue(edit_speed, "edit speed", False, placeholder=self.edit_power))
         self.ui.add_option(ConfigurableValue(edit_radius, "edit radius", False, placeholder=self.edit_radius))
+        self.ui.add_option(ConfigurableValue(simulation_toggle, "enable simulation", True))
 
         # Return the UI
         return self.ui
@@ -299,7 +297,7 @@ class BaseApp(ShowBase):
         return Task.cont
         
     
-    def summon_critter(self, x, y, color=None):
+    def spawn_critter(self, x, y, city, color=None):
         """a method to bring forth a phys enabled critter at chosen pos, height is automatic based on height map
 
         Args:
@@ -308,7 +306,7 @@ class BaseApp(ShowBase):
             color (tuple, optional): The color of the critter. Randomized if not provided.
         """
         # Load the visual model for the critter
-        critter = Critter(base=self).spawn(x=x,y=y,color=color)
+        critter = Critter(base=self,city=city).spawn(x=x,y=y,color=color)
 
         print(f"Spawned {critter}")
         
@@ -323,9 +321,14 @@ class BaseApp(ShowBase):
         Returns:
             float: new z pos
         """
-        z = self.terrainController.heightmap.get_gray(int(x),int(np.abs(y - self.terrainController.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10
-        blob_np.set_pos(x,y,z)
+        z=0
+        if(x > 0 and x < self.terrainController.heightmap.getXSize() and y > 0 and y < self.terrainController.heightmap.getYSize()):
+            z = self.terrainController.heightmap.get_gray(int(x),int(np.abs(y - self.terrainController.heightmap.getYSize())))*self.z_scale+self.critter_offset_z+10
+            blob_np.set_pos(x,y,z)
         return z
+    
+    def valid_x_y(self,x,y):
+        return x > 1 and x < self.terrainController.heightmap.getXSize() and y > 1 and y < self.terrainController.heightmap.getYSize()
     
     def on_mouse_1_down(self):
         if(not self.add_first_blob_enabled):
@@ -369,7 +372,7 @@ class BaseApp(ShowBase):
             #define our success function
             def on_click_success(point):
                 #ceaseless watcher turn your gaze upon this critter :p
-                self.summon_critter(int(point[0]),int(point[1]))
+                self.spawn_critter(int(point[0]),int(point[1]),City.cities[0])
                 
             #cast our ray
             self.click_on_map_and_call(on_click_success)
@@ -540,26 +543,35 @@ class BaseApp(ShowBase):
     def initialize_round(self):
         """Handle initialization tasks, such as spawning food and resetting critters."""
         print("Setting up a new round...")
+        
+        #remove all critters (IE: reset)
+        Critter.remove_all_critters()
+        
+        #spawn critters for each city
+        for city in City.cities:
+            self.spawn_initial_population(city)
 
-        if len(self.critters) == 0:
+        if len(Critter.critters) == 0:
             # If no critters exist, spawn a default population
             print("No critters found! Spawning initial critter population...")
-            self.spawn_initial_population()
+            
 
-        # Reset fitness scores and reposition existing critters
-        for critter in self.critters:
-            critter.fitness = 0  # Reset fitness scores
-            if critter.body_np:
-                self.set_critter_height(critter.body_np, critter.position[0], critter.position[1])  # Reset positions
-        print(f"{len(self.critters)} critters reset for the new round.")
+        print(f"{len(Critter.critters)} critters reset for the new round.")
         
-    def spawn_initial_population(self, count=10):
-        """Spawn an initial population of critters randomly within the terrain."""
+    def spawn_initial_population(self, city, count=10):
+        """Spawn an initial population of critters randomly within the bounds of a city."""
         for _ in range(count):
             # Generate random positions on the map
-            x = random.uniform(0, self.terrainController.heightmap.getXSize())
-            y = random.uniform(0, self.terrainController.heightmap.getYSize())
-            self.summon_critter(x, y)
+            x_min,x_max,y_min,y_max = city.get_bounds()
+            x = random.uniform(
+                Util.clamp(x_min,0,self.terrainController.heightmap.getXSize()),
+                Util.clamp(x_max,0,self.terrainController.heightmap.getXSize())
+                )
+            y = random.uniform(
+                Util.clamp(y_min,0,self.terrainController.heightmap.getYSize()),
+                Util.clamp(y_max,0,self.terrainController.heightmap.getYSize())
+                )
+            self.spawn_critter(x, y, city)
         print(f"Spawned {count} critters for the initial population.")
         
     def simulate_round(self):

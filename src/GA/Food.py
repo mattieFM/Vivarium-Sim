@@ -26,11 +26,19 @@ class Food(Entity):
 
         self.get_rand_color() #update if none
         self.base=base
+    
+    @staticmethod
+    def remove_all_food():
+        Entity.remove_list_of_entities(Food.foods)
         
     def spawn(self, x=None, y=None, color=None):
         food = super().spawn(x, y, color)
         Food.foods.append(food)
         return food
+
+    def remove(self):
+        Entity.remove_entity_from_list(self,Food.foods)
+        return super().remove()
         
     def get_rand_color(self):
         from main import BaseApp

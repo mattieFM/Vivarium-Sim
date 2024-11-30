@@ -7,7 +7,14 @@ class City(Entity):
     
     cities = []
 
-    def __init__(self, base, position=(0, 0, 0), strength=1.0, color=None, genes=None):
+    def __init__(self,
+                 base,
+                 position=(0, 0, 0),
+                 strength=1.0,
+                 color=None,
+                 genes=None,
+                 city_bounds_radius=50
+                 ):
         """
         Initialize a new city.
         
@@ -24,13 +31,37 @@ class City(Entity):
             model="./assets/models/house.obj"
             )
 
+        self.city_bounds_radius = city_bounds_radius
         self.get_rand_color() #update if none
         self.base=base
         
+    @staticmethod
+    def remove_all_cities():
+        Entity.remove_list_of_entities(City.cities)
+        
     def spawn(self, x=None, y=None, color=None):
-        city = super().spawn(x, y, color)
-        City.cities.append(city)
-        return city
+        if(self.base.valid_x_y(x,y)):
+            city = super().spawn(x, y, color)
+            City.cities.append(city)
+            return city
+
+    def get_bounds(self):
+        """get the bounds of this city in the form (minX,maxX,minY,maxY)"""
+        pos = self.get_pos()
+        x_center = pos[0]
+        y_center = pos[1]
+        
+        x_min = x_center - self.city_bounds_radius
+        x_max = x_center + self.city_bounds_radius
+        
+        y_min = y_center - self.city_bounds_radius
+        y_max = y_center + self.city_bounds_radius
+        
+        return (x_min,x_max,y_min,y_max)
+    
+    def remove(self):
+        Entity.remove_entity_from_list(self,City.cities)
+        return super().remove()
         
     def get_rand_color(self):
         from main import BaseApp
