@@ -171,7 +171,7 @@ class Critter:
 
     _id_counter = 0  # Class-level counter to assign unique IDs to each critter
 
-    def __init__(self, position=(0, 0, 0), strength=1.0, color=(1, 1, 1, 1), genes=None, node=None):
+    def __init__(self, position=(0, 0, 0), strength=1.0, color=(1, 1, 1, 1), genes=None, node=None, body_np=None):
         """
         Initialize a new critter.
         
@@ -191,6 +191,7 @@ class Critter:
         ]  # Default to a strength gene
         self.fitness = 0  # Initialize fitness score
         self.node = node
+        self.body_np=body_np
 
     def move(self, new_x, new_y):
         """
@@ -554,12 +555,6 @@ class BaseApp(ShowBase):
     #since a click is required to toggle on the blob mode this stops a critter from spawning when blob is toggled on via the button
     add_first_blob_enabled = False
     
-    #how fast to build terrain
-    edit_power = .5
-    
-    #how big to edit 
-    edit_radius = 50
-    
     #the scale of z
     z_scale=500
     
@@ -821,7 +816,9 @@ class BaseApp(ShowBase):
         self.np.setPos(pos)
         self.world.attachRigidBody(self.ground)
         
-        for node,np in self.critters:
+        for critter  in self.critters:
+            
+            node = critter.node
             #when a node settles IE stops moving --comes to rest, it stops being thunk about by the engine
             #so we give it a bit of upward force to ensure that the thinker starts thunking again about 
             #our critter
@@ -888,7 +885,8 @@ class BaseApp(ShowBase):
         
         if(radius==None): radius = self.edit_radius*2
         
-        for node,body_np in self.critters:
+        for critter in self.critters:
+            node,body_np = critter.node, critter.body_np
             print(node)
             print(body_np)
             body_pos=body_np.get_pos()
@@ -977,7 +975,7 @@ class BaseApp(ShowBase):
         self.set_critter_height(blob_np, x, y)
         blob_np.get_pos
         
-        self.critters.append((node,blob_np))
+        #self.critters.append((node,blob_np))
         blob.set_scale(10)
 
         # Assign a random color if none is provided
@@ -986,7 +984,7 @@ class BaseApp(ShowBase):
         blob.setColor(*color)
 
         # Create the critter instance and append to the critter list
-        critter = Critter(position=(x, y, 0), strength=random.uniform(0.5, 2.0), color=color, node=blob_np)
+        critter = Critter(position=(x, y, 0), strength=random.uniform(0.5, 2.0), color=color, node=node, body_np=blob_np)
         self.critters.append(critter)
 
         print(f"Spawned {critter}")
@@ -1245,8 +1243,8 @@ class BaseApp(ShowBase):
         # Reset fitness scores and reposition existing critters
         for critter in self.critters:
             critter.fitness = 0  # Reset fitness scores
-            if critter.node:
-                self.set_critter_height(critter.node, critter.position[0], critter.position[1])  # Reset positions
+            if critter.body_np:
+                self.set_critter_height(critter.body_np, critter.position[0], critter.position[1])  # Reset positions
         print(f"{len(self.critters)} critters reset for the new round.")
         
     def spawn_initial_population(self, count=10):
