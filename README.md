@@ -1,5 +1,7 @@
 # Run Instructions
-Go to the release page, find the latest release, and then download the binary for your OS. once downloaded you may freely run the file.
+Go to the release page, find the latest release, and then download the binary for your OS. once downloaded you may freely run the file.  
+[Latest Release](https://github.com/mattieFM/Vivarium-Sim/releases/latest)  
+[Release Page](https://github.com/mattieFM/Vivarium-Sim/releases)  
 
 Alternatively to run the live branch you may clone the repo and then follow the build instructions: ([build instructions](BUILD.md))
 
