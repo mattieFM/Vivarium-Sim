@@ -16,6 +16,8 @@ from direct.actor.Actor import Actor
 import numpy as np
 from math import pi, sin, cos
 import math
+import webcolors
+import time
 
 #our imports
 from CORE.util import Util
@@ -31,6 +33,7 @@ from CORE.entity import Entity
 from GA.Food import Food
 from GA.City import City
 from GA.Corpse import Corpse
+from CORE.matplotlib_test import Pie_Chart_Data_Visualizer
 
 class BaseApp(ShowBase):     
     #so that it can be turned off if we want to
@@ -74,6 +77,8 @@ class BaseApp(ShowBase):
     
     critters = []
     
+    charts = []
+    
     #little buddy offset
     critter_offset_z=37
     
@@ -89,6 +94,8 @@ class BaseApp(ShowBase):
         
         #disable default mouse orbiting. it is bad we want our own system.
         self.disable_mouse()
+        
+        self.pie = None
         
         #init our input handler class
         self.input = Input(self)
@@ -135,8 +142,39 @@ class BaseApp(ShowBase):
         # List to track all critters
         self.critters = []
         
+    def rgba_to_name(self,rgba):
+        rgb = tuple(int(c * 255) for c in rgba[:3])
+        try:
+            return webcolors.rgb_to_name(rgb)
+        except ValueError:
+            return "Unknown color"
+        
+    def add_graph_to_stats_panel(self,graph,data_labels_func):
+        self.charts.append((graph,data_labels_func))
+        
+    def get_round_population_and_labels(self):
+        """get the population and label data for the current game state
+
+        Returns:
+            data,labels: int[],str[]
+        """
+        data=[*[len(city.children) or 0 for city in City.cities], 1]
+        labels=[*[self.rgba_to_name(city.color) for city in City.cities],"1 critter"]
+        return (data,labels)
+        
+    def handle_stats_panel_task(self,task):
+        if(self.pie):
+            data,labels = self.get_round_population_and_labels()
+            self.pie.update_pie(
+                    data=data,
+                    labels=labels
+                ).show()
+        
+        return Task.cont
+        
         
     def handle_ga_loop(self,task):
+        
         if(self.simulation_enabled):
             #--handle first time sim is enabled--
             if(not self.simulation_started):
@@ -167,6 +205,8 @@ class BaseApp(ShowBase):
         self.task_mgr.add(self.handle_unfocus, "handle_unfocus")
         
         self.task_mgr.do_method_later(1, self.handle_ga_loop, "handle_main_loop")
+        
+        self.task_mgr.add(self.handle_stats_panel_task, "handle_stat_panel_update")
         
         
         
@@ -246,6 +286,29 @@ class BaseApp(ShowBase):
         def set_time_limit(val):
             self.round_manager.phase_time_limit_seconds=float(val)
             self.ui.unfocus_all()
+            
+            
+        def open_stats_panel(val):
+            if(val == True):
+                self.pie = Pie_Chart_Data_Visualizer(
+                    pie_graph_title="Population",
+                    colors=[*[city.color for city in City.cities], "black"],
+                    data=[*[len(city.children) or 0 for city in City.cities], 1],
+                    labels=[*[self.rgba_to_name(city.color) for city in City.cities],"1 critter"]
+                )
+                
+                print(self.pie.data)
+                print(self.pie.labels)
+                print(self.pie.colors)
+                
+                data,labels = self.get_round_population_and_labels()
+                self.pie.update_pie(
+                        data=data,
+                        labels=labels
+                    ).show()
+            else:
+                if(self.pie != None):
+                    self.pie.close()
 
         self.ui.add_option(ConfigurableValue(edit_terrain_toggle, "edit", True))
         self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Critter", True))
@@ -254,6 +317,7 @@ class BaseApp(ShowBase):
         self.ui.add_option(ConfigurableValue(edit_radius, "edit radius", False, placeholder=self.edit_radius))
         self.ui.add_option(ConfigurableValue(set_time_limit, "edit round time limit", False, placeholder=self.round_manager.phase_time_limit_seconds))
         self.ui.add_option(ConfigurableValue(simulation_toggle, "enable simulation", True))
+        self.ui.add_option(ConfigurableValue(open_stats_panel, "Stats Panel", True))
 
         # Return the UI
         return self.ui
