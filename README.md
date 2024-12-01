@@ -56,6 +56,7 @@ python 3.7
 installer: https://www.panda3d.org/download/sdk-1-10-15/    
 
 
+# Additional Credits
 Skybox Credit:
 Skybox Title: "Cloudy Skyboxes"
 Author: Pieter "Spiney" Verhoeven
