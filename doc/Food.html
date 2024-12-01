@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Food</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Food</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:f%3A%5Cvivarium-sim%5Csrc%5Cga%5Cfood.py">f:\vivarium-sim\src\ga\food.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="CORE.entity.html#Entity">CORE.entity.Entity</a>(<a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="Food.html#Food">Food</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Food">class <strong>Food</strong></a>(<a href="CORE.entity.html#Entity">CORE.entity.Entity</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Food">Food</a>(base,&nbsp;position=(0,&nbsp;0,&nbsp;0),&nbsp;strength=1.0,&nbsp;color=None,&nbsp;genes=None)<br>
+&nbsp;<br>
+Class&nbsp;representing&nbsp;a&nbsp;food&nbsp;in&nbsp;the&nbsp;simulation.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="Food.html#Food">Food</a></dd>
+<dd><a href="CORE.entity.html#Entity">CORE.entity.Entity</a></dd>
+<dd><a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Food-__init__"><strong>__init__</strong></a>(self, base, position=(0, 0, 0), strength=1.0, color=None, genes=None)</dt><dd><tt>Initialize&nbsp;a&nbsp;new&nbsp;food.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position&nbsp;(tuple):&nbsp;Initial&nbsp;(x,&nbsp;y,&nbsp;z)&nbsp;position&nbsp;of&nbsp;the&nbsp;critter.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;strength&nbsp;(float):&nbsp;Ability&nbsp;to&nbsp;climb&nbsp;steep&nbsp;terrain.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;(tuple):&nbsp;RGBA&nbsp;color&nbsp;representing&nbsp;the&nbsp;critter&nbsp;visually.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;genes&nbsp;(list&nbsp;or&nbsp;dict):&nbsp;List&nbsp;of&nbsp;Gene&nbsp;objects&nbsp;representing&nbsp;the&nbsp;critter's&nbsp;genetic&nbsp;makeup.</tt></dd></dl>
+
+<dl><dt><a name="Food-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;string&nbsp;representation&nbsp;of&nbsp;the&nbsp;critter&nbsp;for&nbsp;debugging.</tt></dd></dl>
+
+<dl><dt><a name="Food-get_rand_color"><strong>get_rand_color</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Food-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;spawned&nbsp;entity&nbsp;from&nbsp;the&nbsp;scene&nbsp;and&nbsp;physics&nbsp;world.</tt></dd></dl>
+
+<dl><dt><a name="Food-spawn"><strong>spawn</strong></a>(self, x=None, y=None, color=None)</dt><dd><tt>a&nbsp;method&nbsp;to&nbsp;bring&nbsp;forth&nbsp;a&nbsp;phys&nbsp;enabled&nbsp;entity&nbsp;at&nbsp;chosen&nbsp;pos,&nbsp;height&nbsp;is&nbsp;automatic&nbsp;based&nbsp;on&nbsp;height&nbsp;map<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;(float):&nbsp;_description_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;(float):&nbsp;_description_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;(tuple,&nbsp;optional):&nbsp;The&nbsp;color&nbsp;of&nbsp;the&nbsp;critter.&nbsp;Randomized&nbsp;if&nbsp;not&nbsp;provided.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Food-remove_all_food"><strong>remove_all_food</strong></a>()</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>foods</strong> = []</dl>
+
+<hr>
+Methods inherited from <a href="CORE.entity.html#Entity">CORE.entity.Entity</a>:<br>
+<dl><dt><a name="Food-add_child"><strong>add_child</strong></a>(self, child)</dt><dd><tt>add&nbsp;a&nbsp;child&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;children<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;child&nbsp;(<a href="CORE.entity.html#Entity">Entity</a>):&nbsp;_description_</tt></dd></dl>
+
+<dl><dt><a name="Food-apply_all_genes"><strong>apply_all_genes</strong></a>(self)</dt><dd><tt>propagate&nbsp;all&nbsp;gene&nbsp;changes&nbsp;to&nbsp;this&nbsp;critter</tt></dd></dl>
+
+<dl><dt><a name="Food-change_color"><strong>change_color</strong></a>(self, color)</dt><dd><tt>change&nbsp;the&nbsp;color&nbsp;of&nbsp;this&nbsp;entity<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;(vector4):&nbsp;(r,g,b,a)</tt></dd></dl>
+
+<dl><dt><a name="Food-dist_to_point"><strong>dist_to_point</strong></a>(self, point, threshold=5)</dt><dd><tt>Check&nbsp;if&nbsp;a&nbsp;critter&nbsp;is&nbsp;within&nbsp;threshhold&nbsp;of&nbsp;point<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;food_pos&nbsp;(Vec3):&nbsp;Position&nbsp;of&nbsp;the&nbsp;goal&nbsp;point.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;threshold&nbsp;(float):&nbsp;Distance&nbsp;within&nbsp;which&nbsp;touching&nbsp;is&nbsp;detected.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;True&nbsp;if&nbsp;within&nbsp;range,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="Food-distance"><strong>distance</strong></a>(self, point)</dt><dd><tt>get&nbsp;the&nbsp;2d&nbsp;euclid&nbsp;distance&nbsp;between&nbsp;this&nbsp;and&nbsp;another&nbsp;point&nbsp;or&nbsp;entity</tt></dd></dl>
+
+<dl><dt><a name="Food-eat"><strong>eat</strong></a>(self)</dt><dd><tt>simulate&nbsp;a&nbsp;critter&nbsp;eating&nbsp;this&nbsp;food<br>
+&nbsp;<br>
+return&nbsp;true&nbsp;if&nbsp;allowed&nbsp;to&nbsp;eat<br>
+return&nbsp;false&nbsp;otherwise</tt></dd></dl>
+
+<dl><dt><a name="Food-eat_other"><strong>eat_other</strong></a>(self, other)</dt><dd><tt>have&nbsp;this&nbsp;critter&nbsp;eat&nbsp;another&nbsp;critter</tt></dd></dl>
+
+<dl><dt><a name="Food-fight"><strong>fight</strong></a>(self, other, random_chance=0.01)</dt><dd><tt>have&nbsp;this&nbsp;entity&nbsp;and&nbsp;another&nbsp;fight<br>
+winner&nbsp;eats&nbsp;loser<br>
+based&nbsp;on&nbsp;strength<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;other&nbsp;(entity):&nbsp;entity&nbsp;to&nbsp;fight<br>
+&nbsp;&nbsp;&nbsp;&nbsp;random_chance&nbsp;(float,&nbsp;optional):&nbsp;random&nbsp;value&nbsp;(-this,this)&nbsp;added&nbsp;to&nbsp;results.&nbsp;Defaults&nbsp;to&nbsp;.01.<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;true&nbsp;if&nbsp;self&nbsp;won&nbsp;false&nbsp;if&nbsp;other&nbsp;won</tt></dd></dl>
+
+<dl><dt><a name="Food-get_all_genes_as_str"><strong>get_all_genes_as_str</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Food-get_gene"><strong>get_gene</strong></a>(self, name)</dt><dd><tt>get&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;gene&nbsp;via&nbsp;the&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="Food-get_pos"><strong>get_pos</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;(x,y,z)&nbsp;pos&nbsp;of&nbsp;this&nbsp;critter<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;_type_:&nbsp;_description_</tt></dd></dl>
+
+<dl><dt><a name="Food-move_task"><strong>move_task</strong></a>(self, task)</dt></dl>
+
+<dl><dt><a name="Food-move_tick"><strong>move_tick</strong></a>(self, goal_point, extra_speed_mod=1, phys=True)</dt></dl>
+
+<dl><dt><a name="Food-move_to"><strong>move_to</strong></a>(self, vec3)</dt><dd><tt>move&nbsp;from&nbsp;pos&nbsp;to&nbsp;target&nbsp;vec3&nbsp;over&nbsp;s&nbsp;seconds<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vec3&nbsp;(vec3):&nbsp;vector3</tt></dd></dl>
+
+<dl><dt><a name="Food-remove_child"><strong>remove_child</strong></a>(self, child)</dt><dd><tt>remove&nbsp;a&nbsp;child&nbsp;if&nbsp;one&nbsp;exists&nbsp;from&nbsp;the&nbsp;list&nbsp;of&nbsp;children<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;child&nbsp;(<a href="CORE.entity.html#Entity">Entity</a>):&nbsp;_description_</tt></dd></dl>
+
+<dl><dt><a name="Food-reset_move_task"><strong>reset_move_task</strong></a>(self)</dt><dd><tt>remove&nbsp;the&nbsp;current&nbsp;move&nbsp;task</tt></dd></dl>
+
+<dl><dt><a name="Food-set_id"><strong>set_id</strong></a>(self, id=None)</dt></dl>
+
+<dl><dt><a name="Food-update"><strong>update</strong></a>(self, x=None, y=None)</dt></dl>
+
+<hr>
+Static methods inherited from <a href="CORE.entity.html#Entity">CORE.entity.Entity</a>:<br>
+<dl><dt><a name="Food-add_entity"><strong>add_entity</strong></a>(entity)</dt><dd><tt>add&nbsp;a&nbsp;entity&nbsp;to&nbsp;the&nbsp;global&nbsp;array&nbsp;of&nbsp;all&nbsp;entities<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;entity&nbsp;(<a href="CORE.entity.html#Entity">Entity</a>):&nbsp;the&nbsp;entity&nbsp;to&nbsp;add</tt></dd></dl>
+
+<dl><dt><a name="Food-get_entities"><strong>get_entities</strong></a>()</dt><dd><tt>return&nbsp;all&nbsp;entities&nbsp;that&nbsp;have&nbsp;been&nbsp;spawned</tt></dd></dl>
+
+<dl><dt><a name="Food-remove_entity"><strong>remove_entity</strong></a>(entity)</dt><dd><tt>Remove&nbsp;an&nbsp;entity&nbsp;from&nbsp;the&nbsp;global&nbsp;array&nbsp;of&nbsp;all&nbsp;entities.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;entity&nbsp;(<a href="CORE.entity.html#Entity">Entity</a>):&nbsp;The&nbsp;entity&nbsp;to&nbsp;remove</tt></dd></dl>
+
+<dl><dt><a name="Food-remove_entity_from_list"><strong>remove_entity_from_list</strong></a>(entity, list)</dt><dd><tt>Remove&nbsp;an&nbsp;entity&nbsp;from&nbsp;the&nbsp;global&nbsp;array&nbsp;of&nbsp;all&nbsp;entities.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;entity&nbsp;(<a href="CORE.entity.html#Entity">Entity</a>):&nbsp;The&nbsp;entity&nbsp;to&nbsp;remove</tt></dd></dl>
+
+<dl><dt><a name="Food-remove_list_of_entities"><strong>remove_list_of_entities</strong></a>(entities)</dt><dd><tt>loop&nbsp;through&nbsp;a&nbsp;list&nbsp;of&nbsp;entities&nbsp;and&nbsp;remove&nbsp;each<br>
+&nbsp;<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;entities&nbsp;(_type_):&nbsp;_description_</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="CORE.entity.html#Entity">CORE.entity.Entity</a>:<br>
+<dl><dt><strong>entities</strong> = []</dl>
+
+<hr>
+Methods inherited from <a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>:<br>
+<dl><dt><a name="Food-accept"><strong>accept</strong></a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="Food-acceptOnce"><strong>acceptOnce</strong></a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="Food-accept_once"><strong>accept_once</strong></a> = <a href="#Food-acceptOnce">acceptOnce</a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="Food-addTask"><strong>addTask</strong></a>(self, *args, **kwargs)</dt><dd><tt>#This&nbsp;function&nbsp;must&nbsp;be&nbsp;used&nbsp;if&nbsp;you&nbsp;want&nbsp;a&nbsp;managed&nbsp;task</tt></dd></dl>
+
+<dl><dt><a name="Food-add_task"><strong>add_task</strong></a> = <a href="#Food-addTask">addTask</a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Food-detectLeaks"><strong>detectLeaks</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Food-detect_leaks"><strong>detect_leaks</strong></a> = <a href="#Food-detectLeaks">detectLeaks</a>(self)</dt></dl>
+
+<dl><dt><a name="Food-doMethodLater"><strong>doMethodLater</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Food-do_method_later"><strong>do_method_later</strong></a> = <a href="#Food-doMethodLater">doMethodLater</a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Food-getAllAccepting"><strong>getAllAccepting</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Food-get_all_accepting"><strong>get_all_accepting</strong></a> = <a href="#Food-getAllAccepting">getAllAccepting</a>(self)</dt></dl>
+
+<dl><dt><a name="Food-ignore"><strong>ignore</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="Food-ignoreAll"><strong>ignoreAll</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Food-ignore_all"><strong>ignore_all</strong></a> = <a href="#Food-ignoreAll">ignoreAll</a>(self)</dt></dl>
+
+<dl><dt><a name="Food-isAccepting"><strong>isAccepting</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="Food-isIgnoring"><strong>isIgnoring</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="Food-is_accepting"><strong>is_accepting</strong></a> = <a href="#Food-isAccepting">isAccepting</a>(self, event)</dt></dl>
+
+<dl><dt><a name="Food-is_ignoring"><strong>is_ignoring</strong></a> = <a href="#Food-isIgnoring">isIgnoring</a>(self, event)</dt></dl>
+
+<dl><dt><a name="Food-removeAllTasks"><strong>removeAllTasks</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Food-removeTask"><strong>removeTask</strong></a>(self, taskOrName)</dt></dl>
+
+<dl><dt><a name="Food-remove_all_tasks"><strong>remove_all_tasks</strong></a> = <a href="#Food-removeAllTasks">removeAllTasks</a>(self)</dt></dl>
+
+<dl><dt><a name="Food-remove_task"><strong>remove_task</strong></a> = <a href="#Food-removeTask">removeTask</a>(self, taskOrName)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

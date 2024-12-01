@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Terrain</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Terrain</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:f%3A%5Cvivarium-sim%5Csrc%5Ccore%5Cterrain.py">f:\vivarium-sim\src\core\terrain.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="direct.task.Task.html">direct.task.Task</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="Terrain.html#TerrainController">TerrainController</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TerrainController">class <strong>TerrainController</strong></a>(<a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#TerrainController">TerrainController</a>(base)<br>
+&nbsp;<br>
+the&nbsp;panda&nbsp;Object&nbsp;that&nbsp;handles&nbsp;all&nbsp;terrain&nbsp;management<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="Terrain.html#TerrainController">TerrainController</a></dd>
+<dd><a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="TerrainController-__init__"><strong>__init__</strong></a>(self, base)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-ascend_objs_with_terrain"><strong>ascend_objs_with_terrain</strong></a>(self, point, radius=None, objects=[])</dt><dd><tt>when&nbsp;a&nbsp;terrain&nbsp;point&nbsp;is&nbsp;elevated,&nbsp;check&nbsp;all&nbsp;critters&nbsp;within&nbsp;radius&nbsp;and&nbsp;ascend&nbsp;them&nbsp;with&nbsp;the&nbsp;terrain&nbsp;if&nbsp;applicable"<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;point&nbsp;(_type_):&nbsp;_description_</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-create_heightFieldMap_Collider"><strong>create_heightFieldMap_Collider</strong></a>(self)</dt><dd><tt>create/update&nbsp;our&nbsp;terrain&nbsp;collider</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-edit_terrain"><strong>edit_terrain</strong></a>(self, modifier)</dt><dd><tt>the&nbsp;function&nbsp;that&nbsp;handles&nbsp;modifying&nbsp;the&nbsp;terrain,&nbsp;when&nbsp;called&nbsp;finds&nbsp;the&nbsp;mouse&nbsp;and&nbsp;raycasts&nbsp;to&nbsp;the&nbsp;terrain<br>
+then&nbsp;finds&nbsp;the&nbsp;pixel&nbsp;and&nbsp;real&nbsp;world&nbsp;coord&nbsp;of&nbsp;the&nbsp;collision.&nbsp;for&nbsp;sake&nbsp;of&nbsp;sanity&nbsp;I&nbsp;have&nbsp;mapped&nbsp;it&nbsp;such&nbsp;that&nbsp;1&nbsp;pixel&nbsp;of&nbsp;the&nbsp;height&nbsp;map<br>
+is&nbsp;one&nbsp;world&nbsp;unit&nbsp;so&nbsp;these&nbsp;should&nbsp;mostly&nbsp;line&nbsp;up</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-get_height_at"><strong>get_height_at</strong></a>(self, x, y)</dt><dd><tt>Get&nbsp;the&nbsp;height&nbsp;at&nbsp;a&nbsp;given&nbsp;x,&nbsp;y&nbsp;coordinate&nbsp;on&nbsp;the&nbsp;heightfield.</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-get_terrain_center"><strong>get_terrain_center</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;center&nbsp;point&nbsp;of&nbsp;the&nbsp;terrain&nbsp;(x,y,z)&nbsp;tuple</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-handle_terrain_edit"><strong>handle_terrain_edit</strong></a>(self, task, modifier=None)</dt><dd><tt>the&nbsp;task&nbsp;that&nbsp;handles&nbsp;actually&nbsp;calling&nbsp;the&nbsp;terrain&nbsp;editor&nbsp;method.&nbsp;called&nbsp;every&nbsp;frame<br>
+if&nbsp;edit&nbsp;is&nbsp;enabled&nbsp;and&nbsp;mouse&nbsp;is&nbsp;held&nbsp;then&nbsp;do&nbsp;the&nbsp;thing<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;task&nbsp;(PandaTask):&nbsp;the&nbsp;task<br>
+&nbsp;&nbsp;&nbsp;&nbsp;modifier&nbsp;(float,&nbsp;optional):&nbsp;float&nbsp;to&nbsp;be&nbsp;how&nbsp;big&nbsp;the&nbsp;edit&nbsp;is&nbsp;max&nbsp;1&nbsp;min&nbsp;-1,&nbsp;but&nbsp;it&nbsp;wont&nbsp;break&nbsp;with&nbsp;bigger&nbsp;or&nbsp;smaller&nbsp;vals,&nbsp;it&nbsp;just&nbsp;will&nbsp;floor&nbsp;them.&nbsp;Defaults&nbsp;to&nbsp;self.<strong>edit_power</strong>.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Task:&nbsp;run&nbsp;every&nbsp;tick</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-init_terrain"><strong>init_terrain</strong></a>(self)</dt><dd><tt>set&nbsp;up&nbsp;our&nbsp;heightmap&nbsp;terrain&nbsp;stuff</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-raise_point"><strong>raise_point</strong></a>(self, point, max_range=None, power=0.1)</dt><dd><tt>the&nbsp;method&nbsp;that&nbsp;handles&nbsp;editing&nbsp;the&nbsp;2d&nbsp;png&nbsp;height&nbsp;map<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;point&nbsp;(x,y):&nbsp;tuple,&nbsp;ints.&nbsp;the&nbsp;pixel&nbsp;to&nbsp;edit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max_range&nbsp;(int,&nbsp;optional):&nbsp;how&nbsp;many&nbsp;pixels&nbsp;away&nbsp;to&nbsp;effect.&nbsp;Defaults&nbsp;to&nbsp;None.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;power&nbsp;(float,&nbsp;optional):&nbsp;how&nbsp;powerful&nbsp;the&nbsp;effect&nbsp;is,&nbsp;min&nbsp;-1&nbsp;max&nbsp;1.&nbsp;Defaults&nbsp;to&nbsp;.1.</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-terrain_update_task"><strong>terrain_update_task</strong></a>(self, task)</dt><dd><tt>ensure&nbsp;the&nbsp;terrain&nbsp;updates&nbsp;to&nbsp;match&nbsp;the&nbsp;edits&nbsp;being&nbsp;made&nbsp;to&nbsp;the&nbsp;height&nbsp;map</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>:<br>
+<dl><dt><a name="TerrainController-accept"><strong>accept</strong></a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="TerrainController-acceptOnce"><strong>acceptOnce</strong></a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="TerrainController-accept_once"><strong>accept_once</strong></a> = <a href="#TerrainController-acceptOnce">acceptOnce</a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="TerrainController-addTask"><strong>addTask</strong></a>(self, *args, **kwargs)</dt><dd><tt>#This&nbsp;function&nbsp;must&nbsp;be&nbsp;used&nbsp;if&nbsp;you&nbsp;want&nbsp;a&nbsp;managed&nbsp;task</tt></dd></dl>
+
+<dl><dt><a name="TerrainController-add_task"><strong>add_task</strong></a> = <a href="#TerrainController-addTask">addTask</a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="TerrainController-detectLeaks"><strong>detectLeaks</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TerrainController-detect_leaks"><strong>detect_leaks</strong></a> = <a href="#TerrainController-detectLeaks">detectLeaks</a>(self)</dt></dl>
+
+<dl><dt><a name="TerrainController-doMethodLater"><strong>doMethodLater</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="TerrainController-do_method_later"><strong>do_method_later</strong></a> = <a href="#TerrainController-doMethodLater">doMethodLater</a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="TerrainController-getAllAccepting"><strong>getAllAccepting</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TerrainController-get_all_accepting"><strong>get_all_accepting</strong></a> = <a href="#TerrainController-getAllAccepting">getAllAccepting</a>(self)</dt></dl>
+
+<dl><dt><a name="TerrainController-ignore"><strong>ignore</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="TerrainController-ignoreAll"><strong>ignoreAll</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TerrainController-ignore_all"><strong>ignore_all</strong></a> = <a href="#TerrainController-ignoreAll">ignoreAll</a>(self)</dt></dl>
+
+<dl><dt><a name="TerrainController-isAccepting"><strong>isAccepting</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="TerrainController-isIgnoring"><strong>isIgnoring</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="TerrainController-is_accepting"><strong>is_accepting</strong></a> = <a href="#TerrainController-isAccepting">isAccepting</a>(self, event)</dt></dl>
+
+<dl><dt><a name="TerrainController-is_ignoring"><strong>is_ignoring</strong></a> = <a href="#TerrainController-isIgnoring">isIgnoring</a>(self, event)</dt></dl>
+
+<dl><dt><a name="TerrainController-removeAllTasks"><strong>removeAllTasks</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TerrainController-removeTask"><strong>removeTask</strong></a>(self, taskOrName)</dt></dl>
+
+<dl><dt><a name="TerrainController-remove_all_tasks"><strong>remove_all_tasks</strong></a> = <a href="#TerrainController-removeAllTasks">removeAllTasks</a>(self)</dt></dl>
+
+<dl><dt><a name="TerrainController-remove_task"><strong>remove_task</strong></a> = <a href="#TerrainController-removeTask">removeTask</a>(self, taskOrName)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ZUp</strong> = 2</td></tr></table>
+</body></html>

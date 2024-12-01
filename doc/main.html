@@ -1,0 +1,1655 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module main</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>main</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:f%3A%5Cvivarium-sim%5Csrc%5Cmain.py">f:\vivarium-sim\src\main.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="direct.gui.DirectGuiGlobals.html">direct.gui.DirectGuiGlobals</a><br>
+<a href="direct.task.Task.html">direct.task.Task</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="webcolors.html">webcolors</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="direct.showbase.ShowBase.html#ShowBase">direct.showbase.ShowBase.ShowBase</a>(<a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="main.html#BaseApp">BaseApp</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BaseApp">class <strong>BaseApp</strong></a>(<a href="direct.showbase.ShowBase.html#ShowBase">direct.showbase.ShowBase.ShowBase</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;is&nbsp;the&nbsp;class&nbsp;that&nbsp;all&nbsp;Direct/SAL&nbsp;classes&nbsp;should&nbsp;inherit&nbsp;from<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="main.html#BaseApp">BaseApp</a></dd>
+<dd><a href="direct.showbase.ShowBase.html#ShowBase">direct.showbase.ShowBase.ShowBase</a></dd>
+<dd><a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="BaseApp-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Opens&nbsp;a&nbsp;window,&nbsp;sets&nbsp;up&nbsp;a&nbsp;3-D&nbsp;and&nbsp;several&nbsp;2-D&nbsp;scene&nbsp;graphs,&nbsp;and<br>
+everything&nbsp;else&nbsp;needed&nbsp;to&nbsp;render&nbsp;the&nbsp;scene&nbsp;graph&nbsp;to&nbsp;the&nbsp;window.<br>
+&nbsp;<br>
+To&nbsp;prevent&nbsp;a&nbsp;window&nbsp;from&nbsp;being&nbsp;opened,&nbsp;set&nbsp;windowType&nbsp;to&nbsp;the&nbsp;string<br>
+'none'&nbsp;(or&nbsp;'offscreen'&nbsp;to&nbsp;create&nbsp;an&nbsp;offscreen&nbsp;buffer).&nbsp;&nbsp;If&nbsp;this&nbsp;is&nbsp;not<br>
+specified,&nbsp;the&nbsp;default&nbsp;value&nbsp;is&nbsp;taken&nbsp;from&nbsp;the&nbsp;'window-type'<br>
+configuration&nbsp;variable.<br>
+&nbsp;<br>
+This&nbsp;constructor&nbsp;will&nbsp;add&nbsp;various&nbsp;things&nbsp;to&nbsp;the&nbsp;Python&nbsp;builtins&nbsp;scope,<br>
+including&nbsp;this&nbsp;instance&nbsp;itself&nbsp;(under&nbsp;the&nbsp;name&nbsp;``base``).</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-add_graph_to_stats_panel"><strong>add_graph_to_stats_panel</strong></a>(self, graph, data_labels_func)</dt></dl>
+
+<dl><dt><a name="BaseApp-add_skybox"><strong>add_skybox</strong></a>(self)</dt><dd><tt>Create&nbsp;and&nbsp;add&nbsp;a&nbsp;textured&nbsp;skybox.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-advance_round_phase"><strong>advance_round_phase</strong></a>(self, task)</dt><dd><tt>Advance&nbsp;to&nbsp;the&nbsp;next&nbsp;phase&nbsp;in&nbsp;the&nbsp;round&nbsp;lifecycle.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-bullet_debugger_ON"><strong>bullet_debugger_ON</strong></a>(self)</dt><dd><tt>rip&nbsp;all&nbsp;frames&nbsp;if&nbsp;this&nbsp;is&nbsp;on...&nbsp;but&nbsp;it&nbsp;does&nbsp;show&nbsp;the&nbsp;colliders.&nbsp;but&nbsp;1&nbsp;fps.&nbsp;idc&nbsp;enough&nbsp;to&nbsp;figure&nbsp;out&nbsp;how&nbsp;to&nbsp;make&nbsp;it&nbsp;a&nbsp;toggle&nbsp;so&nbsp;this&nbsp;just&nbsp;turns&nbsp;it&nbsp;on.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-click_on_map_and_call"><strong>click_on_map_and_call</strong></a>(self, callback)</dt><dd><tt>cast&nbsp;a&nbsp;ray&nbsp;from&nbsp;the&nbsp;user's&nbsp;camera&nbsp;to&nbsp;their&nbsp;cursor,&nbsp;if&nbsp;the&nbsp;ray<br>
+hits&nbsp;the&nbsp;terrain&nbsp;then&nbsp;we&nbsp;calculate&nbsp;the&nbsp;pos&nbsp;of&nbsp;that&nbsp;collision&nbsp;and&nbsp;pass&nbsp;the&nbsp;point&nbsp;of&nbsp;collision&nbsp;(x,y,z)&nbsp;Vec3<br>
+into&nbsp;the&nbsp;callback<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;callback&nbsp;(function(Vec3)):&nbsp;the&nbsp;callback&nbsp;to&nbsp;call&nbsp;if&nbsp;we&nbsp;find&nbsp;the&nbsp;intersection&nbsp;point</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-create_UI"><strong>create_UI</strong></a>(self)</dt><dd><tt>Initialize&nbsp;the&nbsp;UI.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-create_cube"><strong>create_cube</strong></a>(self)</dt><dd><tt>Programmatically&nbsp;create&nbsp;a&nbsp;cube&nbsp;geometry&nbsp;for&nbsp;the&nbsp;skybox&nbsp;with&nbsp;inward-facing&nbsp;normals&nbsp;and&nbsp;UV&nbsp;mapping.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-create_lights"><strong>create_lights</strong></a>(self)</dt><dd><tt>lights...&nbsp;idk&nbsp;what&nbsp;to&nbsp;tell&nbsp;you&nbsp;they&nbsp;are&nbsp;lights</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-create_offspring"><strong>create_offspring</strong></a>(self, parent1, parent2)</dt><dd><tt>Create&nbsp;an&nbsp;offspring&nbsp;critter&nbsp;using&nbsp;two&nbsp;parents.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-evaluate_round"><strong>evaluate_round</strong></a>(self)</dt><dd><tt>Evaluate&nbsp;critter&nbsp;fitness&nbsp;based&nbsp;on&nbsp;their&nbsp;interactions.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-event_handlers_setup"><strong>event_handlers_setup</strong></a>(self)</dt><dd><tt>set&nbsp;up&nbsp;all&nbsp;event&nbsp;handlers&nbsp;for&nbsp;the&nbsp;app</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-get_round_food_and_labels"><strong>get_round_food_and_labels</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;population&nbsp;and&nbsp;label&nbsp;data&nbsp;for&nbsp;the&nbsp;current&nbsp;game&nbsp;state<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data,labels:&nbsp;int[],str[]</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-get_round_population_and_labels"><strong>get_round_population_and_labels</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;population&nbsp;and&nbsp;label&nbsp;data&nbsp;for&nbsp;the&nbsp;current&nbsp;game&nbsp;state<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data,labels:&nbsp;int[],str[]</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-handle_add_city"><strong>handle_add_city</strong></a>(self)</dt><dd><tt>a&nbsp;method&nbsp;that&nbsp;handles&nbsp;adding&nbsp;a&nbsp;little&nbsp;buddy&nbsp;wherever&nbsp;the&nbsp;user&nbsp;clicks<br>
+called&nbsp;every&nbsp;frame,&nbsp;if&nbsp;add&nbsp;blob&nbsp;is&nbsp;enabled&nbsp;and&nbsp;the&nbsp;user&nbsp;left&nbsp;clicks&nbsp;we&nbsp;will&nbsp;spawn&nbsp;a&nbsp;physics&nbsp;enabled&nbsp;buddy&nbsp;at&nbsp;their&nbsp;cursor&nbsp;location<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Task:&nbsp;run&nbsp;every&nbsp;frame</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-handle_add_guy"><strong>handle_add_guy</strong></a>(self)</dt><dd><tt>a&nbsp;method&nbsp;that&nbsp;handles&nbsp;adding&nbsp;a&nbsp;little&nbsp;buddy&nbsp;wherever&nbsp;the&nbsp;user&nbsp;clicks<br>
+called&nbsp;every&nbsp;frame,&nbsp;if&nbsp;add&nbsp;blob&nbsp;is&nbsp;enabled&nbsp;and&nbsp;the&nbsp;user&nbsp;left&nbsp;clicks&nbsp;we&nbsp;will&nbsp;spawn&nbsp;a&nbsp;physics&nbsp;enabled&nbsp;buddy&nbsp;at&nbsp;their&nbsp;cursor&nbsp;location<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Task:&nbsp;run&nbsp;every&nbsp;frame</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-handle_ga_loop"><strong>handle_ga_loop</strong></a>(self, task)</dt></dl>
+
+<dl><dt><a name="BaseApp-handle_stats_panel_task"><strong>handle_stats_panel_task</strong></a>(self, task)</dt></dl>
+
+<dl><dt><a name="BaseApp-handle_unfocus"><strong>handle_unfocus</strong></a>(self, task)</dt><dd><tt>a&nbsp;simple&nbsp;task&nbsp;called&nbsp;every&nbsp;frame,&nbsp;if&nbsp;either&nbsp;mouse&nbsp;button&nbsp;clicks&nbsp;outside&nbsp;of&nbsp;the&nbsp;UI&nbsp;unfocus&nbsp;all&nbsp;UI&nbsp;elements</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-init_gravity"><strong>init_gravity</strong></a>(self)</dt><dd><tt>set&nbsp;up&nbsp;our&nbsp;bullet&nbsp;phys&nbsp;and&nbsp;grav</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-initialize_round"><strong>initialize_round</strong></a>(self)</dt><dd><tt>Handle&nbsp;initialization&nbsp;tasks,&nbsp;such&nbsp;as&nbsp;spawning&nbsp;food&nbsp;and&nbsp;resetting&nbsp;critters.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-is_touching"><strong>is_touching</strong></a>(self, critter_pos, food_pos, threshold=10)</dt><dd><tt>Check&nbsp;if&nbsp;a&nbsp;critter&nbsp;is&nbsp;touching&nbsp;a&nbsp;food&nbsp;item.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;critter_pos&nbsp;(Vec3):&nbsp;Position&nbsp;of&nbsp;the&nbsp;critter.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;food_pos&nbsp;(Vec3):&nbsp;Position&nbsp;of&nbsp;the&nbsp;food.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;threshold&nbsp;(float):&nbsp;Distance&nbsp;within&nbsp;which&nbsp;touching&nbsp;is&nbsp;detected.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;True&nbsp;if&nbsp;touching,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-on_mouse_1_down"><strong>on_mouse_1_down</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-picker_setup"><strong>picker_setup</strong></a>(self)</dt><dd><tt>set&nbsp;up&nbsp;everything&nbsp;we&nbsp;need&nbsp;for&nbsp;collisions&nbsp;and&nbsp;our&nbsp;picker.<br>
+this&nbsp;is&nbsp;used&nbsp;for&nbsp;the&nbsp;raytracing&nbsp;to&nbsp;draw&nbsp;on&nbsp;our&nbsp;map&nbsp;and&nbsp;to&nbsp;pick&nbsp;objects<br>
+this&nbsp;can&nbsp;also&nbsp;allow&nbsp;us&nbsp;to&nbsp;select&nbsp;individual&nbsp;critters&nbsp;and&nbsp;such&nbsp;if&nbsp;we&nbsp;ever<br>
+want&nbsp;to&nbsp;target&nbsp;them</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-reproduce_round"><strong>reproduce_round</strong></a>(self)</dt><dd><tt>Handle&nbsp;reproduction&nbsp;and&nbsp;replace&nbsp;less-fit&nbsp;critters.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-reset_all_food"><strong>reset_all_food</strong></a>(self)</dt><dd><tt>Remove&nbsp;all&nbsp;food&nbsp;items&nbsp;from&nbsp;the&nbsp;scene&nbsp;and&nbsp;reset&nbsp;the&nbsp;list.&nbsp;Can&nbsp;be&nbsp;called&nbsp;on&nbsp;round&nbsp;resets&nbsp;or&nbsp;user-input.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-rgba_to_name"><strong>rgba_to_name</strong></a>(self, rgba)</dt></dl>
+
+<dl><dt><a name="BaseApp-set_critter_height"><strong>set_critter_height</strong></a>(self, blob_np, x, y)</dt><dd><tt>move&nbsp;a&nbsp;critter&nbsp;to&nbsp;the&nbsp;correct&nbsp;z&nbsp;height&nbsp;based&nbsp;on&nbsp;height&nbsp;map<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;blob_np&nbsp;(node):&nbsp;_description_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;(_type_):&nbsp;_description_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;(_type_):&nbsp;_description_<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float:&nbsp;new&nbsp;z&nbsp;pos</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-simulate_round"><strong>simulate_round</strong></a>(self)</dt><dd><tt>Simulate&nbsp;critter&nbsp;movement&nbsp;and&nbsp;interactions.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-spawn_city"><strong>spawn_city</strong></a>(self, x, y, color=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-spawn_critter"><strong>spawn_critter</strong></a>(self, x, y, city, color=None)</dt><dd><tt>a&nbsp;method&nbsp;to&nbsp;bring&nbsp;forth&nbsp;a&nbsp;phys&nbsp;enabled&nbsp;critter&nbsp;at&nbsp;chosen&nbsp;pos,&nbsp;height&nbsp;is&nbsp;automatic&nbsp;based&nbsp;on&nbsp;height&nbsp;map<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;(float):&nbsp;_description_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;(float):&nbsp;_description_<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;(tuple,&nbsp;optional):&nbsp;The&nbsp;color&nbsp;of&nbsp;the&nbsp;critter.&nbsp;Randomized&nbsp;if&nbsp;not&nbsp;provided.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-spawn_food"><strong>spawn_food</strong></a>(self, x=None, y=None)</dt><dd><tt>Spawn&nbsp;a&nbsp;food&nbsp;item&nbsp;at&nbsp;a&nbsp;random&nbsp;position&nbsp;on&nbsp;the&nbsp;terrain.&nbsp;Including&nbsp;elevated&nbsp;terrain.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-spawn_food_periodically"><strong>spawn_food_periodically</strong></a>(self, task)</dt><dd><tt>Spawn&nbsp;a&nbsp;food&nbsp;item&nbsp;at&nbsp;random&nbsp;intervals&nbsp;and&nbsp;reschedule&nbsp;dynamically.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-spawn_initial_population"><strong>spawn_initial_population</strong></a>(self, city, count=10)</dt><dd><tt>Spawn&nbsp;an&nbsp;initial&nbsp;population&nbsp;of&nbsp;critters&nbsp;randomly&nbsp;within&nbsp;the&nbsp;bounds&nbsp;of&nbsp;a&nbsp;city.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-start_round_manager"><strong>start_round_manager</strong></a>(self)</dt><dd><tt>Kick&nbsp;off&nbsp;the&nbsp;round&nbsp;lifecycle&nbsp;using&nbsp;the&nbsp;RoundManager.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-update_grav"><strong>update_grav</strong></a>(self, task)</dt><dd><tt>update&nbsp;the&nbsp;gravity&nbsp;phys&nbsp;of&nbsp;the&nbsp;world,&nbsp;use&nbsp;delta&nbsp;time&nbsp;to&nbsp;account&nbsp;for&nbsp;fps&nbsp;differences</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-valid_x_y"><strong>valid_x_y</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>CRITTER_COLORS</strong> = [(1, 0, 0, 1), (0, 1, 0, 1), (0, 0, 1, 1), (1, 1, 0, 1)]</dl>
+
+<dl><dt><strong>add_blob_enabled</strong> = False</dl>
+
+<dl><dt><strong>add_city_enabled</strong> = False</dl>
+
+<dl><dt><strong>add_first_blob_enabled</strong> = False</dl>
+
+<dl><dt><strong>blobi</strong> = 0</dl>
+
+<dl><dt><strong>charts</strong> = []</dl>
+
+<dl><dt><strong>critter_offset_z</strong> = 37</dl>
+
+<dl><dt><strong>critters</strong> = []</dl>
+
+<dl><dt><strong>edit_power</strong> = 0.5</dl>
+
+<dl><dt><strong>edit_radius</strong> = 50</dl>
+
+<dl><dt><strong>edit_terrain_enabled</strong> = False</dl>
+
+<dl><dt><strong>food_per_critter</strong> = 0</dl>
+
+<dl><dt><strong>food_per_round</strong> = 10</dl>
+
+<dl><dt><strong>gravity_strength</strong> = -9.81</dl>
+
+<dl><dt><strong>max_food_count</strong> = 20</dl>
+
+<dl><dt><strong>simulation_enabled</strong> = False</dl>
+
+<dl><dt><strong>simulation_started</strong> = False</dl>
+
+<dl><dt><strong>z_scale</strong> = 500</dl>
+
+<hr>
+Methods inherited from <a href="direct.showbase.ShowBase.html#ShowBase">direct.showbase.ShowBase.ShowBase</a>:<br>
+<dl><dt><a name="BaseApp-SetAllSfxEnables"><strong>SetAllSfxEnables</strong></a>(self, bEnabled)</dt><dd><tt>Calls&nbsp;``setActive(bEnabled)``&nbsp;on&nbsp;all&nbsp;valid&nbsp;SFX&nbsp;managers.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-addAngularIntegrator"><strong>addAngularIntegrator</strong></a>(self)</dt><dd><tt>Adds&nbsp;a&nbsp;:class:`~panda3d.physics.AngularEulerIntegrator`&nbsp;to&nbsp;the&nbsp;default<br>
+physics&nbsp;manager.&nbsp;&nbsp;By&nbsp;default,&nbsp;only&nbsp;a<br>
+:class:`~panda3d.physics.LinearEulerIntegrator`&nbsp;is&nbsp;attached.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-addSfxManager"><strong>addSfxManager</strong></a>(self, extraSfxManager)</dt><dd><tt>Adds&nbsp;an&nbsp;additional&nbsp;SFX&nbsp;audio&nbsp;manager&nbsp;to&nbsp;`sfxManagerList`,&nbsp;the&nbsp;list&nbsp;of<br>
+managers&nbsp;managed&nbsp;by&nbsp;<a href="direct.showbase.ShowBase.html#ShowBase">ShowBase</a>.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-add_angular_integrator"><strong>add_angular_integrator</strong></a> = <a href="#BaseApp-addAngularIntegrator">addAngularIntegrator</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-add_sfx_manager"><strong>add_sfx_manager</strong></a> = <a href="#BaseApp-addSfxManager">addSfxManager</a>(self, extraSfxManager)</dt></dl>
+
+<dl><dt><a name="BaseApp-adjustWindowAspectRatio"><strong>adjustWindowAspectRatio</strong></a>(self, aspectRatio)</dt><dd><tt>This&nbsp;function&nbsp;is&nbsp;normally&nbsp;called&nbsp;internally&nbsp;by<br>
+`<a href="#BaseApp-windowEvent">windowEvent</a>()`,&nbsp;but&nbsp;it&nbsp;may&nbsp;also&nbsp;be&nbsp;called&nbsp;to&nbsp;explicitly&nbsp;adjust<br>
+the&nbsp;aspect&nbsp;ratio&nbsp;of&nbsp;the&nbsp;render/render2d&nbsp;DisplayRegion,&nbsp;by&nbsp;a<br>
+class&nbsp;that&nbsp;has&nbsp;redefined&nbsp;these.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-attachInputDevice"><strong>attachInputDevice</strong></a>(self, device, prefix=None, watch=False)</dt><dd><tt>This&nbsp;function&nbsp;attaches&nbsp;an&nbsp;input&nbsp;device&nbsp;to&nbsp;the&nbsp;data&nbsp;graph,&nbsp;which&nbsp;will<br>
+cause&nbsp;the&nbsp;device&nbsp;to&nbsp;be&nbsp;polled&nbsp;and&nbsp;generate&nbsp;events.&nbsp;&nbsp;If&nbsp;a&nbsp;prefix&nbsp;is<br>
+given&nbsp;and&nbsp;not&nbsp;None,&nbsp;it&nbsp;is&nbsp;used&nbsp;to&nbsp;prefix&nbsp;events&nbsp;generated&nbsp;by&nbsp;this<br>
+device,&nbsp;separated&nbsp;by&nbsp;a&nbsp;hyphen.<br>
+&nbsp;<br>
+The&nbsp;watch&nbsp;argument&nbsp;can&nbsp;be&nbsp;set&nbsp;to&nbsp;True&nbsp;(as&nbsp;of&nbsp;Panda3D&nbsp;1.10.3)&nbsp;to&nbsp;set&nbsp;up<br>
+the&nbsp;default&nbsp;MouseWatcher&nbsp;to&nbsp;receive&nbsp;inputs&nbsp;from&nbsp;this&nbsp;device,&nbsp;allowing<br>
+it&nbsp;to&nbsp;be&nbsp;polled&nbsp;via&nbsp;mouseWatcherNode&nbsp;and&nbsp;control&nbsp;user&nbsp;interfaces.<br>
+Setting&nbsp;this&nbsp;to&nbsp;True&nbsp;will&nbsp;also&nbsp;make&nbsp;it&nbsp;generate&nbsp;unprefixed&nbsp;events,<br>
+regardless&nbsp;of&nbsp;the&nbsp;specified&nbsp;prefix.<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;call&nbsp;this,&nbsp;you&nbsp;should&nbsp;consider&nbsp;calling&nbsp;detachInputDevice&nbsp;when<br>
+you&nbsp;are&nbsp;done&nbsp;with&nbsp;the&nbsp;device&nbsp;or&nbsp;when&nbsp;it&nbsp;is&nbsp;disconnected.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-attach_input_device"><strong>attach_input_device</strong></a> = <a href="#BaseApp-attachInputDevice">attachInputDevice</a>(self, device, prefix=None, watch=False)</dt></dl>
+
+<dl><dt><a name="BaseApp-backfaceCullingOff"><strong>backfaceCullingOff</strong></a>(self)</dt><dd><tt>Enables&nbsp;two-sided&nbsp;rendering&nbsp;on&nbsp;the&nbsp;entire&nbsp;3D&nbsp;scene&nbsp;graph.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-backfaceCullingOn"><strong>backfaceCullingOn</strong></a>(self)</dt><dd><tt>Disables&nbsp;two-sided&nbsp;rendering&nbsp;on&nbsp;the&nbsp;entire&nbsp;3D&nbsp;scene&nbsp;graph.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-backface_culling_off"><strong>backface_culling_off</strong></a> = <a href="#BaseApp-backfaceCullingOff">backfaceCullingOff</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-backface_culling_on"><strong>backface_culling_on</strong></a> = <a href="#BaseApp-backfaceCullingOn">backfaceCullingOn</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-changeMouseInterface"><strong>changeMouseInterface</strong></a>(self, changeTo)</dt><dd><tt>Change&nbsp;the&nbsp;mouse&nbsp;interface&nbsp;used&nbsp;to&nbsp;control&nbsp;the&nbsp;camera.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-change_mouse_interface"><strong>change_mouse_interface</strong></a> = <a href="#BaseApp-changeMouseInterface">changeMouseInterface</a>(self, changeTo)</dt></dl>
+
+<dl><dt><a name="BaseApp-closeWindow"><strong>closeWindow</strong></a>(self, win, keepCamera=False, removeWindow=True)</dt><dd><tt>Closes&nbsp;the&nbsp;indicated&nbsp;window&nbsp;and&nbsp;removes&nbsp;it&nbsp;from&nbsp;the&nbsp;list&nbsp;of<br>
+windows.&nbsp;&nbsp;If&nbsp;it&nbsp;is&nbsp;the&nbsp;main&nbsp;window,&nbsp;clears&nbsp;the&nbsp;main&nbsp;window<br>
+pointer&nbsp;to&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-close_window"><strong>close_window</strong></a> = <a href="#BaseApp-closeWindow">closeWindow</a>(self, win, keepCamera=False, removeWindow=True)</dt></dl>
+
+<dl><dt><a name="BaseApp-createBaseAudioManagers"><strong>createBaseAudioManagers</strong></a>(self)</dt><dd><tt>Creates&nbsp;the&nbsp;default&nbsp;SFX&nbsp;and&nbsp;music&nbsp;manager.&nbsp;&nbsp;Called&nbsp;automatically&nbsp;from<br>
+the&nbsp;<a href="direct.showbase.ShowBase.html#ShowBase">ShowBase</a>&nbsp;constructor.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-createStats"><strong>createStats</strong></a>(self, hostname=None, port=None)</dt><dd><tt>If&nbsp;want-pstats&nbsp;is&nbsp;set&nbsp;in&nbsp;Config.prc,&nbsp;or&nbsp;the&nbsp;`wantStats`&nbsp;member&nbsp;is<br>
+otherwise&nbsp;set&nbsp;to&nbsp;True,&nbsp;connects&nbsp;to&nbsp;the&nbsp;PStats&nbsp;server.<br>
+This&nbsp;is&nbsp;normally&nbsp;called&nbsp;automatically&nbsp;from&nbsp;the&nbsp;<a href="direct.showbase.ShowBase.html#ShowBase">ShowBase</a>&nbsp;constructor.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-create_stats"><strong>create_stats</strong></a> = <a href="#BaseApp-createStats">createStats</a>(self, hostname=None, port=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-destroy"><strong>destroy</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;function&nbsp;to&nbsp;destroy&nbsp;the&nbsp;<a href="direct.showbase.ShowBase.html#ShowBase">ShowBase</a>&nbsp;and&nbsp;stop&nbsp;all<br>
+its&nbsp;tasks,&nbsp;freeing&nbsp;all&nbsp;of&nbsp;the&nbsp;Panda&nbsp;resources.&nbsp;&nbsp;Normally,&nbsp;you<br>
+should&nbsp;not&nbsp;need&nbsp;to&nbsp;call&nbsp;it&nbsp;explicitly,&nbsp;as&nbsp;it&nbsp;is&nbsp;bound&nbsp;to&nbsp;the<br>
+exitfunc&nbsp;and&nbsp;will&nbsp;be&nbsp;called&nbsp;at&nbsp;application&nbsp;exit&nbsp;time<br>
+automatically.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;is&nbsp;designed&nbsp;to&nbsp;be&nbsp;safe&nbsp;to&nbsp;call&nbsp;multiple&nbsp;times.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-detachInputDevice"><strong>detachInputDevice</strong></a>(self, device)</dt><dd><tt>This&nbsp;should&nbsp;be&nbsp;called&nbsp;after&nbsp;attaching&nbsp;an&nbsp;input&nbsp;device&nbsp;using<br>
+attachInputDevice&nbsp;and&nbsp;the&nbsp;device&nbsp;is&nbsp;disconnected&nbsp;or&nbsp;you&nbsp;no&nbsp;longer&nbsp;wish<br>
+to&nbsp;keep&nbsp;polling&nbsp;this&nbsp;device&nbsp;for&nbsp;events.<br>
+&nbsp;<br>
+You&nbsp;do&nbsp;not&nbsp;strictly&nbsp;need&nbsp;to&nbsp;call&nbsp;this&nbsp;if&nbsp;you&nbsp;expect&nbsp;the&nbsp;device&nbsp;to&nbsp;be<br>
+reconnected&nbsp;(but&nbsp;be&nbsp;careful&nbsp;that&nbsp;you&nbsp;don't&nbsp;reattach&nbsp;it).</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-detach_input_device"><strong>detach_input_device</strong></a> = <a href="#BaseApp-detachInputDevice">detachInputDevice</a>(self, device)</dt></dl>
+
+<dl><dt><a name="BaseApp-disableAllAudio"><strong>disableAllAudio</strong></a>(self)</dt><dd><tt>Disables&nbsp;all&nbsp;SFX&nbsp;and&nbsp;music&nbsp;managers,&nbsp;meant&nbsp;to&nbsp;be&nbsp;called&nbsp;when&nbsp;the&nbsp;app<br>
+loses&nbsp;audio&nbsp;focus.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-disableMouse"><strong>disableMouse</strong></a>(self)</dt><dd><tt>Temporarily&nbsp;disable&nbsp;the&nbsp;mouse&nbsp;control&nbsp;of&nbsp;the&nbsp;camera,&nbsp;either<br>
+via&nbsp;the&nbsp;drive&nbsp;interface&nbsp;or&nbsp;the&nbsp;trackball,&nbsp;whichever&nbsp;is<br>
+currently&nbsp;in&nbsp;use.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-disableParticles"><strong>disableParticles</strong></a>(self)</dt><dd><tt>The&nbsp;opposite&nbsp;of&nbsp;`<a href="#BaseApp-enableParticles">enableParticles</a>()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-disable_all_audio"><strong>disable_all_audio</strong></a> = <a href="#BaseApp-disableAllAudio">disableAllAudio</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-disable_mouse"><strong>disable_mouse</strong></a> = <a href="#BaseApp-disableMouse">disableMouse</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-disable_particles"><strong>disable_particles</strong></a> = <a href="#BaseApp-disableParticles">disableParticles</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-enableAllAudio"><strong>enableAllAudio</strong></a>(self)</dt><dd><tt>Reenables&nbsp;the&nbsp;SFX&nbsp;and&nbsp;music&nbsp;managers&nbsp;that&nbsp;were&nbsp;active&nbsp;at&nbsp;the&nbsp;time<br>
+`<a href="#BaseApp-disableAllAudio">disableAllAudio</a>()`&nbsp;was&nbsp;called.&nbsp;&nbsp;Meant&nbsp;to&nbsp;be&nbsp;called&nbsp;when&nbsp;the&nbsp;app&nbsp;regains<br>
+audio&nbsp;focus.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-enableMouse"><strong>enableMouse</strong></a>(self)</dt><dd><tt>Reverse&nbsp;the&nbsp;effect&nbsp;of&nbsp;a&nbsp;previous&nbsp;call&nbsp;to&nbsp;`<a href="#BaseApp-disableMouse">disableMouse</a>()`.<br>
+`<a href="#BaseApp-useDrive">useDrive</a>()`&nbsp;also&nbsp;implicitly&nbsp;enables&nbsp;the&nbsp;mouse.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-enableMusic"><strong>enableMusic</strong></a>(self, bEnableMusic)</dt><dd><tt>Enables&nbsp;or&nbsp;disables&nbsp;the&nbsp;music&nbsp;manager.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-enableParticles"><strong>enableParticles</strong></a>(self)</dt><dd><tt>Enables&nbsp;the&nbsp;particle&nbsp;and&nbsp;physics&nbsp;managers,&nbsp;which&nbsp;are&nbsp;stored&nbsp;in<br>
+`particleMgr`&nbsp;and&nbsp;`physicsMgr`&nbsp;members,&nbsp;respectively.&nbsp;&nbsp;Also&nbsp;starts&nbsp;a<br>
+task&nbsp;to&nbsp;periodically&nbsp;update&nbsp;these&nbsp;managers.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;only&nbsp;a&nbsp;:class:`~panda3d.physics.LinearEulerIntegrator`&nbsp;is<br>
+attached&nbsp;to&nbsp;the&nbsp;physics&nbsp;manager.&nbsp;&nbsp;To&nbsp;attach&nbsp;an&nbsp;angular&nbsp;integrator,<br>
+follow&nbsp;this&nbsp;up&nbsp;with&nbsp;a&nbsp;call&nbsp;to&nbsp;`<a href="#BaseApp-addAngularIntegrator">addAngularIntegrator</a>()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-enableSoftwareMousePointer"><strong>enableSoftwareMousePointer</strong></a>(self)</dt><dd><tt>Creates&nbsp;some&nbsp;geometry&nbsp;and&nbsp;parents&nbsp;it&nbsp;to&nbsp;render2d&nbsp;to&nbsp;show<br>
+the&nbsp;currently-known&nbsp;mouse&nbsp;position.&nbsp;&nbsp;Useful&nbsp;if&nbsp;the&nbsp;mouse<br>
+pointer&nbsp;is&nbsp;invisible&nbsp;for&nbsp;some&nbsp;reason.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-enableSoundEffects"><strong>enableSoundEffects</strong></a>(self, bEnableSoundEffects)</dt><dd><tt>Enables&nbsp;or&nbsp;disables&nbsp;SFX&nbsp;managers.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-enable_all_audio"><strong>enable_all_audio</strong></a> = <a href="#BaseApp-enableAllAudio">enableAllAudio</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-enable_mouse"><strong>enable_mouse</strong></a> = <a href="#BaseApp-enableMouse">enableMouse</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-enable_music"><strong>enable_music</strong></a> = <a href="#BaseApp-enableMusic">enableMusic</a>(self, bEnableMusic)</dt></dl>
+
+<dl><dt><a name="BaseApp-enable_particles"><strong>enable_particles</strong></a> = <a href="#BaseApp-enableParticles">enableParticles</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-enable_software_mouse_pointer"><strong>enable_software_mouse_pointer</strong></a> = <a href="#BaseApp-enableSoftwareMousePointer">enableSoftwareMousePointer</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-enable_sound_effects"><strong>enable_sound_effects</strong></a> = <a href="#BaseApp-enableSoundEffects">enableSoundEffects</a>(self, bEnableSoundEffects)</dt></dl>
+
+<dl><dt><a name="BaseApp-finalizeExit"><strong>finalizeExit</strong></a>(self)</dt><dd><tt>Called&nbsp;by&nbsp;`<a href="#BaseApp-userExit">userExit</a>()`&nbsp;to&nbsp;quit&nbsp;the&nbsp;application.&nbsp;&nbsp;The&nbsp;default<br>
+implementation&nbsp;just&nbsp;calls&nbsp;`sys.exit()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-getAlt"><strong>getAlt</strong></a>(self)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;alt&nbsp;key&nbsp;is&nbsp;currently&nbsp;held&nbsp;down.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-getAspectRatio"><strong>getAspectRatio</strong></a>(self, win=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-getAxes"><strong>getAxes</strong></a>(self)</dt><dd><tt>Loads&nbsp;and&nbsp;returns&nbsp;the&nbsp;``models/misc/xyzAxis.bam``&nbsp;model.<br>
+&nbsp;<br>
+:rtype:&nbsp;panda3d.core.NodePath</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-getBackgroundColor"><strong>getBackgroundColor</strong></a>(self, win=None)</dt><dd><tt>Returns&nbsp;the&nbsp;current&nbsp;window&nbsp;background&nbsp;color.&nbsp;&nbsp;This&nbsp;assumes<br>
+the&nbsp;window&nbsp;is&nbsp;set&nbsp;up&nbsp;to&nbsp;clear&nbsp;the&nbsp;color&nbsp;each&nbsp;frame&nbsp;(this&nbsp;is<br>
+the&nbsp;normal&nbsp;setting).<br>
+&nbsp;<br>
+:rtype:&nbsp;panda3d.core.VBase4</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-getControl"><strong>getControl</strong></a>(self)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;control&nbsp;key&nbsp;is&nbsp;currently&nbsp;held&nbsp;down.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-getExitErrorCode"><strong>getExitErrorCode</strong></a>(self)</dt><dd><tt>#&nbsp;temp;&nbsp;see&nbsp;ToonBase.py</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-getMeta"><strong>getMeta</strong></a>(self)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;meta&nbsp;key&nbsp;is&nbsp;currently&nbsp;held&nbsp;down.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-getRepository"><strong>getRepository</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-getShift"><strong>getShift</strong></a>(self)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;shift&nbsp;key&nbsp;is&nbsp;currently&nbsp;held&nbsp;down.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-getSize"><strong>getSize</strong></a>(self, win=None)</dt><dd><tt>Returns&nbsp;the&nbsp;actual&nbsp;size&nbsp;of&nbsp;the&nbsp;indicated&nbsp;(or&nbsp;main&nbsp;window),&nbsp;or&nbsp;the<br>
+default&nbsp;size&nbsp;if&nbsp;there&nbsp;is&nbsp;not&nbsp;yet&nbsp;a&nbsp;main&nbsp;window.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-get_aspect_ratio"><strong>get_aspect_ratio</strong></a> = <a href="#BaseApp-getAspectRatio">getAspectRatio</a>(self, win=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-get_background_color"><strong>get_background_color</strong></a> = <a href="#BaseApp-getBackgroundColor">getBackgroundColor</a>(self, win=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-get_size"><strong>get_size</strong></a> = <a href="#BaseApp-getSize">getSize</a>(self, win=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-initShadowTrav"><strong>initShadowTrav</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-init_shadow_trav"><strong>init_shadow_trav</strong></a> = <a href="#BaseApp-initShadowTrav">initShadowTrav</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-isParticleMgrEnabled"><strong>isParticleMgrEnabled</strong></a>(self)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;`<a href="#BaseApp-enableParticles">enableParticles</a>()`&nbsp;has&nbsp;been&nbsp;called.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-isPhysicsMgrEnabled"><strong>isPhysicsMgrEnabled</strong></a>(self)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;`<a href="#BaseApp-enableParticles">enableParticles</a>()`&nbsp;has&nbsp;been&nbsp;called.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-loadMusic"><strong>loadMusic</strong></a>(self, name)</dt><dd><tt>:deprecated:&nbsp;Use&nbsp;`.Loader.Loader.<a href="#BaseApp-loadMusic">loadMusic</a>()`&nbsp;instead.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-loadSfx"><strong>loadSfx</strong></a>(self, name)</dt><dd><tt>:deprecated:&nbsp;Use&nbsp;`.Loader.Loader.<a href="#BaseApp-loadSfx">loadSfx</a>()`&nbsp;instead.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-makeAllPipes"><strong>makeAllPipes</strong></a>(self)</dt><dd><tt>Creates&nbsp;all&nbsp;GraphicsPipes&nbsp;that&nbsp;the&nbsp;system&nbsp;knows&nbsp;about&nbsp;and&nbsp;fill&nbsp;up<br>
+`pipeList`&nbsp;with&nbsp;them.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-makeCamera"><strong>makeCamera</strong></a>(self, win, sort=0, scene=None, displayRegion=(0, 1, 0, 1), stereo=None, aspectRatio=None, clearDepth=0, clearColor=None, lens=None, camName='cam', mask=None, useCamera=None)</dt><dd><tt>Makes&nbsp;a&nbsp;new&nbsp;3-d&nbsp;camera&nbsp;associated&nbsp;with&nbsp;the&nbsp;indicated&nbsp;window,<br>
+and&nbsp;creates&nbsp;a&nbsp;display&nbsp;region&nbsp;in&nbsp;the&nbsp;indicated&nbsp;subrectangle.<br>
+&nbsp;<br>
+If&nbsp;stereo&nbsp;is&nbsp;True,&nbsp;then&nbsp;a&nbsp;stereo&nbsp;camera&nbsp;is&nbsp;created,&nbsp;with&nbsp;a<br>
+pair&nbsp;of&nbsp;DisplayRegions.&nbsp;&nbsp;If&nbsp;stereo&nbsp;is&nbsp;False,&nbsp;then&nbsp;a&nbsp;standard<br>
+camera&nbsp;is&nbsp;created.&nbsp;&nbsp;If&nbsp;stereo&nbsp;is&nbsp;None&nbsp;or&nbsp;omitted,&nbsp;a&nbsp;stereo<br>
+camera&nbsp;is&nbsp;created&nbsp;if&nbsp;the&nbsp;window&nbsp;says&nbsp;it&nbsp;can&nbsp;render&nbsp;in&nbsp;stereo.<br>
+&nbsp;<br>
+If&nbsp;useCamera&nbsp;is&nbsp;not&nbsp;None,&nbsp;it&nbsp;is&nbsp;a&nbsp;NodePath&nbsp;to&nbsp;be&nbsp;used&nbsp;as&nbsp;the<br>
+camera&nbsp;to&nbsp;apply&nbsp;to&nbsp;the&nbsp;window,&nbsp;rather&nbsp;than&nbsp;creating&nbsp;a&nbsp;new<br>
+camera.<br>
+&nbsp;<br>
+:rtype:&nbsp;panda3d.core.NodePath</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-makeCamera2d"><strong>makeCamera2d</strong></a>(self, win, sort=10, displayRegion=(0, 1, 0, 1), coords=(-1, 1, -1, 1), lens=None, cameraName=None)</dt><dd><tt>Makes&nbsp;a&nbsp;new&nbsp;camera2d&nbsp;associated&nbsp;with&nbsp;the&nbsp;indicated&nbsp;window,&nbsp;and<br>
+assigns&nbsp;it&nbsp;to&nbsp;render&nbsp;the&nbsp;indicated&nbsp;subrectangle&nbsp;of&nbsp;render2d.<br>
+&nbsp;<br>
+:rtype:&nbsp;panda3d.core.NodePath</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-makeCamera2dp"><strong>makeCamera2dp</strong></a>(self, win, sort=20, displayRegion=(0, 1, 0, 1), coords=(-1, 1, -1, 1), lens=None, cameraName=None)</dt><dd><tt>Makes&nbsp;a&nbsp;new&nbsp;camera2dp&nbsp;associated&nbsp;with&nbsp;the&nbsp;indicated&nbsp;window,&nbsp;and<br>
+assigns&nbsp;it&nbsp;to&nbsp;render&nbsp;the&nbsp;indicated&nbsp;subrectangle&nbsp;of&nbsp;render2dp.<br>
+&nbsp;<br>
+:rtype:&nbsp;panda3d.core.NodePath</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-makeDefaultPipe"><strong>makeDefaultPipe</strong></a>(self, printPipeTypes=None)</dt><dd><tt>Creates&nbsp;the&nbsp;default&nbsp;GraphicsPipe,&nbsp;which&nbsp;will&nbsp;be&nbsp;used&nbsp;to&nbsp;make<br>
+windows&nbsp;unless&nbsp;otherwise&nbsp;specified.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-makeModulePipe"><strong>makeModulePipe</strong></a>(self, moduleName)</dt><dd><tt>Returns&nbsp;a&nbsp;GraphicsPipe&nbsp;from&nbsp;the&nbsp;indicated&nbsp;module,<br>
+e.g.&nbsp;'pandagl'&nbsp;or&nbsp;'pandadx9'.&nbsp;&nbsp;Does&nbsp;not&nbsp;affect&nbsp;base.pipe&nbsp;or<br>
+base.pipeList.<br>
+&nbsp;<br>
+:rtype:&nbsp;panda3d.core.GraphicsPipe</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-make_all_pipes"><strong>make_all_pipes</strong></a> = <a href="#BaseApp-makeAllPipes">makeAllPipes</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-make_camera"><strong>make_camera</strong></a> = <a href="#BaseApp-makeCamera">makeCamera</a>(self, win, sort=0, scene=None, displayRegion=(0, 1, 0, 1), stereo=None, aspectRatio=None, clearDepth=0, clearColor=None, lens=None, camName='cam', mask=None, useCamera=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-make_camera2d"><strong>make_camera2d</strong></a> = <a href="#BaseApp-makeCamera2d">makeCamera2d</a>(self, win, sort=10, displayRegion=(0, 1, 0, 1), coords=(-1, 1, -1, 1), lens=None, cameraName=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-make_camera2dp"><strong>make_camera2dp</strong></a> = <a href="#BaseApp-makeCamera2dp">makeCamera2dp</a>(self, win, sort=20, displayRegion=(0, 1, 0, 1), coords=(-1, 1, -1, 1), lens=None, cameraName=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-make_default_pipe"><strong>make_default_pipe</strong></a> = <a href="#BaseApp-makeDefaultPipe">makeDefaultPipe</a>(self, printPipeTypes=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-make_module_pipe"><strong>make_module_pipe</strong></a> = <a href="#BaseApp-makeModulePipe">makeModulePipe</a>(self, moduleName)</dt></dl>
+
+<dl><dt><a name="BaseApp-movie"><strong>movie</strong></a>(self, namePrefix='movie', duration=1.0, fps=30, format='png', sd=4, source=None)</dt><dd><tt>Spawn&nbsp;a&nbsp;task&nbsp;to&nbsp;capture&nbsp;a&nbsp;movie&nbsp;using&nbsp;the&nbsp;screenshot&nbsp;function.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;namePrefix&nbsp;(str):&nbsp;used&nbsp;to&nbsp;form&nbsp;output&nbsp;file&nbsp;names&nbsp;(can<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;path&nbsp;information&nbsp;(e.g.&nbsp;'/i/beta/frames/myMovie')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;duration&nbsp;(float):&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;movie&nbsp;in&nbsp;seconds<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fps&nbsp;(float):&nbsp;the&nbsp;frame&nbsp;rate&nbsp;of&nbsp;the&nbsp;resulting&nbsp;movie<br>
+&nbsp;&nbsp;&nbsp;&nbsp;format&nbsp;(str):&nbsp;specifies&nbsp;output&nbsp;file&nbsp;format&nbsp;(e.g.&nbsp;png,&nbsp;bmp)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sd&nbsp;(int):&nbsp;specifies&nbsp;number&nbsp;of&nbsp;significant&nbsp;digits&nbsp;for&nbsp;frame<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;in&nbsp;the&nbsp;output&nbsp;file&nbsp;name&nbsp;(e.g.&nbsp;if&nbsp;sd&nbsp;=&nbsp;4,&nbsp;the&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;something&nbsp;like&nbsp;movie_0001.png)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;source:&nbsp;the&nbsp;Window,&nbsp;Buffer,&nbsp;DisplayRegion,&nbsp;or&nbsp;Texture&nbsp;from<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;to&nbsp;save&nbsp;the&nbsp;resulting&nbsp;images.&nbsp;&nbsp;The&nbsp;default&nbsp;is&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main&nbsp;window.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;`~direct.task.Task`&nbsp;that&nbsp;can&nbsp;be&nbsp;awaited.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-oobe"><strong>oobe</strong></a>(self, cam=None)</dt><dd><tt>Enable&nbsp;a&nbsp;special&nbsp;"out-of-body&nbsp;experience"&nbsp;mouse-interface<br>
+mode.&nbsp;&nbsp;This&nbsp;can&nbsp;be&nbsp;used&nbsp;when&nbsp;a&nbsp;"god"&nbsp;camera&nbsp;is&nbsp;needed;&nbsp;it<br>
+moves&nbsp;the&nbsp;camera&nbsp;node&nbsp;out&nbsp;from&nbsp;under&nbsp;its&nbsp;normal&nbsp;node&nbsp;and&nbsp;sets<br>
+the&nbsp;world&nbsp;up&nbsp;in&nbsp;trackball&nbsp;state.&nbsp;&nbsp;Button&nbsp;events&nbsp;are&nbsp;still&nbsp;sent<br>
+to&nbsp;the&nbsp;normal&nbsp;mouse&nbsp;action&nbsp;node&nbsp;(e.g.&nbsp;the&nbsp;DriveInterface),&nbsp;and<br>
+mouse&nbsp;events,&nbsp;if&nbsp;needed,&nbsp;may&nbsp;be&nbsp;sent&nbsp;to&nbsp;the&nbsp;normal&nbsp;node&nbsp;by<br>
+holding&nbsp;down&nbsp;the&nbsp;Control&nbsp;key.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;different&nbsp;than&nbsp;`<a href="#BaseApp-useTrackball">useTrackball</a>()`,&nbsp;which&nbsp;simply&nbsp;changes<br>
+the&nbsp;existing&nbsp;mouse&nbsp;action&nbsp;to&nbsp;a&nbsp;trackball&nbsp;interface.&nbsp;&nbsp;In&nbsp;fact,<br>
+OOBE&nbsp;mode&nbsp;doesn't&nbsp;care&nbsp;whether&nbsp;`<a href="#BaseApp-useDrive">useDrive</a>()`&nbsp;or&nbsp;`<a href="#BaseApp-useTrackball">useTrackball</a>()`&nbsp;is<br>
+in&nbsp;effect;&nbsp;it&nbsp;just&nbsp;temporarily&nbsp;layers&nbsp;a&nbsp;new&nbsp;trackball<br>
+interface&nbsp;on&nbsp;top&nbsp;of&nbsp;whatever&nbsp;the&nbsp;basic&nbsp;interface&nbsp;is.&nbsp;&nbsp;You&nbsp;can<br>
+even&nbsp;switch&nbsp;between&nbsp;`<a href="#BaseApp-useDrive">useDrive</a>()`&nbsp;and&nbsp;`<a href="#BaseApp-useTrackball">useTrackball</a>()`&nbsp;while&nbsp;OOBE<br>
+mode&nbsp;is&nbsp;in&nbsp;effect.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;toggle;&nbsp;the&nbsp;second&nbsp;time&nbsp;this&nbsp;function&nbsp;is&nbsp;called,&nbsp;it<br>
+disables&nbsp;the&nbsp;mode.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-oobeCull"><strong>oobeCull</strong></a>(self, cam=None)</dt><dd><tt>While&nbsp;in&nbsp;OOBE&nbsp;mode&nbsp;(see&nbsp;above),&nbsp;cull&nbsp;the&nbsp;viewing&nbsp;frustum&nbsp;as&nbsp;if<br>
+it&nbsp;were&nbsp;still&nbsp;attached&nbsp;to&nbsp;our&nbsp;original&nbsp;camera.&nbsp;&nbsp;This&nbsp;allows&nbsp;us<br>
+to&nbsp;visualize&nbsp;the&nbsp;effectiveness&nbsp;of&nbsp;our&nbsp;bounding&nbsp;volumes.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-oobe_cull"><strong>oobe_cull</strong></a> = <a href="#BaseApp-oobeCull">oobeCull</a>(self, cam=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-openDefaultWindow"><strong>openDefaultWindow</strong></a>(self, *args, **kw)</dt><dd><tt>Creates&nbsp;the&nbsp;main&nbsp;window&nbsp;for&nbsp;the&nbsp;first&nbsp;time,&nbsp;without&nbsp;being&nbsp;too<br>
+particular&nbsp;about&nbsp;the&nbsp;kind&nbsp;of&nbsp;graphics&nbsp;API&nbsp;that&nbsp;is&nbsp;chosen.<br>
+The&nbsp;suggested&nbsp;window&nbsp;type&nbsp;from&nbsp;the&nbsp;load-display&nbsp;config&nbsp;variable&nbsp;is<br>
+tried&nbsp;first;&nbsp;if&nbsp;that&nbsp;fails,&nbsp;the&nbsp;first&nbsp;window&nbsp;type&nbsp;that&nbsp;can&nbsp;be<br>
+successfully&nbsp;opened&nbsp;at&nbsp;all&nbsp;is&nbsp;accepted.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;intended&nbsp;to&nbsp;be&nbsp;called&nbsp;only&nbsp;once,&nbsp;at&nbsp;application&nbsp;startup.<br>
+It&nbsp;is&nbsp;normally&nbsp;called&nbsp;automatically&nbsp;unless&nbsp;window-type&nbsp;is&nbsp;configured<br>
+to&nbsp;'none'.<br>
+&nbsp;<br>
+:returns:&nbsp;True&nbsp;on&nbsp;success,&nbsp;False&nbsp;on&nbsp;failure.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-openMainWindow"><strong>openMainWindow</strong></a>(self, *args, **kw)</dt><dd><tt>Creates&nbsp;the&nbsp;initial,&nbsp;main&nbsp;window&nbsp;for&nbsp;the&nbsp;application,&nbsp;and&nbsp;sets<br>
+up&nbsp;the&nbsp;mouse&nbsp;and&nbsp;render2d&nbsp;structures&nbsp;appropriately&nbsp;for&nbsp;it.&nbsp;&nbsp;If<br>
+this&nbsp;method&nbsp;is&nbsp;called&nbsp;a&nbsp;second&nbsp;time,&nbsp;it&nbsp;will&nbsp;close&nbsp;the<br>
+previous&nbsp;main&nbsp;window&nbsp;and&nbsp;open&nbsp;a&nbsp;new&nbsp;one,&nbsp;preserving&nbsp;the&nbsp;lens<br>
+properties&nbsp;in&nbsp;base.camLens.<br>
+&nbsp;<br>
+:returns:&nbsp;True&nbsp;on&nbsp;success,&nbsp;or&nbsp;False&nbsp;on&nbsp;failure&nbsp;(in&nbsp;which&nbsp;case&nbsp;base.win<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;may&nbsp;be&nbsp;either&nbsp;None,&nbsp;or&nbsp;the&nbsp;previous,&nbsp;closed&nbsp;window).</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-openWindow"><strong>openWindow</strong></a>(self, props=None, fbprops=None, pipe=None, gsg=None, host=None, type=None, name=None, size=None, aspectRatio=None, makeCamera=True, keepCamera=False, scene=None, stereo=None, unexposedDraw=None, callbackWindowDict=None, requireWindow=None)</dt><dd><tt>Creates&nbsp;a&nbsp;window&nbsp;and&nbsp;adds&nbsp;it&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;windows&nbsp;that&nbsp;are<br>
+to&nbsp;be&nbsp;updated&nbsp;every&nbsp;frame.<br>
+&nbsp;<br>
+:param&nbsp;props:&nbsp;the&nbsp;:class:`~panda3d.core.WindowProperties`&nbsp;that<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;describes&nbsp;the&nbsp;window.<br>
+&nbsp;<br>
+:param&nbsp;fbprops:&nbsp;the&nbsp;:class:`~panda3d.core.FrameBufferProperties`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indicating&nbsp;the&nbsp;requested&nbsp;framebuffer&nbsp;properties.<br>
+&nbsp;<br>
+:param&nbsp;type:&nbsp;Either&nbsp;'onscreen',&nbsp;'offscreen',&nbsp;or&nbsp;'none'.<br>
+&nbsp;<br>
+:param&nbsp;keepCamera:&nbsp;If&nbsp;True,&nbsp;the&nbsp;existing&nbsp;base.cam&nbsp;is&nbsp;set&nbsp;up&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;render&nbsp;into&nbsp;the&nbsp;new&nbsp;window.<br>
+&nbsp;<br>
+:param&nbsp;makeCamera:&nbsp;If&nbsp;True&nbsp;(and&nbsp;keepCamera&nbsp;is&nbsp;False),&nbsp;a&nbsp;new&nbsp;camera&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;up&nbsp;to&nbsp;render&nbsp;into&nbsp;the&nbsp;new&nbsp;window.<br>
+&nbsp;<br>
+:param&nbsp;unexposedDraw:&nbsp;If&nbsp;not&nbsp;None,&nbsp;it&nbsp;specifies&nbsp;the&nbsp;initial&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;:meth:`~panda3d.core.GraphicsWindow.setUnexposedDraw()`.<br>
+&nbsp;<br>
+:param&nbsp;callbackWindowDict:&nbsp;If&nbsp;not&nbsp;None,&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:class:`~panda3d.core.CallbackGraphicsWindow`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;created&nbsp;instead,&nbsp;which&nbsp;allows&nbsp;the&nbsp;caller<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;create&nbsp;the&nbsp;actual&nbsp;window&nbsp;with&nbsp;its&nbsp;own<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OpenGL&nbsp;context,&nbsp;and&nbsp;direct&nbsp;Panda's&nbsp;rendering<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;into&nbsp;that&nbsp;window.<br>
+&nbsp;<br>
+:param&nbsp;requireWindow:&nbsp;If&nbsp;True,&nbsp;the&nbsp;function&nbsp;should&nbsp;raise&nbsp;an&nbsp;exception<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;the&nbsp;window&nbsp;fails&nbsp;to&nbsp;open&nbsp;correctly.<br>
+&nbsp;<br>
+:rtype:&nbsp;panda3d.core.GraphicsWindow</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-open_default_window"><strong>open_default_window</strong></a> = <a href="#BaseApp-openDefaultWindow">openDefaultWindow</a>(self, *args, **kw)</dt></dl>
+
+<dl><dt><a name="BaseApp-open_main_window"><strong>open_main_window</strong></a> = <a href="#BaseApp-openMainWindow">openMainWindow</a>(self, *args, **kw)</dt></dl>
+
+<dl><dt><a name="BaseApp-open_window"><strong>open_window</strong></a> = <a href="#BaseApp-openWindow">openWindow</a>(self, props=None, fbprops=None, pipe=None, gsg=None, host=None, type=None, name=None, size=None, aspectRatio=None, makeCamera=True, keepCamera=False, scene=None, stereo=None, unexposedDraw=None, callbackWindowDict=None, requireWindow=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-playMusic"><strong>playMusic</strong></a>(self, music, looping=0, interrupt=1, volume=None, time=0.0)</dt></dl>
+
+<dl><dt><a name="BaseApp-playSfx"><strong>playSfx</strong></a>(self, sfx, looping=0, interrupt=1, volume=None, time=0.0, node=None, listener=None, cutoff=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-popCTrav"><strong>popCTrav</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-printEnvDebugInfo"><strong>printEnvDebugInfo</strong></a>(self)</dt><dd><tt>Print&nbsp;some&nbsp;information&nbsp;about&nbsp;the&nbsp;environment&nbsp;that&nbsp;we&nbsp;are&nbsp;running<br>
+in.&nbsp;&nbsp;Stuff&nbsp;like&nbsp;the&nbsp;model&nbsp;paths&nbsp;and&nbsp;other&nbsp;paths.&nbsp;&nbsp;Feel&nbsp;free&nbsp;to<br>
+add&nbsp;stuff&nbsp;to&nbsp;this.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-pushCTrav"><strong>pushCTrav</strong></a>(self, cTrav)</dt><dd><tt>#&nbsp;add&nbsp;a&nbsp;collision&nbsp;traverser&nbsp;via&nbsp;pushCTrav&nbsp;and&nbsp;remove&nbsp;it&nbsp;via&nbsp;popCTrav<br>
+#&nbsp;that&nbsp;way&nbsp;the&nbsp;owner&nbsp;of&nbsp;the&nbsp;new&nbsp;cTrav&nbsp;doesn't&nbsp;need&nbsp;to&nbsp;hold&nbsp;onto&nbsp;the<br>
+#&nbsp;previous&nbsp;one&nbsp;in&nbsp;order&nbsp;to&nbsp;put&nbsp;it&nbsp;back</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-removeCameraFrustum"><strong>removeCameraFrustum</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-remove_camera_frustum"><strong>remove_camera_frustum</strong></a> = <a href="#BaseApp-removeCameraFrustum">removeCameraFrustum</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-restart"><strong>restart</strong></a>(self, clusterSync=False, cluster=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-reviveInput"><strong>reviveInput</strong></a>(self)</dt><dd><tt>Restores&nbsp;inputs&nbsp;after&nbsp;a&nbsp;previous&nbsp;call&nbsp;to&nbsp;`<a href="#BaseApp-silenceInput">silenceInput</a>()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-revive_input"><strong>revive_input</strong></a> = <a href="#BaseApp-reviveInput">reviveInput</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-run"><strong>run</strong></a>(self)</dt><dd><tt>This&nbsp;method&nbsp;runs&nbsp;the&nbsp;:class:`~direct.task.Task.TaskManager`<br>
+when&nbsp;``self.<strong>appRunner</strong>&nbsp;is&nbsp;None``,&nbsp;which&nbsp;is&nbsp;to&nbsp;say,&nbsp;when&nbsp;we&nbsp;are<br>
+not&nbsp;running&nbsp;from&nbsp;within&nbsp;a&nbsp;p3d&nbsp;file.&nbsp;&nbsp;When&nbsp;we&nbsp;*are*&nbsp;within&nbsp;a&nbsp;p3d<br>
+file,&nbsp;the&nbsp;Panda3D&nbsp;runtime&nbsp;has&nbsp;to&nbsp;be&nbsp;responsible&nbsp;for&nbsp;running&nbsp;the<br>
+main&nbsp;loop,&nbsp;so&nbsp;we&nbsp;can't&nbsp;allow&nbsp;the&nbsp;application&nbsp;to&nbsp;do&nbsp;it.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-saveCubeMap"><strong>saveCubeMap</strong></a>(self, namePrefix='cube_map_#.png', defaultFilename=0, source=None, camera=None, size=128, cameraMask= 0111 1111 1111 1111 1111 1111 1111 1111, sourceLens=None)</dt><dd><tt>Similar&nbsp;to&nbsp;:meth:`<a href="#BaseApp-screenshot">screenshot</a>()`,&nbsp;this&nbsp;sets&nbsp;up&nbsp;a&nbsp;temporary&nbsp;cube<br>
+map&nbsp;Texture&nbsp;which&nbsp;it&nbsp;uses&nbsp;to&nbsp;take&nbsp;a&nbsp;series&nbsp;of&nbsp;six&nbsp;snapshots&nbsp;of<br>
+the&nbsp;current&nbsp;scene,&nbsp;one&nbsp;in&nbsp;each&nbsp;of&nbsp;the&nbsp;six&nbsp;cube&nbsp;map&nbsp;directions.<br>
+This&nbsp;requires&nbsp;rendering&nbsp;a&nbsp;new&nbsp;frame.<br>
+&nbsp;<br>
+Unlike&nbsp;`<a href="#BaseApp-screenshot">screenshot</a>()`,&nbsp;source&nbsp;may&nbsp;only&nbsp;be&nbsp;a&nbsp;GraphicsWindow,<br>
+GraphicsBuffer,&nbsp;or&nbsp;DisplayRegion;&nbsp;it&nbsp;may&nbsp;not&nbsp;be&nbsp;a&nbsp;Texture.<br>
+&nbsp;<br>
+camera&nbsp;should&nbsp;be&nbsp;the&nbsp;node&nbsp;to&nbsp;which&nbsp;the&nbsp;cubemap&nbsp;cameras&nbsp;will&nbsp;be<br>
+parented.&nbsp;&nbsp;The&nbsp;default&nbsp;is&nbsp;the&nbsp;camera&nbsp;associated&nbsp;with&nbsp;source,<br>
+if&nbsp;source&nbsp;is&nbsp;a&nbsp;DisplayRegion,&nbsp;or&nbsp;base.camera&nbsp;otherwise.<br>
+&nbsp;<br>
+:returns:&nbsp;The&nbsp;filename&nbsp;if&nbsp;successful,&nbsp;or&nbsp;None&nbsp;if&nbsp;there&nbsp;is&nbsp;a&nbsp;problem.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-saveSphereMap"><strong>saveSphereMap</strong></a>(self, namePrefix='spheremap.png', defaultFilename=0, source=None, camera=None, size=256, cameraMask= 0111 1111 1111 1111 1111 1111 1111 1111, numVertices=1000, sourceLens=None)</dt><dd><tt>This&nbsp;works&nbsp;much&nbsp;like&nbsp;:meth:`<a href="#BaseApp-saveCubeMap">saveCubeMap</a>()`,&nbsp;and&nbsp;uses&nbsp;the<br>
+graphics&nbsp;API's&nbsp;hardware&nbsp;cube-mapping&nbsp;ability&nbsp;to&nbsp;get&nbsp;a&nbsp;360-degree<br>
+view&nbsp;of&nbsp;the&nbsp;world.&nbsp;&nbsp;But&nbsp;then&nbsp;it&nbsp;converts&nbsp;the&nbsp;six&nbsp;cube&nbsp;map&nbsp;faces<br>
+into&nbsp;a&nbsp;single&nbsp;fisheye&nbsp;texture,&nbsp;suitable&nbsp;for&nbsp;applying&nbsp;as&nbsp;a&nbsp;static<br>
+environment&nbsp;map&nbsp;(sphere&nbsp;map).<br>
+&nbsp;<br>
+For&nbsp;eye-relative&nbsp;static&nbsp;environment&nbsp;maps,&nbsp;sphere&nbsp;maps&nbsp;are&nbsp;often<br>
+preferable&nbsp;to&nbsp;cube&nbsp;maps&nbsp;because&nbsp;they&nbsp;require&nbsp;only&nbsp;a&nbsp;single<br>
+texture&nbsp;and&nbsp;because&nbsp;they&nbsp;are&nbsp;supported&nbsp;on&nbsp;a&nbsp;broader&nbsp;range&nbsp;of<br>
+hardware.<br>
+&nbsp;<br>
+:returns:&nbsp;The&nbsp;filename&nbsp;if&nbsp;successful,&nbsp;or&nbsp;None&nbsp;if&nbsp;there&nbsp;is&nbsp;a&nbsp;problem.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-save_cube_map"><strong>save_cube_map</strong></a> = <a href="#BaseApp-saveCubeMap">saveCubeMap</a>(self, namePrefix='cube_map_#.png', defaultFilename=0, source=None, camera=None, size=128, cameraMask= 0111 1111 1111 1111 1111 1111 1111 1111, sourceLens=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-save_sphere_map"><strong>save_sphere_map</strong></a> = <a href="#BaseApp-saveSphereMap">saveSphereMap</a>(self, namePrefix='spheremap.png', defaultFilename=0, source=None, camera=None, size=256, cameraMask= 0111 1111 1111 1111 1111 1111 1111 1111, numVertices=1000, sourceLens=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-screenshot"><strong>screenshot</strong></a>(self, namePrefix='screenshot', defaultFilename=1, source=None, imageComment='')</dt><dd><tt>Captures&nbsp;a&nbsp;screenshot&nbsp;from&nbsp;the&nbsp;main&nbsp;window&nbsp;or&nbsp;from&nbsp;the<br>
+specified&nbsp;window&nbsp;or&nbsp;Texture&nbsp;and&nbsp;writes&nbsp;it&nbsp;to&nbsp;a&nbsp;filename&nbsp;in&nbsp;the<br>
+current&nbsp;directory&nbsp;(or&nbsp;to&nbsp;a&nbsp;specified&nbsp;directory).<br>
+&nbsp;<br>
+If&nbsp;defaultFilename&nbsp;is&nbsp;True,&nbsp;the&nbsp;filename&nbsp;is&nbsp;synthesized&nbsp;by<br>
+appending&nbsp;namePrefix&nbsp;to&nbsp;a&nbsp;default&nbsp;filename&nbsp;suffix&nbsp;(including<br>
+the&nbsp;filename&nbsp;extension)&nbsp;specified&nbsp;in&nbsp;the&nbsp;Config&nbsp;variable<br>
+screenshot-filename.&nbsp;&nbsp;Otherwise,&nbsp;if&nbsp;defaultFilename&nbsp;is&nbsp;False,<br>
+the&nbsp;entire&nbsp;namePrefix&nbsp;is&nbsp;taken&nbsp;to&nbsp;be&nbsp;the&nbsp;filename&nbsp;to&nbsp;write,<br>
+and&nbsp;this&nbsp;string&nbsp;should&nbsp;include&nbsp;a&nbsp;suitable&nbsp;filename&nbsp;extension<br>
+that&nbsp;will&nbsp;be&nbsp;used&nbsp;to&nbsp;determine&nbsp;the&nbsp;type&nbsp;of&nbsp;image&nbsp;file&nbsp;to<br>
+write.<br>
+&nbsp;<br>
+Normally,&nbsp;the&nbsp;source&nbsp;is&nbsp;a&nbsp;GraphicsWindow,&nbsp;GraphicsBuffer&nbsp;or<br>
+DisplayRegion.&nbsp;&nbsp;If&nbsp;a&nbsp;Texture&nbsp;is&nbsp;supplied&nbsp;instead,&nbsp;it&nbsp;must&nbsp;have<br>
+a&nbsp;ram&nbsp;image&nbsp;(that&nbsp;is,&nbsp;if&nbsp;it&nbsp;was&nbsp;generated&nbsp;by<br>
+makeTextureBuffer()&nbsp;or&nbsp;makeCubeMap(),&nbsp;the&nbsp;parameter&nbsp;toRam<br>
+should&nbsp;have&nbsp;been&nbsp;set&nbsp;true).&nbsp;&nbsp;If&nbsp;it&nbsp;is&nbsp;a&nbsp;cube&nbsp;map&nbsp;texture&nbsp;as<br>
+generated&nbsp;by&nbsp;makeCubeMap(),&nbsp;namePrefix&nbsp;should&nbsp;contain&nbsp;the&nbsp;hash<br>
+mark&nbsp;('#')&nbsp;character.<br>
+&nbsp;<br>
+:returns:&nbsp;The&nbsp;filename&nbsp;if&nbsp;successful,&nbsp;or&nbsp;None&nbsp;if&nbsp;there&nbsp;is&nbsp;a&nbsp;problem.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setAspectRatio"><strong>setAspectRatio</strong></a>(self, aspectRatio)</dt><dd><tt>Sets&nbsp;the&nbsp;global&nbsp;aspect&nbsp;ratio&nbsp;of&nbsp;the&nbsp;main&nbsp;window.&nbsp;&nbsp;Set&nbsp;it<br>
+to&nbsp;None&nbsp;to&nbsp;restore&nbsp;automatic&nbsp;scaling.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setBackgroundColor"><strong>setBackgroundColor</strong></a>(self, r=None, g=None, b=None, a=0.0, win=None)</dt><dd><tt>Sets&nbsp;the&nbsp;window&nbsp;background&nbsp;color&nbsp;to&nbsp;the&nbsp;indicated&nbsp;value.<br>
+This&nbsp;assumes&nbsp;the&nbsp;window&nbsp;is&nbsp;set&nbsp;up&nbsp;to&nbsp;clear&nbsp;the&nbsp;color&nbsp;each<br>
+frame&nbsp;(this&nbsp;is&nbsp;the&nbsp;normal&nbsp;setting).<br>
+&nbsp;<br>
+The&nbsp;color&nbsp;may&nbsp;be&nbsp;either&nbsp;a&nbsp;VBase3&nbsp;or&nbsp;a&nbsp;VBase4,&nbsp;or&nbsp;a&nbsp;3-component<br>
+tuple,&nbsp;or&nbsp;the&nbsp;individual&nbsp;r,&nbsp;g,&nbsp;b&nbsp;parameters.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setFrameRateMeter"><strong>setFrameRateMeter</strong></a>(self, flag)</dt><dd><tt>Turns&nbsp;on&nbsp;or&nbsp;off&nbsp;(according&nbsp;to&nbsp;flag)&nbsp;a&nbsp;standard&nbsp;frame&nbsp;rate<br>
+meter&nbsp;in&nbsp;the&nbsp;upper-right&nbsp;corner&nbsp;of&nbsp;the&nbsp;main&nbsp;window.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setMouseOnNode"><strong>setMouseOnNode</strong></a>(self, newNode)</dt></dl>
+
+<dl><dt><a name="BaseApp-setSceneGraphAnalyzerMeter"><strong>setSceneGraphAnalyzerMeter</strong></a>(self, flag)</dt><dd><tt>Turns&nbsp;on&nbsp;or&nbsp;off&nbsp;(according&nbsp;to&nbsp;flag)&nbsp;a&nbsp;standard&nbsp;frame&nbsp;rate<br>
+meter&nbsp;in&nbsp;the&nbsp;upper-right&nbsp;corner&nbsp;of&nbsp;the&nbsp;main&nbsp;window.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setSleep"><strong>setSleep</strong></a>(self, amount)</dt><dd><tt>Sets&nbsp;up&nbsp;a&nbsp;task&nbsp;that&nbsp;calls&nbsp;python&nbsp;'sleep'&nbsp;every&nbsp;frame.&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;simple<br>
+way&nbsp;to&nbsp;reduce&nbsp;the&nbsp;CPU&nbsp;usage&nbsp;(and&nbsp;frame&nbsp;rate)&nbsp;of&nbsp;a&nbsp;panda&nbsp;program.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-set_aspect_ratio"><strong>set_aspect_ratio</strong></a> = <a href="#BaseApp-setAspectRatio">setAspectRatio</a>(self, aspectRatio)</dt></dl>
+
+<dl><dt><a name="BaseApp-set_background_color"><strong>set_background_color</strong></a> = <a href="#BaseApp-setBackgroundColor">setBackgroundColor</a>(self, r=None, g=None, b=None, a=0.0, win=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-set_frame_rate_meter"><strong>set_frame_rate_meter</strong></a> = <a href="#BaseApp-setFrameRateMeter">setFrameRateMeter</a>(self, flag)</dt></dl>
+
+<dl><dt><a name="BaseApp-set_mouse_on_node"><strong>set_mouse_on_node</strong></a> = <a href="#BaseApp-setMouseOnNode">setMouseOnNode</a>(self, newNode)</dt></dl>
+
+<dl><dt><a name="BaseApp-set_scene_graph_analyzer_meter"><strong>set_scene_graph_analyzer_meter</strong></a> = <a href="#BaseApp-setSceneGraphAnalyzerMeter">setSceneGraphAnalyzerMeter</a>(self, flag)</dt></dl>
+
+<dl><dt><a name="BaseApp-set_sleep"><strong>set_sleep</strong></a> = <a href="#BaseApp-setSleep">setSleep</a>(self, amount)</dt></dl>
+
+<dl><dt><a name="BaseApp-setupDataGraph"><strong>setupDataGraph</strong></a>(self)</dt><dd><tt>Creates&nbsp;the&nbsp;data&nbsp;graph&nbsp;and&nbsp;populates&nbsp;it&nbsp;with&nbsp;the&nbsp;basic&nbsp;input<br>
+devices.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setupMouse"><strong>setupMouse</strong></a>(self, win, fMultiWin=False)</dt><dd><tt>Creates&nbsp;the&nbsp;structures&nbsp;necessary&nbsp;to&nbsp;monitor&nbsp;the&nbsp;mouse&nbsp;input,<br>
+using&nbsp;the&nbsp;indicated&nbsp;window.&nbsp;&nbsp;If&nbsp;the&nbsp;mouse&nbsp;has&nbsp;already&nbsp;been&nbsp;set<br>
+up&nbsp;for&nbsp;a&nbsp;different&nbsp;window,&nbsp;those&nbsp;structures&nbsp;are&nbsp;deleted&nbsp;first.<br>
+&nbsp;<br>
+:param&nbsp;fMultiWin:&nbsp;If&nbsp;True,&nbsp;then&nbsp;the&nbsp;previous&nbsp;mouse&nbsp;structures&nbsp;are&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deleted;&nbsp;instead,&nbsp;multiple&nbsp;windows&nbsp;are&nbsp;allowed&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;monitor&nbsp;the&nbsp;mouse&nbsp;input.&nbsp;&nbsp;However,&nbsp;in&nbsp;this&nbsp;case,&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trackball&nbsp;controls&nbsp;are&nbsp;not&nbsp;set&nbsp;up,&nbsp;and&nbsp;must&nbsp;be&nbsp;set&nbsp;up<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;hand&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+:returns:&nbsp;The&nbsp;ButtonThrower&nbsp;NodePath&nbsp;created&nbsp;for&nbsp;this&nbsp;window.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setupMouseCB"><strong>setupMouseCB</strong></a>(self, win)</dt><dd><tt>#&nbsp;[gjeon]&nbsp;this&nbsp;function&nbsp;is&nbsp;seperated&nbsp;from&nbsp;setupMouse&nbsp;to&nbsp;allow&nbsp;multiple&nbsp;mouse&nbsp;watchers</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setupRender"><strong>setupRender</strong></a>(self)</dt><dd><tt>Creates&nbsp;the&nbsp;render&nbsp;scene&nbsp;graph,&nbsp;the&nbsp;primary&nbsp;scene&nbsp;graph&nbsp;for<br>
+rendering&nbsp;3-d&nbsp;geometry.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setupRender2d"><strong>setupRender2d</strong></a>(self)</dt><dd><tt>Creates&nbsp;the&nbsp;render2d&nbsp;scene&nbsp;graph,&nbsp;the&nbsp;primary&nbsp;scene&nbsp;graph&nbsp;for<br>
+2-d&nbsp;objects&nbsp;and&nbsp;gui&nbsp;elements&nbsp;that&nbsp;are&nbsp;superimposed&nbsp;over&nbsp;the<br>
+3-d&nbsp;geometry&nbsp;in&nbsp;the&nbsp;window.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setupRender2dp"><strong>setupRender2dp</strong></a>(self)</dt><dd><tt>Creates&nbsp;a&nbsp;render2d&nbsp;scene&nbsp;graph,&nbsp;the&nbsp;secondary&nbsp;scene&nbsp;graph&nbsp;for<br>
+2-d&nbsp;objects&nbsp;and&nbsp;gui&nbsp;elements&nbsp;that&nbsp;are&nbsp;superimposed&nbsp;over&nbsp;the<br>
+2-d&nbsp;and&nbsp;3-d&nbsp;geometry&nbsp;in&nbsp;the&nbsp;window.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setupWindowControls"><strong>setupWindowControls</strong></a>(self, winCtrl=None)</dt><dd><tt>#&nbsp;[gjeon]&nbsp;now&nbsp;you&nbsp;can&nbsp;add&nbsp;more&nbsp;winControls&nbsp;after&nbsp;creating&nbsp;a&nbsp;showbase&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-setup_data_graph"><strong>setup_data_graph</strong></a> = <a href="#BaseApp-setupDataGraph">setupDataGraph</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-setup_mouse"><strong>setup_mouse</strong></a> = <a href="#BaseApp-setupMouse">setupMouse</a>(self, win, fMultiWin=False)</dt></dl>
+
+<dl><dt><a name="BaseApp-setup_mouse_cb"><strong>setup_mouse_cb</strong></a> = <a href="#BaseApp-setupMouseCB">setupMouseCB</a>(self, win)</dt></dl>
+
+<dl><dt><a name="BaseApp-setup_render"><strong>setup_render</strong></a> = <a href="#BaseApp-setupRender">setupRender</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-setup_render2d"><strong>setup_render2d</strong></a> = <a href="#BaseApp-setupRender2d">setupRender2d</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-setup_render2dp"><strong>setup_render2dp</strong></a> = <a href="#BaseApp-setupRender2dp">setupRender2dp</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-setup_window_controls"><strong>setup_window_controls</strong></a> = <a href="#BaseApp-setupWindowControls">setupWindowControls</a>(self, winCtrl=None)</dt></dl>
+
+<dl><dt><a name="BaseApp-showCameraFrustum"><strong>showCameraFrustum</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-show_camera_frustum"><strong>show_camera_frustum</strong></a> = <a href="#BaseApp-showCameraFrustum">showCameraFrustum</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-shutdown"><strong>shutdown</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-silenceInput"><strong>silenceInput</strong></a>(self)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;heavy-handed&nbsp;way&nbsp;of&nbsp;temporarily&nbsp;turning&nbsp;off<br>
+all&nbsp;inputs.&nbsp;&nbsp;Bring&nbsp;them&nbsp;back&nbsp;with&nbsp;`<a href="#BaseApp-reviveInput">reviveInput</a>()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-silence_input"><strong>silence_input</strong></a> = <a href="#BaseApp-silenceInput">silenceInput</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-spawnTkLoop"><strong>spawnTkLoop</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;method&nbsp;to&nbsp;hand&nbsp;the&nbsp;main&nbsp;loop&nbsp;over&nbsp;to&nbsp;Tkinter.<br>
+This&nbsp;sets&nbsp;up&nbsp;a&nbsp;timer&nbsp;callback&nbsp;so&nbsp;that&nbsp;Panda&nbsp;still&nbsp;gets<br>
+updated,&nbsp;but&nbsp;Tkinter&nbsp;owns&nbsp;the&nbsp;main&nbsp;loop&nbsp;(which&nbsp;seems&nbsp;to&nbsp;make<br>
+it&nbsp;happier&nbsp;than&nbsp;the&nbsp;other&nbsp;way&nbsp;around).</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-spawnWxLoop"><strong>spawnWxLoop</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;method&nbsp;to&nbsp;hand&nbsp;the&nbsp;main&nbsp;loop&nbsp;over&nbsp;to&nbsp;wxPython.<br>
+This&nbsp;sets&nbsp;up&nbsp;a&nbsp;wxTimer&nbsp;callback&nbsp;so&nbsp;that&nbsp;Panda&nbsp;still&nbsp;gets<br>
+updated,&nbsp;but&nbsp;wxPython&nbsp;owns&nbsp;the&nbsp;main&nbsp;loop&nbsp;(which&nbsp;seems&nbsp;to&nbsp;make<br>
+it&nbsp;happier&nbsp;than&nbsp;the&nbsp;other&nbsp;way&nbsp;around).</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-startDirect"><strong>startDirect</strong></a>(self, fWantDirect=1, fWantTk=1, fWantWx=0)</dt></dl>
+
+<dl><dt><a name="BaseApp-startTk"><strong>startTk</strong></a>(self, fWantTk=True)</dt></dl>
+
+<dl><dt><a name="BaseApp-startWx"><strong>startWx</strong></a>(self, fWantWx=True)</dt><dd><tt>#&nbsp;[gjeon]&nbsp;start&nbsp;wxPython</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-start_direct"><strong>start_direct</strong></a> = <a href="#BaseApp-startDirect">startDirect</a>(self, fWantDirect=1, fWantTk=1, fWantWx=0)</dt></dl>
+
+<dl><dt><a name="BaseApp-start_tk"><strong>start_tk</strong></a> = <a href="#BaseApp-startTk">startTk</a>(self, fWantTk=True)</dt></dl>
+
+<dl><dt><a name="BaseApp-start_wx"><strong>start_wx</strong></a> = <a href="#BaseApp-startWx">startWx</a>(self, fWantWx=True)</dt></dl>
+
+<dl><dt><a name="BaseApp-textureOff"><strong>textureOff</strong></a>(self)</dt><dd><tt>Disables&nbsp;texturing&nbsp;on&nbsp;the&nbsp;entire&nbsp;3D&nbsp;scene&nbsp;graph.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-textureOn"><strong>textureOn</strong></a>(self)</dt><dd><tt>Undoes&nbsp;the&nbsp;effects&nbsp;of&nbsp;a&nbsp;previous&nbsp;call&nbsp;to&nbsp;`<a href="#BaseApp-textureOff">textureOff</a>()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-texture_off"><strong>texture_off</strong></a> = <a href="#BaseApp-textureOff">textureOff</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-texture_on"><strong>texture_on</strong></a> = <a href="#BaseApp-textureOn">textureOn</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-tkRun"><strong>tkRun</strong></a>(self)</dt><dd><tt>This&nbsp;method&nbsp;replaces&nbsp;`<a href="#BaseApp-run">run</a>()`&nbsp;after&nbsp;we&nbsp;have&nbsp;called&nbsp;`<a href="#BaseApp-spawnTkLoop">spawnTkLoop</a>()`.<br>
+Since&nbsp;at&nbsp;this&nbsp;point&nbsp;Tkinter&nbsp;now&nbsp;owns&nbsp;the&nbsp;main&nbsp;loop,&nbsp;this&nbsp;method&nbsp;is&nbsp;a<br>
+call&nbsp;to&nbsp;tkRoot.mainloop().</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-toggleBackface"><strong>toggleBackface</strong></a>(self)</dt><dd><tt>Toggles&nbsp;between&nbsp;`<a href="#BaseApp-backfaceCullingOn">backfaceCullingOn</a>()`&nbsp;and&nbsp;`<a href="#BaseApp-backfaceCullingOff">backfaceCullingOff</a>()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-toggleParticles"><strong>toggleParticles</strong></a>(self)</dt><dd><tt>Calls&nbsp;`<a href="#BaseApp-enableParticles">enableParticles</a>()`&nbsp;or&nbsp;`<a href="#BaseApp-disableParticles">disableParticles</a>()`&nbsp;depending&nbsp;on&nbsp;the<br>
+current&nbsp;state.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-toggleShowVertices"><strong>toggleShowVertices</strong></a>(self)</dt><dd><tt>Toggles&nbsp;a&nbsp;mode&nbsp;that&nbsp;visualizes&nbsp;vertex&nbsp;density&nbsp;per&nbsp;screen<br>
+area.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-toggleTexMem"><strong>toggleTexMem</strong></a>(self)</dt><dd><tt>Toggles&nbsp;a&nbsp;handy&nbsp;texture&nbsp;memory&nbsp;watcher&nbsp;utility.<br>
+See&nbsp;:mod:`direct.showutil.TexMemWatcher`&nbsp;for&nbsp;more&nbsp;information.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-toggleTexture"><strong>toggleTexture</strong></a>(self)</dt><dd><tt>Toggles&nbsp;between&nbsp;`<a href="#BaseApp-textureOn">textureOn</a>()`&nbsp;and&nbsp;`<a href="#BaseApp-textureOff">textureOff</a>()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-toggleWireframe"><strong>toggleWireframe</strong></a>(self)</dt><dd><tt>Toggles&nbsp;between&nbsp;`<a href="#BaseApp-wireframeOn">wireframeOn</a>()`&nbsp;and&nbsp;`<a href="#BaseApp-wireframeOff">wireframeOff</a>()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-toggle_backface"><strong>toggle_backface</strong></a> = <a href="#BaseApp-toggleBackface">toggleBackface</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-toggle_particles"><strong>toggle_particles</strong></a> = <a href="#BaseApp-toggleParticles">toggleParticles</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-toggle_show_vertices"><strong>toggle_show_vertices</strong></a> = <a href="#BaseApp-toggleShowVertices">toggleShowVertices</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-toggle_tex_mem"><strong>toggle_tex_mem</strong></a> = <a href="#BaseApp-toggleTexMem">toggleTexMem</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-toggle_texture"><strong>toggle_texture</strong></a> = <a href="#BaseApp-toggleTexture">toggleTexture</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-toggle_wireframe"><strong>toggle_wireframe</strong></a> = <a href="#BaseApp-toggleWireframe">toggleWireframe</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-updateManagers"><strong>updateManagers</strong></a>(self, state)</dt></dl>
+
+<dl><dt><a name="BaseApp-useDrive"><strong>useDrive</strong></a>(self)</dt><dd><tt>Changes&nbsp;the&nbsp;mouse&nbsp;interface&nbsp;used&nbsp;for&nbsp;camera&nbsp;control&nbsp;to&nbsp;drive&nbsp;mode.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-useTrackball"><strong>useTrackball</strong></a>(self)</dt><dd><tt>Changes&nbsp;the&nbsp;mouse&nbsp;interface&nbsp;used&nbsp;for&nbsp;camera&nbsp;control&nbsp;to&nbsp;trackball&nbsp;mode.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-use_drive"><strong>use_drive</strong></a> = <a href="#BaseApp-useDrive">useDrive</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-use_trackball"><strong>use_trackball</strong></a> = <a href="#BaseApp-useTrackball">useTrackball</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-userExit"><strong>userExit</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-windowEvent"><strong>windowEvent</strong></a>(self, win)</dt></dl>
+
+<dl><dt><a name="BaseApp-wireframeOff"><strong>wireframeOff</strong></a>(self)</dt><dd><tt>Undoes&nbsp;the&nbsp;effects&nbsp;of&nbsp;a&nbsp;previous&nbsp;call&nbsp;to&nbsp;`<a href="#BaseApp-wireframeOn">wireframeOn</a>()`.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-wireframeOn"><strong>wireframeOn</strong></a>(self)</dt><dd><tt>Enables&nbsp;wireframe&nbsp;rendering&nbsp;on&nbsp;the&nbsp;entire&nbsp;3D&nbsp;scene&nbsp;graph.</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-wireframe_off"><strong>wireframe_off</strong></a> = <a href="#BaseApp-wireframeOff">wireframeOff</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-wireframe_on"><strong>wireframe_on</strong></a> = <a href="#BaseApp-wireframeOn">wireframeOn</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-wxRun"><strong>wxRun</strong></a>(self)</dt><dd><tt>This&nbsp;method&nbsp;replaces&nbsp;`<a href="#BaseApp-run">run</a>()`&nbsp;after&nbsp;we&nbsp;have&nbsp;called&nbsp;`<a href="#BaseApp-spawnWxLoop">spawnWxLoop</a>()`.<br>
+Since&nbsp;at&nbsp;this&nbsp;point&nbsp;wxPython&nbsp;now&nbsp;owns&nbsp;the&nbsp;main&nbsp;loop,&nbsp;this&nbsp;method&nbsp;is&nbsp;a<br>
+call&nbsp;to&nbsp;wxApp.MainLoop().</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="direct.showbase.ShowBase.html#ShowBase">direct.showbase.ShowBase.ShowBase</a>:<br>
+<dl><dt><strong>config</strong> = &lt;module 'direct.showbase.DConfig' from 'C:\\Panda3D-1.10.15-x64\\direct\\showbase\\DConfig.py'&gt;</dl>
+
+<dl><dt><strong>notify</strong> = &lt;direct.directnotify.Notifier.Notifier object&gt;</dl>
+
+<hr>
+Methods inherited from <a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>:<br>
+<dl><dt><a name="BaseApp-accept"><strong>accept</strong></a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="BaseApp-acceptOnce"><strong>acceptOnce</strong></a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="BaseApp-accept_once"><strong>accept_once</strong></a> = <a href="#BaseApp-acceptOnce">acceptOnce</a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="BaseApp-addTask"><strong>addTask</strong></a>(self, *args, **kwargs)</dt><dd><tt>#This&nbsp;function&nbsp;must&nbsp;be&nbsp;used&nbsp;if&nbsp;you&nbsp;want&nbsp;a&nbsp;managed&nbsp;task</tt></dd></dl>
+
+<dl><dt><a name="BaseApp-add_task"><strong>add_task</strong></a> = <a href="#BaseApp-addTask">addTask</a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="BaseApp-detectLeaks"><strong>detectLeaks</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-detect_leaks"><strong>detect_leaks</strong></a> = <a href="#BaseApp-detectLeaks">detectLeaks</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-doMethodLater"><strong>doMethodLater</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="BaseApp-do_method_later"><strong>do_method_later</strong></a> = <a href="#BaseApp-doMethodLater">doMethodLater</a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="BaseApp-getAllAccepting"><strong>getAllAccepting</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-get_all_accepting"><strong>get_all_accepting</strong></a> = <a href="#BaseApp-getAllAccepting">getAllAccepting</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-ignore"><strong>ignore</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="BaseApp-ignoreAll"><strong>ignoreAll</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-ignore_all"><strong>ignore_all</strong></a> = <a href="#BaseApp-ignoreAll">ignoreAll</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-isAccepting"><strong>isAccepting</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="BaseApp-isIgnoring"><strong>isIgnoring</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="BaseApp-is_accepting"><strong>is_accepting</strong></a> = <a href="#BaseApp-isAccepting">isAccepting</a>(self, event)</dt></dl>
+
+<dl><dt><a name="BaseApp-is_ignoring"><strong>is_ignoring</strong></a> = <a href="#BaseApp-isIgnoring">isIgnoring</a>(self, event)</dt></dl>
+
+<dl><dt><a name="BaseApp-removeAllTasks"><strong>removeAllTasks</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-removeTask"><strong>removeTask</strong></a>(self, taskOrName)</dt></dl>
+
+<dl><dt><a name="BaseApp-remove_all_tasks"><strong>remove_all_tasks</strong></a> = <a href="#BaseApp-removeAllTasks">removeAllTasks</a>(self)</dt></dl>
+
+<dl><dt><a name="BaseApp-remove_task"><strong>remove_task</strong></a> = <a href="#BaseApp-removeTask">removeTask</a>(self, taskOrName)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-Dtool_BorrowThisReference"><strong>Dtool_BorrowThisReference</strong></a>(...)</dt><dd><tt>Used&nbsp;to&nbsp;borrow&nbsp;'this'&nbsp;pointer&nbsp;(to,&nbsp;from)<br>
+Assumes&nbsp;no&nbsp;ownership.</tt></dd></dl>
+ <dl><dt><a name="-autoBind"><strong>autoBind</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-auto_bind">auto_bind</a>(PandaNode&nbsp;root_node,&nbsp;AnimControlCollection&nbsp;controls,&nbsp;int&nbsp;hierarchy_match_flags)</tt></dd></dl>
+ <dl><dt><a name="-auto_bind"><strong>auto_bind</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-auto_bind">auto_bind</a>(PandaNode&nbsp;root_node,&nbsp;AnimControlCollection&nbsp;controls,&nbsp;int&nbsp;hierarchy_match_flags)</tt></dd></dl>
+ <dl><dt><a name="-checkAdler"><strong>checkAdler</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-check_adler">check_adler</a>(Filename&nbsp;name)</tt></dd></dl>
+ <dl><dt><a name="-checkCrc"><strong>checkCrc</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-check_crc">check_crc</a>(Filename&nbsp;name)</tt></dd></dl>
+ <dl><dt><a name="-check_adler"><strong>check_adler</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-check_adler">check_adler</a>(Filename&nbsp;name)</tt></dd></dl>
+ <dl><dt><a name="-check_crc"><strong>check_crc</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-check_crc">check_crc</a>(Filename&nbsp;name)</tt></dd></dl>
+ <dl><dt><a name="-composeMatrix"><strong>composeMatrix</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;buffer&nbsp;components)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;buffer&nbsp;components)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;buffer&nbsp;components,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;buffer&nbsp;components,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;shear,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;shear,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;const&nbsp;LVecBase3f&nbsp;translate)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;const&nbsp;LVecBase3d&nbsp;translate)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;shear,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;const&nbsp;LVecBase3f&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;shear,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;const&nbsp;LVecBase3d&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;shear,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;shear,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;const&nbsp;LVecBase3f&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;const&nbsp;LVecBase3d&nbsp;translate,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-compose_matrix"><strong>compose_matrix</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;buffer&nbsp;components)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;buffer&nbsp;components)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;buffer&nbsp;components,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;buffer&nbsp;components,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;shear,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;shear,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;const&nbsp;LVecBase3f&nbsp;translate)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;const&nbsp;LVecBase3d&nbsp;translate)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;shear,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;const&nbsp;LVecBase3f&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;shear,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;const&nbsp;LVecBase3d&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;shear,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;shear,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVecBase3f&nbsp;scale,&nbsp;const&nbsp;LVecBase3f&nbsp;hpr,&nbsp;const&nbsp;LVecBase3f&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-compose_matrix">compose_matrix</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVecBase3d&nbsp;scale,&nbsp;const&nbsp;LVecBase3d&nbsp;hpr,&nbsp;const&nbsp;LVecBase3d&nbsp;translate,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-compressFile"><strong>compressFile</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-compress_file">compress_file</a>(const&nbsp;Filename&nbsp;source,&nbsp;const&nbsp;Filename&nbsp;dest,&nbsp;int&nbsp;compression_level)</tt></dd></dl>
+ <dl><dt><a name="-compressStream"><strong>compressStream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-compress_stream">compress_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest,&nbsp;int&nbsp;compression_level)</tt></dd></dl>
+ <dl><dt><a name="-compressString"><strong>compressString</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-compress_string">compress_string</a>(str&nbsp;source,&nbsp;int&nbsp;compression_level)</tt></dd></dl>
+ <dl><dt><a name="-compress_file"><strong>compress_file</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-compress_file">compress_file</a>(const&nbsp;Filename&nbsp;source,&nbsp;const&nbsp;Filename&nbsp;dest,&nbsp;int&nbsp;compression_level)</tt></dd></dl>
+ <dl><dt><a name="-compress_stream"><strong>compress_stream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-compress_stream">compress_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest,&nbsp;int&nbsp;compression_level)</tt></dd></dl>
+ <dl><dt><a name="-compress_string"><strong>compress_string</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-compress_string">compress_string</a>(str&nbsp;source,&nbsp;int&nbsp;compression_level)</tt></dd></dl>
+ <dl><dt><a name="-copyStream"><strong>copyStream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-copy_stream">copy_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest)</tt></dd></dl>
+ <dl><dt><a name="-copy_stream"><strong>copy_stream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-copy_stream">copy_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest)</tt></dd></dl>
+ <dl><dt><a name="-cos"><strong>cos</strong></a>(x, /)</dt><dd><tt>Return&nbsp;the&nbsp;cosine&nbsp;of&nbsp;x&nbsp;(measured&nbsp;in&nbsp;radians).</tt></dd></dl>
+ <dl><dt><a name="-decodeSRGBFloat"><strong>decodeSRGBFloat</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decode_sRGB_float">decode_sRGB_float</a>(int&nbsp;val)<br>
+<a href="#-decode_sRGB_float">decode_sRGB_float</a>(float&nbsp;val)</tt></dd></dl>
+ <dl><dt><a name="-decodeSRGBUchar"><strong>decodeSRGBUchar</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decode_sRGB_uchar">decode_sRGB_uchar</a>(int&nbsp;val)<br>
+<a href="#-decode_sRGB_uchar">decode_sRGB_uchar</a>(float&nbsp;val)</tt></dd></dl>
+ <dl><dt><a name="-decode_sRGB_float"><strong>decode_sRGB_float</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decode_sRGB_float">decode_sRGB_float</a>(int&nbsp;val)<br>
+<a href="#-decode_sRGB_float">decode_sRGB_float</a>(float&nbsp;val)</tt></dd></dl>
+ <dl><dt><a name="-decode_sRGB_uchar"><strong>decode_sRGB_uchar</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decode_sRGB_uchar">decode_sRGB_uchar</a>(int&nbsp;val)<br>
+<a href="#-decode_sRGB_uchar">decode_sRGB_uchar</a>(float&nbsp;val)</tt></dd></dl>
+ <dl><dt><a name="-decomposeMatrix"><strong>decomposeMatrix</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;buffer&nbsp;components)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;buffer&nbsp;components)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;hpr)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;hpr)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;buffer&nbsp;components,&nbsp;int&nbsp;CS)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;buffer&nbsp;components,&nbsp;int&nbsp;CS)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;shear,&nbsp;LVecBase3f&nbsp;hpr)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;shear,&nbsp;LVecBase3d&nbsp;hpr)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;LVecBase3d&nbsp;translate)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;LVecBase3f&nbsp;translate)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;shear,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;LVecBase3f&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;shear,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;LVecBase3d&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;shear,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;shear,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;LVecBase3d&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;LVecBase3f&nbsp;translate,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-decomposeMatrixOldHpr"><strong>decomposeMatrixOldHpr</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompose_matrix_old_hpr">decompose_matrix_old_hpr</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;shear,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix_old_hpr">decompose_matrix_old_hpr</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;shear,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-decompose_matrix"><strong>decompose_matrix</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;buffer&nbsp;components)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;buffer&nbsp;components)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;hpr)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;hpr)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;buffer&nbsp;components,&nbsp;int&nbsp;CS)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;buffer&nbsp;components,&nbsp;int&nbsp;CS)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;shear,&nbsp;LVecBase3f&nbsp;hpr)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;shear,&nbsp;LVecBase3d&nbsp;hpr)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;LVecBase3d&nbsp;translate)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;LVecBase3f&nbsp;translate)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;shear,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;LVecBase3f&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;shear,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;LVecBase3d&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;shear,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;shear,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;LVecBase3d&nbsp;translate,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix">decompose_matrix</a>(const&nbsp;LMatrix4f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;LVecBase3f&nbsp;translate,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-decompose_matrix_old_hpr"><strong>decompose_matrix_old_hpr</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompose_matrix_old_hpr">decompose_matrix_old_hpr</a>(const&nbsp;LMatrix3f&nbsp;mat,&nbsp;LVecBase3f&nbsp;scale,&nbsp;LVecBase3f&nbsp;shear,&nbsp;LVecBase3f&nbsp;hpr,&nbsp;int&nbsp;cs)<br>
+<a href="#-decompose_matrix_old_hpr">decompose_matrix_old_hpr</a>(const&nbsp;LMatrix3d&nbsp;mat,&nbsp;LVecBase3d&nbsp;scale,&nbsp;LVecBase3d&nbsp;shear,&nbsp;LVecBase3d&nbsp;hpr,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-decompressFile"><strong>decompressFile</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompress_file">decompress_file</a>(const&nbsp;Filename&nbsp;source,&nbsp;const&nbsp;Filename&nbsp;dest)</tt></dd></dl>
+ <dl><dt><a name="-decompressStream"><strong>decompressStream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompress_stream">decompress_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest)</tt></dd></dl>
+ <dl><dt><a name="-decompressString"><strong>decompressString</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompress_string">decompress_string</a>(str&nbsp;source)</tt></dd></dl>
+ <dl><dt><a name="-decompress_file"><strong>decompress_file</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompress_file">decompress_file</a>(const&nbsp;Filename&nbsp;source,&nbsp;const&nbsp;Filename&nbsp;dest)</tt></dd></dl>
+ <dl><dt><a name="-decompress_stream"><strong>decompress_stream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompress_stream">decompress_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest)</tt></dd></dl>
+ <dl><dt><a name="-decompress_string"><strong>decompress_string</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decompress_string">decompress_string</a>(str&nbsp;source)</tt></dd></dl>
+ <dl><dt><a name="-decryptFile"><strong>decryptFile</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decrypt_file">decrypt_file</a>(const&nbsp;Filename&nbsp;source,&nbsp;const&nbsp;Filename&nbsp;dest,&nbsp;str&nbsp;password)</tt></dd></dl>
+ <dl><dt><a name="-decryptStream"><strong>decryptStream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decrypt_stream">decrypt_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest,&nbsp;str&nbsp;password)</tt></dd></dl>
+ <dl><dt><a name="-decryptString"><strong>decryptString</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decrypt_string">decrypt_string</a>(str&nbsp;source,&nbsp;str&nbsp;password)</tt></dd></dl>
+ <dl><dt><a name="-decrypt_file"><strong>decrypt_file</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decrypt_file">decrypt_file</a>(const&nbsp;Filename&nbsp;source,&nbsp;const&nbsp;Filename&nbsp;dest,&nbsp;str&nbsp;password)</tt></dd></dl>
+ <dl><dt><a name="-decrypt_stream"><strong>decrypt_stream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decrypt_stream">decrypt_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest,&nbsp;str&nbsp;password)</tt></dd></dl>
+ <dl><dt><a name="-decrypt_string"><strong>decrypt_string</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-decrypt_string">decrypt_string</a>(str&nbsp;source,&nbsp;str&nbsp;password)</tt></dd></dl>
+ <dl><dt><a name="-deg2Rad"><strong>deg2Rad</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-deg_2_rad">deg_2_rad</a>(double&nbsp;f)<br>
+<a href="#-deg_2_rad">deg_2_rad</a>(float&nbsp;f)</tt></dd></dl>
+ <dl><dt><a name="-deg_2_rad"><strong>deg_2_rad</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-deg_2_rad">deg_2_rad</a>(double&nbsp;f)<br>
+<a href="#-deg_2_rad">deg_2_rad</a>(float&nbsp;f)</tt></dd></dl>
+ <dl><dt><a name="-encodeSRGBFloat"><strong>encodeSRGBFloat</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encode_sRGB_float">encode_sRGB_float</a>(int&nbsp;val)<br>
+<a href="#-encode_sRGB_float">encode_sRGB_float</a>(float&nbsp;val)</tt></dd></dl>
+ <dl><dt><a name="-encodeSRGBUchar"><strong>encodeSRGBUchar</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encode_sRGB_uchar">encode_sRGB_uchar</a>(int&nbsp;val)<br>
+<a href="#-encode_sRGB_uchar">encode_sRGB_uchar</a>(float&nbsp;val)</tt></dd></dl>
+ <dl><dt><a name="-encode_sRGB_float"><strong>encode_sRGB_float</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encode_sRGB_float">encode_sRGB_float</a>(int&nbsp;val)<br>
+<a href="#-encode_sRGB_float">encode_sRGB_float</a>(float&nbsp;val)</tt></dd></dl>
+ <dl><dt><a name="-encode_sRGB_uchar"><strong>encode_sRGB_uchar</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encode_sRGB_uchar">encode_sRGB_uchar</a>(int&nbsp;val)<br>
+<a href="#-encode_sRGB_uchar">encode_sRGB_uchar</a>(float&nbsp;val)</tt></dd></dl>
+ <dl><dt><a name="-encryptFile"><strong>encryptFile</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encrypt_file">encrypt_file</a>(const&nbsp;Filename&nbsp;source,&nbsp;const&nbsp;Filename&nbsp;dest,&nbsp;str&nbsp;password,&nbsp;str&nbsp;algorithm,&nbsp;int&nbsp;key_length,&nbsp;int&nbsp;iteration_count)</tt></dd></dl>
+ <dl><dt><a name="-encryptStream"><strong>encryptStream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encrypt_stream">encrypt_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest,&nbsp;str&nbsp;password,&nbsp;str&nbsp;algorithm,&nbsp;int&nbsp;key_length,&nbsp;int&nbsp;iteration_count)</tt></dd></dl>
+ <dl><dt><a name="-encryptString"><strong>encryptString</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encrypt_string">encrypt_string</a>(str&nbsp;source,&nbsp;str&nbsp;password,&nbsp;str&nbsp;algorithm,&nbsp;int&nbsp;key_length,&nbsp;int&nbsp;iteration_count)</tt></dd></dl>
+ <dl><dt><a name="-encrypt_file"><strong>encrypt_file</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encrypt_file">encrypt_file</a>(const&nbsp;Filename&nbsp;source,&nbsp;const&nbsp;Filename&nbsp;dest,&nbsp;str&nbsp;password,&nbsp;str&nbsp;algorithm,&nbsp;int&nbsp;key_length,&nbsp;int&nbsp;iteration_count)</tt></dd></dl>
+ <dl><dt><a name="-encrypt_stream"><strong>encrypt_stream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encrypt_stream">encrypt_stream</a>(istream&nbsp;source,&nbsp;ostream&nbsp;dest,&nbsp;str&nbsp;password,&nbsp;str&nbsp;algorithm,&nbsp;int&nbsp;key_length,&nbsp;int&nbsp;iteration_count)</tt></dd></dl>
+ <dl><dt><a name="-encrypt_string"><strong>encrypt_string</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-encrypt_string">encrypt_string</a>(str&nbsp;source,&nbsp;str&nbsp;password,&nbsp;str&nbsp;algorithm,&nbsp;int&nbsp;key_length,&nbsp;int&nbsp;iteration_count)</tt></dd></dl>
+ <dl><dt><a name="-errorToText"><strong>errorToText</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-error_to_text">error_to_text</a>(int&nbsp;err)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-error_to_text"><strong>error_to_text</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-error_to_text">error_to_text</a>(int&nbsp;err)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-formatColorSpace"><strong>formatColorSpace</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-format_color_space">format_color_space</a>(int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-formatCoordinateSystem"><strong>formatCoordinateSystem</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-format_coordinate_system">format_coordinate_system</a>(int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-format_color_space"><strong>format_color_space</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-format_color_space">format_color_space</a>(int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-format_coordinate_system"><strong>format_coordinate_system</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-format_coordinate_system">format_coordinate_system</a>(int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-genericReadDatagram"><strong>genericReadDatagram</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-generic_read_datagram">generic_read_datagram</a>(LMatrix3f&nbsp;result,&nbsp;DatagramIterator&nbsp;source)<br>
+<a href="#-generic_read_datagram">generic_read_datagram</a>(LMatrix3d&nbsp;result,&nbsp;DatagramIterator&nbsp;source)<br>
+<a href="#-generic_read_datagram">generic_read_datagram</a>(LMatrix4d&nbsp;result,&nbsp;DatagramIterator&nbsp;source)<br>
+<a href="#-generic_read_datagram">generic_read_datagram</a>(LMatrix4f&nbsp;result,&nbsp;DatagramIterator&nbsp;source)</tt></dd></dl>
+ <dl><dt><a name="-genericWriteDatagram"><strong>genericWriteDatagram</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-generic_write_datagram">generic_write_datagram</a>(Datagram&nbsp;dest,&nbsp;const&nbsp;LMatrix3d&nbsp;value)<br>
+<a href="#-generic_write_datagram">generic_write_datagram</a>(Datagram&nbsp;dest,&nbsp;const&nbsp;LMatrix3f&nbsp;value)<br>
+<a href="#-generic_write_datagram">generic_write_datagram</a>(Datagram&nbsp;dest,&nbsp;const&nbsp;LMatrix4d&nbsp;value)<br>
+<a href="#-generic_write_datagram">generic_write_datagram</a>(Datagram&nbsp;dest,&nbsp;const&nbsp;LMatrix4f&nbsp;value)</tt></dd></dl>
+ <dl><dt><a name="-generic_read_datagram"><strong>generic_read_datagram</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-generic_read_datagram">generic_read_datagram</a>(LMatrix3f&nbsp;result,&nbsp;DatagramIterator&nbsp;source)<br>
+<a href="#-generic_read_datagram">generic_read_datagram</a>(LMatrix3d&nbsp;result,&nbsp;DatagramIterator&nbsp;source)<br>
+<a href="#-generic_read_datagram">generic_read_datagram</a>(LMatrix4d&nbsp;result,&nbsp;DatagramIterator&nbsp;source)<br>
+<a href="#-generic_read_datagram">generic_read_datagram</a>(LMatrix4f&nbsp;result,&nbsp;DatagramIterator&nbsp;source)</tt></dd></dl>
+ <dl><dt><a name="-generic_write_datagram"><strong>generic_write_datagram</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-generic_write_datagram">generic_write_datagram</a>(Datagram&nbsp;dest,&nbsp;const&nbsp;LMatrix3d&nbsp;value)<br>
+<a href="#-generic_write_datagram">generic_write_datagram</a>(Datagram&nbsp;dest,&nbsp;const&nbsp;LMatrix3f&nbsp;value)<br>
+<a href="#-generic_write_datagram">generic_write_datagram</a>(Datagram&nbsp;dest,&nbsp;const&nbsp;LMatrix4d&nbsp;value)<br>
+<a href="#-generic_write_datagram">generic_write_datagram</a>(Datagram&nbsp;dest,&nbsp;const&nbsp;LMatrix4f&nbsp;value)</tt></dd></dl>
+ <dl><dt><a name="-getDefaultCoordinateSystem"><strong>getDefaultCoordinateSystem</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_default_coordinate_system">get_default_coordinate_system</a>()</tt></dd></dl>
+ <dl><dt><a name="-getModelPath"><strong>getModelPath</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_model_path">get_model_path</a>()</tt></dd></dl>
+ <dl><dt><a name="-getNetworkError"><strong>getNetworkError</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_network_error">get_network_error</a>()</tt></dd></dl>
+ <dl><dt><a name="-getPluginPath"><strong>getPluginPath</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_plugin_path">get_plugin_path</a>()</tt></dd></dl>
+ <dl><dt><a name="-getTIXMLDEFAULTENCODING"><strong>getTIXMLDEFAULTENCODING</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_TIXML_DEFAULT_ENCODING">get_TIXML_DEFAULT_ENCODING</a>()<br>
+&nbsp;<br>
+getter&nbsp;for&nbsp;TiXmlEncoding&nbsp;const&nbsp;TIXML_DEFAULT_ENCODING;</tt></dd></dl>
+ <dl><dt><a name="-getTIXMLMAJORVERSION"><strong>getTIXMLMAJORVERSION</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_TIXML_MAJOR_VERSION">get_TIXML_MAJOR_VERSION</a>()<br>
+&nbsp;<br>
+getter&nbsp;for&nbsp;int&nbsp;const&nbsp;TIXML_MAJOR_VERSION;</tt></dd></dl>
+ <dl><dt><a name="-getTIXMLMINORVERSION"><strong>getTIXMLMINORVERSION</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_TIXML_MINOR_VERSION">get_TIXML_MINOR_VERSION</a>()<br>
+&nbsp;<br>
+getter&nbsp;for&nbsp;int&nbsp;const&nbsp;TIXML_MINOR_VERSION;</tt></dd></dl>
+ <dl><dt><a name="-getTIXMLPATCHVERSION"><strong>getTIXMLPATCHVERSION</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_TIXML_PATCH_VERSION">get_TIXML_PATCH_VERSION</a>()<br>
+&nbsp;<br>
+getter&nbsp;for&nbsp;int&nbsp;const&nbsp;TIXML_PATCH_VERSION;</tt></dd></dl>
+ <dl><dt><a name="-getWriteError"><strong>getWriteError</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_write_error">get_write_error</a>()</tt></dd></dl>
+ <dl><dt><a name="-get_TIXML_DEFAULT_ENCODING"><strong>get_TIXML_DEFAULT_ENCODING</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_TIXML_DEFAULT_ENCODING">get_TIXML_DEFAULT_ENCODING</a>()<br>
+&nbsp;<br>
+getter&nbsp;for&nbsp;TiXmlEncoding&nbsp;const&nbsp;TIXML_DEFAULT_ENCODING;</tt></dd></dl>
+ <dl><dt><a name="-get_TIXML_MAJOR_VERSION"><strong>get_TIXML_MAJOR_VERSION</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_TIXML_MAJOR_VERSION">get_TIXML_MAJOR_VERSION</a>()<br>
+&nbsp;<br>
+getter&nbsp;for&nbsp;int&nbsp;const&nbsp;TIXML_MAJOR_VERSION;</tt></dd></dl>
+ <dl><dt><a name="-get_TIXML_MINOR_VERSION"><strong>get_TIXML_MINOR_VERSION</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_TIXML_MINOR_VERSION">get_TIXML_MINOR_VERSION</a>()<br>
+&nbsp;<br>
+getter&nbsp;for&nbsp;int&nbsp;const&nbsp;TIXML_MINOR_VERSION;</tt></dd></dl>
+ <dl><dt><a name="-get_TIXML_PATCH_VERSION"><strong>get_TIXML_PATCH_VERSION</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_TIXML_PATCH_VERSION">get_TIXML_PATCH_VERSION</a>()<br>
+&nbsp;<br>
+getter&nbsp;for&nbsp;int&nbsp;const&nbsp;TIXML_PATCH_VERSION;</tt></dd></dl>
+ <dl><dt><a name="-get_default_coordinate_system"><strong>get_default_coordinate_system</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_default_coordinate_system">get_default_coordinate_system</a>()</tt></dd></dl>
+ <dl><dt><a name="-get_model_path"><strong>get_model_path</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_model_path">get_model_path</a>()</tt></dd></dl>
+ <dl><dt><a name="-get_network_error"><strong>get_network_error</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_network_error">get_network_error</a>()</tt></dd></dl>
+ <dl><dt><a name="-get_plugin_path"><strong>get_plugin_path</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_plugin_path">get_plugin_path</a>()</tt></dd></dl>
+ <dl><dt><a name="-get_write_error"><strong>get_write_error</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-get_write_error">get_write_error</a>()</tt></dd></dl>
+ <dl><dt><a name="-handleSocketError"><strong>handleSocketError</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-handle_socket_error">handle_socket_error</a>()<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-handle_socket_error"><strong>handle_socket_error</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-handle_socket_error">handle_socket_error</a>()<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-hashPrcVariables"><strong>hashPrcVariables</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-hash_prc_variables">hash_prc_variables</a>(HashVal&nbsp;hash)</tt></dd></dl>
+ <dl><dt><a name="-hash_prc_variables"><strong>hash_prc_variables</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-hash_prc_variables">hash_prc_variables</a>(HashVal&nbsp;hash)</tt></dd></dl>
+ <dl><dt><a name="-headsUp"><strong>headsUp</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-heads_up">heads_up</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-heads_up"><strong>heads_up</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-heads_up">heads_up</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-heads_up">heads_up</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-heads_up">heads_up</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-invert"><strong>invert</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-invert">invert</a>(const&nbsp;LQuaternionf&nbsp;a)<br>
+<a href="#-invert">invert</a>(const&nbsp;LQuaterniond&nbsp;a)<br>
+<a href="#-invert">invert</a>(const&nbsp;LMatrix3d&nbsp;a)<br>
+<a href="#-invert">invert</a>(const&nbsp;LMatrix4f&nbsp;a)<br>
+<a href="#-invert">invert</a>(const&nbsp;LMatrix4d&nbsp;a)<br>
+<a href="#-invert">invert</a>(const&nbsp;LMatrix3f&nbsp;a)</tt></dd></dl>
+ <dl><dt><a name="-isRightHanded"><strong>isRightHanded</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-is_right_handed">is_right_handed</a>(int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-is_right_handed"><strong>is_right_handed</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-is_right_handed">is_right_handed</a>(int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-loadPrcFile"><strong>loadPrcFile</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-load_prc_file">load_prc_file</a>(const&nbsp;Filename&nbsp;filename)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;A&nbsp;convenience&nbsp;function&nbsp;for&nbsp;loading&nbsp;explicit&nbsp;prc&nbsp;files&nbsp;from&nbsp;a&nbsp;disk&nbsp;file&nbsp;or<br>
+&nbsp;*&nbsp;from&nbsp;within&nbsp;a&nbsp;multifile&nbsp;(via&nbsp;the&nbsp;virtual&nbsp;file&nbsp;system).&nbsp;&nbsp;Save&nbsp;the&nbsp;return<br>
+&nbsp;*&nbsp;value&nbsp;and&nbsp;pass&nbsp;it&nbsp;to&nbsp;<a href="#-unload_prc_file">unload_prc_file</a>()&nbsp;if&nbsp;you&nbsp;ever&nbsp;want&nbsp;to&nbsp;unload&nbsp;this&nbsp;file<br>
+&nbsp;*&nbsp;later.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;The&nbsp;filename&nbsp;is&nbsp;first&nbsp;searched&nbsp;along&nbsp;the&nbsp;default&nbsp;prc&nbsp;search&nbsp;path,&nbsp;and&nbsp;then<br>
+&nbsp;*&nbsp;also&nbsp;along&nbsp;the&nbsp;model&nbsp;path,&nbsp;for&nbsp;convenience.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;This&nbsp;function&nbsp;is&nbsp;defined&nbsp;in&nbsp;putil&nbsp;instead&nbsp;of&nbsp;in&nbsp;dtool&nbsp;with&nbsp;the&nbsp;read&nbsp;of&nbsp;the<br>
+&nbsp;*&nbsp;prc&nbsp;stuff,&nbsp;so&nbsp;that&nbsp;it&nbsp;can&nbsp;take&nbsp;advantage&nbsp;of&nbsp;the&nbsp;virtual&nbsp;file&nbsp;system&nbsp;(which<br>
+&nbsp;*&nbsp;is&nbsp;defined&nbsp;in&nbsp;express),&nbsp;and&nbsp;the&nbsp;model&nbsp;path&nbsp;(which&nbsp;is&nbsp;in&nbsp;putil).<br>
+&nbsp;*/<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;A&nbsp;convenience&nbsp;function&nbsp;for&nbsp;loading&nbsp;explicit&nbsp;prc&nbsp;files&nbsp;from&nbsp;a&nbsp;disk&nbsp;file&nbsp;or<br>
+&nbsp;*&nbsp;from&nbsp;within&nbsp;a&nbsp;multifile&nbsp;(via&nbsp;the&nbsp;virtual&nbsp;file&nbsp;system).&nbsp;&nbsp;Save&nbsp;the&nbsp;return<br>
+&nbsp;*&nbsp;value&nbsp;and&nbsp;pass&nbsp;it&nbsp;to&nbsp;<a href="#-unload_prc_file">unload_prc_file</a>()&nbsp;if&nbsp;you&nbsp;ever&nbsp;want&nbsp;to&nbsp;unload&nbsp;this&nbsp;file<br>
+&nbsp;*&nbsp;later.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;The&nbsp;filename&nbsp;is&nbsp;first&nbsp;searched&nbsp;along&nbsp;the&nbsp;default&nbsp;prc&nbsp;search&nbsp;path,&nbsp;and&nbsp;then<br>
+&nbsp;*&nbsp;also&nbsp;along&nbsp;the&nbsp;model&nbsp;path,&nbsp;for&nbsp;convenience.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;This&nbsp;function&nbsp;is&nbsp;defined&nbsp;in&nbsp;putil&nbsp;instead&nbsp;of&nbsp;in&nbsp;dtool&nbsp;with&nbsp;the&nbsp;read&nbsp;of&nbsp;the<br>
+&nbsp;*&nbsp;prc&nbsp;stuff,&nbsp;so&nbsp;that&nbsp;it&nbsp;can&nbsp;take&nbsp;advantage&nbsp;of&nbsp;the&nbsp;virtual&nbsp;file&nbsp;system&nbsp;(which<br>
+&nbsp;*&nbsp;is&nbsp;defined&nbsp;in&nbsp;express),&nbsp;and&nbsp;the&nbsp;model&nbsp;path&nbsp;(which&nbsp;is&nbsp;in&nbsp;putil).<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-loadPrcFileData"><strong>loadPrcFileData</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-load_prc_file_data">load_prc_file_data</a>(str&nbsp;name,&nbsp;str&nbsp;data)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;Another&nbsp;convenience&nbsp;function&nbsp;to&nbsp;load&nbsp;a&nbsp;prc&nbsp;file&nbsp;from&nbsp;an&nbsp;explicit&nbsp;string,<br>
+&nbsp;*&nbsp;which&nbsp;represents&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;prc&nbsp;file.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;The&nbsp;first&nbsp;parameter&nbsp;is&nbsp;an&nbsp;arbitrary&nbsp;name&nbsp;to&nbsp;assign&nbsp;to&nbsp;this&nbsp;in-memory&nbsp;prc<br>
+&nbsp;*&nbsp;file.&nbsp;&nbsp;Supply&nbsp;a&nbsp;filename&nbsp;if&nbsp;the&nbsp;data&nbsp;was&nbsp;read&nbsp;from&nbsp;a&nbsp;file,&nbsp;or&nbsp;use&nbsp;any&nbsp;other<br>
+&nbsp;*&nbsp;name&nbsp;that&nbsp;is&nbsp;meaningful&nbsp;to&nbsp;you.&nbsp;&nbsp;The&nbsp;name&nbsp;is&nbsp;only&nbsp;used&nbsp;when&nbsp;the&nbsp;set&nbsp;of<br>
+&nbsp;*&nbsp;loaded&nbsp;prc&nbsp;files&nbsp;is&nbsp;listed.<br>
+&nbsp;*/<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;Another&nbsp;convenience&nbsp;function&nbsp;to&nbsp;load&nbsp;a&nbsp;prc&nbsp;file&nbsp;from&nbsp;an&nbsp;explicit&nbsp;string,<br>
+&nbsp;*&nbsp;which&nbsp;represents&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;prc&nbsp;file.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;The&nbsp;first&nbsp;parameter&nbsp;is&nbsp;an&nbsp;arbitrary&nbsp;name&nbsp;to&nbsp;assign&nbsp;to&nbsp;this&nbsp;in-memory&nbsp;prc<br>
+&nbsp;*&nbsp;file.&nbsp;&nbsp;Supply&nbsp;a&nbsp;filename&nbsp;if&nbsp;the&nbsp;data&nbsp;was&nbsp;read&nbsp;from&nbsp;a&nbsp;file,&nbsp;or&nbsp;use&nbsp;any&nbsp;other<br>
+&nbsp;*&nbsp;name&nbsp;that&nbsp;is&nbsp;meaningful&nbsp;to&nbsp;you.&nbsp;&nbsp;The&nbsp;name&nbsp;is&nbsp;only&nbsp;used&nbsp;when&nbsp;the&nbsp;set&nbsp;of<br>
+&nbsp;*&nbsp;loaded&nbsp;prc&nbsp;files&nbsp;is&nbsp;listed.<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-load_prc_file"><strong>load_prc_file</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-load_prc_file">load_prc_file</a>(const&nbsp;Filename&nbsp;filename)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;A&nbsp;convenience&nbsp;function&nbsp;for&nbsp;loading&nbsp;explicit&nbsp;prc&nbsp;files&nbsp;from&nbsp;a&nbsp;disk&nbsp;file&nbsp;or<br>
+&nbsp;*&nbsp;from&nbsp;within&nbsp;a&nbsp;multifile&nbsp;(via&nbsp;the&nbsp;virtual&nbsp;file&nbsp;system).&nbsp;&nbsp;Save&nbsp;the&nbsp;return<br>
+&nbsp;*&nbsp;value&nbsp;and&nbsp;pass&nbsp;it&nbsp;to&nbsp;<a href="#-unload_prc_file">unload_prc_file</a>()&nbsp;if&nbsp;you&nbsp;ever&nbsp;want&nbsp;to&nbsp;unload&nbsp;this&nbsp;file<br>
+&nbsp;*&nbsp;later.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;The&nbsp;filename&nbsp;is&nbsp;first&nbsp;searched&nbsp;along&nbsp;the&nbsp;default&nbsp;prc&nbsp;search&nbsp;path,&nbsp;and&nbsp;then<br>
+&nbsp;*&nbsp;also&nbsp;along&nbsp;the&nbsp;model&nbsp;path,&nbsp;for&nbsp;convenience.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;This&nbsp;function&nbsp;is&nbsp;defined&nbsp;in&nbsp;putil&nbsp;instead&nbsp;of&nbsp;in&nbsp;dtool&nbsp;with&nbsp;the&nbsp;read&nbsp;of&nbsp;the<br>
+&nbsp;*&nbsp;prc&nbsp;stuff,&nbsp;so&nbsp;that&nbsp;it&nbsp;can&nbsp;take&nbsp;advantage&nbsp;of&nbsp;the&nbsp;virtual&nbsp;file&nbsp;system&nbsp;(which<br>
+&nbsp;*&nbsp;is&nbsp;defined&nbsp;in&nbsp;express),&nbsp;and&nbsp;the&nbsp;model&nbsp;path&nbsp;(which&nbsp;is&nbsp;in&nbsp;putil).<br>
+&nbsp;*/<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;A&nbsp;convenience&nbsp;function&nbsp;for&nbsp;loading&nbsp;explicit&nbsp;prc&nbsp;files&nbsp;from&nbsp;a&nbsp;disk&nbsp;file&nbsp;or<br>
+&nbsp;*&nbsp;from&nbsp;within&nbsp;a&nbsp;multifile&nbsp;(via&nbsp;the&nbsp;virtual&nbsp;file&nbsp;system).&nbsp;&nbsp;Save&nbsp;the&nbsp;return<br>
+&nbsp;*&nbsp;value&nbsp;and&nbsp;pass&nbsp;it&nbsp;to&nbsp;<a href="#-unload_prc_file">unload_prc_file</a>()&nbsp;if&nbsp;you&nbsp;ever&nbsp;want&nbsp;to&nbsp;unload&nbsp;this&nbsp;file<br>
+&nbsp;*&nbsp;later.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;The&nbsp;filename&nbsp;is&nbsp;first&nbsp;searched&nbsp;along&nbsp;the&nbsp;default&nbsp;prc&nbsp;search&nbsp;path,&nbsp;and&nbsp;then<br>
+&nbsp;*&nbsp;also&nbsp;along&nbsp;the&nbsp;model&nbsp;path,&nbsp;for&nbsp;convenience.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;This&nbsp;function&nbsp;is&nbsp;defined&nbsp;in&nbsp;putil&nbsp;instead&nbsp;of&nbsp;in&nbsp;dtool&nbsp;with&nbsp;the&nbsp;read&nbsp;of&nbsp;the<br>
+&nbsp;*&nbsp;prc&nbsp;stuff,&nbsp;so&nbsp;that&nbsp;it&nbsp;can&nbsp;take&nbsp;advantage&nbsp;of&nbsp;the&nbsp;virtual&nbsp;file&nbsp;system&nbsp;(which<br>
+&nbsp;*&nbsp;is&nbsp;defined&nbsp;in&nbsp;express),&nbsp;and&nbsp;the&nbsp;model&nbsp;path&nbsp;(which&nbsp;is&nbsp;in&nbsp;putil).<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-load_prc_file_data"><strong>load_prc_file_data</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-load_prc_file_data">load_prc_file_data</a>(str&nbsp;name,&nbsp;str&nbsp;data)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;Another&nbsp;convenience&nbsp;function&nbsp;to&nbsp;load&nbsp;a&nbsp;prc&nbsp;file&nbsp;from&nbsp;an&nbsp;explicit&nbsp;string,<br>
+&nbsp;*&nbsp;which&nbsp;represents&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;prc&nbsp;file.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;The&nbsp;first&nbsp;parameter&nbsp;is&nbsp;an&nbsp;arbitrary&nbsp;name&nbsp;to&nbsp;assign&nbsp;to&nbsp;this&nbsp;in-memory&nbsp;prc<br>
+&nbsp;*&nbsp;file.&nbsp;&nbsp;Supply&nbsp;a&nbsp;filename&nbsp;if&nbsp;the&nbsp;data&nbsp;was&nbsp;read&nbsp;from&nbsp;a&nbsp;file,&nbsp;or&nbsp;use&nbsp;any&nbsp;other<br>
+&nbsp;*&nbsp;name&nbsp;that&nbsp;is&nbsp;meaningful&nbsp;to&nbsp;you.&nbsp;&nbsp;The&nbsp;name&nbsp;is&nbsp;only&nbsp;used&nbsp;when&nbsp;the&nbsp;set&nbsp;of<br>
+&nbsp;*&nbsp;loaded&nbsp;prc&nbsp;files&nbsp;is&nbsp;listed.<br>
+&nbsp;*/<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;Another&nbsp;convenience&nbsp;function&nbsp;to&nbsp;load&nbsp;a&nbsp;prc&nbsp;file&nbsp;from&nbsp;an&nbsp;explicit&nbsp;string,<br>
+&nbsp;*&nbsp;which&nbsp;represents&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;prc&nbsp;file.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;The&nbsp;first&nbsp;parameter&nbsp;is&nbsp;an&nbsp;arbitrary&nbsp;name&nbsp;to&nbsp;assign&nbsp;to&nbsp;this&nbsp;in-memory&nbsp;prc<br>
+&nbsp;*&nbsp;file.&nbsp;&nbsp;Supply&nbsp;a&nbsp;filename&nbsp;if&nbsp;the&nbsp;data&nbsp;was&nbsp;read&nbsp;from&nbsp;a&nbsp;file,&nbsp;or&nbsp;use&nbsp;any&nbsp;other<br>
+&nbsp;*&nbsp;name&nbsp;that&nbsp;is&nbsp;meaningful&nbsp;to&nbsp;you.&nbsp;&nbsp;The&nbsp;name&nbsp;is&nbsp;only&nbsp;used&nbsp;when&nbsp;the&nbsp;set&nbsp;of<br>
+&nbsp;*&nbsp;loaded&nbsp;prc&nbsp;files&nbsp;is&nbsp;listed.<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-lookAt"><strong>lookAt</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-look_at">look_at</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-look_at"><strong>look_at</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-look_at">look_at</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd)<br>
+<a href="#-look_at">look_at</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;const&nbsp;LVector3d&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;const&nbsp;LVector3f&nbsp;up,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LQuaterniond&nbsp;quat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LQuaternionf&nbsp;quat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;fwd,&nbsp;int&nbsp;cs)<br>
+<a href="#-look_at">look_at</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;fwd,&nbsp;int&nbsp;cs)</tt></dd></dl>
+ <dl><dt><a name="-oldToNewHpr"><strong>oldToNewHpr</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-old_to_new_hpr">old_to_new_hpr</a>(const&nbsp;LVecBase3f&nbsp;old_hpr)<br>
+<a href="#-old_to_new_hpr">old_to_new_hpr</a>(const&nbsp;LVecBase3d&nbsp;old_hpr)</tt></dd></dl>
+ <dl><dt><a name="-old_to_new_hpr"><strong>old_to_new_hpr</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-old_to_new_hpr">old_to_new_hpr</a>(const&nbsp;LVecBase3f&nbsp;old_hpr)<br>
+<a href="#-old_to_new_hpr">old_to_new_hpr</a>(const&nbsp;LVecBase3d&nbsp;old_hpr)</tt></dd></dl>
+ <dl><dt><a name="-parseColorSpaceString"><strong>parseColorSpaceString</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-parse_color_space_string">parse_color_space_string</a>(str&nbsp;str)</tt></dd></dl>
+ <dl><dt><a name="-parseCoordinateSystemString"><strong>parseCoordinateSystemString</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-parse_coordinate_system_string">parse_coordinate_system_string</a>(str&nbsp;str)</tt></dd></dl>
+ <dl><dt><a name="-parse_color_space_string"><strong>parse_color_space_string</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-parse_color_space_string">parse_color_space_string</a>(str&nbsp;str)</tt></dd></dl>
+ <dl><dt><a name="-parse_coordinate_system_string"><strong>parse_coordinate_system_string</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-parse_coordinate_system_string">parse_coordinate_system_string</a>(str&nbsp;str)</tt></dd></dl>
+ <dl><dt><a name="-passwordHash"><strong>passwordHash</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-password_hash">password_hash</a>(str&nbsp;password,&nbsp;str&nbsp;salt,&nbsp;int&nbsp;iters,&nbsp;int&nbsp;keylen)</tt></dd></dl>
+ <dl><dt><a name="-password_hash"><strong>password_hash</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-password_hash">password_hash</a>(str&nbsp;password,&nbsp;str&nbsp;salt,&nbsp;int&nbsp;iters,&nbsp;int&nbsp;keylen)</tt></dd></dl>
+ <dl><dt><a name="-printXml"><strong>printXml</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-print_xml">print_xml</a>(TiXmlNode&nbsp;xnode)</tt></dd></dl>
+ <dl><dt><a name="-printXmlToFile"><strong>printXmlToFile</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-print_xml_to_file">print_xml_to_file</a>(const&nbsp;Filename&nbsp;filename,&nbsp;TiXmlNode&nbsp;xnode)</tt></dd></dl>
+ <dl><dt><a name="-print_xml"><strong>print_xml</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-print_xml">print_xml</a>(TiXmlNode&nbsp;xnode)</tt></dd></dl>
+ <dl><dt><a name="-print_xml_to_file"><strong>print_xml_to_file</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-print_xml_to_file">print_xml_to_file</a>(const&nbsp;Filename&nbsp;filename,&nbsp;TiXmlNode&nbsp;xnode)</tt></dd></dl>
+ <dl><dt><a name="-pyDecodeNodePathFromBamStream"><strong>pyDecodeNodePathFromBamStream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-py_decode_NodePath_from_bam_stream">py_decode_NodePath_from_bam_stream</a>(bytes&nbsp;data)</tt></dd></dl>
+ <dl><dt><a name="-pyDecodeNodePathFromBamStreamPersist"><strong>pyDecodeNodePathFromBamStreamPersist</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-py_decode_NodePath_from_bam_stream_persist">py_decode_NodePath_from_bam_stream_persist</a>(object&nbsp;unpickler,&nbsp;bytes&nbsp;data)</tt></dd></dl>
+ <dl><dt><a name="-pyDecodeTypedWritableFromBamStream"><strong>pyDecodeTypedWritableFromBamStream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-py_decode_TypedWritable_from_bam_stream">py_decode_TypedWritable_from_bam_stream</a>(object&nbsp;this_class,&nbsp;bytes&nbsp;data)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;This&nbsp;wrapper&nbsp;is&nbsp;defined&nbsp;as&nbsp;a&nbsp;global&nbsp;function&nbsp;to&nbsp;suit&nbsp;pickle's&nbsp;needs.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;This&nbsp;hooks&nbsp;into&nbsp;the&nbsp;native&nbsp;pickle&nbsp;and&nbsp;cPickle&nbsp;modules,&nbsp;but&nbsp;it&nbsp;cannot<br>
+&nbsp;*&nbsp;properly&nbsp;handle&nbsp;self-referential&nbsp;BAM&nbsp;objects.<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-pyDecodeTypedWritableFromBamStreamPersist"><strong>pyDecodeTypedWritableFromBamStreamPersist</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-py_decode_TypedWritable_from_bam_stream_persist">py_decode_TypedWritable_from_bam_stream_persist</a>(object&nbsp;unpickler,&nbsp;object&nbsp;this_class,&nbsp;bytes&nbsp;data)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;This&nbsp;wrapper&nbsp;is&nbsp;defined&nbsp;as&nbsp;a&nbsp;global&nbsp;function&nbsp;to&nbsp;suit&nbsp;pickle's&nbsp;needs.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;This&nbsp;is&nbsp;similar&nbsp;to&nbsp;py_decode_TypedWritable_from_bam_stream,&nbsp;but&nbsp;it&nbsp;provides<br>
+&nbsp;*&nbsp;additional&nbsp;support&nbsp;for&nbsp;the&nbsp;missing&nbsp;persistent-state&nbsp;object&nbsp;needed&nbsp;to<br>
+&nbsp;*&nbsp;properly&nbsp;support&nbsp;self-referential&nbsp;BAM&nbsp;objects&nbsp;written&nbsp;to&nbsp;the&nbsp;pickle&nbsp;stream.<br>
+&nbsp;*&nbsp;This&nbsp;hooks&nbsp;into&nbsp;the&nbsp;pickle&nbsp;and&nbsp;cPickle&nbsp;modules&nbsp;implemented&nbsp;in<br>
+&nbsp;*&nbsp;direct/src/stdpy.<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-py_decode_NodePath_from_bam_stream"><strong>py_decode_NodePath_from_bam_stream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-py_decode_NodePath_from_bam_stream">py_decode_NodePath_from_bam_stream</a>(bytes&nbsp;data)</tt></dd></dl>
+ <dl><dt><a name="-py_decode_NodePath_from_bam_stream_persist"><strong>py_decode_NodePath_from_bam_stream_persist</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-py_decode_NodePath_from_bam_stream_persist">py_decode_NodePath_from_bam_stream_persist</a>(object&nbsp;unpickler,&nbsp;bytes&nbsp;data)</tt></dd></dl>
+ <dl><dt><a name="-py_decode_TypedWritable_from_bam_stream"><strong>py_decode_TypedWritable_from_bam_stream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-py_decode_TypedWritable_from_bam_stream">py_decode_TypedWritable_from_bam_stream</a>(object&nbsp;this_class,&nbsp;bytes&nbsp;data)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;This&nbsp;wrapper&nbsp;is&nbsp;defined&nbsp;as&nbsp;a&nbsp;global&nbsp;function&nbsp;to&nbsp;suit&nbsp;pickle's&nbsp;needs.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;This&nbsp;hooks&nbsp;into&nbsp;the&nbsp;native&nbsp;pickle&nbsp;and&nbsp;cPickle&nbsp;modules,&nbsp;but&nbsp;it&nbsp;cannot<br>
+&nbsp;*&nbsp;properly&nbsp;handle&nbsp;self-referential&nbsp;BAM&nbsp;objects.<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-py_decode_TypedWritable_from_bam_stream_persist"><strong>py_decode_TypedWritable_from_bam_stream_persist</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-py_decode_TypedWritable_from_bam_stream_persist">py_decode_TypedWritable_from_bam_stream_persist</a>(object&nbsp;unpickler,&nbsp;object&nbsp;this_class,&nbsp;bytes&nbsp;data)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;This&nbsp;wrapper&nbsp;is&nbsp;defined&nbsp;as&nbsp;a&nbsp;global&nbsp;function&nbsp;to&nbsp;suit&nbsp;pickle's&nbsp;needs.<br>
+&nbsp;*<br>
+&nbsp;*&nbsp;This&nbsp;is&nbsp;similar&nbsp;to&nbsp;py_decode_TypedWritable_from_bam_stream,&nbsp;but&nbsp;it&nbsp;provides<br>
+&nbsp;*&nbsp;additional&nbsp;support&nbsp;for&nbsp;the&nbsp;missing&nbsp;persistent-state&nbsp;object&nbsp;needed&nbsp;to<br>
+&nbsp;*&nbsp;properly&nbsp;support&nbsp;self-referential&nbsp;BAM&nbsp;objects&nbsp;written&nbsp;to&nbsp;the&nbsp;pickle&nbsp;stream.<br>
+&nbsp;*&nbsp;This&nbsp;hooks&nbsp;into&nbsp;the&nbsp;pickle&nbsp;and&nbsp;cPickle&nbsp;modules&nbsp;implemented&nbsp;in<br>
+&nbsp;*&nbsp;direct/src/stdpy.<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-rad2Deg"><strong>rad2Deg</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-rad_2_deg">rad_2_deg</a>(double&nbsp;f)<br>
+<a href="#-rad_2_deg">rad_2_deg</a>(float&nbsp;f)</tt></dd></dl>
+ <dl><dt><a name="-rad_2_deg"><strong>rad_2_deg</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-rad_2_deg">rad_2_deg</a>(double&nbsp;f)<br>
+<a href="#-rad_2_deg">rad_2_deg</a>(float&nbsp;f)</tt></dd></dl>
+ <dl><dt><a name="-readXmlStream"><strong>readXmlStream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-read_xml_stream">read_xml_stream</a>(istream&nbsp;in)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;Reads&nbsp;an&nbsp;XML&nbsp;document&nbsp;from&nbsp;the&nbsp;indicated&nbsp;stream.<br>
+&nbsp;*&nbsp;@returns&nbsp;the&nbsp;document,&nbsp;or&nbsp;NULL&nbsp;on&nbsp;error.<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-read_xml_stream"><strong>read_xml_stream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-read_xml_stream">read_xml_stream</a>(istream&nbsp;in)<br>
+&nbsp;<br>
+/**<br>
+&nbsp;*&nbsp;Reads&nbsp;an&nbsp;XML&nbsp;document&nbsp;from&nbsp;the&nbsp;indicated&nbsp;stream.<br>
+&nbsp;*&nbsp;@returns&nbsp;the&nbsp;document,&nbsp;or&nbsp;NULL&nbsp;on&nbsp;error.<br>
+&nbsp;*/</tt></dd></dl>
+ <dl><dt><a name="-rotateTo"><strong>rotateTo</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-rotate_to">rotate_to</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;a,&nbsp;const&nbsp;LVector3f&nbsp;b)<br>
+<a href="#-rotate_to">rotate_to</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;a,&nbsp;const&nbsp;LVector3f&nbsp;b)<br>
+<a href="#-rotate_to">rotate_to</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;a,&nbsp;const&nbsp;LVector3d&nbsp;b)<br>
+<a href="#-rotate_to">rotate_to</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;a,&nbsp;const&nbsp;LVector3d&nbsp;b)</tt></dd></dl>
+ <dl><dt><a name="-rotate_to"><strong>rotate_to</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-rotate_to">rotate_to</a>(LMatrix3f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;a,&nbsp;const&nbsp;LVector3f&nbsp;b)<br>
+<a href="#-rotate_to">rotate_to</a>(LMatrix4f&nbsp;mat,&nbsp;const&nbsp;LVector3f&nbsp;a,&nbsp;const&nbsp;LVector3f&nbsp;b)<br>
+<a href="#-rotate_to">rotate_to</a>(LMatrix4d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;a,&nbsp;const&nbsp;LVector3d&nbsp;b)<br>
+<a href="#-rotate_to">rotate_to</a>(LMatrix3d&nbsp;mat,&nbsp;const&nbsp;LVector3d&nbsp;a,&nbsp;const&nbsp;LVector3d&nbsp;b)</tt></dd></dl>
+ <dl><dt><a name="-sin"><strong>sin</strong></a>(x, /)</dt><dd><tt>Return&nbsp;the&nbsp;sine&nbsp;of&nbsp;x&nbsp;(measured&nbsp;in&nbsp;radians).</tt></dd></dl>
+ <dl><dt><a name="-transpose"><strong>transpose</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-transpose">transpose</a>(const&nbsp;LMatrix3d&nbsp;a)<br>
+<a href="#-transpose">transpose</a>(const&nbsp;LMatrix4d&nbsp;a)<br>
+<a href="#-transpose">transpose</a>(const&nbsp;LMatrix3f&nbsp;a)<br>
+<a href="#-transpose">transpose</a>(const&nbsp;LMatrix4f&nbsp;a)</tt></dd></dl>
+ <dl><dt><a name="-unloadPrcFile"><strong>unloadPrcFile</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-unload_prc_file">unload_prc_file</a>(ConfigPage&nbsp;page)</tt></dd></dl>
+ <dl><dt><a name="-unload_prc_file"><strong>unload_prc_file</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-unload_prc_file">unload_prc_file</a>(ConfigPage&nbsp;page)</tt></dd></dl>
+ <dl><dt><a name="-writeXmlStream"><strong>writeXmlStream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-write_xml_stream">write_xml_stream</a>(ostream&nbsp;out,&nbsp;TiXmlDocument&nbsp;doc)</tt></dd></dl>
+ <dl><dt><a name="-write_xml_stream"><strong>write_xml_stream</strong></a>(...)</dt><dd><tt>C++&nbsp;Interface:<br>
+<a href="#-write_xml_stream">write_xml_stream</a>(ostream&nbsp;out,&nbsp;TiXmlDocument&nbsp;doc)</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ATSDown</strong> = 1<br>
+<strong>ATSNone</strong> = 0<br>
+<strong>ATSPad</strong> = 3<br>
+<strong>ATSUnspecified</strong> = 4<br>
+<strong>ATSUp</strong> = 2<br>
+<strong>ATS_down</strong> = 1<br>
+<strong>ATS_none</strong> = 0<br>
+<strong>ATS_pad</strong> = 3<br>
+<strong>ATS_unspecified</strong> = 4<br>
+<strong>ATS_up</strong> = 2<br>
+<strong>BlackOnWhite</strong> = 5<br>
+<strong>CSDefault</strong> = 0<br>
+<strong>CSInvalid</strong> = 5<br>
+<strong>CSLinear</strong> = 1<br>
+<strong>CSSRGB</strong> = 2<br>
+<strong>CSScRGB</strong> = 3<br>
+<strong>CSUnspecified</strong> = 0<br>
+<strong>CSYupLeft</strong> = 4<br>
+<strong>CSYupRight</strong> = 2<br>
+<strong>CSZupLeft</strong> = 3<br>
+<strong>CSZupRight</strong> = 1<br>
+<strong>CS_default</strong> = 0<br>
+<strong>CS_invalid</strong> = 5<br>
+<strong>CS_linear</strong> = 1<br>
+<strong>CS_sRGB</strong> = 2<br>
+<strong>CS_scRGB</strong> = 3<br>
+<strong>CS_unspecified</strong> = 0<br>
+<strong>CS_yup_left</strong> = 4<br>
+<strong>CS_yup_right</strong> = 2<br>
+<strong>CS_zup_left</strong> = 3<br>
+<strong>CS_zup_right</strong> = 1<br>
+<strong>Dtool_PyNativeInterface</strong> = 1<br>
+<strong>ENDPUBLISH</strong> = '__end_publish'<br>
+<strong>END_PUBLISH</strong> = '__end_publish'<br>
+<strong>EUEof</strong> = 6<br>
+<strong>EUErrorAbort</strong> = -1<br>
+<strong>EUErrorFileEmpty</strong> = -2<br>
+<strong>EUErrorFileInvalid</strong> = -3<br>
+<strong>EUErrorHttpGatewayTimeout</strong> = -71<br>
+<strong>EUErrorHttpProxyAuthentication</strong> = -73<br>
+<strong>EUErrorHttpServerTimeout</strong> = -70<br>
+<strong>EUErrorHttpServiceUnavailable</strong> = -72<br>
+<strong>EUErrorInvalidChecksum</strong> = -4<br>
+<strong>EUErrorNetworkBufferOverflow</strong> = -41<br>
+<strong>EUErrorNetworkDead</strong> = -30<br>
+<strong>EUErrorNetworkDisconnected</strong> = -32<br>
+<strong>EUErrorNetworkDisconnectedLocally</strong> = -40<br>
+<strong>EUErrorNetworkDiskQuotaExceeded</strong> = -42<br>
+<strong>EUErrorNetworkNoData</strong> = -34<br>
+<strong>EUErrorNetworkRemoteHostDisconnected</strong> = -50<br>
+<strong>EUErrorNetworkRemoteHostDown</strong> = -51<br>
+<strong>EUErrorNetworkRemoteHostNoResponse</strong> = -54<br>
+<strong>EUErrorNetworkRemoteHostNotFound</strong> = -53<br>
+<strong>EUErrorNetworkRemoteHostUnreachable</strong> = -52<br>
+<strong>EUErrorNetworkTimeout</strong> = -33<br>
+<strong>EUErrorNetworkUnreachable</strong> = -31<br>
+<strong>EUErrorWriteDiskFault</strong> = -66<br>
+<strong>EUErrorWriteDiskFull</strong> = -63<br>
+<strong>EUErrorWriteDiskNotFound</strong> = -64<br>
+<strong>EUErrorWriteDiskSectorNotFound</strong> = -65<br>
+<strong>EUErrorWriteFileRename</strong> = -67<br>
+<strong>EUErrorWriteOutOfFiles</strong> = -60<br>
+<strong>EUErrorWriteOutOfMemory</strong> = -61<br>
+<strong>EUErrorWriteSharingViolation</strong> = -62<br>
+<strong>EUErrorZlib</strong> = -80<br>
+<strong>EUHttpRedirect</strong> = 7<br>
+<strong>EUNetworkNoData</strong> = 5<br>
+<strong>EUOk</strong> = 2<br>
+<strong>EUSuccess</strong> = 1<br>
+<strong>EUWrite</strong> = 3<br>
+<strong>EUWriteRam</strong> = 4<br>
+<strong>EU_eof</strong> = 6<br>
+<strong>EU_error_abort</strong> = -1<br>
+<strong>EU_error_file_empty</strong> = -2<br>
+<strong>EU_error_file_invalid</strong> = -3<br>
+<strong>EU_error_http_gateway_timeout</strong> = -71<br>
+<strong>EU_error_http_proxy_authentication</strong> = -73<br>
+<strong>EU_error_http_server_timeout</strong> = -70<br>
+<strong>EU_error_http_service_unavailable</strong> = -72<br>
+<strong>EU_error_invalid_checksum</strong> = -4<br>
+<strong>EU_error_network_buffer_overflow</strong> = -41<br>
+<strong>EU_error_network_dead</strong> = -30<br>
+<strong>EU_error_network_disconnected</strong> = -32<br>
+<strong>EU_error_network_disconnected_locally</strong> = -40<br>
+<strong>EU_error_network_disk_quota_exceeded</strong> = -42<br>
+<strong>EU_error_network_no_data</strong> = -34<br>
+<strong>EU_error_network_remote_host_disconnected</strong> = -50<br>
+<strong>EU_error_network_remote_host_down</strong> = -51<br>
+<strong>EU_error_network_remote_host_no_response</strong> = -54<br>
+<strong>EU_error_network_remote_host_not_found</strong> = -53<br>
+<strong>EU_error_network_remote_host_unreachable</strong> = -52<br>
+<strong>EU_error_network_timeout</strong> = -33<br>
+<strong>EU_error_network_unreachable</strong> = -31<br>
+<strong>EU_error_write_disk_fault</strong> = -66<br>
+<strong>EU_error_write_disk_full</strong> = -63<br>
+<strong>EU_error_write_disk_not_found</strong> = -64<br>
+<strong>EU_error_write_disk_sector_not_found</strong> = -65<br>
+<strong>EU_error_write_file_rename</strong> = -67<br>
+<strong>EU_error_write_out_of_files</strong> = -60<br>
+<strong>EU_error_write_out_of_memory</strong> = -61<br>
+<strong>EU_error_write_sharing_violation</strong> = -62<br>
+<strong>EU_error_zlib</strong> = -80<br>
+<strong>EU_http_redirect</strong> = 7<br>
+<strong>EU_network_no_data</strong> = 5<br>
+<strong>EU_ok</strong> = 2<br>
+<strong>EU_success</strong> = 1<br>
+<strong>EU_write</strong> = 3<br>
+<strong>EU_write_ram</strong> = 4<br>
+<strong>HCCUT</strong> = 1<br>
+<strong>HCFREE</strong> = 2<br>
+<strong>HCG1</strong> = 3<br>
+<strong>HCSMOOTH</strong> = 4<br>
+<strong>HC_CUT</strong> = 1<br>
+<strong>HC_FREE</strong> = 2<br>
+<strong>HC_G1</strong> = 3<br>
+<strong>HC_SMOOTH</strong> = 4<br>
+<strong>LNTFade</strong> = 1<br>
+<strong>LNTPop</strong> = 0<br>
+<strong>LNT_fade</strong> = 1<br>
+<strong>LNT_pop</strong> = 0<br>
+<strong>NSDebug</strong> = 2<br>
+<strong>NSError</strong> = 5<br>
+<strong>NSFatal</strong> = 6<br>
+<strong>NSInfo</strong> = 3<br>
+<strong>NSSpam</strong> = 1<br>
+<strong>NSUnspecified</strong> = 0<br>
+<strong>NSWarning</strong> = 4<br>
+<strong>NS_debug</strong> = 2<br>
+<strong>NS_error</strong> = 5<br>
+<strong>NS_fatal</strong> = 6<br>
+<strong>NS_info</strong> = 3<br>
+<strong>NS_spam</strong> = 1<br>
+<strong>NS_unspecified</strong> = 0<br>
+<strong>NS_warning</strong> = 4<br>
+<strong>NameConfirm</strong> = 4<br>
+<strong>PCTHPR</strong> = 2<br>
+<strong>PCTNONE</strong> = 0<br>
+<strong>PCTT</strong> = 3<br>
+<strong>PCTXYZ</strong> = 1<br>
+<strong>PCT_HPR</strong> = 2<br>
+<strong>PCT_NONE</strong> = 0<br>
+<strong>PCT_T</strong> = 3<br>
+<strong>PCT_XYZ</strong> = 1<br>
+<strong>Plain</strong> = 1<br>
+<strong>ScreenPrompt</strong> = 3<br>
+<strong>ScreenTitle</strong> = 2<br>
+<strong>TINYXMLINCLUDED</strong> = ''<br>
+<strong>TINYXML_INCLUDED</strong> = ''<br>
+<strong>TIXMLENCODINGLEGACY</strong> = 2<br>
+<strong>TIXMLENCODINGUNKNOWN</strong> = 0<br>
+<strong>TIXMLENCODINGUTF8</strong> = 1<br>
+<strong>TIXMLSAFE</strong> = ''<br>
+<strong>TIXMLSNPRINTF</strong> = '_snprintf_s'<br>
+<strong>TIXMLSSCANF</strong> = 'sscanf_s'<br>
+<strong>TIXMLSTRING</strong> = 'std::string'<br>
+<strong>TIXML_ENCODING_LEGACY</strong> = 2<br>
+<strong>TIXML_ENCODING_UNKNOWN</strong> = 0<br>
+<strong>TIXML_ENCODING_UTF8</strong> = 1<br>
+<strong>TIXML_SAFE</strong> = ''<br>
+<strong>TIXML_SNPRINTF</strong> = '_snprintf_s'<br>
+<strong>TIXML_SSCANF</strong> = 'sscanf_s'<br>
+<strong>TIXML_STRING</strong> = 'std::string'<br>
+<strong>TPHigh</strong> = 2<br>
+<strong>TPLow</strong> = 0<br>
+<strong>TPNormal</strong> = 1<br>
+<strong>TPUrgent</strong> = 3<br>
+<strong>TP_high</strong> = 2<br>
+<strong>TP_low</strong> = 0<br>
+<strong>TP_normal</strong> = 1<br>
+<strong>TP_urgent</strong> = 3<br>
+<strong>ZUp</strong> = 2<br>
+<strong>globalClock</strong> = &lt;panda3d.core.ClockObject object&gt;<br>
+<strong>pi</strong> = 3.141592653589793</td></tr></table>
+</body></html>
