@@ -1,37 +1,65 @@
-# Installation Instructions
+ # Vivarium Sim Build Instructions
 
-This file will walk through the full steps and any nuances for installing the requirements of this project.  
+ ## Building the Project
 
+ 1. Open the root directory of the project (`src/`) in your terminal.
+ 2. Run the following command:
+    ```bash
+    ppython setup.py build_apps
+    ```
+ 3. The project will be built for Linux, Mac, and Windows. The output will be located in a new directory called `build`.
 
-Firstly, requirements.txt contains all requirements needed to run this project. The core ones are:
+ ---
 
-1) Panda3D (the graphics engine we are using)
-2) numpy (for maths)
-3) webcolors (a package used to convert (r,g,b,a) to "string-color-name")
-4) matplotlib (used for graphing data)
+ ## Common Debugging Tips
 
-Dev Docs:
-1) type-panda3d (a developer requirement for using vs code to auto fill type documentation)
-2) pydoctor (used for building documentation)
+ - **Ensure Panda3D is Installed**  
+   Verify that Panda3D is correctly installed in your environment. You can check this by running:
+   ```bash
+   ppython -m pip show panda3d
+   ```
+   If it’s not installed, add it using:
+   ```bash
+   ppython -m pip install panda3d
+   ```
 
-These can all be installed via:
-```bash
-pip install -r ./requirements.txt
-```
+ - **Check Your Python Version**  
+   The project is designed to run with the version of Python bundled with Panda3D (`ppython`). Ensure you are using `ppython` for all commands to avoid conflicts with your system's default Python installation.
 
-This project was developed on and for python 3.7 and Panda3D 1.10.15
+ - **Missing Dependencies**  
+   If the build process fails due to missing dependencies, install them using:
+   ```bash
+   ppython -m pip install -r requirements.txt
+   ```
 
+ - **Verbose Output**  
+   For more detailed output during the build process, use the `--verbose` flag:
+   ```bash
+   ppython setup.py build_apps --verbose
+   ```
 
-## alternate installation
-Alternatively instead of pip panda3d may be installed with its own version of python via the installer, if pip does not work try this.
+ - **Clean Build**  
+   If you encounter persistent issues, perform a clean build by deleting the `build/` directory and re-running the build command.
 
-### Panda3D version
-sdk-1-10-15  
-python 3.7  
-installer: https://www.panda3d.org/download/sdk-1-10-15/    
+ ---
 
-This installer will create a new version of python renamed as ppython and auto added to your path, to install all the depenancies you will then run
-```bash
-ppython -m pip install -r ./requirments.txt
-```
-which will install all remaining requirements to the panda3d copy of python 3.7 and then it will be ready to run.
+ ## Documentation Notes
+
+ This project uses **pydoctor** for generating developer documentation. However, **do not include pydoctor in `requirements.txt`**, as it will cause the build process to fail. You can install pydoctor manually if needed for documentation generation:
+ ```bash
+ ppython -m pip install pydoctor
+ ```
+
+ To generate documentation:
+ 1. Navigate to the root directory of the project.
+ 2. Run the following command:
+    ```bash
+    ppython -m pydoctor --make-html --project-name VivariumSim --html-output docs
+    ```
+ 3. The generated documentation will be located in the `docs/` directory.
+
+ ---
+
+ ## Additional Resources
+
+ - [Panda3D Documentation](https://docs.panda3d.org/)
