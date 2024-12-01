@@ -22,7 +22,7 @@ class RoundManager:
         self.round_count=0 #how many epoachs of all the phases have run
         self.population_cap = population_cap
         self.phase_start_time = time.time()
-        self.phase_time_limit_seconds = 120
+        self.phase_time_limit_seconds = 30
         
     def is_no_more_food(self):
         """is there any food left on the map
@@ -32,14 +32,24 @@ class RoundManager:
         """
         return len(Food.foods)==0
     
+    def all_alive_critters_are_home(self):
+        """if all critters taht were not eated already returned home"""
+        val = all(critter.at_city or critter.eaten for critter in Critter.critters)
+        #print(f"all eaten or home: {val}")
+        return val
+    
+    def get_phase_time(self):
+        """get the amount of time in seconds since the start oof this round"""
+        return time.time() - self.phase_start_time
+    
     def is_phase_over_the_time_limit(self):
-        return time.time() - self.phase_start_time > self.phase_time_limit_seconds
+        return self.get_phase_time() > self.phase_time_limit_seconds
     
     def is_simulation_phase_done(self):
         """is it time to end the simulation phase
         sim phase ends when there is no more food or time as ran out
         """
-        return (self.is_no_more_food() or self.is_phase_over_the_time_limit()) and self.current_phase_index == 1
+        return (self.is_no_more_food() or self.is_phase_over_the_time_limit() or self.all_alive_critters_are_home()) and self.current_phase_index == 1
     
     def is_all_critters_at_home(self):
         return all(critter.at_city for critter in Critter.critters)
@@ -50,7 +60,7 @@ class RoundManager:
         Returns:
             _type_: _description_
         """
-        return (self.is_all_critters_at_home() or self.is_phase_over_the_time_limit()) and self.current_phase_index == 2
+        return (self.all_alive_critters_are_home() or self.get_phase_time() > self.phase_time_limit_seconds/5) and self.current_phase_index == 2
     
     def is_reproduction_phase_done(self):
         return self.current_phase_index == 3

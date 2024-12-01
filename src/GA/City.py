@@ -34,6 +34,8 @@ class City(Entity):
         self.city_bounds_radius = city_bounds_radius
         self.get_rand_color() #update if none
         self.base=base
+        self.can_be_eaten = False
+        self.has_been_initialized = False
         
     @staticmethod
     def remove_all_cities():

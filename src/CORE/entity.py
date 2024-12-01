@@ -1,6 +1,7 @@
 from direct.showbase.DirectObject import DirectObject
 from direct.task import Task
 from panda3d.core import Vec3
+from GA.Gene import Gene
 import numpy as np
 from direct.showbase.ShowBaseGlobal import globalClock
 from panda3d.bullet import BulletBoxShape,BulletRigidBodyNode
@@ -12,7 +13,7 @@ class Entity(DirectObject):
     """the parent class of anything in the world that can move and interact"""
     entities = []
     
-    def __init__(self, base, model="./assets/models/critter.obj", node=None,id=None,color=None,body_np=None,position=(0,0,0)):
+    def __init__(self, base, model="./assets/models/critter.obj", node=None,id=None,color=None,body_np=None,position=(0,0,0), genes=None):
         """the base entity class
 
         Args:
@@ -33,13 +34,73 @@ class Entity(DirectObject):
         self.position = position
         self.spawned=False
         self.model=model
-        self.speed=100
+        self.speed=100 #default
         self.children = []
         self.move_task_ref = None
+        self.can_be_eaten = True
         
         self.currentPath = [] #an array of the current path of vector3 nodes to follow
         self.currentDirection = (0,0,0)
         self.currentGoal = (0,0,0)
+        
+        self.food_eaten = 0
+        self.enemiesEaten = 0
+        
+        self.genes = genes if genes is not None else [
+            Gene("Strength", .5, min_value=0.5, max_value=2.0),
+            
+            Gene("Jump Strength", 1.1, min_value=1, max_value=5.0),
+            Gene("Speed", 1.1, min_value=1, max_value=5.0),
+            Gene("Jump Chance", .5, min_value=0, max_value=100),
+            Gene("Random Motion Chance", 1, min_value=0, max_value=100),
+            Gene("Random Motion -X Strength", .1, min_value=.1, max_value=10),
+            Gene("Random Motion +X Strength", .1, min_value=.1, max_value=10),
+            Gene("Random Motion -Y Strength", .1, min_value=.1, max_value=10),
+            Gene("Random Motion +Y Strength", .1, min_value=.1, max_value=10),
+            Gene("Random Motion -Z Strength", .1, min_value=.1, max_value=10),
+            Gene("Random Motion +Z Strength", .1, min_value=.1, max_value=10),
+            
+            Gene("Max Food", .7, min_value=.7, max_value=10), # how much can this critter eat before they must return home
+            Gene("Closest Food First", .5, min_value=0, max_value=1), #how often does this critter prioritize the closest food 
+            Gene("Random Food First", .5, min_value=0, max_value=1), #how often does this critter prioritize the closest food 
+            Gene("Checks Eaten", .5, min_value=0, max_value=1), #how often does this critter check if the food is eaten before deciding to go to it?
+            Gene("Close Threshold", 30, min_value=10, max_value=500), # how far can a food be for this critter to be okay with it
+            Gene("Change Mind Chance", .0001, min_value=0, max_value=.1, mutation_step=.0002), # how often does this critter change its mind on its goal?
+        
+            Gene("Eat Other Tribes Chance", .0001, min_value=0, max_value=1, mutation_step=.001), #how often does this critter try to eat enemies
+        
+            Gene("Cannibalism Chance", .0001, min_value=0, max_value=1, mutation_step=.001), # how often does this critter eat its allies
+            Gene("Cannibalism Wait", 3, min_value=0, max_value=100, mutation_step=3), #on avg how long will they wait before turning to cannibalism
+            Gene("Smart Cannibalism", .1, min_value=0, max_value=1, mutation_step=.01), # less likely to target critters with more food than it can carry
+            
+            
+            Gene("x-nest-offset", 0, min_value=-200, max_value=200, mutation_step=100), # what offset from the nest does this critter like to wait at
+            Gene("y-nest-offset", 0, min_value=-200, max_value=200, mutation_step=100), # what offset from the nest does this critter like to wait at
+        ]  # Default to a strength gene
+        
+        self.apply_all_genes()
+        self.eaten=False
+        self.times_eaten = 0
+        self.max_times_eaten = 1
+        
+    def eat(self):
+        """simulate a critter eating this food
+        
+        return true if allowed to eat
+        return false otherwise
+        """
+        from GA.Corpse import Corpse
+        
+        if(self.times_eaten >= self.max_times_eaten or not self.can_be_eaten):
+            return False
+        
+        self.times_eaten+=1
+        if(self.times_eaten >= self.max_times_eaten):
+            self.eaten=True
+            self.remove()
+            
+            
+        return True
     
     @staticmethod
     def get_entities():
@@ -73,7 +134,7 @@ class Entity(DirectObject):
         """
         try:
             list.remove(entity)
-            print(f"Entity {entity} removed successfully.")
+            #print(f"Entity {entity} removed successfully.")
         except ValueError:
             print(f"Entity {entity} not found in the list.")
     
@@ -102,22 +163,45 @@ class Entity(DirectObject):
         if(self.move_task_ref != None):
             self.base.taskMgr.remove(self.move_task_ref)
                 
-    def move_to(self,vec2):
-        """move from pos to target vec2 over s seconds
+    def move_to(self,vec3):
+        """move from pos to target vec3 over s seconds
 
         Args:
-            vec2 (vec2): vector2
+            vec3 (vec3): vector3
         """
-        pos = vec2
-        if(hasattr(vec2,"get_pos")):
-            pos = vec2.get_pos()
+        pos = vec3
+        if(hasattr(vec3,"get_pos")):
+            pos = vec3.get_pos()
         
         self.currentGoal=Vec3(pos)
         self.reset_move_task()
         
-        self.move_task_ref = self.base.task_mgr.add(self.move_task, f"entity{self.id}-move-task-to{vec2}")
+        self.move_task_ref = self.base.task_mgr.add(self.move_task, f"entity{self.id}-move-task-to{vec3}")
         
-    def dist_to_point(self, point, threshold=10):
+    def distance(self,point):
+        """get the 2d euclid distance between this and another point or entity"""
+        self_pos = self.get_pos()
+        other_pos = point
+        if(hasattr(point,"get_pos")):
+            other_pos=Vec3(point.get_pos())
+        else:
+            other_pos=Vec3(point)
+        distance = np.linalg.norm(
+            np.array([self_pos.getX(), self_pos.getY()]) -
+            np.array([other_pos.getX(), other_pos.getY()])
+        )
+        return distance
+            
+    def get_all_genes_as_str(self):
+        string = ""
+        i=0
+        for gene in self.genes:
+            string += f"{gene.name}:{gene.value},"
+            i+=1
+            if(i % 3 == 0 ): string+="\n"
+            
+        return string
+    def dist_to_point(self, point, threshold=5):
         """
         Check if a critter is within threshhold of point
     
@@ -129,18 +213,14 @@ class Entity(DirectObject):
             bool: True if within range, False otherwise.
         """
         try:
-            pos = self.get_pos()
-            distance = np.linalg.norm(
-                np.array([pos.getX(), pos.getY()]) -
-                np.array([point.getX(), point.getY()])
-            )
+            distance = self.distance(point)
             return distance <= threshold
         except Exception as e:
-            print(f"error in entity.get_pos:\n{e}")
+            print(f"error in entity.dist_to_point:\n{e}")
             return False
         
     def move_task(self,task):
-        if(not self.currentGoal or self.dist_to_point(self.currentGoal,10)):
+        if(not self.currentGoal or self.dist_to_point(self.currentGoal,20)):
             #reached goal
             self.currentGoal=None
             self.base.set_critter_height(self.body_np, self.get_pos().getX(), self.get_pos().getY())
@@ -153,14 +233,30 @@ class Entity(DirectObject):
             self.move_tick(self.currentGoal)
             return Task.cont
         
+    def get_gene(self,name):
+        """get the value of a gene via the name"""
+        #get the value of the gene, but if we cant find it on this critter but it is requested anyways we will search the gene bank and give this 
+        #critter the min value for that gene
+        default = 0
+        for gene in Gene.genes:
+            if(gene.name == name):
+                default = gene.min_value
+                
+        return getattr(self,name,default)
+        
+    def apply_all_genes(self):
+        """propagate all gene changes to this critter"""
+        for gene in self.genes:
+            gene.apply(self)
+        
     def move_tick(self,goal_point,extra_speed_mod=1,phys=True):
         from main import BaseApp
         direction = (goal_point - self.get_pos()).normalized()
-        jump_strength = -BaseApp.gravity_strength*1.1
+        jump_strength = self.get_gene("Jump Strength")
         up_vector = Vec3(0,0,1)
         
-        distance_to_move = self.speed * globalClock.getDt() * extra_speed_mod
-        target_pos = Vec3(self.get_pos()) + Vec3(direction*3)
+        distance_to_move = self.get_gene("Speed") * self.speed * globalClock.getDt() * extra_speed_mod
+        target_pos = Vec3(Vec3(self.get_pos()) + Vec3(direction*3))
         should_jump = False
         
         #check ahead to see if we need to jump via sampling
@@ -187,8 +283,10 @@ class Entity(DirectObject):
             #self.node.apply_central_impulse()
             
         #random jumping to ensure no stuck
-        if(random.randint(0,100) == 2):
+        if(random.randint(0,100) < self.get_gene("Jump Chance")):
             self.body_np.set_pos(self.get_pos()+Vec3(0,0,jump_strength))
+            
+        
             
         #cannot fall below 0
         pos = self.body_np.get_pos()
@@ -200,7 +298,17 @@ class Entity(DirectObject):
         #phys based movement or direct move?
         if(phys):
             self.node.apply_central_impulse(direction*distance_to_move)
-            self.node.setLinearVelocity(direction*distance_to_move*75)
+            #print(f"random motion chance:{self.get_gene('Random Motion Chance')}")
+            if(random.randint(0,100) < self.get_gene("Random Motion Chance")):
+                #move random
+                random_direction = Vec3(
+                    random.uniform(-self.get_gene("Random Motion -X Strength"),self.get_gene("Random Motion +X Strength")),
+                    random.uniform(-self.get_gene("Random Motion -Y Strength"),self.get_gene("Random Motion +Y Strength")),
+                    random.uniform(-self.get_gene("Random Motion -Z Strength"),self.get_gene("Random Motion +Z Strength")),)
+                self.node.setLinearVelocity(random_direction*distance_to_move*75)
+            else:
+                #move towards
+                self.node.setLinearVelocity(direction*distance_to_move*75)
            
         else:
             new_pos = self.get_pos() + (direction*distance_to_move)
@@ -251,6 +359,55 @@ class Entity(DirectObject):
 
         # Remove from the entity list
         Entity.remove_entity(self)  # Assuming there's a method to manage entity cleanup
+        self.spawned=False
+        
+    def update(self,x=None,y=None):
+        self.remove()
+        self.spawn(x,y)
+        
+    def eat_other(self,other):
+        """have this critter eat another critter"""
+        self.food_eaten+=.5
+        if(getattr(self,"city",{}) != getattr(other,"city",[])):
+            self.enemiesEaten+=.5
+        other.eat()
+        
+        
+    def change_color(self,color):
+        """change the color of this entity
+
+        Args:
+            color (vector4): (r,g,b,a)
+        """
+        self.model.setColor(*color)
+        
+    def fight(self, other, random_chance=.01):
+        """have this entity and another fight
+        winner eats loser
+        based on strength
+
+        Args:
+            other (entity): entity to fight
+            random_chance (float, optional): random value (-this,this) added to results. Defaults to .01.
+        Returns:
+            true if self won false if other won
+        
+        """
+        self_won=True
+        if(other != None and not other.eaten and not getattr(other, "at_city",False)):
+            print("murder")
+            result = self.get_gene("Strength") - other.get_gene("Strength")
+            result += random.uniform(-random_chance,random_chance)
+            self_won = result > 0
+            
+            if(self_won):
+                self.change_color((1,1,1,1))
+                self.eat_other(other)
+            else:
+                self.change_color((1,0,0,1))
+                other.eat_other(self)
+        
+        return self_won
         
     def get_pos(self):
         """get the (x,y,z) pos of this critter
@@ -260,7 +417,7 @@ class Entity(DirectObject):
         """
         if(self.body_np != None):
             self.position = self.body_np.get_pos()
-        return self.position
+        return Vec3(self.position)
     
     def spawn(self, x=None, y=None, color=None):
         """a method to bring forth a phys enabled entity at chosen pos, height is automatic based on height map
@@ -321,7 +478,7 @@ class Entity(DirectObject):
                 color = random.choice(BaseApp.CRITTER_COLORS)
                 
             blob.setColor(*color)
-            
+            self.model = blob
             self.color = color
             self.node = node
             self.body_np = blob_np

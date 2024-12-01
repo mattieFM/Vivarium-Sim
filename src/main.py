@@ -30,6 +30,7 @@ from CORE.Terrain import TerrainController
 from CORE.entity import Entity
 from GA.Food import Food
 from GA.City import City
+from GA.Corpse import Corpse
 
 class BaseApp(ShowBase):     
     #so that it can be turned off if we want to
@@ -51,7 +52,9 @@ class BaseApp(ShowBase):
     simulation_started = False
     
     #at one each critter has 1 food spawn for it
-    food_per_critter = 1
+    food_per_critter = 0
+    #the flat amount of food to spawn per round, in addition to food per critter
+    food_per_round=10 
     
     #how fast to build terrain
     edit_power = .5
@@ -141,7 +144,7 @@ class BaseApp(ShowBase):
                 self.simulation_started = True
             else:
                 #main logic for phase switches
-                print(f"phase:{self.round_manager.current_phase_index}")
+                #print(f"phase:{self.round_manager.current_phase_index}")
                 if(self.round_manager.is_simulation_phase_done()):
                     #all critters return home now that the phase is over
                     self.round_manager.next_phase()
@@ -239,12 +242,17 @@ class BaseApp(ShowBase):
             
         def simulation_toggle(val):
             self.simulation_enabled=val
+            
+        def set_time_limit(val):
+            self.round_manager.phase_time_limit_seconds=float(val)
+            self.ui.unfocus_all()
 
         self.ui.add_option(ConfigurableValue(edit_terrain_toggle, "edit", True))
         self.ui.add_option(ConfigurableValue(add_blob_toggle, "Add Critter", True))
         self.ui.add_option(ConfigurableValue(add_city_toggle, "Add City", True))
         self.ui.add_option(ConfigurableValue(edit_speed, "edit speed", False, placeholder=self.edit_power))
         self.ui.add_option(ConfigurableValue(edit_radius, "edit radius", False, placeholder=self.edit_radius))
+        self.ui.add_option(ConfigurableValue(set_time_limit, "edit round time limit", False, placeholder=self.round_manager.phase_time_limit_seconds))
         self.ui.add_option(ConfigurableValue(simulation_toggle, "enable simulation", True))
 
         # Return the UI
@@ -312,14 +320,14 @@ class BaseApp(ShowBase):
         if self.mouseWatcherNode.hasMouse():
             # Get mouse position
             mpos = self.mouseWatcherNode.getMouse()
-            print(f"mpos:{mpos}")
+            #print(f"mpos:{mpos}")
             
             # Update ray position
             self.picker_ray.setFromLens(self.cam.node(), mpos.x, mpos.y)
-            print("here2")
+            #print("here2")
             self.picker.traverse(self.render)
             if self.queue.getNumEntries() > 0:
-                print("collide")
+                #print("collide")
                 # Get the first collision
                 self.queue.sortEntries()
                 entry = self.queue.getEntry(0)
@@ -346,7 +354,8 @@ class BaseApp(ShowBase):
         # Load the visual model for the critter
         critter = Critter(base=self,city=city).spawn(x=x,y=y,color=color)
 
-        print(f"Spawned {critter}")
+        #print(f"Spawned {critter}")
+        return critter
         
     def set_critter_height(self,blob_np,x,y):
         """move a critter to the correct z height based on height map
@@ -586,15 +595,24 @@ class BaseApp(ShowBase):
         #remove all critters (IE: reset)
         Critter.remove_all_critters()
         Food.remove_all_food()
+        Corpse.remove_all_corpse()
         
         #spawn critters for each city
         for city in City.cities:
             self.spawn_initial_population(city)
         
+        
+            
+            
+        for i in range(int(self.food_per_round)):
+            f = self.spawn_food()
+            
         for i in range(int(self.food_per_critter*len(Critter.critters))):
             f = self.spawn_food()
-            Critter.critters[i].target_food(f)
             
+        for critter in Critter.critters:
+            critter.seek_food()
+        
             
 
         if len(Critter.critters) == 0:
@@ -606,18 +624,32 @@ class BaseApp(ShowBase):
         
     def spawn_initial_population(self, city, count=10):
         """Spawn an initial population of critters randomly within the bounds of a city."""
-        for _ in range(count):
-            # Generate random positions on the map
-            x_min,x_max,y_min,y_max = city.get_bounds()
+        x_min,x_max,y_min,y_max = city.get_bounds()
+        def get_x_y():
             x = random.uniform(
-                Util.clamp(x_min,0,self.terrainController.heightmap.getXSize()),
-                Util.clamp(x_max,0,self.terrainController.heightmap.getXSize())
-                )
+                    Util.clamp(x_min,0,self.terrainController.heightmap.getXSize()),
+                    Util.clamp(x_max,0,self.terrainController.heightmap.getXSize())
+                    )
             y = random.uniform(
                 Util.clamp(y_min,0,self.terrainController.heightmap.getYSize()),
                 Util.clamp(y_max,0,self.terrainController.heightmap.getYSize())
                 )
-            self.spawn_critter(x, y, city)
+            return (x,y)
+        if(not city.has_been_initialized):
+            for _ in range(count):
+                # Generate random positions on the map
+                x,y = get_x_y()
+                critter = self.spawn_critter(x, y, city)
+                for gene in critter.genes:
+                    i=0
+                    for i in range(0,random.randint(1,5)):
+                        gene.mutate()
+                critter.apply_all_genes()
+                city.has_been_initialized=True
+        else:
+            for child in city.children[:]:
+                x,y = get_x_y()
+                child.update(x,y)
         print(f"Spawned {count} critters for the initial population.")
         
     def simulate_round(self):
@@ -650,53 +682,53 @@ class BaseApp(ShowBase):
         print("Evaluating critters...")
 
         # Update critter positions from physics nodes
-        for critter in self.critters:
-            critter.position = critter.node.get_pos()
-            print(f"  - Critter {critter.id}: Position updated to {critter.position}")
+        for critter in Critter.critters:
+            critter.get_pos()
 
-        for critter in self.critters:
+        for critter in Critter.critters:
             # Reset fitness for the round
-            critter.fitness = 0
-
-            # Iterate over a copy of food_items to allow safe removal
-            for food in self.food_items[:]:
-                if self.is_touching(critter.position, food.getPos()):
-                    print(f"  - Critter {critter.id} touched food at {food.getPos()}. Incrementing fitness.")
-                    food.removeNode()
-                    self.food_items.remove(food)
-
-                    # Increment fitness randomly between 0.5 and 1.0
-                    fitness_gain = random.uniform(0.5, 1.0)
-                    critter.fitness += fitness_gain
-                    print(f"    > Fitness increased by {fitness_gain:.2f}. Total fitness: {critter.fitness:.2f}")
+            critter.evaluate()
         print("Finished evaluating critters.")
 
 
     def reproduce_round(self):
         """Handle reproduction and replace less-fit critters."""
         print("Handling reproduction...")
+        
+        for city in City.cities:
+            critters = city.children
+            total_city_food = 0
+            #print(critters)
+            for critter in critters:
+                print(critter)
+                if(not critter.eaten and critter.at_city):
+                    total_city_food += critter.food_eaten
+            print(f"food for reproduction:{total_city_food}")
+            # Sort critters by fitness
+            critters.sort(key=lambda c: c.fitness, reverse=True)
+            
+            print("  - Critters sorted by fitness.")
 
-        # Sort critters by fitness
-        self.critters.sort(key=lambda c: c.fitness, reverse=True)
-        print("  - Critters sorted by fitness.")
+            # Select the top critters for reproduction
+            top_critters = critters[:len(critters) // 2]
+            print(f"  - Top {len(top_critters)} critters selected for reproduction.")
 
-        # Select the top critters for reproduction
-        top_critters = self.critters[:len(self.critters) // 2]
-        print(f"  - Top {len(top_critters)} critters selected for reproduction.")
+            # Generate offspring to replace the parents
+            offspring = []
+            while(total_city_food > 0):
+                for i in range(0, len(top_critters), 2):
+                    if i + 1 < len(top_critters):  # Ensure we have pairs
+                        if(total_city_food > 0):
+                            parent1 = top_critters[i]
+                            parent2 = top_critters[i + 1]
+                            child = self.create_offspring(parent1, parent2)
+                            total_city_food-=1
+                            offspring.append(child)
+                            print(f"    > Offspring created from Critter {parent1.id} and Critter {parent2.id}.")
 
-        # Generate offspring to replace the parents
-        offspring = []
-        for i in range(0, len(top_critters), 2):
-            if i + 1 < len(top_critters):  # Ensure we have pairs
-                parent1 = top_critters[i]
-                parent2 = top_critters[i + 1]
-                child = self.create_offspring(parent1, parent2)
-                offspring.append(child)
-                print(f"    > Offspring created from Critter {parent1.id} and Critter {parent2.id}.")
-
-        # Replace the population with offspring
-        self.critters = offspring
-        print(f"Reproduction complete. New population size: {len(self.critters)}.")
+            # Replace the population with offspring
+            city.children = offspring
+            print(f"Reproduction complete. New population size: {len(city.children)}.")
 
               
     def create_offspring(self, parent1, parent2):
@@ -712,7 +744,7 @@ class BaseApp(ShowBase):
         # Spawn the offspring near one of the parents
         x = (parent1.position[0] + parent2.position[0]) / 2 + random.uniform(-10, 10)
         y = (parent1.position[1] + parent2.position[1]) / 2 + random.uniform(-10, 10)
-        offspring = Critter(position=(x, y, 0), genes=new_genes)
+        offspring = Critter(position=(x, y, 0), genes=new_genes, city=parent1.city,base=parent1.base)
 
         print(f"  - Offspring created at position ({x:.2f}, {y:.2f}).")
         return offspring

@@ -2,8 +2,9 @@ import random
 
 class Gene:
     """Class representing a single gene in a critter's genetic makeup."""
+    genes = []
 
-    def __init__(self, name, value, min_value=None, max_value=None, mutation_rate=0.1, mutation_step=0.1,
+    def __init__(self, name, value, min_value=None, max_value=None, mutation_rate=0.5, mutation_step=0.1,
                  options=None, dominance=1, generation=0, parent_ids=None):
         """
         Initialize a new gene with its properties.
@@ -31,6 +32,18 @@ class Gene:
         self.generation = generation
         self.parent_ids = parent_ids or []
         self.active = True  # By default, the gene is active
+        
+        #if it does not already exist in genes
+        if(not any(gene.name == self.name for gene in Gene.genes)):
+            Gene.genes.append(self)
+        
+    def apply(self,critter):
+        """this is used to apply the changes to a critter's stats 
+
+        Args:
+            critter (_type_): _description_
+        """
+        setattr(critter,self.name,self.value)
 
     def mutate(self):
         """
