@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.RoundManager.RoundManager</title>
+    <meta name="generator" content="pydoctor 24.3.3"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1 maximum-scale=1" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          src <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input aria-label="Search" autocomplete="off" class="form-control" id="search-box" minlength="2" name="search-query" placeholder="Search..." type="search" />
+            
+            <span class="input-group-btn">
+              <a class="btn btn-default" id="search-clear-button" onclick="clearSearch()" style="display: none;" title="Clear"><img alt="Clear" src="fonts/x-circle.svg" /></a>
+              <a class="btn btn-default" id="search-help-button" onclick="toggleSearchHelpText()" title="Help"><img alt="Help" src="fonts/info.svg" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input id="toggle-search-in-docstrings-checkbox" onclick="toggleSearchInDocstrings()" type="checkbox" value="false">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="src.RoundManager.RoundManager.html" class="internal-link" title="This class"><wbr></wbr>Round<wbr></wbr>Manager</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="src.RoundManager.RoundManager.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#all_alive_critters_are_home" class="internal-link" title="src.RoundManager.RoundManager.all_alive_critters_are_home">all<wbr></wbr>_alive<wbr></wbr>_critters<wbr></wbr>_are<wbr></wbr>_home</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_current_phase" class="internal-link" title="src.RoundManager.RoundManager.get_current_phase">get<wbr></wbr>_current<wbr></wbr>_phase</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_phase_time" class="internal-link" title="src.RoundManager.RoundManager.get_phase_time">get<wbr></wbr>_phase<wbr></wbr>_time</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_all_critters_at_home" class="internal-link" title="src.RoundManager.RoundManager.is_all_critters_at_home">is<wbr></wbr>_all<wbr></wbr>_critters<wbr></wbr>_at<wbr></wbr>_home</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_evaluation_phase_done" class="internal-link" title="src.RoundManager.RoundManager.is_evaluation_phase_done">is<wbr></wbr>_evaluation<wbr></wbr>_phase<wbr></wbr>_done</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_no_more_food" class="internal-link" title="src.RoundManager.RoundManager.is_no_more_food">is<wbr></wbr>_no<wbr></wbr>_more<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_phase_over_the_time_limit" class="internal-link" title="src.RoundManager.RoundManager.is_phase_over_the_time_limit">is<wbr></wbr>_phase<wbr></wbr>_over<wbr></wbr>_the<wbr></wbr>_time<wbr></wbr>_limit</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_reproduction_phase_done" class="internal-link" title="src.RoundManager.RoundManager.is_reproduction_phase_done">is<wbr></wbr>_reproduction<wbr></wbr>_phase<wbr></wbr>_done</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_simulation_phase_done" class="internal-link" title="src.RoundManager.RoundManager.is_simulation_phase_done">is<wbr></wbr>_simulation<wbr></wbr>_phase<wbr></wbr>_done</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#next_phase" class="internal-link" title="src.RoundManager.RoundManager.next_phase">next<wbr></wbr>_phase</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#run_init_phase" class="internal-link" title="src.RoundManager.RoundManager.run_init_phase">run<wbr></wbr>_init<wbr></wbr>_phase</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#trigger_phase_start" class="internal-link" title="src.RoundManager.RoundManager.trigger_phase_start">trigger<wbr></wbr>_phase<wbr></wbr>_start</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#PHASES" class="internal-link" title="src.RoundManager.RoundManager.PHASES">PHASES</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#base_app" class="internal-link" title="src.RoundManager.RoundManager.base_app">base<wbr></wbr>_app</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#current_phase_index" class="internal-link" title="src.RoundManager.RoundManager.current_phase_index">current<wbr></wbr>_phase<wbr></wbr>_index</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#phase_start_time" class="internal-link" title="src.RoundManager.RoundManager.phase_start_time">phase<wbr></wbr>_start<wbr></wbr>_time</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#phase_time_limit_seconds" class="internal-link" title="src.RoundManager.RoundManager.phase_time_limit_seconds">phase<wbr></wbr>_time<wbr></wbr>_limit<wbr></wbr>_seconds</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#population_cap" class="internal-link" title="src.RoundManager.RoundManager.population_cap">population<wbr></wbr>_cap</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#round_count" class="internal-link" title="src.RoundManager.RoundManager.round_count">round<wbr></wbr>_count</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="src.RoundManager.html" class="internal-link" title="The parent of this class"><wbr></wbr>Round<wbr></wbr>Manager</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.RoundManager.RoundManager.html" class="internal-link" title="src.RoundManager.RoundManager"><wbr></wbr>Round<wbr></wbr>Manager</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.RoundManager.html" class="internal-link" title="src.RoundManager">RoundManager</a></code><wbr></wbr>.<code><a href="src.RoundManager.RoundManager.html" class="internal-link" title="src.RoundManager.RoundManager">RoundManager</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">RoundManager</span>:</code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="src.RoundManager.RoundManager.__init__">RoundManager(base_app, population_cap)</a></code></p>
+          <p><a href="classIndex.html#src.RoundManager.RoundManager">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>Manages the lifecycle phases of a simulation round.</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id33">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="src.RoundManager.RoundManager.__init__">__init__</a></code></td>
+    <td>Initialize the round manager.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#all_alive_critters_are_home" class="internal-link" title="src.RoundManager.RoundManager.all_alive_critters_are_home">all<wbr></wbr>_alive<wbr></wbr>_critters<wbr></wbr>_are<wbr></wbr>_home</a></code></td>
+    <td>if all critters taht were not eated already returned home</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_current_phase" class="internal-link" title="src.RoundManager.RoundManager.get_current_phase">get<wbr></wbr>_current<wbr></wbr>_phase</a></code></td>
+    <td>Return the current phase name.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_phase_time" class="internal-link" title="src.RoundManager.RoundManager.get_phase_time">get<wbr></wbr>_phase<wbr></wbr>_time</a></code></td>
+    <td>get the amount of time in seconds since the start oof this round</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_all_critters_at_home" class="internal-link" title="src.RoundManager.RoundManager.is_all_critters_at_home">is<wbr></wbr>_all<wbr></wbr>_critters<wbr></wbr>_at<wbr></wbr>_home</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_evaluation_phase_done" class="internal-link" title="src.RoundManager.RoundManager.is_evaluation_phase_done">is<wbr></wbr>_evaluation<wbr></wbr>_phase<wbr></wbr>_done</a></code></td>
+    <td>is the evaluation phase over</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_no_more_food" class="internal-link" title="src.RoundManager.RoundManager.is_no_more_food">is<wbr></wbr>_no<wbr></wbr>_more<wbr></wbr>_food</a></code></td>
+    <td>is there any food left on the map</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_phase_over_the_time_limit" class="internal-link" title="src.RoundManager.RoundManager.is_phase_over_the_time_limit">is<wbr></wbr>_phase<wbr></wbr>_over<wbr></wbr>_the<wbr></wbr>_time<wbr></wbr>_limit</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_reproduction_phase_done" class="internal-link" title="src.RoundManager.RoundManager.is_reproduction_phase_done">is<wbr></wbr>_reproduction<wbr></wbr>_phase<wbr></wbr>_done</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_simulation_phase_done" class="internal-link" title="src.RoundManager.RoundManager.is_simulation_phase_done">is<wbr></wbr>_simulation<wbr></wbr>_phase<wbr></wbr>_done</a></code></td>
+    <td>is it time to end the simulation phase sim phase ends when there is no more food or time as ran out</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#next_phase" class="internal-link" title="src.RoundManager.RoundManager.next_phase">next<wbr></wbr>_phase</a></code></td>
+    <td>Advance to the next phase in the cycle.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#run_init_phase" class="internal-link" title="src.RoundManager.RoundManager.run_init_phase">run<wbr></wbr>_init<wbr></wbr>_phase</a></code></td>
+    <td>set the current phase to initialization and run</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#trigger_phase_start" class="internal-link" title="src.RoundManager.RoundManager.trigger_phase_start">trigger<wbr></wbr>_phase<wbr></wbr>_start</a></code></td>
+    <td>Trigger the start of the current phase.</td>
+  </tr><tr class="constant">
+    
+    <td>Constant</td>
+    <td><code><a href="#PHASES" class="internal-link" title="src.RoundManager.RoundManager.PHASES">PHASES</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#base_app" class="internal-link" title="src.RoundManager.RoundManager.base_app">base<wbr></wbr>_app</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#current_phase_index" class="internal-link" title="src.RoundManager.RoundManager.current_phase_index">current<wbr></wbr>_phase<wbr></wbr>_index</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#phase_start_time" class="internal-link" title="src.RoundManager.RoundManager.phase_start_time">phase<wbr></wbr>_start<wbr></wbr>_time</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#phase_time_limit_seconds" class="internal-link" title="src.RoundManager.RoundManager.phase_time_limit_seconds">phase<wbr></wbr>_time<wbr></wbr>_limit<wbr></wbr>_seconds</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#population_cap" class="internal-link" title="src.RoundManager.RoundManager.population_cap">population<wbr></wbr>_cap</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#round_count" class="internal-link" title="src.RoundManager.RoundManager.round_count">round<wbr></wbr>_count</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span><span class="function-signature">(self, base_app, population_cap=100)</span>:
+    
+    <a class="headerLink" href="#__init__" title="src.RoundManager.RoundManager.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Initialize the round manager.
+
+Args:
+    base_app (BaseApp): Reference to the main app.
+    population_cap (int): Maximum number of critters allowed.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.all_alive_critters_are_home">
+    
+  </a>
+  <a name="all_alive_critters_are_home">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">all_alive_critters_are_home</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#all_alive_critters_are_home" title="src.RoundManager.RoundManager.all_alive_critters_are_home">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>if all critters taht were not eated already returned home</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.get_current_phase">
+    
+  </a>
+  <a name="get_current_phase">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_current_phase</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#get_current_phase" title="src.RoundManager.RoundManager.get_current_phase">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Return the current phase name.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.get_phase_time">
+    
+  </a>
+  <a name="get_phase_time">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_phase_time</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#get_phase_time" title="src.RoundManager.RoundManager.get_phase_time">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>get the amount of time in seconds since the start oof this round</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.is_all_critters_at_home">
+    
+  </a>
+  <a name="is_all_critters_at_home">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_all_critters_at_home</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#is_all_critters_at_home" title="src.RoundManager.RoundManager.is_all_critters_at_home">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.is_evaluation_phase_done">
+    
+  </a>
+  <a name="is_evaluation_phase_done">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_evaluation_phase_done</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#is_evaluation_phase_done" title="src.RoundManager.RoundManager.is_evaluation_phase_done">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">is the evaluation phase over
+
+Returns:
+    _type_: _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.is_no_more_food">
+    
+  </a>
+  <a name="is_no_more_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_no_more_food</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#is_no_more_food" title="src.RoundManager.RoundManager.is_no_more_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">is there any food left on the map
+
+Returns:
+    _type_: _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.is_phase_over_the_time_limit">
+    
+  </a>
+  <a name="is_phase_over_the_time_limit">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_phase_over_the_time_limit</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#is_phase_over_the_time_limit" title="src.RoundManager.RoundManager.is_phase_over_the_time_limit">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.is_reproduction_phase_done">
+    
+  </a>
+  <a name="is_reproduction_phase_done">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_reproduction_phase_done</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#is_reproduction_phase_done" title="src.RoundManager.RoundManager.is_reproduction_phase_done">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.is_simulation_phase_done">
+    
+  </a>
+  <a name="is_simulation_phase_done">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_simulation_phase_done</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#is_simulation_phase_done" title="src.RoundManager.RoundManager.is_simulation_phase_done">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>is it time to end the simulation phase sim phase ends when there is no more food or time as ran out</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.next_phase">
+    
+  </a>
+  <a name="next_phase">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">next_phase</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#next_phase" title="src.RoundManager.RoundManager.next_phase">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Advance to the next phase in the cycle.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.run_init_phase">
+    
+  </a>
+  <a name="run_init_phase">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">run_init_phase</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#run_init_phase" title="src.RoundManager.RoundManager.run_init_phase">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set the current phase to initialization and run</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.RoundManager.RoundManager.trigger_phase_start">
+    
+  </a>
+  <a name="trigger_phase_start">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">trigger_phase_start</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#trigger_phase_start" title="src.RoundManager.RoundManager.trigger_phase_start">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Trigger the start of the current phase.</p></div>
+  </div>
+</div><div class="baseconstant">
+  
+  
+  <a name="src.RoundManager.RoundManager.PHASES">
+    
+  </a>
+  <a name="PHASES">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">PHASES</span>: <code>list[<wbr></wbr>str]</code> =
+    
+    <a class="headerLink" href="#PHASES" title="src.RoundManager.RoundManager.PHASES">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>[<wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">Initialization</span><span class="rst-variable-quote">'</span>, <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">Simulation</span><span class="rst-variable-quote">'</span>, <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">Evaluation</span><span class="rst-variable-quote">'</span>, <wbr></wbr><span class="rst-variable-quote">'</span><span class="rst-variable-string">Reproduction</span><span class="rst-variable-quote">'</span>]</code></pre></td></tr></table>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.RoundManager.RoundManager.base_app">
+    
+  </a>
+  <a name="base_app">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">base_app</span> =
+    
+    <a class="headerLink" href="#base_app" title="src.RoundManager.RoundManager.base_app">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.RoundManager.RoundManager.current_phase_index">
+    
+  </a>
+  <a name="current_phase_index">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">current_phase_index</span> =
+    
+    <a class="headerLink" href="#current_phase_index" title="src.RoundManager.RoundManager.current_phase_index">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.RoundManager.RoundManager.phase_start_time">
+    
+  </a>
+  <a name="phase_start_time">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">phase_start_time</span> =
+    
+    <a class="headerLink" href="#phase_start_time" title="src.RoundManager.RoundManager.phase_start_time">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.RoundManager.RoundManager.phase_time_limit_seconds">
+    
+  </a>
+  <a name="phase_time_limit_seconds">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">phase_time_limit_seconds</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#phase_time_limit_seconds" title="src.RoundManager.RoundManager.phase_time_limit_seconds">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.RoundManager.RoundManager.population_cap">
+    
+  </a>
+  <a name="population_cap">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">population_cap</span> =
+    
+    <a class="headerLink" href="#population_cap" title="src.RoundManager.RoundManager.population_cap">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.RoundManager.RoundManager.round_count">
+    
+  </a>
+  <a name="round_count">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">round_count</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#round_count" title="src.RoundManager.RoundManager.round_count">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for src,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.3.3 at 2024-12-01 12:37:19.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

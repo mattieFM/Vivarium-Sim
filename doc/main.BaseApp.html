@@ -1,0 +1,3180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>main.BaseApp</title>
+    <meta name="generator" content="pydoctor 24.3.3"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1 maximum-scale=1" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          main <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input aria-label="Search" autocomplete="off" class="form-control" id="search-box" minlength="2" name="search-query" placeholder="Search..." type="search" />
+            
+            <span class="input-group-btn">
+              <a class="btn btn-default" id="search-clear-button" onclick="clearSearch()" style="display: none;" title="Clear"><img alt="Clear" src="fonts/x-circle.svg" /></a>
+              <a class="btn btn-default" id="search-help-button" onclick="toggleSearchHelpText()" title="Help"><img alt="Help" src="fonts/info.svg" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input id="toggle-search-in-docstrings-checkbox" onclick="toggleSearchInDocstrings()" type="checkbox" value="false">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="main.BaseApp.html" class="internal-link" title="This class"><wbr></wbr>Base<wbr></wbr>App</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="main.BaseApp.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_graph_to_stats_panel" class="internal-link" title="main.BaseApp.add_graph_to_stats_panel">add<wbr></wbr>_graph<wbr></wbr>_to<wbr></wbr>_stats<wbr></wbr>_panel</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_skybox" class="internal-link" title="main.BaseApp.add_skybox">add<wbr></wbr>_skybox</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#advance_round_phase" class="internal-link" title="main.BaseApp.advance_round_phase">advance<wbr></wbr>_round<wbr></wbr>_phase</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#bullet_debugger_ON" class="internal-link" title="main.BaseApp.bullet_debugger_ON">bullet_debugger_<wbr></wbr>ON</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#click_on_map_and_call" class="internal-link" title="main.BaseApp.click_on_map_and_call">click<wbr></wbr>_on<wbr></wbr>_map<wbr></wbr>_and<wbr></wbr>_call</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#create_cube" class="internal-link" title="main.BaseApp.create_cube">create<wbr></wbr>_cube</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#create_lights" class="internal-link" title="main.BaseApp.create_lights">create<wbr></wbr>_lights</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#create_offspring" class="internal-link" title="main.BaseApp.create_offspring">create<wbr></wbr>_offspring</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#create_UI" class="internal-link" title="main.BaseApp.create_UI">create_<wbr></wbr>UI</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#evaluate_round" class="internal-link" title="main.BaseApp.evaluate_round">evaluate<wbr></wbr>_round</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#event_handlers_setup" class="internal-link" title="main.BaseApp.event_handlers_setup">event<wbr></wbr>_handlers<wbr></wbr>_setup</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_round_food_and_labels" class="internal-link" title="main.BaseApp.get_round_food_and_labels">get<wbr></wbr>_round<wbr></wbr>_food<wbr></wbr>_and<wbr></wbr>_labels</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_round_population_and_labels" class="internal-link" title="main.BaseApp.get_round_population_and_labels">get<wbr></wbr>_round<wbr></wbr>_population<wbr></wbr>_and<wbr></wbr>_labels</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#handle_add_city" class="internal-link" title="main.BaseApp.handle_add_city">handle<wbr></wbr>_add<wbr></wbr>_city</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#handle_add_guy" class="internal-link" title="main.BaseApp.handle_add_guy">handle<wbr></wbr>_add<wbr></wbr>_guy</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#handle_ga_loop" class="internal-link" title="main.BaseApp.handle_ga_loop">handle<wbr></wbr>_ga<wbr></wbr>_loop</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#handle_stats_panel_task" class="internal-link" title="main.BaseApp.handle_stats_panel_task">handle<wbr></wbr>_stats<wbr></wbr>_panel<wbr></wbr>_task</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#handle_unfocus" class="internal-link" title="main.BaseApp.handle_unfocus">handle<wbr></wbr>_unfocus</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#init_gravity" class="internal-link" title="main.BaseApp.init_gravity">init<wbr></wbr>_gravity</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#initialize_round" class="internal-link" title="main.BaseApp.initialize_round">initialize<wbr></wbr>_round</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_touching" class="internal-link" title="main.BaseApp.is_touching">is<wbr></wbr>_touching</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#on_mouse_1_down" class="internal-link" title="main.BaseApp.on_mouse_1_down">on<wbr></wbr>_mouse<wbr></wbr>_1<wbr></wbr>_down</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#picker_setup" class="internal-link" title="main.BaseApp.picker_setup">picker<wbr></wbr>_setup</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reproduce_round" class="internal-link" title="main.BaseApp.reproduce_round">reproduce<wbr></wbr>_round</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reset_all_food" class="internal-link" title="main.BaseApp.reset_all_food">reset<wbr></wbr>_all<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#rgba_to_name" class="internal-link" title="main.BaseApp.rgba_to_name">rgba<wbr></wbr>_to<wbr></wbr>_name</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#set_critter_height" class="internal-link" title="main.BaseApp.set_critter_height">set<wbr></wbr>_critter<wbr></wbr>_height</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#simulate_round" class="internal-link" title="main.BaseApp.simulate_round">simulate<wbr></wbr>_round</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#spawn_city" class="internal-link" title="main.BaseApp.spawn_city">spawn<wbr></wbr>_city</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#spawn_critter" class="internal-link" title="main.BaseApp.spawn_critter">spawn<wbr></wbr>_critter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#spawn_food" class="internal-link" title="main.BaseApp.spawn_food">spawn<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#spawn_food_periodically" class="internal-link" title="main.BaseApp.spawn_food_periodically">spawn<wbr></wbr>_food<wbr></wbr>_periodically</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#spawn_initial_population" class="internal-link" title="main.BaseApp.spawn_initial_population">spawn<wbr></wbr>_initial<wbr></wbr>_population</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#start_round_manager" class="internal-link" title="main.BaseApp.start_round_manager">start<wbr></wbr>_round<wbr></wbr>_manager</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#update_grav" class="internal-link" title="main.BaseApp.update_grav">update<wbr></wbr>_grav</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#valid_x_y" class="internal-link" title="main.BaseApp.valid_x_y">valid<wbr></wbr>_x<wbr></wbr>_y</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#CRITTER_COLORS" class="internal-link" title="main.BaseApp.CRITTER_COLORS">CRITTER<wbr></wbr>_COLORS</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_blob_enabled" class="internal-link" title="main.BaseApp.add_blob_enabled">add<wbr></wbr>_blob<wbr></wbr>_enabled</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_city_enabled" class="internal-link" title="main.BaseApp.add_city_enabled">add<wbr></wbr>_city<wbr></wbr>_enabled</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_first_blob_enabled" class="internal-link" title="main.BaseApp.add_first_blob_enabled">add<wbr></wbr>_first<wbr></wbr>_blob<wbr></wbr>_enabled</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#blobi" class="internal-link" title="main.BaseApp.blobi">blobi</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#charts" class="internal-link" title="main.BaseApp.charts">charts</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#critter_offset_z" class="internal-link" title="main.BaseApp.critter_offset_z">critter<wbr></wbr>_offset<wbr></wbr>_z</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#edit_power" class="internal-link" title="main.BaseApp.edit_power">edit<wbr></wbr>_power</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#edit_radius" class="internal-link" title="main.BaseApp.edit_radius">edit<wbr></wbr>_radius</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#edit_terrain_enabled" class="internal-link" title="main.BaseApp.edit_terrain_enabled">edit<wbr></wbr>_terrain<wbr></wbr>_enabled</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#food_per_critter" class="internal-link" title="main.BaseApp.food_per_critter">food<wbr></wbr>_per<wbr></wbr>_critter</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#food_per_round" class="internal-link" title="main.BaseApp.food_per_round">food<wbr></wbr>_per<wbr></wbr>_round</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#gravity_strength" class="internal-link" title="main.BaseApp.gravity_strength">gravity<wbr></wbr>_strength</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#max_food_count" class="internal-link" title="main.BaseApp.max_food_count">max<wbr></wbr>_food<wbr></wbr>_count</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#simulation_enabled" class="internal-link" title="main.BaseApp.simulation_enabled">simulation<wbr></wbr>_enabled</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#z_scale" class="internal-link" title="main.BaseApp.z_scale">z<wbr></wbr>_scale</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#alight" class="internal-link" title="main.BaseApp.alight">alight</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#camera_controller" class="internal-link" title="main.BaseApp.camera_controller">camera<wbr></wbr>_controller</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#critters" class="internal-link" title="main.BaseApp.critters">critters</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#dlight" class="internal-link" title="main.BaseApp.dlight">dlight</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#dlnp" class="internal-link" title="main.BaseApp.dlnp">dlnp</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#food_items" class="internal-link" title="main.BaseApp.food_items">food<wbr></wbr>_items</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#input" class="internal-link" title="main.BaseApp.input">input</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#picker" class="internal-link" title="main.BaseApp.picker">picker</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#picker_node" class="internal-link" title="main.BaseApp.picker_node">picker<wbr></wbr>_node</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#picker_np" class="internal-link" title="main.BaseApp.picker_np">picker<wbr></wbr>_np</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#picker_ray" class="internal-link" title="main.BaseApp.picker_ray">picker<wbr></wbr>_ray</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#pie" class="internal-link" title="main.BaseApp.pie">pie</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#pusher" class="internal-link" title="main.BaseApp.pusher">pusher</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#queue" class="internal-link" title="main.BaseApp.queue">queue</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#round_manager" class="internal-link" title="main.BaseApp.round_manager">round<wbr></wbr>_manager</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#simulation_started" class="internal-link" title="main.BaseApp.simulation_started">simulation<wbr></wbr>_started</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#skybox" class="internal-link" title="main.BaseApp.skybox">skybox</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#terrainController" class="internal-link" title="main.BaseApp.terrainController">terrain<wbr></wbr>Controller</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#ui" class="internal-link" title="main.BaseApp.ui">ui</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#world" class="internal-link" title="main.BaseApp.world">world</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="index.html" class="internal-link" title="The parent of this class">main</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.BaseApp.html" class="internal-link" title="main.BaseApp"><wbr></wbr>Base<wbr></wbr>App</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">main</a></code><wbr></wbr>.<code><a href="main.BaseApp.html" class="internal-link" title="main.BaseApp">BaseApp</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">BaseApp</span>(ShowBase):</code></p>
+          <p><a href="classIndex.html#main.BaseApp">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id2">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="main.BaseApp.__init__">__init__</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#add_graph_to_stats_panel" class="internal-link" title="main.BaseApp.add_graph_to_stats_panel">add<wbr></wbr>_graph<wbr></wbr>_to<wbr></wbr>_stats<wbr></wbr>_panel</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#add_skybox" class="internal-link" title="main.BaseApp.add_skybox">add<wbr></wbr>_skybox</a></code></td>
+    <td>Create and add a textured skybox.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#advance_round_phase" class="internal-link" title="main.BaseApp.advance_round_phase">advance<wbr></wbr>_round<wbr></wbr>_phase</a></code></td>
+    <td>Advance to the next phase in the round lifecycle.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#bullet_debugger_ON" class="internal-link" title="main.BaseApp.bullet_debugger_ON">bullet_debugger_<wbr></wbr>ON</a></code></td>
+    <td>rip all frames if this is on... but it does show the colliders. but 1 fps. idc enough to figure out how to make it a toggle so this just turns it on.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#click_on_map_and_call" class="internal-link" title="main.BaseApp.click_on_map_and_call">click<wbr></wbr>_on<wbr></wbr>_map<wbr></wbr>_and<wbr></wbr>_call</a></code></td>
+    <td>cast a ray from the user's camera to their cursor, if the ray hits the terrain then we calculate the pos of that collision and pass the point of collision (x,y,z) Vec3 into the callback</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#create_cube" class="internal-link" title="main.BaseApp.create_cube">create<wbr></wbr>_cube</a></code></td>
+    <td>Programmatically create a cube geometry for the skybox with inward-facing normals and UV mapping.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#create_lights" class="internal-link" title="main.BaseApp.create_lights">create<wbr></wbr>_lights</a></code></td>
+    <td>lights... idk what to tell you they are lights</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#create_offspring" class="internal-link" title="main.BaseApp.create_offspring">create<wbr></wbr>_offspring</a></code></td>
+    <td>Create an offspring critter using two parents.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#create_UI" class="internal-link" title="main.BaseApp.create_UI">create_<wbr></wbr>UI</a></code></td>
+    <td>Initialize the UI.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#evaluate_round" class="internal-link" title="main.BaseApp.evaluate_round">evaluate<wbr></wbr>_round</a></code></td>
+    <td>Evaluate critter fitness based on their interactions.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#event_handlers_setup" class="internal-link" title="main.BaseApp.event_handlers_setup">event<wbr></wbr>_handlers<wbr></wbr>_setup</a></code></td>
+    <td>set up all event handlers for the app</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_round_food_and_labels" class="internal-link" title="main.BaseApp.get_round_food_and_labels">get<wbr></wbr>_round<wbr></wbr>_food<wbr></wbr>_and<wbr></wbr>_labels</a></code></td>
+    <td>get the population and label data for the current game state</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_round_population_and_labels" class="internal-link" title="main.BaseApp.get_round_population_and_labels">get<wbr></wbr>_round<wbr></wbr>_population<wbr></wbr>_and<wbr></wbr>_labels</a></code></td>
+    <td>get the population and label data for the current game state</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#handle_add_city" class="internal-link" title="main.BaseApp.handle_add_city">handle<wbr></wbr>_add<wbr></wbr>_city</a></code></td>
+    <td>a method that handles adding a little buddy wherever the user clicks called every frame, if add blob is enabled and the user left clicks we will spawn a physics enabled buddy at their cursor location</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#handle_add_guy" class="internal-link" title="main.BaseApp.handle_add_guy">handle<wbr></wbr>_add<wbr></wbr>_guy</a></code></td>
+    <td>a method that handles adding a little buddy wherever the user clicks called every frame, if add blob is enabled and the user left clicks we will spawn a physics enabled buddy at their cursor location</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#handle_ga_loop" class="internal-link" title="main.BaseApp.handle_ga_loop">handle<wbr></wbr>_ga<wbr></wbr>_loop</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#handle_stats_panel_task" class="internal-link" title="main.BaseApp.handle_stats_panel_task">handle<wbr></wbr>_stats<wbr></wbr>_panel<wbr></wbr>_task</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#handle_unfocus" class="internal-link" title="main.BaseApp.handle_unfocus">handle<wbr></wbr>_unfocus</a></code></td>
+    <td>a simple task called every frame, if either mouse button clicks outside of the UI unfocus all UI elements</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#init_gravity" class="internal-link" title="main.BaseApp.init_gravity">init<wbr></wbr>_gravity</a></code></td>
+    <td>set up our bullet phys and grav</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#initialize_round" class="internal-link" title="main.BaseApp.initialize_round">initialize<wbr></wbr>_round</a></code></td>
+    <td>Handle initialization tasks, such as spawning food and resetting critters.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_touching" class="internal-link" title="main.BaseApp.is_touching">is<wbr></wbr>_touching</a></code></td>
+    <td>Check if a critter is touching a food item.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#on_mouse_1_down" class="internal-link" title="main.BaseApp.on_mouse_1_down">on<wbr></wbr>_mouse<wbr></wbr>_1<wbr></wbr>_down</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#picker_setup" class="internal-link" title="main.BaseApp.picker_setup">picker<wbr></wbr>_setup</a></code></td>
+    <td>set up everything we need for collisions and our picker. this is used for the raytracing to draw on our map and to pick objects this can also allow us to select individual critters and such if we ever want to target them...</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reproduce_round" class="internal-link" title="main.BaseApp.reproduce_round">reproduce<wbr></wbr>_round</a></code></td>
+    <td>Handle reproduction and replace less-fit critters.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reset_all_food" class="internal-link" title="main.BaseApp.reset_all_food">reset<wbr></wbr>_all<wbr></wbr>_food</a></code></td>
+    <td>Remove all food items from the scene and reset the list. Can be called on round resets or user-input.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#rgba_to_name" class="internal-link" title="main.BaseApp.rgba_to_name">rgba<wbr></wbr>_to<wbr></wbr>_name</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#set_critter_height" class="internal-link" title="main.BaseApp.set_critter_height">set<wbr></wbr>_critter<wbr></wbr>_height</a></code></td>
+    <td>move a critter to the correct z height based on height map</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#simulate_round" class="internal-link" title="main.BaseApp.simulate_round">simulate<wbr></wbr>_round</a></code></td>
+    <td>Simulate critter movement and interactions.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#spawn_city" class="internal-link" title="main.BaseApp.spawn_city">spawn<wbr></wbr>_city</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#spawn_critter" class="internal-link" title="main.BaseApp.spawn_critter">spawn<wbr></wbr>_critter</a></code></td>
+    <td>a method to bring forth a phys enabled critter at chosen pos, height is automatic based on height map</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#spawn_food" class="internal-link" title="main.BaseApp.spawn_food">spawn<wbr></wbr>_food</a></code></td>
+    <td>Spawn a food item at a random position on the terrain. Including elevated terrain.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#spawn_food_periodically" class="internal-link" title="main.BaseApp.spawn_food_periodically">spawn<wbr></wbr>_food<wbr></wbr>_periodically</a></code></td>
+    <td>Spawn a food item at random intervals and reschedule dynamically.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#spawn_initial_population" class="internal-link" title="main.BaseApp.spawn_initial_population">spawn<wbr></wbr>_initial<wbr></wbr>_population</a></code></td>
+    <td>Spawn an initial population of critters randomly within the bounds of a city.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#start_round_manager" class="internal-link" title="main.BaseApp.start_round_manager">start<wbr></wbr>_round<wbr></wbr>_manager</a></code></td>
+    <td>Kick off the round lifecycle using the RoundManager.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#update_grav" class="internal-link" title="main.BaseApp.update_grav">update<wbr></wbr>_grav</a></code></td>
+    <td>update the gravity phys of the world, use delta time to account for fps differences</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#valid_x_y" class="internal-link" title="main.BaseApp.valid_x_y">valid<wbr></wbr>_x<wbr></wbr>_y</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="constant">
+    
+    <td>Constant</td>
+    <td><code><a href="#CRITTER_COLORS" class="internal-link" title="main.BaseApp.CRITTER_COLORS">CRITTER<wbr></wbr>_COLORS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#add_blob_enabled" class="internal-link" title="main.BaseApp.add_blob_enabled">add<wbr></wbr>_blob<wbr></wbr>_enabled</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#add_city_enabled" class="internal-link" title="main.BaseApp.add_city_enabled">add<wbr></wbr>_city<wbr></wbr>_enabled</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#add_first_blob_enabled" class="internal-link" title="main.BaseApp.add_first_blob_enabled">add<wbr></wbr>_first<wbr></wbr>_blob<wbr></wbr>_enabled</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#blobi" class="internal-link" title="main.BaseApp.blobi">blobi</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#charts" class="internal-link" title="main.BaseApp.charts">charts</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#critter_offset_z" class="internal-link" title="main.BaseApp.critter_offset_z">critter<wbr></wbr>_offset<wbr></wbr>_z</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#edit_power" class="internal-link" title="main.BaseApp.edit_power">edit<wbr></wbr>_power</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#edit_radius" class="internal-link" title="main.BaseApp.edit_radius">edit<wbr></wbr>_radius</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#edit_terrain_enabled" class="internal-link" title="main.BaseApp.edit_terrain_enabled">edit<wbr></wbr>_terrain<wbr></wbr>_enabled</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#food_per_critter" class="internal-link" title="main.BaseApp.food_per_critter">food<wbr></wbr>_per<wbr></wbr>_critter</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#food_per_round" class="internal-link" title="main.BaseApp.food_per_round">food<wbr></wbr>_per<wbr></wbr>_round</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#gravity_strength" class="internal-link" title="main.BaseApp.gravity_strength">gravity<wbr></wbr>_strength</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#max_food_count" class="internal-link" title="main.BaseApp.max_food_count">max<wbr></wbr>_food<wbr></wbr>_count</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#simulation_enabled" class="internal-link" title="main.BaseApp.simulation_enabled">simulation<wbr></wbr>_enabled</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#z_scale" class="internal-link" title="main.BaseApp.z_scale">z<wbr></wbr>_scale</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#alight" class="internal-link" title="main.BaseApp.alight">alight</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#camera_controller" class="internal-link" title="main.BaseApp.camera_controller">camera<wbr></wbr>_controller</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#critters" class="internal-link" title="main.BaseApp.critters">critters</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#dlight" class="internal-link" title="main.BaseApp.dlight">dlight</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#dlnp" class="internal-link" title="main.BaseApp.dlnp">dlnp</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#food_items" class="internal-link" title="main.BaseApp.food_items">food<wbr></wbr>_items</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#input" class="internal-link" title="main.BaseApp.input">input</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#picker" class="internal-link" title="main.BaseApp.picker">picker</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#picker_node" class="internal-link" title="main.BaseApp.picker_node">picker<wbr></wbr>_node</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#picker_np" class="internal-link" title="main.BaseApp.picker_np">picker<wbr></wbr>_np</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#picker_ray" class="internal-link" title="main.BaseApp.picker_ray">picker<wbr></wbr>_ray</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#pie" class="internal-link" title="main.BaseApp.pie">pie</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#pusher" class="internal-link" title="main.BaseApp.pusher">pusher</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#queue" class="internal-link" title="main.BaseApp.queue">queue</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#round_manager" class="internal-link" title="main.BaseApp.round_manager">round<wbr></wbr>_manager</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#simulation_started" class="internal-link" title="main.BaseApp.simulation_started">simulation<wbr></wbr>_started</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#skybox" class="internal-link" title="main.BaseApp.skybox">skybox</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#terrainController" class="internal-link" title="main.BaseApp.terrainController">terrain<wbr></wbr>Controller</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ui" class="internal-link" title="main.BaseApp.ui">ui</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#world" class="internal-link" title="main.BaseApp.world">world</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basemethod">
+  
+  
+  <a name="main.BaseApp.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#__init__" title="main.BaseApp.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.add_graph_to_stats_panel">
+    
+  </a>
+  <a name="add_graph_to_stats_panel">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">add_graph_to_stats_panel</span><span class="function-signature">(self, graph, data_labels_func)</span>:
+    
+    <a class="headerLink" href="#add_graph_to_stats_panel" title="main.BaseApp.add_graph_to_stats_panel">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.add_skybox">
+    
+  </a>
+  <a name="add_skybox">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">add_skybox</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#add_skybox" title="main.BaseApp.add_skybox">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Create and add a textured skybox.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.advance_round_phase">
+    
+  </a>
+  <a name="advance_round_phase">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">advance_round_phase</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#advance_round_phase" title="main.BaseApp.advance_round_phase">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Advance to the next phase in the round lifecycle.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.bullet_debugger_ON">
+    
+  </a>
+  <a name="bullet_debugger_ON">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">bullet_debugger_ON</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#bullet_debugger_ON" title="main.BaseApp.bullet_debugger_ON">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>rip all frames if this is on... but it does show the colliders. but 1 fps. idc enough to figure out how to make it a toggle so this just turns it on.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.click_on_map_and_call">
+    
+  </a>
+  <a name="click_on_map_and_call">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">click_on_map_and_call</span><span class="function-signature">(self, callback)</span>:
+    
+    <a class="headerLink" href="#click_on_map_and_call" title="main.BaseApp.click_on_map_and_call">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">cast a ray from the user's camera to their cursor, if the ray
+hits the terrain then we calculate the pos of that collision and pass the point of collision (x,y,z) Vec3
+into the callback
+
+Args:
+    callback (function(Vec3)): the callback to call if we find the intersection point</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.create_cube">
+    
+  </a>
+  <a name="create_cube">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">create_cube</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#create_cube" title="main.BaseApp.create_cube">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Programmatically create a cube geometry for the skybox with inward-facing normals and UV mapping.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.create_lights">
+    
+  </a>
+  <a name="create_lights">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">create_lights</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#create_lights" title="main.BaseApp.create_lights">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>lights... idk what to tell you they are lights</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.create_offspring">
+    
+  </a>
+  <a name="create_offspring">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">create_offspring</span><span class="function-signature">(self, parent1, parent2)</span>:
+    
+    <a class="headerLink" href="#create_offspring" title="main.BaseApp.create_offspring">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Create an offspring critter using two parents.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.create_UI">
+    
+  </a>
+  <a name="create_UI">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">create_UI</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#create_UI" title="main.BaseApp.create_UI">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Initialize the UI.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.evaluate_round">
+    
+  </a>
+  <a name="evaluate_round">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">evaluate_round</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#evaluate_round" title="main.BaseApp.evaluate_round">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Evaluate critter fitness based on their interactions.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.event_handlers_setup">
+    
+  </a>
+  <a name="event_handlers_setup">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">event_handlers_setup</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#event_handlers_setup" title="main.BaseApp.event_handlers_setup">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set up all event handlers for the app</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.get_round_food_and_labels">
+    
+  </a>
+  <a name="get_round_food_and_labels">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_round_food_and_labels</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#get_round_food_and_labels" title="main.BaseApp.get_round_food_and_labels">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">get the population and label data for the current game state
+
+Returns:
+    data,labels: int[],str[]</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.get_round_population_and_labels">
+    
+  </a>
+  <a name="get_round_population_and_labels">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_round_population_and_labels</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#get_round_population_and_labels" title="main.BaseApp.get_round_population_and_labels">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">get the population and label data for the current game state
+
+Returns:
+    data,labels: int[],str[]</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.handle_add_city">
+    
+  </a>
+  <a name="handle_add_city">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">handle_add_city</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#handle_add_city" title="main.BaseApp.handle_add_city">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">a method that handles adding a little buddy wherever the user clicks
+called every frame, if add blob is enabled and the user left clicks we will spawn a physics enabled buddy at their cursor location
+
+Returns:
+    Task: run every frame</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.handle_add_guy">
+    
+  </a>
+  <a name="handle_add_guy">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">handle_add_guy</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#handle_add_guy" title="main.BaseApp.handle_add_guy">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">a method that handles adding a little buddy wherever the user clicks
+called every frame, if add blob is enabled and the user left clicks we will spawn a physics enabled buddy at their cursor location
+
+Returns:
+    Task: run every frame</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.handle_ga_loop">
+    
+  </a>
+  <a name="handle_ga_loop">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">handle_ga_loop</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#handle_ga_loop" title="main.BaseApp.handle_ga_loop">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.handle_stats_panel_task">
+    
+  </a>
+  <a name="handle_stats_panel_task">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">handle_stats_panel_task</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#handle_stats_panel_task" title="main.BaseApp.handle_stats_panel_task">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.handle_unfocus">
+    
+  </a>
+  <a name="handle_unfocus">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">handle_unfocus</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#handle_unfocus" title="main.BaseApp.handle_unfocus">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>a simple task called every frame, if either mouse button clicks outside of the UI unfocus all UI elements</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.init_gravity">
+    
+  </a>
+  <a name="init_gravity">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">init_gravity</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#init_gravity" title="main.BaseApp.init_gravity">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set up our bullet phys and grav</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.initialize_round">
+    
+  </a>
+  <a name="initialize_round">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">initialize_round</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#initialize_round" title="main.BaseApp.initialize_round">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Handle initialization tasks, such as spawning food and resetting critters.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.is_touching">
+    
+  </a>
+  <a name="is_touching">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_touching</span><span class="function-signature">(self, critter_pos, food_pos, threshold=10)</span>:
+    
+    <a class="headerLink" href="#is_touching" title="main.BaseApp.is_touching">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Check if a critter is touching a food item.
+
+Args:
+    critter_pos (Vec3): Position of the critter.
+    food_pos (Vec3): Position of the food.
+    threshold (float): Distance within which touching is detected.
+
+Returns:
+    bool: True if touching, False otherwise.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.on_mouse_1_down">
+    
+  </a>
+  <a name="on_mouse_1_down">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">on_mouse_1_down</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#on_mouse_1_down" title="main.BaseApp.on_mouse_1_down">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.picker_setup">
+    
+  </a>
+  <a name="picker_setup">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">picker_setup</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#picker_setup" title="main.BaseApp.picker_setup">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set up everything we need for collisions and our picker. this is used for the raytracing to draw on our map and to pick objects this can also allow us to select individual critters and such if we ever want to target them</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.reproduce_round">
+    
+  </a>
+  <a name="reproduce_round">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">reproduce_round</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#reproduce_round" title="main.BaseApp.reproduce_round">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Handle reproduction and replace less-fit critters.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.reset_all_food">
+    
+  </a>
+  <a name="reset_all_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">reset_all_food</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#reset_all_food" title="main.BaseApp.reset_all_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Remove all food items from the scene and reset the list. Can be called on round resets or user-input.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.rgba_to_name">
+    
+  </a>
+  <a name="rgba_to_name">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">rgba_to_name</span><span class="function-signature">(self, rgba)</span>:
+    
+    <a class="headerLink" href="#rgba_to_name" title="main.BaseApp.rgba_to_name">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.set_critter_height">
+    
+  </a>
+  <a name="set_critter_height">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">set_critter_height</span><span class="function-signature">(self, blob_np, x, y)</span>:
+    
+    <a class="headerLink" href="#set_critter_height" title="main.BaseApp.set_critter_height">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">move a critter to the correct z height based on height map
+
+Args:
+    blob_np (node): _description_
+    x (_type_): _description_
+    y (_type_): _description_
+
+Returns:
+    float: new z pos</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.simulate_round">
+    
+  </a>
+  <a name="simulate_round">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">simulate_round</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#simulate_round" title="main.BaseApp.simulate_round">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Simulate critter movement and interactions.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.spawn_city">
+    
+  </a>
+  <a name="spawn_city">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">spawn_city</span><span class="function-signature">(self, x, y, color=None)</span>:
+    
+    <a class="headerLink" href="#spawn_city" title="main.BaseApp.spawn_city">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.spawn_critter">
+    
+  </a>
+  <a name="spawn_critter">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">spawn_critter</span><span class="function-signature">(self, x, y, city, color=None)</span>:
+    
+    <a class="headerLink" href="#spawn_critter" title="main.BaseApp.spawn_critter">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">a method to bring forth a phys enabled critter at chosen pos, height is automatic based on height map
+
+Args:
+    x (float): _description_
+    y (float): _description_
+    color (tuple, optional): The color of the critter. Randomized if not provided.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.spawn_food">
+    
+  </a>
+  <a name="spawn_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">spawn_food</span><span class="function-signature">(self, x=None, y=None)</span>:
+    
+    <a class="headerLink" href="#spawn_food" title="main.BaseApp.spawn_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Spawn a food item at a random position on the terrain. Including elevated terrain.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.spawn_food_periodically">
+    
+  </a>
+  <a name="spawn_food_periodically">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">spawn_food_periodically</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#spawn_food_periodically" title="main.BaseApp.spawn_food_periodically">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Spawn a food item at random intervals and reschedule dynamically.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.spawn_initial_population">
+    
+  </a>
+  <a name="spawn_initial_population">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">spawn_initial_population</span><span class="function-signature">(self, city, count=10)</span>:
+    
+    <a class="headerLink" href="#spawn_initial_population" title="main.BaseApp.spawn_initial_population">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Spawn an initial population of critters randomly within the bounds of a city.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.start_round_manager">
+    
+  </a>
+  <a name="start_round_manager">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">start_round_manager</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#start_round_manager" title="main.BaseApp.start_round_manager">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Kick off the round lifecycle using the RoundManager.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.update_grav">
+    
+  </a>
+  <a name="update_grav">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">update_grav</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#update_grav" title="main.BaseApp.update_grav">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>update the gravity phys of the world, use delta time to account for fps differences</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.BaseApp.valid_x_y">
+    
+  </a>
+  <a name="valid_x_y">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">valid_x_y</span><span class="function-signature">(self, x, y)</span>:
+    
+    <a class="headerLink" href="#valid_x_y" title="main.BaseApp.valid_x_y">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseconstant">
+  
+  
+  <a name="main.BaseApp.CRITTER_COLORS">
+    
+  </a>
+  <a name="CRITTER_COLORS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">CRITTER_COLORS</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#CRITTER_COLORS" title="main.BaseApp.CRITTER_COLORS">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>[<wbr></wbr>(<wbr></wbr>1, <wbr></wbr>0, <wbr></wbr>0, <wbr></wbr>1), <wbr></wbr>(<wbr></wbr>0, <wbr></wbr>1, <wbr></wbr>0, <wbr></wbr>1), <wbr></wbr>(<wbr></wbr>0, <wbr></wbr>0, <wbr></wbr>1, <wbr></wbr>1), <wbr></wbr>(<wbr></wbr>1, <wbr></wbr>1, <wbr></wbr>0, <wbr></wbr>1)]</code></pre></td></tr></table>
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.add_blob_enabled">
+    
+  </a>
+  <a name="add_blob_enabled">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">add_blob_enabled</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#add_blob_enabled" title="main.BaseApp.add_blob_enabled">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.add_city_enabled">
+    
+  </a>
+  <a name="add_city_enabled">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">add_city_enabled</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#add_city_enabled" title="main.BaseApp.add_city_enabled">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.add_first_blob_enabled">
+    
+  </a>
+  <a name="add_first_blob_enabled">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">add_first_blob_enabled</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#add_first_blob_enabled" title="main.BaseApp.add_first_blob_enabled">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.blobi">
+    
+  </a>
+  <a name="blobi">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">blobi</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#blobi" title="main.BaseApp.blobi">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.charts">
+    
+  </a>
+  <a name="charts">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">charts</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#charts" title="main.BaseApp.charts">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.critter_offset_z">
+    
+  </a>
+  <a name="critter_offset_z">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">critter_offset_z</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#critter_offset_z" title="main.BaseApp.critter_offset_z">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.edit_power">
+    
+  </a>
+  <a name="edit_power">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">edit_power</span>: <code>float</code> =
+    
+    <a class="headerLink" href="#edit_power" title="main.BaseApp.edit_power">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.edit_radius">
+    
+  </a>
+  <a name="edit_radius">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">edit_radius</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#edit_radius" title="main.BaseApp.edit_radius">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.edit_terrain_enabled">
+    
+  </a>
+  <a name="edit_terrain_enabled">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">edit_terrain_enabled</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#edit_terrain_enabled" title="main.BaseApp.edit_terrain_enabled">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.food_per_critter">
+    
+  </a>
+  <a name="food_per_critter">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">food_per_critter</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#food_per_critter" title="main.BaseApp.food_per_critter">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.food_per_round">
+    
+  </a>
+  <a name="food_per_round">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">food_per_round</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#food_per_round" title="main.BaseApp.food_per_round">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.gravity_strength">
+    
+  </a>
+  <a name="gravity_strength">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">gravity_strength</span>: <code>float</code> =
+    
+    <a class="headerLink" href="#gravity_strength" title="main.BaseApp.gravity_strength">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.max_food_count">
+    
+  </a>
+  <a name="max_food_count">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">max_food_count</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#max_food_count" title="main.BaseApp.max_food_count">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.simulation_enabled">
+    
+  </a>
+  <a name="simulation_enabled">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">simulation_enabled</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#simulation_enabled" title="main.BaseApp.simulation_enabled">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="main.BaseApp.z_scale">
+    
+  </a>
+  <a name="z_scale">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">z_scale</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#z_scale" title="main.BaseApp.z_scale">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.alight">
+    
+  </a>
+  <a name="alight">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">alight</span> =
+    
+    <a class="headerLink" href="#alight" title="main.BaseApp.alight">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.camera_controller">
+    
+  </a>
+  <a name="camera_controller">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">camera_controller</span> =
+    
+    <a class="headerLink" href="#camera_controller" title="main.BaseApp.camera_controller">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.critters">
+    
+  </a>
+  <a name="critters">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">critters</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#critters" title="main.BaseApp.critters">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.dlight">
+    
+  </a>
+  <a name="dlight">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">dlight</span> =
+    
+    <a class="headerLink" href="#dlight" title="main.BaseApp.dlight">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.dlnp">
+    
+  </a>
+  <a name="dlnp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">dlnp</span> =
+    
+    <a class="headerLink" href="#dlnp" title="main.BaseApp.dlnp">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.food_items">
+    
+  </a>
+  <a name="food_items">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">food_items</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#food_items" title="main.BaseApp.food_items">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.input">
+    
+  </a>
+  <a name="input">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">input</span> =
+    
+    <a class="headerLink" href="#input" title="main.BaseApp.input">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.picker">
+    
+  </a>
+  <a name="picker">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">picker</span> =
+    
+    <a class="headerLink" href="#picker" title="main.BaseApp.picker">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.picker_node">
+    
+  </a>
+  <a name="picker_node">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">picker_node</span> =
+    
+    <a class="headerLink" href="#picker_node" title="main.BaseApp.picker_node">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.picker_np">
+    
+  </a>
+  <a name="picker_np">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">picker_np</span> =
+    
+    <a class="headerLink" href="#picker_np" title="main.BaseApp.picker_np">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.picker_ray">
+    
+  </a>
+  <a name="picker_ray">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">picker_ray</span> =
+    
+    <a class="headerLink" href="#picker_ray" title="main.BaseApp.picker_ray">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.pie">
+    
+  </a>
+  <a name="pie">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">pie</span> =
+    
+    <a class="headerLink" href="#pie" title="main.BaseApp.pie">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.pusher">
+    
+  </a>
+  <a name="pusher">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">pusher</span> =
+    
+    <a class="headerLink" href="#pusher" title="main.BaseApp.pusher">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.queue">
+    
+  </a>
+  <a name="queue">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">queue</span> =
+    
+    <a class="headerLink" href="#queue" title="main.BaseApp.queue">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.round_manager">
+    
+  </a>
+  <a name="round_manager">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">round_manager</span> =
+    
+    <a class="headerLink" href="#round_manager" title="main.BaseApp.round_manager">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.simulation_started">
+    
+  </a>
+  <a name="simulation_started">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">simulation_started</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#simulation_started" title="main.BaseApp.simulation_started">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.skybox">
+    
+  </a>
+  <a name="skybox">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">skybox</span> =
+    
+    <a class="headerLink" href="#skybox" title="main.BaseApp.skybox">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.terrainController">
+    
+  </a>
+  <a name="terrainController">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">terrainController</span> =
+    
+    <a class="headerLink" href="#terrainController" title="main.BaseApp.terrainController">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.ui">
+    
+  </a>
+  <a name="ui">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ui</span> =
+    
+    <a class="headerLink" href="#ui" title="main.BaseApp.ui">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.BaseApp.world">
+    
+  </a>
+  <a name="world">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">world</span> =
+    
+    <a class="headerLink" href="#world" title="main.BaseApp.world">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for main,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.3.3 at 2024-12-01 12:36:04.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

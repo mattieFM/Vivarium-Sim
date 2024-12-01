@@ -1,0 +1,2224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.CORE.entity.Entity</title>
+    <meta name="generator" content="pydoctor 24.3.3"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1 maximum-scale=1" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          src <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input aria-label="Search" autocomplete="off" class="form-control" id="search-box" minlength="2" name="search-query" placeholder="Search..." type="search" />
+            
+            <span class="input-group-btn">
+              <a class="btn btn-default" id="search-clear-button" onclick="clearSearch()" style="display: none;" title="Clear"><img alt="Clear" src="fonts/x-circle.svg" /></a>
+              <a class="btn btn-default" id="search-help-button" onclick="toggleSearchHelpText()" title="Help"><img alt="Help" src="fonts/info.svg" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input id="toggle-search-in-docstrings-checkbox" onclick="toggleSearchInDocstrings()" type="checkbox" value="false">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="src.CORE.entity.Entity.html" class="internal-link" title="This class"><wbr></wbr>Entity</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_entity" class="internal-link" title="src.CORE.entity.Entity.add_entity">add<wbr></wbr>_entity</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_entities" class="internal-link" title="src.CORE.entity.Entity.get_entities">get<wbr></wbr>_entities</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#remove_entity" class="internal-link" title="src.CORE.entity.Entity.remove_entity">remove<wbr></wbr>_entity</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#remove_entity_from_list" class="internal-link" title="src.CORE.entity.Entity.remove_entity_from_list">remove<wbr></wbr>_entity<wbr></wbr>_from<wbr></wbr>_list</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#remove_list_of_entities" class="internal-link" title="src.CORE.entity.Entity.remove_list_of_entities">remove<wbr></wbr>_list<wbr></wbr>_of<wbr></wbr>_entities</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="src.CORE.entity.Entity.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_child" class="internal-link" title="src.CORE.entity.Entity.add_child">add<wbr></wbr>_child</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#apply_all_genes" class="internal-link" title="src.CORE.entity.Entity.apply_all_genes">apply<wbr></wbr>_all<wbr></wbr>_genes</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#change_color" class="internal-link" title="src.CORE.entity.Entity.change_color">change<wbr></wbr>_color</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#dist_to_point" class="internal-link" title="src.CORE.entity.Entity.dist_to_point">dist<wbr></wbr>_to<wbr></wbr>_point</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#distance" class="internal-link" title="src.CORE.entity.Entity.distance">distance</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#eat" class="internal-link" title="src.CORE.entity.Entity.eat">eat</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#eat_other" class="internal-link" title="src.CORE.entity.Entity.eat_other">eat<wbr></wbr>_other</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#fight" class="internal-link" title="src.CORE.entity.Entity.fight">fight</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_all_genes_as_str" class="internal-link" title="src.CORE.entity.Entity.get_all_genes_as_str">get<wbr></wbr>_all<wbr></wbr>_genes<wbr></wbr>_as<wbr></wbr>_str</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_gene" class="internal-link" title="src.CORE.entity.Entity.get_gene">get<wbr></wbr>_gene</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_pos" class="internal-link" title="src.CORE.entity.Entity.get_pos">get<wbr></wbr>_pos</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#move_task" class="internal-link" title="src.CORE.entity.Entity.move_task">move<wbr></wbr>_task</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#move_tick" class="internal-link" title="src.CORE.entity.Entity.move_tick">move<wbr></wbr>_tick</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#move_to" class="internal-link" title="src.CORE.entity.Entity.move_to">move<wbr></wbr>_to</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#remove" class="internal-link" title="src.CORE.entity.Entity.remove">remove</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#remove_child" class="internal-link" title="src.CORE.entity.Entity.remove_child">remove<wbr></wbr>_child</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reset_move_task" class="internal-link" title="src.CORE.entity.Entity.reset_move_task">reset<wbr></wbr>_move<wbr></wbr>_task</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#set_id" class="internal-link" title="src.CORE.entity.Entity.set_id">set<wbr></wbr>_id</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#spawn" class="internal-link" title="src.CORE.entity.Entity.spawn">spawn</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#update" class="internal-link" title="src.CORE.entity.Entity.update">update</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#entities" class="internal-link" title="src.CORE.entity.Entity.entities">entities</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#base" class="internal-link" title="src.CORE.entity.Entity.base">base</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#body_np" class="internal-link" title="src.CORE.entity.Entity.body_np">body<wbr></wbr>_np</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#can_be_eaten" class="internal-link" title="src.CORE.entity.Entity.can_be_eaten">can<wbr></wbr>_be<wbr></wbr>_eaten</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#children" class="internal-link" title="src.CORE.entity.Entity.children">children</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#color" class="internal-link" title="src.CORE.entity.Entity.color">color</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#currentDirection" class="internal-link" title="src.CORE.entity.Entity.currentDirection">current<wbr></wbr>Direction</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#currentGoal" class="internal-link" title="src.CORE.entity.Entity.currentGoal">current<wbr></wbr>Goal</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#currentPath" class="internal-link" title="src.CORE.entity.Entity.currentPath">current<wbr></wbr>Path</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#eaten" class="internal-link" title="src.CORE.entity.Entity.eaten">eaten</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#enemiesEaten" class="internal-link" title="src.CORE.entity.Entity.enemiesEaten">enemies<wbr></wbr>Eaten</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#food_eaten" class="internal-link" title="src.CORE.entity.Entity.food_eaten">food<wbr></wbr>_eaten</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#genes" class="internal-link" title="src.CORE.entity.Entity.genes">genes</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#id" class="internal-link" title="src.CORE.entity.Entity.id">id</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#max_times_eaten" class="internal-link" title="src.CORE.entity.Entity.max_times_eaten">max<wbr></wbr>_times<wbr></wbr>_eaten</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#model" class="internal-link" title="src.CORE.entity.Entity.model">model</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#move_task_ref" class="internal-link" title="src.CORE.entity.Entity.move_task_ref">move<wbr></wbr>_task<wbr></wbr>_ref</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#node" class="internal-link" title="src.CORE.entity.Entity.node">node</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#position" class="internal-link" title="src.CORE.entity.Entity.position">position</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#spawned" class="internal-link" title="src.CORE.entity.Entity.spawned">spawned</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#speed" class="internal-link" title="src.CORE.entity.Entity.speed">speed</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#times_eaten" class="internal-link" title="src.CORE.entity.Entity.times_eaten">times<wbr></wbr>_eaten</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="src.CORE.entity.html" class="internal-link" title="The parent of this class">entity</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.CORE.entity.Entity.html" class="internal-link" title="src.CORE.entity.Entity"><wbr></wbr>Entity</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.CORE.html" class="internal-link" title="src.CORE">CORE</a></code><wbr></wbr>.<code><a href="src.CORE.entity.html" class="internal-link" title="src.CORE.entity">entity</a></code><wbr></wbr>.<code><a href="src.CORE.entity.Entity.html" class="internal-link" title="src.CORE.entity.Entity">Entity</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">Entity</span>(DirectObject):</code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="src.CORE.entity.Entity.__init__">Entity(base, model, node, id, ...)</a></code></p>
+          <p><a href="classIndex.html#src.CORE.entity.Entity">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>the parent class of anything in the world that can move and interact</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id6">
+  
+  
+  <tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#add_entity" class="internal-link" title="src.CORE.entity.Entity.add_entity">add<wbr></wbr>_entity</a></code></td>
+    <td>add a entity to the global array of all entities</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#get_entities" class="internal-link" title="src.CORE.entity.Entity.get_entities">get<wbr></wbr>_entities</a></code></td>
+    <td>return all entities that have been spawned</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#remove_entity" class="internal-link" title="src.CORE.entity.Entity.remove_entity">remove<wbr></wbr>_entity</a></code></td>
+    <td>Remove an entity from the global array of all entities.</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#remove_entity_from_list" class="internal-link" title="src.CORE.entity.Entity.remove_entity_from_list">remove<wbr></wbr>_entity<wbr></wbr>_from<wbr></wbr>_list</a></code></td>
+    <td>Remove an entity from the global array of all entities.</td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#remove_list_of_entities" class="internal-link" title="src.CORE.entity.Entity.remove_list_of_entities">remove<wbr></wbr>_list<wbr></wbr>_of<wbr></wbr>_entities</a></code></td>
+    <td>loop through a list of entities and remove each</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="src.CORE.entity.Entity.__init__">__init__</a></code></td>
+    <td>the base entity class</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#add_child" class="internal-link" title="src.CORE.entity.Entity.add_child">add<wbr></wbr>_child</a></code></td>
+    <td>add a child to the list of children</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#apply_all_genes" class="internal-link" title="src.CORE.entity.Entity.apply_all_genes">apply<wbr></wbr>_all<wbr></wbr>_genes</a></code></td>
+    <td>propagate all gene changes to this critter</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#change_color" class="internal-link" title="src.CORE.entity.Entity.change_color">change<wbr></wbr>_color</a></code></td>
+    <td>change the color of this entity</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#dist_to_point" class="internal-link" title="src.CORE.entity.Entity.dist_to_point">dist<wbr></wbr>_to<wbr></wbr>_point</a></code></td>
+    <td>Check if a critter is within threshhold of point</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#distance" class="internal-link" title="src.CORE.entity.Entity.distance">distance</a></code></td>
+    <td>get the 2d euclid distance between this and another point or entity</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#eat" class="internal-link" title="src.CORE.entity.Entity.eat">eat</a></code></td>
+    <td>simulate a critter eating this food</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#eat_other" class="internal-link" title="src.CORE.entity.Entity.eat_other">eat<wbr></wbr>_other</a></code></td>
+    <td>have this critter eat another critter</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#fight" class="internal-link" title="src.CORE.entity.Entity.fight">fight</a></code></td>
+    <td>have this entity and another fight winner eats loser based on strength</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_all_genes_as_str" class="internal-link" title="src.CORE.entity.Entity.get_all_genes_as_str">get<wbr></wbr>_all<wbr></wbr>_genes<wbr></wbr>_as<wbr></wbr>_str</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_gene" class="internal-link" title="src.CORE.entity.Entity.get_gene">get<wbr></wbr>_gene</a></code></td>
+    <td>get the value of a gene via the name</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_pos" class="internal-link" title="src.CORE.entity.Entity.get_pos">get<wbr></wbr>_pos</a></code></td>
+    <td>get the (x,y,z) pos of this critter</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#move_task" class="internal-link" title="src.CORE.entity.Entity.move_task">move<wbr></wbr>_task</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#move_tick" class="internal-link" title="src.CORE.entity.Entity.move_tick">move<wbr></wbr>_tick</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#move_to" class="internal-link" title="src.CORE.entity.Entity.move_to">move<wbr></wbr>_to</a></code></td>
+    <td>move from pos to target vec3 over s seconds</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#remove" class="internal-link" title="src.CORE.entity.Entity.remove">remove</a></code></td>
+    <td>Remove the spawned entity from the scene and physics world.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#remove_child" class="internal-link" title="src.CORE.entity.Entity.remove_child">remove<wbr></wbr>_child</a></code></td>
+    <td>remove a child if one exists from the list of children</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reset_move_task" class="internal-link" title="src.CORE.entity.Entity.reset_move_task">reset<wbr></wbr>_move<wbr></wbr>_task</a></code></td>
+    <td>remove the current move task</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#set_id" class="internal-link" title="src.CORE.entity.Entity.set_id">set<wbr></wbr>_id</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#spawn" class="internal-link" title="src.CORE.entity.Entity.spawn">spawn</a></code></td>
+    <td>a method to bring forth a phys enabled entity at chosen pos, height is automatic based on height map</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#update" class="internal-link" title="src.CORE.entity.Entity.update">update</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#entities" class="internal-link" title="src.CORE.entity.Entity.entities">entities</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#base" class="internal-link" title="src.CORE.entity.Entity.base">base</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#body_np" class="internal-link" title="src.CORE.entity.Entity.body_np">body<wbr></wbr>_np</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#can_be_eaten" class="internal-link" title="src.CORE.entity.Entity.can_be_eaten">can<wbr></wbr>_be<wbr></wbr>_eaten</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#children" class="internal-link" title="src.CORE.entity.Entity.children">children</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#color" class="internal-link" title="src.CORE.entity.Entity.color">color</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#currentDirection" class="internal-link" title="src.CORE.entity.Entity.currentDirection">current<wbr></wbr>Direction</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#currentGoal" class="internal-link" title="src.CORE.entity.Entity.currentGoal">current<wbr></wbr>Goal</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#currentPath" class="internal-link" title="src.CORE.entity.Entity.currentPath">current<wbr></wbr>Path</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#eaten" class="internal-link" title="src.CORE.entity.Entity.eaten">eaten</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#enemiesEaten" class="internal-link" title="src.CORE.entity.Entity.enemiesEaten">enemies<wbr></wbr>Eaten</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#food_eaten" class="internal-link" title="src.CORE.entity.Entity.food_eaten">food<wbr></wbr>_eaten</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#genes" class="internal-link" title="src.CORE.entity.Entity.genes">genes</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#id" class="internal-link" title="src.CORE.entity.Entity.id">id</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#max_times_eaten" class="internal-link" title="src.CORE.entity.Entity.max_times_eaten">max<wbr></wbr>_times<wbr></wbr>_eaten</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#model" class="internal-link" title="src.CORE.entity.Entity.model">model</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#move_task_ref" class="internal-link" title="src.CORE.entity.Entity.move_task_ref">move<wbr></wbr>_task<wbr></wbr>_ref</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#node" class="internal-link" title="src.CORE.entity.Entity.node">node</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#position" class="internal-link" title="src.CORE.entity.Entity.position">position</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#spawned" class="internal-link" title="src.CORE.entity.Entity.spawned">spawned</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#speed" class="internal-link" title="src.CORE.entity.Entity.speed">speed</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#times_eaten" class="internal-link" title="src.CORE.entity.Entity.times_eaten">times<wbr></wbr>_eaten</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basestaticmethod">
+  
+  
+  <a name="src.CORE.entity.Entity.add_entity">
+    
+  </a>
+  <a name="add_entity">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">add_entity</span><span class="function-signature">(entity)</span>:
+    
+    <a class="headerLink" href="#add_entity" title="src.CORE.entity.Entity.add_entity">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">add a entity to the global array of all entities
+
+Args:
+    entity (Entity): the entity to add</p></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="src.CORE.entity.Entity.get_entities">
+    
+  </a>
+  <a name="get_entities">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">get_entities</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#get_entities" title="src.CORE.entity.Entity.get_entities">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>return all entities that have been spawned</p></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="src.CORE.entity.Entity.remove_entity">
+    
+  </a>
+  <a name="remove_entity">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">remove_entity</span><span class="function-signature">(entity)</span>:
+    
+    <a class="headerLink" href="#remove_entity" title="src.CORE.entity.Entity.remove_entity">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Remove an entity from the global array of all entities.
+
+Args:
+    entity (Entity): The entity to remove</p></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="src.CORE.entity.Entity.remove_entity_from_list">
+    
+  </a>
+  <a name="remove_entity_from_list">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">remove_entity_from_list</span><span class="function-signature">(entity, list)</span>:
+    
+    <a class="headerLink" href="#remove_entity_from_list" title="src.CORE.entity.Entity.remove_entity_from_list">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Remove an entity from the global array of all entities.
+
+Args:
+    entity (Entity): The entity to remove</p></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  
+  <a name="src.CORE.entity.Entity.remove_list_of_entities">
+    
+  </a>
+  <a name="remove_list_of_entities">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">remove_list_of_entities</span><span class="function-signature">(entities)</span>:
+    
+    <a class="headerLink" href="#remove_list_of_entities" title="src.CORE.entity.Entity.remove_list_of_entities">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">loop through a list of entities and remove each
+
+
+Args:
+    entities (_type_): _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span><span class="function-signature">(self, base, model=<span class="rst-variable-quote">'</span><span class="rst-variable-string">./assets/models/critter.obj</span><span class="rst-variable-quote">'</span>, node=None, id=None, color=None, body_np=None, position=(<wbr></wbr>0, <wbr></wbr>0, <wbr></wbr>0), genes=None)</span>:
+    
+    <a class="headerLink" href="#__init__" title="src.CORE.entity.Entity.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">the base entity class
+
+Args:
+    base (BaseApp): _description_
+    model (str, optional): the model to load for this entity. Defaults to "./assets/models/critter.obj".
+    node (_type_, optional): if a node already exists?. Defaults to None.
+    id (_type_, optional): _description_. Defaults to None.
+    color (_type_, optional): the color (0,3,5,2). Defaults to None.
+    body_np (_type_, optional): _description_. Defaults to None.
+    position (tuple, optional): _description_. Defaults to (0,0,0).</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.add_child">
+    
+  </a>
+  <a name="add_child">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">add_child</span><span class="function-signature">(self, child)</span>:
+    
+    <a class="headerLink" href="#add_child" title="src.CORE.entity.Entity.add_child">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">add a child to the list of children
+
+Args:
+    child (Entity): _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.apply_all_genes">
+    
+  </a>
+  <a name="apply_all_genes">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">apply_all_genes</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#apply_all_genes" title="src.CORE.entity.Entity.apply_all_genes">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>propagate all gene changes to this critter</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.change_color">
+    
+  </a>
+  <a name="change_color">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">change_color</span><span class="function-signature">(self, color)</span>:
+    
+    <a class="headerLink" href="#change_color" title="src.CORE.entity.Entity.change_color">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">change the color of this entity
+
+Args:
+    color (vector4): (r,g,b,a)</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.dist_to_point">
+    
+  </a>
+  <a name="dist_to_point">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">dist_to_point</span><span class="function-signature">(self, point, threshold=5)</span>:
+    
+    <a class="headerLink" href="#dist_to_point" title="src.CORE.entity.Entity.dist_to_point">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Check if a critter is within threshhold of point
+
+Args:
+    food_pos (Vec3): Position of the goal point.
+    threshold (float): Distance within which touching is detected.
+
+Returns:
+    bool: True if within range, False otherwise.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.distance">
+    
+  </a>
+  <a name="distance">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">distance</span><span class="function-signature">(self, point)</span>:
+    
+    <a class="headerLink" href="#distance" title="src.CORE.entity.Entity.distance">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>get the 2d euclid distance between this and another point or entity</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.eat">
+    
+  </a>
+  <a name="eat">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">eat</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#eat" title="src.CORE.entity.Entity.eat">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>simulate a critter eating this food</p>
+<p>return true if allowed to eat return false otherwise</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.eat_other">
+    
+  </a>
+  <a name="eat_other">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">eat_other</span><span class="function-signature">(self, other)</span>:
+    
+    <a class="headerLink" href="#eat_other" title="src.CORE.entity.Entity.eat_other">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>have this critter eat another critter</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.fight">
+    
+  </a>
+  <a name="fight">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">fight</span><span class="function-signature">(self, other, random_chance=0.01)</span>:
+    
+    <a class="headerLink" href="#fight" title="src.CORE.entity.Entity.fight">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">have this entity and another fight
+winner eats loser
+based on strength
+
+Args:
+    other (entity): entity to fight
+    random_chance (float, optional): random value (-this,this) added to results. Defaults to .01.
+Returns:
+    true if self won false if other won</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.get_all_genes_as_str">
+    
+  </a>
+  <a name="get_all_genes_as_str">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_all_genes_as_str</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#get_all_genes_as_str" title="src.CORE.entity.Entity.get_all_genes_as_str">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.get_gene">
+    
+  </a>
+  <a name="get_gene">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_gene</span><span class="function-signature">(self, name)</span>:
+    
+    <a class="headerLink" href="#get_gene" title="src.CORE.entity.Entity.get_gene">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>get the value of a gene via the name</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.get_pos">
+    
+  </a>
+  <a name="get_pos">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_pos</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#get_pos" title="src.CORE.entity.Entity.get_pos">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">get the (x,y,z) pos of this critter
+
+Returns:
+    _type_: _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.move_task">
+    
+  </a>
+  <a name="move_task">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">move_task</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#move_task" title="src.CORE.entity.Entity.move_task">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.move_tick">
+    
+  </a>
+  <a name="move_tick">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">move_tick</span><span class="function-signature">(self, goal_point, extra_speed_mod=1, phys=True)</span>:
+    
+    <a class="headerLink" href="#move_tick" title="src.CORE.entity.Entity.move_tick">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.move_to">
+    
+  </a>
+  <a name="move_to">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">move_to</span><span class="function-signature">(self, vec3)</span>:
+    
+    <a class="headerLink" href="#move_to" title="src.CORE.entity.Entity.move_to">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">move from pos to target vec3 over s seconds
+
+Args:
+    vec3 (vec3): vector3</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.remove">
+    
+  </a>
+  <a name="remove">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">remove</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#remove" title="src.CORE.entity.Entity.remove">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Remove the spawned entity from the scene and physics world.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.remove_child">
+    
+  </a>
+  <a name="remove_child">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">remove_child</span><span class="function-signature">(self, child)</span>:
+    
+    <a class="headerLink" href="#remove_child" title="src.CORE.entity.Entity.remove_child">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">remove a child if one exists from the list of children
+
+Args:
+    child (Entity): _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.reset_move_task">
+    
+  </a>
+  <a name="reset_move_task">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">reset_move_task</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#reset_move_task" title="src.CORE.entity.Entity.reset_move_task">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>remove the current move task</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.set_id">
+    
+  </a>
+  <a name="set_id">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">set_id</span><span class="function-signature">(self, id=None)</span>:
+    
+    <a class="headerLink" href="#set_id" title="src.CORE.entity.Entity.set_id">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.spawn">
+    
+  </a>
+  <a name="spawn">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">spawn</span><span class="function-signature">(self, x=None, y=None, color=None)</span>:
+    
+    <a class="headerLink" href="#spawn" title="src.CORE.entity.Entity.spawn">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">a method to bring forth a phys enabled entity at chosen pos, height is automatic based on height map
+
+Args:
+    x (float): _description_
+    y (float): _description_
+    color (tuple, optional): The color of the critter. Randomized if not provided.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.entity.Entity.update">
+    
+  </a>
+  <a name="update">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">update</span><span class="function-signature">(self, x=None, y=None)</span>:
+    
+    <a class="headerLink" href="#update" title="src.CORE.entity.Entity.update">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="src.CORE.entity.Entity.entities">
+    
+  </a>
+  <a name="entities">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">entities</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#entities" title="src.CORE.entity.Entity.entities">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.base">
+    
+  </a>
+  <a name="base">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">base</span> =
+    
+    <a class="headerLink" href="#base" title="src.CORE.entity.Entity.base">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.body_np">
+    
+  </a>
+  <a name="body_np">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">body_np</span> =
+    
+    <a class="headerLink" href="#body_np" title="src.CORE.entity.Entity.body_np">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.can_be_eaten">
+    
+  </a>
+  <a name="can_be_eaten">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">can_be_eaten</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#can_be_eaten" title="src.CORE.entity.Entity.can_be_eaten">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.children">
+    
+  </a>
+  <a name="children">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">children</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#children" title="src.CORE.entity.Entity.children">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.color">
+    
+  </a>
+  <a name="color">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">color</span> =
+    
+    <a class="headerLink" href="#color" title="src.CORE.entity.Entity.color">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.currentDirection">
+    
+  </a>
+  <a name="currentDirection">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">currentDirection</span>: <code>tuple[<wbr></wbr>int, <wbr></wbr><span class="rst-variable-ellipsis">...</span>]</code> =
+    
+    <a class="headerLink" href="#currentDirection" title="src.CORE.entity.Entity.currentDirection">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.currentGoal">
+    
+  </a>
+  <a name="currentGoal">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">currentGoal</span> =
+    
+    <a class="headerLink" href="#currentGoal" title="src.CORE.entity.Entity.currentGoal">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.currentPath">
+    
+  </a>
+  <a name="currentPath">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">currentPath</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#currentPath" title="src.CORE.entity.Entity.currentPath">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.eaten">
+    
+  </a>
+  <a name="eaten">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">eaten</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#eaten" title="src.CORE.entity.Entity.eaten">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.enemiesEaten">
+    
+  </a>
+  <a name="enemiesEaten">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">enemiesEaten</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#enemiesEaten" title="src.CORE.entity.Entity.enemiesEaten">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.food_eaten">
+    
+  </a>
+  <a name="food_eaten">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">food_eaten</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#food_eaten" title="src.CORE.entity.Entity.food_eaten">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.genes">
+    
+  </a>
+  <a name="genes">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">genes</span> =
+    
+    <a class="headerLink" href="#genes" title="src.CORE.entity.Entity.genes">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.id">
+    
+  </a>
+  <a name="id">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">id</span> =
+    
+    <a class="headerLink" href="#id" title="src.CORE.entity.Entity.id">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.max_times_eaten">
+    
+  </a>
+  <a name="max_times_eaten">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">max_times_eaten</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#max_times_eaten" title="src.CORE.entity.Entity.max_times_eaten">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.model">
+    
+  </a>
+  <a name="model">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">model</span> =
+    
+    <a class="headerLink" href="#model" title="src.CORE.entity.Entity.model">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.move_task_ref">
+    
+  </a>
+  <a name="move_task_ref">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">move_task_ref</span> =
+    
+    <a class="headerLink" href="#move_task_ref" title="src.CORE.entity.Entity.move_task_ref">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.node">
+    
+  </a>
+  <a name="node">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">node</span> =
+    
+    <a class="headerLink" href="#node" title="src.CORE.entity.Entity.node">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.position">
+    
+  </a>
+  <a name="position">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">position</span> =
+    
+    <a class="headerLink" href="#position" title="src.CORE.entity.Entity.position">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.spawned">
+    
+  </a>
+  <a name="spawned">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">spawned</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#spawned" title="src.CORE.entity.Entity.spawned">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.speed">
+    
+  </a>
+  <a name="speed">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">speed</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#speed" title="src.CORE.entity.Entity.speed">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.entity.Entity.times_eaten">
+    
+  </a>
+  <a name="times_eaten">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">times_eaten</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#times_eaten" title="src.CORE.entity.Entity.times_eaten">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for src,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.3.3 at 2024-12-01 12:37:19.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

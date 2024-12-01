@@ -1,0 +1,2046 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>GA.Critter.Critter</title>
+    <meta name="generator" content="pydoctor 24.3.3"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1 maximum-scale=1" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          GA <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input aria-label="Search" autocomplete="off" class="form-control" id="search-box" minlength="2" name="search-query" placeholder="Search..." type="search" />
+            
+            <span class="input-group-btn">
+              <a class="btn btn-default" id="search-clear-button" onclick="clearSearch()" style="display: none;" title="Clear"><img alt="Clear" src="fonts/x-circle.svg" /></a>
+              <a class="btn btn-default" id="search-help-button" onclick="toggleSearchHelpText()" title="Help"><img alt="Help" src="fonts/info.svg" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input id="toggle-search-in-docstrings-checkbox" onclick="toggleSearchInDocstrings()" type="checkbox" value="false">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="GA.Critter.Critter.html" class="internal-link" title="This class"><wbr></wbr>Critter</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#remove_all_critters" class="internal-link" title="GA.Critter.Critter.remove_all_critters">remove<wbr></wbr>_all<wbr></wbr>_critters</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="GA.Critter.Critter.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__str__" class="internal-link" title="GA.Critter.Critter.__str__">__str__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#adjust_fitness" class="internal-link" title="GA.Critter.Critter.adjust_fitness">adjust<wbr></wbr>_fitness</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#closest_food_in_threshold" class="internal-link" title="GA.Critter.Critter.closest_food_in_threshold">closest<wbr></wbr>_food<wbr></wbr>_in<wbr></wbr>_threshold</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#consume_food" class="internal-link" title="GA.Critter.Critter.consume_food">consume<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#consume_nearby_food" class="internal-link" title="GA.Critter.Critter.consume_nearby_food">consume<wbr></wbr>_nearby<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#consume_target_food_if_nearby" class="internal-link" title="GA.Critter.Critter.consume_target_food_if_nearby">consume<wbr></wbr>_target<wbr></wbr>_food<wbr></wbr>_if<wbr></wbr>_nearby</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#eat" class="internal-link" title="GA.Critter.Critter.eat">eat</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#evaluate" class="internal-link" title="GA.Critter.Critter.evaluate">evaluate</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#find_closest_food" class="internal-link" title="GA.Critter.Critter.find_closest_food">find<wbr></wbr>_closest<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#find_food" class="internal-link" title="GA.Critter.Critter.find_food">find<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_rand_color" class="internal-link" title="GA.Critter.Critter.get_rand_color">get<wbr></wbr>_rand<wbr></wbr>_color</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_full" class="internal-link" title="GA.Critter.Critter.is_full">is<wbr></wbr>_full</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_last_survivor" class="internal-link" title="GA.Critter.Critter.is_last_survivor">is<wbr></wbr>_last<wbr></wbr>_survivor</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#move" class="internal-link" title="GA.Critter.Critter.move">move</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#move_task" class="internal-link" title="GA.Critter.Critter.move_task">move<wbr></wbr>_task</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#remove" class="internal-link" title="GA.Critter.Critter.remove">remove</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reset" class="internal-link" title="GA.Critter.Critter.reset">reset</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reset_seek_task" class="internal-link" title="GA.Critter.Critter.reset_seek_task">reset<wbr></wbr>_seek<wbr></wbr>_task</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#return_to_city" class="internal-link" title="GA.Critter.Critter.return_to_city">return<wbr></wbr>_to<wbr></wbr>_city</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#seek_food" class="internal-link" title="GA.Critter.Critter.seek_food">seek<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#spawn" class="internal-link" title="GA.Critter.Critter.spawn">spawn</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#target_chosen_food" class="internal-link" title="GA.Critter.Critter.target_chosen_food">target<wbr></wbr>_chosen<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#target_food" class="internal-link" title="GA.Critter.Critter.target_food">target<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#target_nearest_food" class="internal-link" title="GA.Critter.Critter.target_nearest_food">target<wbr></wbr>_nearest<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#task_seek_food" class="internal-link" title="GA.Critter.Critter.task_seek_food">task<wbr></wbr>_seek<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#critters" class="internal-link" title="GA.Critter.Critter.critters">critters</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#at_city" class="internal-link" title="GA.Critter.Critter.at_city">at<wbr></wbr>_city</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#base" class="internal-link" title="GA.Critter.Critter.base">base</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#city" class="internal-link" title="GA.Critter.Critter.city">city</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#color" class="internal-link" title="GA.Critter.Critter.color">color</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#current_food_goal" class="internal-link" title="GA.Critter.Critter.current_food_goal">current<wbr></wbr>_food<wbr></wbr>_goal</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#enemiesEaten" class="internal-link" title="GA.Critter.Critter.enemiesEaten">enemies<wbr></wbr>Eaten</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#fitness" class="internal-link" title="GA.Critter.Critter.fitness">fitness</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#food_eaten" class="internal-link" title="GA.Critter.Critter.food_eaten">food<wbr></wbr>_eaten</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#got_food_this_round" class="internal-link" title="GA.Critter.Critter.got_food_this_round">got<wbr></wbr>_food<wbr></wbr>_this<wbr></wbr>_round</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#out_for_a_fight" class="internal-link" title="GA.Critter.Critter.out_for_a_fight">out<wbr></wbr>_for<wbr></wbr>_a<wbr></wbr>_fight</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#out_for_cannibalism" class="internal-link" title="GA.Critter.Critter.out_for_cannibalism">out<wbr></wbr>_for<wbr></wbr>_cannibalism</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#position" class="internal-link" title="GA.Critter.Critter.position">position</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#returning_to_city" class="internal-link" title="GA.Critter.Critter.returning_to_city">returning<wbr></wbr>_to<wbr></wbr>_city</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#seek_food_task" class="internal-link" title="GA.Critter.Critter.seek_food_task">seek<wbr></wbr>_food<wbr></wbr>_task</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#strength" class="internal-link" title="GA.Critter.Critter.strength">strength</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#time_to_reach_first_food" class="internal-link" title="GA.Critter.Critter.time_to_reach_first_food">time<wbr></wbr>_to<wbr></wbr>_reach<wbr></wbr>_first<wbr></wbr>_food</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="GA.Critter.html" class="internal-link" title="The parent of this class"><wbr></wbr>Critter</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="GA.Critter.Critter.html" class="internal-link" title="GA.Critter.Critter"><wbr></wbr>Critter</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">GA</a></code><wbr></wbr>.<code><a href="GA.Critter.html" class="internal-link" title="GA.Critter">Critter</a></code><wbr></wbr>.<code><a href="GA.Critter.Critter.html" class="internal-link" title="GA.Critter.Critter">Critter</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">Critter</span>(Entity):</code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="GA.Critter.Critter.__init__">Critter(base, city, position, strength, ...)</a></code></p>
+          <p><a href="classIndex.html#GA.Critter.Critter">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id7">
+  
+  
+  <tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#remove_all_critters" class="internal-link" title="GA.Critter.Critter.remove_all_critters">remove<wbr></wbr>_all<wbr></wbr>_critters</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="GA.Critter.Critter.__init__">__init__</a></code></td>
+    <td>Initialize a new critter.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__str__" class="internal-link" title="GA.Critter.Critter.__str__">__str__</a></code></td>
+    <td>Return a string representation of the critter for debugging.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#adjust_fitness" class="internal-link" title="GA.Critter.Critter.adjust_fitness">adjust<wbr></wbr>_fitness</a></code></td>
+    <td>Adjust the critter's fitness score.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#closest_food_in_threshold" class="internal-link" title="GA.Critter.Critter.closest_food_in_threshold">closest<wbr></wbr>_food<wbr></wbr>_in<wbr></wbr>_threshold</a></code></td>
+    <td>find the closest food within the gene closeness threshold if one is not found go to the closest one</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#consume_food" class="internal-link" title="GA.Critter.Critter.consume_food">consume<wbr></wbr>_food</a></code></td>
+    <td>eat a food, if the food is not eaten</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#consume_nearby_food" class="internal-link" title="GA.Critter.Critter.consume_nearby_food">consume<wbr></wbr>_nearby<wbr></wbr>_food</a></code></td>
+    <td>consume one piece of nearby food</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#consume_target_food_if_nearby" class="internal-link" title="GA.Critter.Critter.consume_target_food_if_nearby">consume<wbr></wbr>_target<wbr></wbr>_food<wbr></wbr>_if<wbr></wbr>_nearby</a></code></td>
+    <td>consume the target food if nearby it, if no target do nothing</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#eat" class="internal-link" title="GA.Critter.Critter.eat">eat</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#evaluate" class="internal-link" title="GA.Critter.Critter.evaluate">evaluate</a></code></td>
+    <td>the fitness of the creature is defined as 1 point if they eat any food + the amount of food they ate / the max they can eat + 2 points per enemy eaten (since a enemy is a food and an enemy and we give points for each) + 0-1 points based on how fast they got their food -1 point if it did not return home 0 points if they did not eat.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#find_closest_food" class="internal-link" title="GA.Critter.Critter.find_closest_food">find<wbr></wbr>_closest<wbr></wbr>_food</a></code></td>
+    <td>find the closeset food to this critter and return its Food obj</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#find_food" class="internal-link" title="GA.Critter.Critter.find_food">find<wbr></wbr>_food</a></code></td>
+    <td>return what food this critter will attempt to target currently based on its position and genes</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_rand_color" class="internal-link" title="GA.Critter.Critter.get_rand_color">get<wbr></wbr>_rand<wbr></wbr>_color</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_full" class="internal-link" title="GA.Critter.Critter.is_full">is<wbr></wbr>_full</a></code></td>
+    <td>has this critter eaten all it can eat?</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_last_survivor" class="internal-link" title="GA.Critter.Critter.is_last_survivor">is<wbr></wbr>_last<wbr></wbr>_survivor</a></code></td>
+    <td>is this the last critter not at the city or alive</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#move" class="internal-link" title="GA.Critter.Critter.move">move</a></code></td>
+    <td>Update the critter's position.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#move_task" class="internal-link" title="GA.Critter.Critter.move_task">move<wbr></wbr>_task</a></code></td>
+    <td>a task to move the critter to a location overidden to eat food at the end of the path</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#remove" class="internal-link" title="GA.Critter.Critter.remove">remove</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reset" class="internal-link" title="GA.Critter.Critter.reset">reset</a></code></td>
+    <td>reset any applicable things</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reset_seek_task" class="internal-link" title="GA.Critter.Critter.reset_seek_task">reset<wbr></wbr>_seek<wbr></wbr>_task</a></code></td>
+    <td>remove the current seek food task</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#return_to_city" class="internal-link" title="GA.Critter.Critter.return_to_city">return<wbr></wbr>_to<wbr></wbr>_city</a></code></td>
+    <td>return to the home city</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#seek_food" class="internal-link" title="GA.Critter.Critter.seek_food">seek<wbr></wbr>_food</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#spawn" class="internal-link" title="GA.Critter.Critter.spawn">spawn</a></code></td>
+    <td>spawn one critter</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#target_chosen_food" class="internal-link" title="GA.Critter.Critter.target_chosen_food">target<wbr></wbr>_chosen<wbr></wbr>_food</a></code></td>
+    <td>set this critter to seek the food it wants</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#target_food" class="internal-link" title="GA.Critter.Critter.target_food">target<wbr></wbr>_food</a></code></td>
+    <td>set critter to target a peice of food and move towards it</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#target_nearest_food" class="internal-link" title="GA.Critter.Critter.target_nearest_food">target<wbr></wbr>_nearest<wbr></wbr>_food</a></code></td>
+    <td>find and target the closest food</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#task_seek_food" class="internal-link" title="GA.Critter.Critter.task_seek_food">task<wbr></wbr>_seek<wbr></wbr>_food</a></code></td>
+    <td>a task to seek out the nearest food and eat it till this critter cannot eat/carry any more</td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#critters" class="internal-link" title="GA.Critter.Critter.critters">critters</a></code></td>
+    <td>Class representing a critter in the simulation.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#at_city" class="internal-link" title="GA.Critter.Critter.at_city">at<wbr></wbr>_city</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#base" class="internal-link" title="GA.Critter.Critter.base">base</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#city" class="internal-link" title="GA.Critter.Critter.city">city</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#color" class="internal-link" title="GA.Critter.Critter.color">color</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#current_food_goal" class="internal-link" title="GA.Critter.Critter.current_food_goal">current<wbr></wbr>_food<wbr></wbr>_goal</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#enemiesEaten" class="internal-link" title="GA.Critter.Critter.enemiesEaten">enemies<wbr></wbr>Eaten</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#fitness" class="internal-link" title="GA.Critter.Critter.fitness">fitness</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#food_eaten" class="internal-link" title="GA.Critter.Critter.food_eaten">food<wbr></wbr>_eaten</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#got_food_this_round" class="internal-link" title="GA.Critter.Critter.got_food_this_round">got<wbr></wbr>_food<wbr></wbr>_this<wbr></wbr>_round</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#out_for_a_fight" class="internal-link" title="GA.Critter.Critter.out_for_a_fight">out<wbr></wbr>_for<wbr></wbr>_a<wbr></wbr>_fight</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#out_for_cannibalism" class="internal-link" title="GA.Critter.Critter.out_for_cannibalism">out<wbr></wbr>_for<wbr></wbr>_cannibalism</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#position" class="internal-link" title="GA.Critter.Critter.position">position</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#returning_to_city" class="internal-link" title="GA.Critter.Critter.returning_to_city">returning<wbr></wbr>_to<wbr></wbr>_city</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#seek_food_task" class="internal-link" title="GA.Critter.Critter.seek_food_task">seek<wbr></wbr>_food<wbr></wbr>_task</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#strength" class="internal-link" title="GA.Critter.Critter.strength">strength</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#time_to_reach_first_food" class="internal-link" title="GA.Critter.Critter.time_to_reach_first_food">time<wbr></wbr>_to<wbr></wbr>_reach<wbr></wbr>_first<wbr></wbr>_food</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basestaticmethod">
+  
+  
+  <a name="GA.Critter.Critter.remove_all_critters">
+    
+  </a>
+  <a name="remove_all_critters">
+    
+  </a>
+  <div class="functionHeader">
+    
+    @staticmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">remove_all_critters</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#remove_all_critters" title="GA.Critter.Critter.remove_all_critters">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span><span class="function-signature">(self, base, city, position=(<wbr></wbr>0, <wbr></wbr>0, <wbr></wbr>0), strength=1.0, color=None, genes=None)</span>:
+    
+    <a class="headerLink" href="#__init__" title="GA.Critter.Critter.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Initialize a new critter.
+
+Args:
+    position (tuple): Initial (x, y, z) position of the critter.
+    strength (float): Ability to climb steep terrain.
+    color (tuple): RGBA color representing the critter visually.
+    genes (list or dict): List of Gene objects representing the critter's genetic makeup.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.__str__">
+    
+  </a>
+  <a name="__str__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__str__</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#__str__" title="GA.Critter.Critter.__str__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Return a string representation of the critter for debugging.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.adjust_fitness">
+    
+  </a>
+  <a name="adjust_fitness">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">adjust_fitness</span><span class="function-signature">(self, amount)</span>:
+    
+    <a class="headerLink" href="#adjust_fitness" title="GA.Critter.Critter.adjust_fitness">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Adjust the critter's fitness score.
+
+Args:
+    amount (float): Amount to adjust fitness by (positive or negative).</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.closest_food_in_threshold">
+    
+  </a>
+  <a name="closest_food_in_threshold">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">closest_food_in_threshold</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#closest_food_in_threshold" title="GA.Critter.Critter.closest_food_in_threshold">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">find the closest food within the gene closeness threshold
+if one is not found go to the closest one
+
+Returns:
+    _type_: _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.consume_food">
+    
+  </a>
+  <a name="consume_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">consume_food</span><span class="function-signature">(self, food)</span>:
+    
+    <a class="headerLink" href="#consume_food" title="GA.Critter.Critter.consume_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>eat a food, if the food is not eaten</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.consume_nearby_food">
+    
+  </a>
+  <a name="consume_nearby_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">consume_nearby_food</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#consume_nearby_food" title="GA.Critter.Critter.consume_nearby_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">consume one piece of nearby food
+
+Returns:
+    bool: did any food get eaten</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.consume_target_food_if_nearby">
+    
+  </a>
+  <a name="consume_target_food_if_nearby">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">consume_target_food_if_nearby</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#consume_target_food_if_nearby" title="GA.Critter.Critter.consume_target_food_if_nearby">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">consume the target food if nearby it, if no target do nothing
+
+Returns:
+    bool: did the food get eaten</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.eat">
+    
+  </a>
+  <a name="eat">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">eat</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#eat" title="GA.Critter.Critter.eat">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.evaluate">
+    
+  </a>
+  <a name="evaluate">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">evaluate</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#evaluate" title="GA.Critter.Critter.evaluate">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>the fitness of the creature is defined as 1 point if they eat any food + the amount of food they ate / the max they can eat + 2 points per enemy eaten (since a enemy is a food and an enemy and we give points for each) + 0-1 points based on how fast they got their food -1 point if it did not return home 0 points if they did not eat.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.find_closest_food">
+    
+  </a>
+  <a name="find_closest_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">find_closest_food</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#find_closest_food" title="GA.Critter.Critter.find_closest_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>find the closeset food to this critter and return its Food obj</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.find_food">
+    
+  </a>
+  <a name="find_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">find_food</span><span class="function-signature">(self, depth=0)</span>:
+    
+    <a class="headerLink" href="#find_food" title="GA.Critter.Critter.find_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>return what food this critter will attempt to target currently based on its position and genes</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.get_rand_color">
+    
+  </a>
+  <a name="get_rand_color">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_rand_color</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#get_rand_color" title="GA.Critter.Critter.get_rand_color">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.is_full">
+    
+  </a>
+  <a name="is_full">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_full</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#is_full" title="GA.Critter.Critter.is_full">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>has this critter eaten all it can eat?</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.is_last_survivor">
+    
+  </a>
+  <a name="is_last_survivor">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_last_survivor</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#is_last_survivor" title="GA.Critter.Critter.is_last_survivor">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>is this the last critter not at the city or alive</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.move">
+    
+  </a>
+  <a name="move">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">move</span><span class="function-signature">(self, new_x, new_y)</span>:
+    
+    <a class="headerLink" href="#move" title="GA.Critter.Critter.move">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Update the critter's position.
+
+Args:
+    new_x (float): New X-coordinate.
+    new_y (float): New Y-coordinate.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.move_task">
+    
+  </a>
+  <a name="move_task">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">move_task</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#move_task" title="GA.Critter.Critter.move_task">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">a task to move the critter to a location overidden to eat food at the end of the path
+
+Args:
+    task (_type_): _description_
+
+Returns:
+    _type_: _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.remove">
+    
+  </a>
+  <a name="remove">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">remove</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#remove" title="GA.Critter.Critter.remove">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.reset">
+    
+  </a>
+  <a name="reset">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">reset</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#reset" title="GA.Critter.Critter.reset">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>reset any applicable things</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.reset_seek_task">
+    
+  </a>
+  <a name="reset_seek_task">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">reset_seek_task</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#reset_seek_task" title="GA.Critter.Critter.reset_seek_task">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>remove the current seek food task</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.return_to_city">
+    
+  </a>
+  <a name="return_to_city">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">return_to_city</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#return_to_city" title="GA.Critter.Critter.return_to_city">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>return to the home city</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.seek_food">
+    
+  </a>
+  <a name="seek_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">seek_food</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#seek_food" title="GA.Critter.Critter.seek_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.spawn">
+    
+  </a>
+  <a name="spawn">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">spawn</span><span class="function-signature">(self, x=None, y=None, color=None)</span>:
+    
+    <a class="headerLink" href="#spawn" title="GA.Critter.Critter.spawn">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">spawn one critter
+
+Args:
+    x (_type_, optional): _description_. Defaults to None.
+    y (_type_, optional): _description_. Defaults to None.
+    color (_type_, optional): _description_. Defaults to None.
+
+Returns:
+    Critter: Critter</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.target_chosen_food">
+    
+  </a>
+  <a name="target_chosen_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">target_chosen_food</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#target_chosen_food" title="GA.Critter.Critter.target_chosen_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set this critter to seek the food it wants</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.target_food">
+    
+  </a>
+  <a name="target_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">target_food</span><span class="function-signature">(self, food)</span>:
+    
+    <a class="headerLink" href="#target_food" title="GA.Critter.Critter.target_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set critter to target a peice of food and move towards it</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.target_nearest_food">
+    
+  </a>
+  <a name="target_nearest_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">target_nearest_food</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#target_nearest_food" title="GA.Critter.Critter.target_nearest_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>find and target the closest food</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Critter.Critter.task_seek_food">
+    
+  </a>
+  <a name="task_seek_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">task_seek_food</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#task_seek_food" title="GA.Critter.Critter.task_seek_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>a task to seek out the nearest food and eat it till this critter cannot eat/carry any more</p></div>
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="GA.Critter.Critter.critters">
+    
+  </a>
+  <a name="critters">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">critters</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#critters" title="GA.Critter.Critter.critters">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>Class representing a critter in the simulation.</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.at_city">
+    
+  </a>
+  <a name="at_city">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">at_city</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#at_city" title="GA.Critter.Critter.at_city">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.base">
+    
+  </a>
+  <a name="base">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">base</span> =
+    
+    <a class="headerLink" href="#base" title="GA.Critter.Critter.base">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.city">
+    
+  </a>
+  <a name="city">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">city</span> =
+    
+    <a class="headerLink" href="#city" title="GA.Critter.Critter.city">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.color">
+    
+  </a>
+  <a name="color">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">color</span> =
+    
+    <a class="headerLink" href="#color" title="GA.Critter.Critter.color">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.current_food_goal">
+    
+  </a>
+  <a name="current_food_goal">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">current_food_goal</span> =
+    
+    <a class="headerLink" href="#current_food_goal" title="GA.Critter.Critter.current_food_goal">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.enemiesEaten">
+    
+  </a>
+  <a name="enemiesEaten">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">enemiesEaten</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#enemiesEaten" title="GA.Critter.Critter.enemiesEaten">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.fitness">
+    
+  </a>
+  <a name="fitness">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">fitness</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#fitness" title="GA.Critter.Critter.fitness">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.food_eaten">
+    
+  </a>
+  <a name="food_eaten">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">food_eaten</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#food_eaten" title="GA.Critter.Critter.food_eaten">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.got_food_this_round">
+    
+  </a>
+  <a name="got_food_this_round">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">got_food_this_round</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#got_food_this_round" title="GA.Critter.Critter.got_food_this_round">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.out_for_a_fight">
+    
+  </a>
+  <a name="out_for_a_fight">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">out_for_a_fight</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#out_for_a_fight" title="GA.Critter.Critter.out_for_a_fight">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.out_for_cannibalism">
+    
+  </a>
+  <a name="out_for_cannibalism">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">out_for_cannibalism</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#out_for_cannibalism" title="GA.Critter.Critter.out_for_cannibalism">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.position">
+    
+  </a>
+  <a name="position">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">position</span> =
+    
+    <a class="headerLink" href="#position" title="GA.Critter.Critter.position">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.returning_to_city">
+    
+  </a>
+  <a name="returning_to_city">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">returning_to_city</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#returning_to_city" title="GA.Critter.Critter.returning_to_city">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.seek_food_task">
+    
+  </a>
+  <a name="seek_food_task">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">seek_food_task</span> =
+    
+    <a class="headerLink" href="#seek_food_task" title="GA.Critter.Critter.seek_food_task">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.strength">
+    
+  </a>
+  <a name="strength">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">strength</span> =
+    
+    <a class="headerLink" href="#strength" title="GA.Critter.Critter.strength">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Critter.Critter.time_to_reach_first_food">
+    
+  </a>
+  <a name="time_to_reach_first_food">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">time_to_reach_first_food</span> =
+    
+    <a class="headerLink" href="#time_to_reach_first_food" title="GA.Critter.Critter.time_to_reach_first_food">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for GA,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.3.3 at 2024-12-01 12:37:17.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

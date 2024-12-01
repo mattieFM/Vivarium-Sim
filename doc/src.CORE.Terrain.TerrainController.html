@@ -1,0 +1,1050 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.CORE.Terrain.TerrainController</title>
+    <meta name="generator" content="pydoctor 24.3.3"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1 maximum-scale=1" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          src <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input aria-label="Search" autocomplete="off" class="form-control" id="search-box" minlength="2" name="search-query" placeholder="Search..." type="search" />
+            
+            <span class="input-group-btn">
+              <a class="btn btn-default" id="search-clear-button" onclick="clearSearch()" style="display: none;" title="Clear"><img alt="Clear" src="fonts/x-circle.svg" /></a>
+              <a class="btn btn-default" id="search-help-button" onclick="toggleSearchHelpText()" title="Help"><img alt="Help" src="fonts/info.svg" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input id="toggle-search-in-docstrings-checkbox" onclick="toggleSearchInDocstrings()" type="checkbox" value="false">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="src.CORE.Terrain.TerrainController.html" class="internal-link" title="This class"><wbr></wbr>Terrain<wbr></wbr>Controller</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="src.CORE.Terrain.TerrainController.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#ascend_objs_with_terrain" class="internal-link" title="src.CORE.Terrain.TerrainController.ascend_objs_with_terrain">ascend<wbr></wbr>_objs<wbr></wbr>_with<wbr></wbr>_terrain</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#create_heightFieldMap_Collider" class="internal-link" title="src.CORE.Terrain.TerrainController.create_heightFieldMap_Collider">create_height<wbr></wbr>Field<wbr></wbr>Map_<wbr></wbr>Collider</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#edit_terrain" class="internal-link" title="src.CORE.Terrain.TerrainController.edit_terrain">edit<wbr></wbr>_terrain</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_height_at" class="internal-link" title="src.CORE.Terrain.TerrainController.get_height_at">get<wbr></wbr>_height<wbr></wbr>_at</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_terrain_center" class="internal-link" title="src.CORE.Terrain.TerrainController.get_terrain_center">get<wbr></wbr>_terrain<wbr></wbr>_center</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#handle_terrain_edit" class="internal-link" title="src.CORE.Terrain.TerrainController.handle_terrain_edit">handle<wbr></wbr>_terrain<wbr></wbr>_edit</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#init_terrain" class="internal-link" title="src.CORE.Terrain.TerrainController.init_terrain">init<wbr></wbr>_terrain</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#raise_point" class="internal-link" title="src.CORE.Terrain.TerrainController.raise_point">raise<wbr></wbr>_point</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#terrain_update_task" class="internal-link" title="src.CORE.Terrain.TerrainController.terrain_update_task">terrain<wbr></wbr>_update<wbr></wbr>_task</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#base" class="internal-link" title="src.CORE.Terrain.TerrainController.base">base</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#grass_terrain_texture" class="internal-link" title="src.CORE.Terrain.TerrainController.grass_terrain_texture">grass<wbr></wbr>_terrain<wbr></wbr>_texture</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#ground" class="internal-link" title="src.CORE.Terrain.TerrainController.ground">ground</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#heightmap" class="internal-link" title="src.CORE.Terrain.TerrainController.heightmap">heightmap</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#np" class="internal-link" title="src.CORE.Terrain.TerrainController.np">np</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#render" class="internal-link" title="src.CORE.Terrain.TerrainController.render">render</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#shape" class="internal-link" title="src.CORE.Terrain.TerrainController.shape">shape</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#terrain" class="internal-link" title="src.CORE.Terrain.TerrainController.terrain">terrain</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#terrain_np" class="internal-link" title="src.CORE.Terrain.TerrainController.terrain_np">terrain<wbr></wbr>_np</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="src.CORE.Terrain.html" class="internal-link" title="The parent of this class"><wbr></wbr>Terrain</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.CORE.Terrain.TerrainController.html" class="internal-link" title="src.CORE.Terrain.TerrainController"><wbr></wbr>Terrain<wbr></wbr>Controller</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.CORE.html" class="internal-link" title="src.CORE">CORE</a></code><wbr></wbr>.<code><a href="src.CORE.Terrain.html" class="internal-link" title="src.CORE.Terrain">Terrain</a></code><wbr></wbr>.<code><a href="src.CORE.Terrain.TerrainController.html" class="internal-link" title="src.CORE.Terrain.TerrainController">TerrainController</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">TerrainController</span>(DirectObject):</code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="src.CORE.Terrain.TerrainController.__init__">TerrainController(base)</a></code></p>
+          <p><a href="classIndex.html#src.CORE.Terrain.TerrainController">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>the panda Object that handles all terrain management</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id12">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="src.CORE.Terrain.TerrainController.__init__">__init__</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#ascend_objs_with_terrain" class="internal-link" title="src.CORE.Terrain.TerrainController.ascend_objs_with_terrain">ascend<wbr></wbr>_objs<wbr></wbr>_with<wbr></wbr>_terrain</a></code></td>
+    <td>when a terrain point is elevated, check all critters within radius and ascend them with the terrain if applicable"</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#create_heightFieldMap_Collider" class="internal-link" title="src.CORE.Terrain.TerrainController.create_heightFieldMap_Collider">create_height<wbr></wbr>Field<wbr></wbr>Map_<wbr></wbr>Collider</a></code></td>
+    <td>create/update our terrain collider</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#edit_terrain" class="internal-link" title="src.CORE.Terrain.TerrainController.edit_terrain">edit<wbr></wbr>_terrain</a></code></td>
+    <td>the function that handles modifying the terrain, when called finds the mouse and raycasts to the terrain then finds the pixel and real world coord of the collision. for sake of sanity I have mapped it such that 1 pixel of the height map is one world unit so these should mostly line up...</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_height_at" class="internal-link" title="src.CORE.Terrain.TerrainController.get_height_at">get<wbr></wbr>_height<wbr></wbr>_at</a></code></td>
+    <td>Get the height at a given x, y coordinate on the heightfield.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_terrain_center" class="internal-link" title="src.CORE.Terrain.TerrainController.get_terrain_center">get<wbr></wbr>_terrain<wbr></wbr>_center</a></code></td>
+    <td>return the center point of the terrain (x,y,z) tuple</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#handle_terrain_edit" class="internal-link" title="src.CORE.Terrain.TerrainController.handle_terrain_edit">handle<wbr></wbr>_terrain<wbr></wbr>_edit</a></code></td>
+    <td>the task that handles actually calling the terrain editor method. called every frame if edit is enabled and mouse is held then do the thing</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#init_terrain" class="internal-link" title="src.CORE.Terrain.TerrainController.init_terrain">init<wbr></wbr>_terrain</a></code></td>
+    <td>set up our heightmap terrain stuff</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#raise_point" class="internal-link" title="src.CORE.Terrain.TerrainController.raise_point">raise<wbr></wbr>_point</a></code></td>
+    <td>the method that handles editing the 2d png height map</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#terrain_update_task" class="internal-link" title="src.CORE.Terrain.TerrainController.terrain_update_task">terrain<wbr></wbr>_update<wbr></wbr>_task</a></code></td>
+    <td>ensure the terrain updates to match the edits being made to the height map</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#base" class="internal-link" title="src.CORE.Terrain.TerrainController.base">base</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#grass_terrain_texture" class="internal-link" title="src.CORE.Terrain.TerrainController.grass_terrain_texture">grass<wbr></wbr>_terrain<wbr></wbr>_texture</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ground" class="internal-link" title="src.CORE.Terrain.TerrainController.ground">ground</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#heightmap" class="internal-link" title="src.CORE.Terrain.TerrainController.heightmap">heightmap</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#np" class="internal-link" title="src.CORE.Terrain.TerrainController.np">np</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#render" class="internal-link" title="src.CORE.Terrain.TerrainController.render">render</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#shape" class="internal-link" title="src.CORE.Terrain.TerrainController.shape">shape</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#terrain" class="internal-link" title="src.CORE.Terrain.TerrainController.terrain">terrain</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#terrain_np" class="internal-link" title="src.CORE.Terrain.TerrainController.terrain_np">terrain<wbr></wbr>_np</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span><span class="function-signature">(self, base)</span>:
+    
+    <a class="headerLink" href="#__init__" title="src.CORE.Terrain.TerrainController.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.ascend_objs_with_terrain">
+    
+  </a>
+  <a name="ascend_objs_with_terrain">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">ascend_objs_with_terrain</span><span class="function-signature">(self, point, radius=None, objects=[])</span>:
+    
+    <a class="headerLink" href="#ascend_objs_with_terrain" title="src.CORE.Terrain.TerrainController.ascend_objs_with_terrain">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">when a terrain point is elevated, check all critters within radius and ascend them with the terrain if applicable"
+
+Args:
+    point (_type_): _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.create_heightFieldMap_Collider">
+    
+  </a>
+  <a name="create_heightFieldMap_Collider">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">create_heightFieldMap_Collider</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#create_heightFieldMap_Collider" title="src.CORE.Terrain.TerrainController.create_heightFieldMap_Collider">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>create/update our terrain collider</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.edit_terrain">
+    
+  </a>
+  <a name="edit_terrain">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">edit_terrain</span><span class="function-signature">(self, modifier)</span>:
+    
+    <a class="headerLink" href="#edit_terrain" title="src.CORE.Terrain.TerrainController.edit_terrain">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>the function that handles modifying the terrain, when called finds the mouse and raycasts to the terrain then finds the pixel and real world coord of the collision. for sake of sanity I have mapped it such that 1 pixel of the height map is one world unit so these should mostly line up</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.get_height_at">
+    
+  </a>
+  <a name="get_height_at">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_height_at</span><span class="function-signature">(self, x, y)</span>:
+    
+    <a class="headerLink" href="#get_height_at" title="src.CORE.Terrain.TerrainController.get_height_at">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Get the height at a given x, y coordinate on the heightfield.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.get_terrain_center">
+    
+  </a>
+  <a name="get_terrain_center">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_terrain_center</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#get_terrain_center" title="src.CORE.Terrain.TerrainController.get_terrain_center">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>return the center point of the terrain (x,y,z) tuple</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.handle_terrain_edit">
+    
+  </a>
+  <a name="handle_terrain_edit">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">handle_terrain_edit</span><span class="function-signature">(self, task, modifier=None)</span>:
+    
+    <a class="headerLink" href="#handle_terrain_edit" title="src.CORE.Terrain.TerrainController.handle_terrain_edit">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">the task that handles actually calling the terrain editor method. called every frame
+if edit is enabled and mouse is held then do the thing
+
+Args:
+    task (PandaTask): the task
+    modifier (float, optional): float to be how big the edit is max 1 min -1, but it wont break with bigger or smaller vals, it just will floor them. Defaults to self.edit_power.
+
+Returns:
+    Task: run every tick</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.init_terrain">
+    
+  </a>
+  <a name="init_terrain">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">init_terrain</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#init_terrain" title="src.CORE.Terrain.TerrainController.init_terrain">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>set up our heightmap terrain stuff</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.raise_point">
+    
+  </a>
+  <a name="raise_point">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">raise_point</span><span class="function-signature">(self, point, max_range=None, power=0.1)</span>:
+    
+    <a class="headerLink" href="#raise_point" title="src.CORE.Terrain.TerrainController.raise_point">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">the method that handles editing the 2d png height map
+
+Args:
+    point (x,y): tuple, ints. the pixel to edit
+    max_range (int, optional): how many pixels away to effect. Defaults to None.
+    power (float, optional): how powerful the effect is, min -1 max 1. Defaults to .1.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.terrain_update_task">
+    
+  </a>
+  <a name="terrain_update_task">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">terrain_update_task</span><span class="function-signature">(self, task)</span>:
+    
+    <a class="headerLink" href="#terrain_update_task" title="src.CORE.Terrain.TerrainController.terrain_update_task">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>ensure the terrain updates to match the edits being made to the height map</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.base">
+    
+  </a>
+  <a name="base">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">base</span> =
+    
+    <a class="headerLink" href="#base" title="src.CORE.Terrain.TerrainController.base">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.grass_terrain_texture">
+    
+  </a>
+  <a name="grass_terrain_texture">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">grass_terrain_texture</span> =
+    
+    <a class="headerLink" href="#grass_terrain_texture" title="src.CORE.Terrain.TerrainController.grass_terrain_texture">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.ground">
+    
+  </a>
+  <a name="ground">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ground</span> =
+    
+    <a class="headerLink" href="#ground" title="src.CORE.Terrain.TerrainController.ground">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.heightmap">
+    
+  </a>
+  <a name="heightmap">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">heightmap</span> =
+    
+    <a class="headerLink" href="#heightmap" title="src.CORE.Terrain.TerrainController.heightmap">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.np">
+    
+  </a>
+  <a name="np">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">np</span> =
+    
+    <a class="headerLink" href="#np" title="src.CORE.Terrain.TerrainController.np">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.render">
+    
+  </a>
+  <a name="render">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">render</span> =
+    
+    <a class="headerLink" href="#render" title="src.CORE.Terrain.TerrainController.render">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.shape">
+    
+  </a>
+  <a name="shape">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">shape</span> =
+    
+    <a class="headerLink" href="#shape" title="src.CORE.Terrain.TerrainController.shape">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.terrain">
+    
+  </a>
+  <a name="terrain">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">terrain</span> =
+    
+    <a class="headerLink" href="#terrain" title="src.CORE.Terrain.TerrainController.terrain">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.CORE.Terrain.TerrainController.terrain_np">
+    
+  </a>
+  <a name="terrain_np">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">terrain_np</span> =
+    
+    <a class="headerLink" href="#terrain_np" title="src.CORE.Terrain.TerrainController.terrain_np">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for src,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.3.3 at 2024-12-01 12:37:19.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

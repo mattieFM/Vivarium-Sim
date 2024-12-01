@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>GA.Gene.Gene</title>
+    <meta name="generator" content="pydoctor 24.3.3"> 
+        
+    </meta>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1 maximum-scale=1" name="viewport" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="apidocs.css" rel="stylesheet" type="text/css" />
+    <link href="extra.css" rel="stylesheet" type="text/css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          GA <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input aria-label="Search" autocomplete="off" class="form-control" id="search-box" minlength="2" name="search-query" placeholder="Search..." type="search" />
+            
+            <span class="input-group-btn">
+              <a class="btn btn-default" id="search-clear-button" onclick="clearSearch()" style="display: none;" title="Clear"><img alt="Clear" src="fonts/x-circle.svg" /></a>
+              <a class="btn btn-default" id="search-help-button" onclick="toggleSearchHelpText()" title="Help"><img alt="Help" src="fonts/info.svg" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input id="toggle-search-in-docstrings-checkbox" onclick="toggleSearchInDocstrings()" type="checkbox" value="false">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="GA.Gene.Gene.html" class="internal-link" title="This class"><wbr></wbr>Gene</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="GA.Gene.Gene.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__str__" class="internal-link" title="GA.Gene.Gene.__str__">__str__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#apply" class="internal-link" title="GA.Gene.Gene.apply">apply</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#crossover" class="internal-link" title="GA.Gene.Gene.crossover">crossover</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#decay" class="internal-link" title="GA.Gene.Gene.decay">decay</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#mutate" class="internal-link" title="GA.Gene.Gene.mutate">mutate</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#genes" class="internal-link" title="GA.Gene.Gene.genes">genes</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#active" class="internal-link" title="GA.Gene.Gene.active">active</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#dominance" class="internal-link" title="GA.Gene.Gene.dominance">dominance</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#generation" class="internal-link" title="GA.Gene.Gene.generation">generation</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#max_value" class="internal-link" title="GA.Gene.Gene.max_value">max<wbr></wbr>_value</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#min_value" class="internal-link" title="GA.Gene.Gene.min_value">min<wbr></wbr>_value</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#mutation_rate" class="internal-link" title="GA.Gene.Gene.mutation_rate">mutation<wbr></wbr>_rate</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#mutation_step" class="internal-link" title="GA.Gene.Gene.mutation_step">mutation<wbr></wbr>_step</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#name" class="internal-link" title="GA.Gene.Gene.name">name</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#options" class="internal-link" title="GA.Gene.Gene.options">options</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#parent_ids" class="internal-link" title="GA.Gene.Gene.parent_ids">parent<wbr></wbr>_ids</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#value" class="internal-link" title="GA.Gene.Gene.value">value</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="GA.Gene.html" class="internal-link" title="The parent of this class"><wbr></wbr>Gene</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="GA.Gene.Gene.html" class="internal-link" title="GA.Gene.Gene"><wbr></wbr>Gene</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">GA</a></code><wbr></wbr>.<code><a href="GA.Gene.html" class="internal-link" title="GA.Gene">Gene</a></code><wbr></wbr>.<code><a href="GA.Gene.Gene.html" class="internal-link" title="GA.Gene.Gene">Gene</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">Gene</span>:</code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="GA.Gene.Gene.__init__">Gene(name, value, min_value, max_value, ...)</a></code></p>
+          <p><a href="classIndex.html#GA.Gene.Gene">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>Class representing a single gene in a critter's genetic makeup.</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id11">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="GA.Gene.Gene.__init__">__init__</a></code></td>
+    <td>Initialize a new gene with its properties.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__str__" class="internal-link" title="GA.Gene.Gene.__str__">__str__</a></code></td>
+    <td>Return a string of the gene.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#apply" class="internal-link" title="GA.Gene.Gene.apply">apply</a></code></td>
+    <td>this is used to apply the changes to a critter's stats </td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#crossover" class="internal-link" title="GA.Gene.Gene.crossover">crossover</a></code></td>
+    <td>Perform crossover with another gene to create an offspring gene.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#decay" class="internal-link" title="GA.Gene.Gene.decay">decay</a></code></td>
+    <td>Simulate gene decay by gradually decreasing its value.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#mutate" class="internal-link" title="GA.Gene.Gene.mutate">mutate</a></code></td>
+    <td>Mutate the gene's value based on its mutation rate and step size.</td>
+  </tr><tr class="classvariable">
+    
+    <td>Class Variable</td>
+    <td><code><a href="#genes" class="internal-link" title="GA.Gene.Gene.genes">genes</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#active" class="internal-link" title="GA.Gene.Gene.active">active</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#dominance" class="internal-link" title="GA.Gene.Gene.dominance">dominance</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#generation" class="internal-link" title="GA.Gene.Gene.generation">generation</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#max_value" class="internal-link" title="GA.Gene.Gene.max_value">max<wbr></wbr>_value</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#min_value" class="internal-link" title="GA.Gene.Gene.min_value">min<wbr></wbr>_value</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#mutation_rate" class="internal-link" title="GA.Gene.Gene.mutation_rate">mutation<wbr></wbr>_rate</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#mutation_step" class="internal-link" title="GA.Gene.Gene.mutation_step">mutation<wbr></wbr>_step</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#name" class="internal-link" title="GA.Gene.Gene.name">name</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#options" class="internal-link" title="GA.Gene.Gene.options">options</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#parent_ids" class="internal-link" title="GA.Gene.Gene.parent_ids">parent<wbr></wbr>_ids</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#value" class="internal-link" title="GA.Gene.Gene.value">value</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basemethod">
+  
+  
+  <a name="GA.Gene.Gene.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span><span class="function-signature">(self, name, value, min_value=None, max_value=None, mutation_rate=0.5, mutation_step=0.1, options=None, dominance=1, generation=0, parent_ids=None)</span>:
+    
+    <a class="headerLink" href="#__init__" title="GA.Gene.Gene.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Initialize a new gene with its properties.
+
+Args:
+    name (str): The name of the gene (something like "Strength").
+    value (int, float, or str): The initial value of the gene.
+    min_value (int or float, optional): Minimum value for the gene (if numeric).
+    max_value (int or float, optional): Maximum value for the gene (if numeric).
+    mutation_rate (float): Probability of mutation (0 to 1).
+    mutation_step (float): Step size for numeric mutations.
+    options (list, optional): Allowed values for categorical genes (if applicable).
+    dominance (int, optional): Priority for crossover (higher value dominates).
+    generation (int, optional): Generation in which this gene was created.
+    parent_ids (list, optional): List of parent gene names for lineage tracking.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Gene.Gene.__str__">
+    
+  </a>
+  <a name="__str__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__str__</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#__str__" title="GA.Gene.Gene.__str__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Return a string of the gene.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Gene.Gene.apply">
+    
+  </a>
+  <a name="apply">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">apply</span><span class="function-signature">(self, critter)</span>:
+    
+    <a class="headerLink" href="#apply" title="GA.Gene.Gene.apply">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">this is used to apply the changes to a critter's stats 
+
+Args:
+    critter (_type_): _description_</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Gene.Gene.crossover">
+    
+  </a>
+  <a name="crossover">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">crossover</span><span class="function-signature">(self, other)</span>:
+    
+    <a class="headerLink" href="#crossover" title="GA.Gene.Gene.crossover">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Perform crossover with another gene to create an offspring gene.
+
+Args:
+    other (Gene): The other parent gene.
+
+Returns:
+    Gene: A new gene combining properties from both parents.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Gene.Gene.decay">
+    
+  </a>
+  <a name="decay">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">decay</span><span class="function-signature">(self, rate=0.01)</span>:
+    
+    <a class="headerLink" href="#decay" title="GA.Gene.Gene.decay">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Simulate gene decay by gradually decreasing its value.
+
+Args:
+    rate (float): The rate of decay (default is 0.01).</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="GA.Gene.Gene.mutate">
+    
+  </a>
+  <a name="mutate">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">mutate</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#mutate" title="GA.Gene.Gene.mutate">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Mutate the gene's value based on its mutation rate and step size.</p>
+<p>Numeric genes are incremented/decremented within their bounds. Categorical genes are randomly changed within their options.</p>
+</div>
+  </div>
+</div><div class="baseclassvariable">
+  
+  
+  <a name="GA.Gene.Gene.genes">
+    
+  </a>
+  <a name="genes">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">genes</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#genes" title="GA.Gene.Gene.genes">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.active">
+    
+  </a>
+  <a name="active">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">active</span>: <code>bool</code> =
+    
+    <a class="headerLink" href="#active" title="GA.Gene.Gene.active">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.dominance">
+    
+  </a>
+  <a name="dominance">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">dominance</span> =
+    
+    <a class="headerLink" href="#dominance" title="GA.Gene.Gene.dominance">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.generation">
+    
+  </a>
+  <a name="generation">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">generation</span> =
+    
+    <a class="headerLink" href="#generation" title="GA.Gene.Gene.generation">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.max_value">
+    
+  </a>
+  <a name="max_value">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">max_value</span> =
+    
+    <a class="headerLink" href="#max_value" title="GA.Gene.Gene.max_value">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.min_value">
+    
+  </a>
+  <a name="min_value">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">min_value</span> =
+    
+    <a class="headerLink" href="#min_value" title="GA.Gene.Gene.min_value">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.mutation_rate">
+    
+  </a>
+  <a name="mutation_rate">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">mutation_rate</span> =
+    
+    <a class="headerLink" href="#mutation_rate" title="GA.Gene.Gene.mutation_rate">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.mutation_step">
+    
+  </a>
+  <a name="mutation_step">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">mutation_step</span> =
+    
+    <a class="headerLink" href="#mutation_step" title="GA.Gene.Gene.mutation_step">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.name">
+    
+  </a>
+  <a name="name">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">name</span> =
+    
+    <a class="headerLink" href="#name" title="GA.Gene.Gene.name">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.options">
+    
+  </a>
+  <a name="options">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">options</span> =
+    
+    <a class="headerLink" href="#options" title="GA.Gene.Gene.options">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.parent_ids">
+    
+  </a>
+  <a name="parent_ids">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">parent_ids</span> =
+    
+    <a class="headerLink" href="#parent_ids" title="GA.Gene.Gene.parent_ids">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="GA.Gene.Gene.value">
+    
+  </a>
+  <a name="value">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">value</span> =
+    
+    <a class="headerLink" href="#value" title="GA.Gene.Gene.value">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for GA,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.3.3 at 2024-12-01 12:37:17.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
