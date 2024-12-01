@@ -1,0 +1,6 @@
+/build/**/* 
+/build
+/src/build/**/*
+/src/build
+/__pycache__/**/*
+/__pycache__/
