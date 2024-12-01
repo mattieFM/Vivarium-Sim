@@ -1,3 +1,5 @@
 Panda3D==1.10.15
 numpy
 types-panda3d
+webcolors
+matplotlib
