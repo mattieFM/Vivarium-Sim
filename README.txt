@@ -32,3 +32,11 @@ for a simple test to see if Panda3D has been installed correctly.
 sdk-1-10-15  
 python 3.7  
 installer: https://www.panda3d.org/download/sdk-1-10-15/    
+
+
+Skybox Credit:
+Skybox Title: "Cloudy Skyboxes"
+Author: Pieter "Spiney" Verhoeven
+Source: https://opengameart.org/content/cloudy-skyboxes
+License: CC-BY 3.0
+
