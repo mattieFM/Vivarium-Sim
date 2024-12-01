@@ -1,7 +1,57 @@
+"""
+This module defines the Gene class, which represents a genetic component of a critter's makeup. 
+
+The Gene class is used to model genetic material that can mutate, cross over with other genes, 
+and affect the traits of critters. Genes can be numeric or categorical, and they have properties 
+such as mutation rate, dominance, and bounds for valid values.
+
+The Gene class supports genetic operations like mutation, crossover, and decay, 
+and keeps track of lineage through generations of genes.
+
+Classes:
+    Gene: Represents a single gene in a critter's genetic makeup.
+
+"""
+
 import random
 
 class Gene:
-    """Class representing a single gene in a critter's genetic makeup."""
+    """
+    Class representing a single gene in a critter's genetic makeup.
+
+    Genes are the fundamental unit of inheritance for critters. Each gene has a value, which can be
+    numeric (int or float) or categorical (string). The gene also includes properties like mutation rate,
+    step size for mutations, and dominance in crossover scenarios. Genes can be mutated, crossed over with 
+    other genes, and decay over time. 
+
+    Attributes:
+        genes (list): A class-level list that stores all the genes created.
+        name (str): The name of the gene (e.g., "Strength").
+        value (int, float, or str): The current value of the gene.
+        min_value (int or float, optional): The minimum value for numeric genes.
+        max_value (int or float, optional): The maximum value for numeric genes.
+        mutation_rate (float): Probability of mutation (0 to 1).
+        mutation_step (float): Step size for numeric mutations.
+        options (list, optional): Allowed values for categorical genes.
+        dominance (int): The gene's priority during crossover (higher value dominates).
+        generation (int): The generation number in which this gene was created.
+        parent_ids (list): List of parent gene names for lineage tracking.
+        active (bool): Whether the gene is active and can mutate.
+
+    Methods:
+        __init__(name, value, min_value=None, max_value=None, mutation_rate=0.5, mutation_step=0.1, options=None, 
+                 dominance=1, generation=0, parent_ids=None): Initializes a new gene.
+        
+        apply(critter): Applies the gene's value to a critter's attribute.
+
+        mutate(): Mutates the gene's value based on its mutation rate and step size.
+
+        crossover(other): Performs a crossover operation between this gene and another gene to create an offspring gene.
+
+        decay(rate=0.01): Simulates gene decay by gradually decreasing its value.
+
+        __str__(): Returns a string representation of the gene.
+    """
     genes = []
 
     def __init__(self, name, value, min_value=None, max_value=None, mutation_rate=0.5, mutation_step=0.1,

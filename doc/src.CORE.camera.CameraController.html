@@ -389,7 +389,36 @@
         </div>
 
         <div class="moduleDocstring">
-          <div><p class="undocumented">Undocumented</p></div>
+          <div><p class="pre">CameraController
+
+This class manages the camera's movement and orientation within a 3D scene. 
+It allows the camera to orbit around a central pivot point, zoom in and out, 
+and initialize itself to a starting position relative to the scene.
+
+Attributes:
+    VIEW_DISTANCE (float): The default distance from the camera to the orbit point.
+    MIN_PITCH (int): The minimum pitch angle (in degrees) to restrict camera rotation.
+    MAX_PITCH (int): The maximum pitch angle (in degrees) to restrict camera rotation.
+
+Args:
+    base (BaseApp): The base application reference (e.g., Panda3D's ShowBase).
+    get_orbit_point (Callable): A function returning the 3D point (Vec3) the camera orbits around.
+    input (InputManager): Handles user input for camera control.
+    cam (NodePath): The camera NodePath to control.
+    taskMgr (TaskManager): Manages tasks for continuous camera updates.
+
+Methods:
+    set_cam_origin_to_terrain_center():
+        Repositions the camera's pivot point to the terrain center, enabling smooth rotation.
+    
+    setupCamControls():
+        Initializes the camera controller and starts the camera update task.
+
+    move_cam_task(task):
+        Continuously updates the camera's position and orientation based on user input.
+
+    move_cam_to_start_pos():
+        Moves the camera to the starting position, looking down at the terrain center.</p></div>
         </div>
 
         <div id="splitTables">
@@ -405,7 +434,7 @@
     
     <td>Method</td>
     <td><code><a href="#move_cam_task" class="internal-link" title="src.CORE.camera.CameraController.move_cam_task">move<wbr></wbr>_cam<wbr></wbr>_task</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>the task to move the camera</td>
   </tr><tr class="method">
     
     <td>Method</td>
@@ -425,27 +454,27 @@
     
     <td>Constant</td>
     <td><code><a href="#MAX_PITCH" class="internal-link" title="src.CORE.camera.CameraController.MAX_PITCH">MAX<wbr></wbr>_PITCH</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>the max pitch the user can rotate to</td>
   </tr><tr class="constant">
     
     <td>Constant</td>
     <td><code><a href="#MIN_PITCH" class="internal-link" title="src.CORE.camera.CameraController.MIN_PITCH">MIN<wbr></wbr>_PITCH</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>what is the minimum pitch the user can view at</td>
   </tr><tr class="constant">
     
     <td>Constant</td>
     <td><code><a href="#VIEW_DISTANCE" class="internal-link" title="src.CORE.camera.CameraController.VIEW_DISTANCE">VIEW<wbr></wbr>_DISTANCE</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>how far away from the focal point should we be to start out</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><code><a href="#base" class="internal-link" title="src.CORE.camera.CameraController.base">base</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>a reference to the BaseApp</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><code><a href="#cam" class="internal-link" title="src.CORE.camera.CameraController.cam">cam</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>the camera</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
@@ -455,17 +484,17 @@
     
     <td>Instance Variable</td>
     <td><code><a href="#get_orbit_point" class="internal-link" title="src.CORE.camera.CameraController.get_orbit_point">get<wbr></wbr>_orbit<wbr></wbr>_point</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>the function to get the orbit point, called each time we need to re reference</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><code><a href="#input" class="internal-link" title="src.CORE.camera.CameraController.input">input</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>reference to the input handler instance</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><code><a href="#taskMgr" class="internal-link" title="src.CORE.camera.CameraController.taskMgr">task<wbr></wbr>Mgr</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>reference to the base app's  task_mgr</td>
   </tr>
 </table>
           
@@ -522,7 +551,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>the task to move the camera</p></div>
   </div>
 </div><div class="basemethod">
   
@@ -617,7 +646,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>the max pitch the user can rotate to</p></div>
     <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>82</code></pre></td></tr></table>
   </div>
 </div><div class="baseconstant">
@@ -641,7 +670,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>what is the minimum pitch the user can view at</p></div>
     <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>0</code></pre></td></tr></table>
   </div>
 </div><div class="baseconstant">
@@ -665,7 +694,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>how far away from the focal point should we be to start out</p></div>
     <table class="valueTable"><tr class="fieldStart"><td class="fieldName">Value</td></tr><tr><td><pre class="constant-value"><code>1000</code></pre></td></tr></table>
   </div>
 </div><div class="baseinstancevariable">
@@ -689,7 +718,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>a reference to the BaseApp</p></div>
     
   </div>
 </div><div class="baseinstancevariable">
@@ -713,7 +742,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>the camera</p></div>
     
   </div>
 </div><div class="baseinstancevariable">
@@ -761,7 +790,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>the function to get the orbit point, called each time we need to re reference</p></div>
     
   </div>
 </div><div class="baseinstancevariable">
@@ -785,7 +814,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>reference to the input handler instance</p></div>
     
   </div>
 </div><div class="baseinstancevariable">
@@ -809,7 +838,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>reference to the base app's  task_mgr</p></div>
     
   </div>
 </div>
@@ -824,7 +853,7 @@
   <div class="container">
     <a href="index.html">API Documentation</a> for src,
   generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-    24.3.3 at 2024-12-01 12:37:19.
+    24.3.3 at 2024-12-01 13:13:03.
   </div>
 
   <!-- Search related scripts needs to be loaded at the end of HTML 

@@ -1,12 +1,79 @@
+"""
+CameraController Module
+
+This module contains the `CameraController` class, which is responsible for managing 
+camera movement and orientation in a 3D scene. The camera orbits around a central 
+point (terrain center), with controls for rotation, zoom, and initial positioning.
+
+Classes:
+- `CameraController`: Handles camera controls, including rotation around a pivot 
+  point, zooming, and setting up initial positions.
+
+Key Features:
+- Smooth camera rotation using user inputs for horizontal and vertical axes.
+- Zoom functionality for adjusting the camera's distance from the orbit point.
+- Dynamic adjustment of the camera's pivot point to align with the scene's center.
+
+Dependencies:
+- `CORE.util.Util`: Provides utility functions (e.g., clamping values).
+- `panda3d.core.NodePath`: Used for managing 3D transformations and parenting.
+- `direct.task.Task`: Enables task management for continuous camera updates.
+
+Example Usage:
+    from CameraController import CameraController
+
+    camera_controller = CameraController(base, get_orbit_point, input, cam, taskMgr)
+    camera_controller.setupCamControls()
+"""
+
+
 from CORE.util import Util
 from panda3d.core import NodePath
 from direct.task import Task
 
 class CameraController():
-    #how far away from our orbit point should be be
+    """
+    CameraController
+
+    This class manages the camera's movement and orientation within a 3D scene. 
+    It allows the camera to orbit around a central pivot point, zoom in and out, 
+    and initialize itself to a starting position relative to the scene.
+
+    Attributes:
+        VIEW_DISTANCE (float): The default distance from the camera to the orbit point.
+        MIN_PITCH (int): The minimum pitch angle (in degrees) to restrict camera rotation.
+        MAX_PITCH (int): The maximum pitch angle (in degrees) to restrict camera rotation.
+
+    Args:
+        base (BaseApp): The base application reference (e.g., Panda3D's ShowBase).
+        get_orbit_point (Callable): A function returning the 3D point (Vec3) the camera orbits around.
+        input (InputManager): Handles user input for camera control.
+        cam (NodePath): The camera NodePath to control.
+        taskMgr (TaskManager): Manages tasks for continuous camera updates.
+
+    Methods:
+        set_cam_origin_to_terrain_center():
+            Repositions the camera's pivot point to the terrain center, enabling smooth rotation.
+        
+        setupCamControls():
+            Initializes the camera controller and starts the camera update task.
+
+        move_cam_task(task):
+            Continuously updates the camera's position and orientation based on user input.
+
+        move_cam_to_start_pos():
+            Moves the camera to the starting position, looking down at the terrain center.
+    """
+    
+    
     VIEW_DISTANCE = 1000
+    """how far away from the focal point should we be to start out"""
+    
     MIN_PITCH=0
+    """what is the minimum pitch the user can view at"""
+    
     MAX_PITCH=82
+    """the max pitch the user can rotate to"""
     
     def __init__(self, base, get_orbit_point,input,cam,taskMgr):
         """
@@ -16,10 +83,19 @@ class CameraController():
             orbit_point (Vec3): the point that this controller will rotate around
         """
         self.base = base
+        """a reference to the BaseApp"""
+        
         self.get_orbit_point = get_orbit_point
+        """the function to get the orbit point, called each time we need to re reference"""
+        
         self.input=input
+        """reference to the input handler instance"""
+        
         self.cam=cam
+        """the camera """
+        
         self.taskMgr=taskMgr
+        """reference to the base app's  task_mgr"""
     
     def set_cam_origin_to_terrain_center(self):
         """move the cam origin to the terrain center to make rotation easy"""
@@ -43,6 +119,7 @@ class CameraController():
         self.taskMgr.add(self.move_cam_task, "CameraControl")
         
     def move_cam_task(self, task):
+        """the task to move the camera"""
         horizontal = self.input.get_horizontal_axis()
         vertical = self.input.get_vertical_axis()
         zoom = self.input.get_zoom_axis()

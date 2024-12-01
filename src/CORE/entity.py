@@ -1,3 +1,39 @@
+"""
+This module defines the `Entity` class, which serves as the parent class for all movable and interactive entities 
+within a 3D simulation world. Entities are capable of navigating the environment, interacting with other entities, 
+and undergoing various behaviors influenced by genetic attributes.
+
+The `Entity` class is built upon Panda3D's `DirectObject` framework and integrates physics interactions using 
+the Bullet physics engine. Entities can have behaviors such as moving, fighting, eating, or spawning, and are 
+governed by customizable genetic properties.
+
+Classes:
+    - `Entity`: Represents a generic interactive object or character in the simulation world.
+
+Dependencies:
+    - Panda3D's `DirectObject`, `Vec3`, and Bullet physics modules.
+    - Genetic algorithm utilities from the `GA` package (e.g., `Gene`).
+    - Utility functions from `CORE.util`.
+
+Key Features:
+    - Physics-enabled movement and collision detection.
+    - Genetic-based behavior customization via `Gene` objects.
+    - Pathfinding and movement tasks.
+    - Interaction capabilities, such as eating, fighting, and color changes.
+    - Static management of all entities within the simulation world.
+
+Typical Usage Example:
+    ```python
+    from Entity import Entity
+
+    base = SomeBaseAppInstance()  # Replace with your application instance
+    entity = Entity(base, position=(10, 20, 0))
+    entity.spawn()
+    entity.move_to(Vec3(15, 25, 0))
+    ```
+"""
+
+
 from direct.showbase.DirectObject import DirectObject
 from direct.task import Task
 from panda3d.core import Vec3

@@ -1,9 +1,46 @@
+"""
+This module contains the definition for the Food class in the simulation.
+
+The Food class represents a food entity within the simulation world. It is inherited from the 
+Entity class and includes methods for spawning, removing, and managing food entities. The 
+Food class also interacts with the simulation environment, being a target for other entities 
+like critters to seek out and consume.
+
+Classes:
+    Food (Entity): Represents a food object in the simulation.
+"""
+
+
 from GA.Gene import Gene
 from CORE.entity import Entity
 import random
 
 class Food(Entity):
-    """Class representing a food in the simulation."""
+    """
+    Class representing a food entity in the simulation.
+
+    The Food class is responsible for managing food entities in the simulation. Each food 
+    object has a position, color, and can be interacted with by critters in the environment. 
+    It also includes methods to spawn and remove food, and ensure that each food item has a 
+    randomly assigned color.
+
+    Attributes:
+        foods (list): A class-level list holding all food entities in the simulation.
+
+    Methods:
+        __init__(base, position=(0, 0, 0), strength=1.0, color=None, genes=None): 
+            Initializes a new food entity with the given parameters.
+        
+        remove_all_food(): Removes all food entities from the simulation.
+        
+        spawn(x=None, y=None, color=None): Spawns a new food entity at the specified position.
+        
+        remove(): Removes the current food entity from the simulation.
+        
+        get_rand_color(): Assigns a random color to the food if no color is provided.
+        
+        __str__(): Returns a string representation of the food for debugging purposes.
+    """
     
     foods = []
 

@@ -1,3 +1,16 @@
+"""
+Module for managing the lifecycle of a simulation round, including different phases like initialization, simulation, evaluation, and reproduction.
+
+This module contains the `RoundManager` class, which is responsible for controlling the flow of a round in the simulation. It transitions through various phases and triggers actions associated with each phase. The `RoundManager` ensures that the simulation progresses according to predefined conditions, such as time limits and the state of food and critters in the environment.
+
+Dependencies:
+    - `GA.Food`: For accessing the food objects present in the simulation.
+    - `GA.Critter`: For managing the critters and their statuses (e.g., whether they are alive or home).
+    - `time`: For tracking the time spent in each phase of the simulation.
+
+Classes:
+    - `RoundManager`: Manages the round lifecycle and transitions between simulation phases.
+"""
 from GA.Food import Food
 from GA.Critter import Critter
 
@@ -5,7 +18,32 @@ import time
 
 
 class RoundManager:
-    """Manages the lifecycle phases of a simulation round."""
+    """
+    Manages the lifecycle phases of a simulation round, including Initialization, Simulation, Evaluation, and Reproduction phases.
+
+    Attributes:
+        base_app (BaseApp): The main application that manages the simulation's behavior.
+        population_cap (int): The maximum number of critters allowed in the simulation.
+        current_phase_index (int): Index of the current phase (0 - Initialization, 1 - Simulation, 2 - Evaluation, 3 - Reproduction).
+        round_count (int): The number of complete rounds (epochs) that have been executed.
+        phase_start_time (float): The timestamp when the current phase started.
+        phase_time_limit_seconds (int): The time limit (in seconds) for each phase before transitioning to the next.
+
+    Methods:
+        __init__(base_app, population_cap=100): Initializes a new round manager with a reference to the main app and optional population cap.
+        is_no_more_food(): Checks if there is any food remaining on the map.
+        all_alive_critters_are_home(): Checks if all critters have either returned home or been eaten.
+        get_phase_time(): Returns the elapsed time since the current phase started.
+        is_phase_over_the_time_limit(): Checks if the current phase has exceeded the time limit.
+        is_simulation_phase_done(): Checks if the simulation phase should end based on food availability, time, and critter status.
+        is_all_critters_at_home(): Checks if all critters are at the city (home).
+        is_evaluation_phase_done(): Checks if the evaluation phase is over.
+        is_reproduction_phase_done(): Checks if the reproduction phase is over.
+        run_init_phase(): Starts the initialization phase and triggers the next phase.
+        get_current_phase(): Returns the name of the current phase.
+        next_phase(): Advances to the next phase in the cycle.
+        trigger_phase_start(): Triggers the start of the current phase and calls the appropriate methods in the base app.
+    """
 
     PHASES = ["Initialization", "Simulation", "Evaluation", "Reproduction"]
 

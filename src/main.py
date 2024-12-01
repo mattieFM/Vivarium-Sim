@@ -1,3 +1,10 @@
+"""
+the main file of the whole project. this contains BaseApp which is the driver and
+container for the app itself.
+
+
+"""
+
 import random
 from direct.showbase.ShowBase import ShowBase
 from direct.showbase.DirectObject import DirectObject

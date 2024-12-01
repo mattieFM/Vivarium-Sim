@@ -379,7 +379,23 @@
         </div>
 
         <div class="moduleDocstring">
-          <div><p>Class representing a city in the simulation.</p></div>
+          <div><p class="pre">Represents a city in the simulation, inheriting from the `Entity` class.
+
+A city is an entity in the simulation with its own position, strength, and color. It can be spawned
+at specific coordinates and has a defined boundary radius. The `City` class provides functionality
+for city management, including spawning, getting bounds, removing, and setting the city color.
+
+Attributes:
+    cities (list): A list holding all active `City` objects in the simulation.
+    city_bounds_radius (float): The radius within which the city can influence the surrounding area.
+
+Methods:
+    remove_all_cities(): Removes all cities from the simulation.
+    spawn(x, y, color=None): Spawns a new city at the specified coordinates with the given color.
+    get_bounds(): Returns the bounds of the city as a tuple (minX, maxX, minY, maxY).
+    remove(): Removes the city from the simulation and its list of cities.
+    get_rand_color(): Randomly assigns a color to the city if none is provided.
+    __str__(): Returns a string representation of the city for debugging.</p></div>
         </div>
 
         <div id="splitTables">
@@ -390,37 +406,37 @@
     
     <td>Static Method</td>
     <td><code><a href="#remove_all_cities" class="internal-link" title="src.GA.City.City.remove_all_cities">remove<wbr></wbr>_all<wbr></wbr>_cities</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>Removes all cities from the simulation.</td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><code><a href="#__init__" class="internal-link" title="src.GA.City.City.__init__">__init__</a></code></td>
-    <td>Initialize a new city.</td>
+    <td>Initialize a new city with a position, strength, color, and genetic makeup.</td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><code><a href="#__str__" class="internal-link" title="src.GA.City.City.__str__">__str__</a></code></td>
-    <td>Return a string representation of the critter for debugging.</td>
+    <td>Returns a string representation of the city for debugging purposes.</td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><code><a href="#get_bounds" class="internal-link" title="src.GA.City.City.get_bounds">get<wbr></wbr>_bounds</a></code></td>
-    <td>get the bounds of this city in the form (minX,maxX,minY,maxY)</td>
+    <td>Returns the bounds of the city as a tuple (minX, maxX, minY, maxY).</td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><code><a href="#get_rand_color" class="internal-link" title="src.GA.City.City.get_rand_color">get<wbr></wbr>_rand<wbr></wbr>_color</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>Assigns a random color to the city if no color is provided.</td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><code><a href="#remove" class="internal-link" title="src.GA.City.City.remove">remove</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>Removes the city from the simulation and from the list of cities.</td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><code><a href="#spawn" class="internal-link" title="src.GA.City.City.spawn">spawn</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td>Spawns a new city at the specified (x, y) coordinates.</td>
   </tr><tr class="classvariable">
     
     <td>Class Variable</td>
@@ -481,7 +497,9 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>Removes all cities from the simulation.</p>
+<p>This method clears the list of all active cities and removes them from the simulation.</p>
+</div>
   </div>
 </div><div class="basemethod">
   
@@ -505,13 +523,14 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p class="pre">Initialize a new city.
+    <div><p class="pre">Initialize a new city with a position, strength, color, and genetic makeup.
 
 Args:
-    position (tuple): Initial (x, y, z) position of the critter.
-    strength (float): Ability to climb steep terrain.
-    color (tuple): RGBA color representing the critter visually.
-    genes (list or dict): List of Gene objects representing the critter's genetic makeup.</p></div>
+    position (tuple): Initial (x, y, z) position of the city.
+    strength (float): Ability to influence or interact with terrain or entities.
+    color (tuple, optional): RGBA color representing the city visually. Defaults to None.
+    genes (list or dict, optional): List or dictionary of `Gene` objects representing the city's genetic makeup. Defaults to None.
+    city_bounds_radius (float, optional): The radius within which the city has influence or interaction. Defaults to 50.</p></div>
   </div>
 </div><div class="basemethod">
   
@@ -535,7 +554,10 @@ Args:
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Return a string representation of the critter for debugging.</p></div>
+    <div><p class="pre">Returns a string representation of the city for debugging purposes.
+
+Returns:
+    str: A string in the format `City(ID=&lt;ID&gt;, Position=(&lt;x&gt;, &lt;y&gt;, &lt;z&gt;), Color=(&lt;r&gt;, &lt;g&gt;, &lt;b&gt;, &lt;a&gt;))`.</p></div>
   </div>
 </div><div class="basemethod">
   
@@ -559,7 +581,12 @@ Args:
   </div>
   <div class="docstring functionBody">
     
-    <div><p>get the bounds of this city in the form (minX,maxX,minY,maxY)</p></div>
+    <div><p class="pre">Returns the bounds of the city as a tuple (minX, maxX, minY, maxY).
+
+The bounds define the area around the city within the given `city_bounds_radius`.
+
+Returns:
+    tuple: A tuple (minX, maxX, minY, maxY) representing the city's bounds.</p></div>
   </div>
 </div><div class="basemethod">
   
@@ -583,7 +610,12 @@ Args:
   </div>
   <div class="docstring functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p class="pre">Assigns a random color to the city if no color is provided.
+
+This method randomly selects a color from a predefined list of colors for the city.
+
+Returns:
+    None</p></div>
   </div>
 </div><div class="basemethod">
   
@@ -607,7 +639,12 @@ Args:
   </div>
   <div class="docstring functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p class="pre">Removes the city from the simulation and from the list of cities.
+
+This method removes the city from the `City.cities` list and calls the `remove` method from the parent `Entity` class.
+
+Returns:
+    bool: Returns the result of the `remove` method from the parent class, indicating if removal was successful.</p></div>
   </div>
 </div><div class="basemethod">
   
@@ -631,7 +668,15 @@ Args:
   </div>
   <div class="docstring functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p class="pre">Spawns a new city at the specified (x, y) coordinates.
+
+Args:
+    x (float, optional): The x-coordinate for the city's spawn location. Defaults to None.
+    y (float, optional): The y-coordinate for the city's spawn location. Defaults to None.
+    color (tuple, optional): RGBA color for the city's visual representation. Defaults to None.
+
+Returns:
+    City: The newly spawned city instance.</p></div>
   </div>
 </div><div class="baseclassvariable">
   
@@ -789,7 +834,7 @@ Args:
   <div class="container">
     <a href="index.html">API Documentation</a> for src,
   generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-    24.3.3 at 2024-12-01 12:37:19.
+    24.3.3 at 2024-12-01 13:13:03.
   </div>
 
   <!-- Search related scripts needs to be loaded at the end of HTML 

@@ -1,3 +1,34 @@
+"""
+This module provides a `TerrainController` class for managing terrain in a 3D simulation 
+using Panda3D and Bullet physics. The class enables real-time terrain editing, heightfield 
+collider creation, and dynamic interaction with entities affected by terrain changes.
+
+Key Features:
+- Integration with Panda3D's `GeoMipTerrain` for heightfield terrain rendering.
+- Real-time terrain editing through mouse inputs, including raising and lowering terrain points.
+- Dynamic heightfield collider updates for compatibility with Bullet physics.
+- Automatic adjustments of entities on terrain changes.
+- Scheduled tasks for continuous terrain updates and handling terrain modifications.
+
+Dependencies:
+- Panda3D: Used for rendering, handling heightmaps, and texture mapping.
+- Bullet Physics: Provides collision detection and physics simulation.
+- NumPy: Facilitates numerical computations and vector operations.
+- Math: Used for distance and geometric calculations.
+- `CORE.entity`: Manages entities interacting with the terrain.
+
+Classes:
+- TerrainController: Handles all terrain-related management, including rendering, editing, and physics integration.
+
+Example Usage:
+    from panda3d.core import ShowBase
+    from terrain_module import TerrainController
+
+    base = ShowBase()
+    terrain_controller = TerrainController(base)
+    base.run()
+"""
+
 
 from panda3d.core import KeyboardButton, GeoMipTerrain, PNMImage, TextureStage, Vec3
 from direct.showbase.DirectObject import DirectObject

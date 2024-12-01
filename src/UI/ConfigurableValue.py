@@ -1,3 +1,23 @@
+"""
+This module defines the `ConfigurableValue` class, which represents a configurable value in a user interface (UI). 
+The class is used to create and manage interactive UI components, such as toggle buttons or input fields, 
+that allow users to modify settings or parameters within the application.
+
+The module also defines constants to help calculate the UI's layout based on the expected aspect ratio and screen size.
+
+Constants:
+    MIN_UI_X (float): Minimum x-coordinate value for UI elements.
+    MAX_UI_X (float): Maximum x-coordinate value for UI elements.
+    MIN_UI_Y (float): Minimum y-coordinate value for UI elements.
+    MAX_UI_Y (float): Maximum y-coordinate value for UI elements.
+    UI_Y_WIDTH (float): The total height available for UI elements in the y-direction.
+    UI_X_WIDTH (float): The total width available for UI elements in the x-direction.
+
+Classes:
+    ConfigurableValue: A class for creating and managing UI components that represent configurable values (e.g., toggle buttons or input fields).
+"""
+
+
 import numpy as np
 from direct.gui.DirectGui import *
 
@@ -14,7 +34,32 @@ UI_Y_WIDTH = np.abs(MIN_UI_Y)+np.abs(MAX_UI_Y)
 UI_X_WIDTH = np.abs(MIN_UI_X)+np.abs(MAX_UI_X)
 
 class ConfigurableValue():
-    """a class for values that can be configured via the UI"""
+    """"
+    A class for values that can be configured via the user interface (UI).
+
+    This class allows the creation of interactive UI elements (such as toggle buttons or input fields)
+    that can be used to modify values in the application. The elements are positioned dynamically based on 
+    the specified starting coordinates and spacing parameters.
+
+    Attributes:
+        callback (function): A function to call when the value is modified.
+        label (str): The label associated with the configurable value.
+        is_toggle (bool): Whether the configurable value is a toggle button (True) or an input field (False).
+        scale (float): The scale factor for the size of the UI elements.
+        y_spacing_between_elements (float): Vertical spacing between UI elements.
+        x_spacing_between_elements (float): Horizontal spacing between UI elements.
+        elements (list): A list to hold the UI elements associated with this configurable value.
+        placeholder (str): A placeholder value for input fields.
+        start_x (float): The starting x-coordinate for the UI elements.
+        start_y (float): The starting y-coordinate for the UI elements.
+
+    Methods:
+        __init__: Initializes the configurable value and its associated UI components.
+        destroy: Destroys all UI elements created for this configurable value.
+        update: Destroys and redraws the UI components.
+        unfocus: Unfocuses all elements that can be unfocused.
+        create_ui_component: Creates the UI component (toggle button or input field) and positions it on the screen.
+    """
     def __init__(
         self,
         callback,

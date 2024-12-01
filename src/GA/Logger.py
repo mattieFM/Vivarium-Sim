@@ -1,3 +1,17 @@
+"""
+This module defines the Logger class, which provides functionality for logging messages to a string 
+and saving them to a file. The Logger is used to track and store logs of operations, events, or errors 
+that occur during the execution of a program.
+
+The Logger class allows messages to be added to an internal log string, retrieves the complete log, 
+and saves the log to a file. If a file already exists, the log is appended to the file.
+
+Classes:
+    Logger: A class for handling any and all logging that might need to be done.
+
+"""
+
+
 class Logger():
     """the class for handling any and all logging that might need to be done"""
     

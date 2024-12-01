@@ -1,3 +1,22 @@
+"""
+This module defines the `Critter` class, representing a critter entity in the simulation.
+
+The `Critter` class extends the `Entity` class and is responsible for simulating the behavior and
+actions of critters within a city in the environment. It includes functionalities like seeking food,
+evaluating fitness, fighting, and handling behaviors like cannibalism and targeting other critters.
+
+This class interacts with other components such as `Food`, `Corpse`, and `City`, and includes methods 
+for spawning, moving, eating, and resetting the critter's state during simulation rounds.
+
+Example Usage:
+    from simulation import Critter
+
+    # Create a new critter in a city
+    critter = Critter(base, city)
+    critter.spawn(100, 200)
+"""
+
+
 from GA.Gene import Gene
 from CORE.entity import Entity
 from direct.task import Task
@@ -9,19 +28,73 @@ from GA.Food import Food
 import numpy as np
 
 class Critter(Entity):
+    """
+    Represents a critter in the simulation, extending from the `Entity` class.
+
+    A `Critter` is an entity in the simulation that interacts with its environment by seeking food,
+    fighting enemies, and aiming to survive. It has various behaviors that depend on its genes, including
+    the ability to engage in cannibalism or target specific foods or critters.
+
+    The critter can evaluate its fitness based on how much food it consumes, how quickly it consumes
+    food, and whether it returns to the city. It can move to new locations, fight other critters, and
+    spawn new critters.
+
+    Attributes:
+        critters (list): A list holding all active `Critter` objects in the simulation.
+        city (City): The city to which this critter belongs.
+        strength (float): The critter's ability to interact with the environment.
+        color (tuple): RGBA color for the critter's visual appearance.
+        fitness (float): The critter's current fitness score.
+        got_food_this_round (bool): Whether the critter has eaten food in the current round.
+        current_food_goal (Food): The food item the critter is currently targeting.
+        seek_food_task (Task): A task for seeking food during the simulation.
+        time_to_reach_first_food (float): Time taken to reach the first food in the simulation.
+        out_for_a_fight (bool): Whether the critter is seeking a fight (i.e., targeting an enemy).
+        at_city (bool): Whether the critter is currently at the city.
+        returning_to_city (bool): Whether the critter is returning to the city after eating.
+        out_for_cannibalism (bool): Whether the critter is engaging in cannibalistic behavior.
+
+    Methods:
+        evaluate(): Evaluates the critter's fitness based on its actions during the round.
+        target_food(food): Sets the critter to target and move towards a piece of food.
+        target_chosen_food(): Targets the food the critter has chosen to go after.
+        closest_food_in_threshold(): Finds the closest food within a specified threshold.
+        find_food(): Determines the next piece of food the critter will attempt to target.
+        find_closest_food(): Finds and returns the closest food to the critter.
+        target_nearest_food(): Finds and targets the nearest food.
+        eat(): Causes the critter to spawn a corpse and consume food.
+        consume_food(food): Eats a piece of food if it is not already eaten.
+        is_full(): Determines whether the critter has eaten all it can eat.
+        is_last_survivor(): Checks if the critter is the last survivor in the city.
+        seek_food(): Initiates a task to seek food.
+        task_seek_food(task): The task method to continuously search for food.
+        consume_target_food_if_nearby(): Consumes the target food if it's nearby.
+        consume_nearby_food(): Consumes one piece of food that is nearby.
+        reset(): Resets the critter's state for the next simulation round.
+        move_task(task): Moves the critter to a location and performs actions at the destination.
+        remove_all_critters(): Removes all critters from the simulation.
+        return_to_city(): Returns the critter to the home city.
+        spawn(x, y, color): Spawns a new critter at the specified location with a given color.
+        remove(): Removes the critter from the simulation and resets tasks.
+        get_rand_color(): Randomly selects a color for the critter if none is provided.
+        move(new_x, new_y): Updates the critter's position.
+        adjust_fitness(amount): Adjusts the critter's fitness score.
+        __str__(): Returns a string representation of the critter for debugging.
+    """
     critters = []
     
     """Class representing a critter in the simulation."""
     def __init__(self, base, city, position=(0, 0, 0), strength=1.0, color=None, genes=None):
         """
-        Initialize a new critter.
-        
+        Initialize a new critter with a given position, strength, color, and genes.
+
         Args:
             position (tuple): Initial (x, y, z) position of the critter.
-            strength (float): Ability to climb steep terrain.
+            strength (float): Ability to interact with the environment.
             color (tuple): RGBA color representing the critter visually.
-            genes (list or dict): List of Gene objects representing the critter's genetic makeup.
+            genes (list or dict): List or dictionary of `Gene` objects representing the critter's genetic makeup.
         """
+
         super().__init__(
             base=base,
             color=color,
@@ -73,7 +146,12 @@ class Critter(Entity):
         return self.fitness
             
     def target_food(self,food):
-        """set critter to target a peice of food and move towards it"""
+        """
+        Sets the critter to target a specific piece of food and move towards it.
+
+        Args:
+            food (Food): The food the critter is targeting.
+        """
         if(food != None and hasattr(food, "get_pos")):
             pos = food.get_pos()
             if(pos[0]==0 and pos[1] == 0 and pos[2] == 0 ):
@@ -83,7 +161,17 @@ class Critter(Entity):
                 self.move_to(pos)
         
     def target_chosen_food(self):
-        """set this critter to seek the food it wants"""
+        """
+        Determines the next piece of food the critter will attempt to target based on its position
+        and genetic factors like cannibalism, closest food, and random food choices.
+
+        Args:
+            depth (int, optional): Recursion depth for handling eaten food. Defaults to 0.
+
+        Returns:
+            Food or None: The food the critter targets or None if no food is found.
+        """
+
         target = self.find_food()
         
         if(target != None):
@@ -109,7 +197,17 @@ class Critter(Entity):
         return closestFood
         
     def find_food(self,depth=0):
-        """return what food this critter will attempt to target currently based on its position and genes"""
+        """
+        Determines the next piece of food the critter will attempt to target based on its position
+        and genetic factors like cannibalism, closest food, and random food choices.
+
+        Args:
+            depth (int, optional): Recursion depth for handling eaten food. Defaults to 0.
+
+        Returns:
+            Food or None: The food the critter targets or None if no food is found.
+        """
+
         food = None      
         # print(f"round time: {self.base.round_manager.get_phase_time()}")
         # print(f"wait:{self.get_gene('Cannibalism Wait')}")
@@ -196,6 +294,7 @@ class Critter(Entity):
         self.target_food(closest)
         
     def eat(self):
+        """extend eat function to spawn a corpse when eaten"""
         Corpse(self.base).spawn(self.get_pos().getX(),self.get_pos().getY())
         return super().eat()
         
