@@ -99,7 +99,7 @@ class Critter(Entity):
             base=base,
             color=color,
             position=position,
-            model="./assets/models/critter.obj",
+            model="models/critter.obj",
             genes=genes
             )
 

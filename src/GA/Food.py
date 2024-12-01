@@ -58,7 +58,7 @@ class Food(Entity):
             base=base,
             color=color,
             position=position,
-            model="./assets/models/cube.obj"
+            model="models/cube.obj"
             )
 
         self.get_rand_color() #update if none

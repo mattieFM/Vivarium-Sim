@@ -66,7 +66,7 @@ class City(Entity):
             base=base,
             color=color,
             position=position,
-            model="./assets/models/house.obj"
+            model="models/house.obj"
             )
 
         self.city_bounds_radius = city_bounds_radius

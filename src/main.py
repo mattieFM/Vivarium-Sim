@@ -42,6 +42,9 @@ from GA.City import City
 from GA.Corpse import Corpse
 from CORE.matplotlib_test import Pie_Chart_Data_Visualizer
 
+from panda3d.core import loadPrcFileData,loadPrcFile
+loadPrcFile("./config/Config.prc")
+
 class BaseApp(ShowBase):     
     #so that it can be turned off if we want to
     edit_terrain_enabled = False

@@ -61,7 +61,7 @@ class Corpse(Entity):
             base=base,
             color=(1,0,0,1),
             position=position,
-            model="./assets/models/critter.obj",
+            model="models/critter.obj",
             )
 
         self.base=base
