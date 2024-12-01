@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Gene</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Gene</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:f%3A%5Cvivarium-sim%5Csrc%5Cga%5Cgene.py">f:\vivarium-sim\src\ga\gene.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="Gene.html#Gene">Gene</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Gene">class <strong>Gene</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Gene">Gene</a>(name,&nbsp;value,&nbsp;min_value=None,&nbsp;max_value=None,&nbsp;mutation_rate=0.5,&nbsp;mutation_step=0.1,&nbsp;options=None,&nbsp;dominance=1,&nbsp;generation=0,&nbsp;parent_ids=None)<br>
+&nbsp;<br>
+Class&nbsp;representing&nbsp;a&nbsp;single&nbsp;gene&nbsp;in&nbsp;a&nbsp;critter's&nbsp;genetic&nbsp;makeup.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Gene-__init__"><strong>__init__</strong></a>(self, name, value, min_value=None, max_value=None, mutation_rate=0.5, mutation_step=0.1, options=None, dominance=1, generation=0, parent_ids=None)</dt><dd><tt>Initialize&nbsp;a&nbsp;new&nbsp;gene&nbsp;with&nbsp;its&nbsp;properties.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;(str):&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;gene&nbsp;(something&nbsp;like&nbsp;"Strength").<br>
+&nbsp;&nbsp;&nbsp;&nbsp;value&nbsp;(int,&nbsp;float,&nbsp;or&nbsp;str):&nbsp;The&nbsp;initial&nbsp;value&nbsp;of&nbsp;the&nbsp;gene.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;min_value&nbsp;(int&nbsp;or&nbsp;float,&nbsp;optional):&nbsp;Minimum&nbsp;value&nbsp;for&nbsp;the&nbsp;gene&nbsp;(if&nbsp;numeric).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max_value&nbsp;(int&nbsp;or&nbsp;float,&nbsp;optional):&nbsp;Maximum&nbsp;value&nbsp;for&nbsp;the&nbsp;gene&nbsp;(if&nbsp;numeric).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mutation_rate&nbsp;(float):&nbsp;Probability&nbsp;of&nbsp;mutation&nbsp;(0&nbsp;to&nbsp;1).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mutation_step&nbsp;(float):&nbsp;Step&nbsp;size&nbsp;for&nbsp;numeric&nbsp;mutations.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;options&nbsp;(list,&nbsp;optional):&nbsp;Allowed&nbsp;values&nbsp;for&nbsp;categorical&nbsp;genes&nbsp;(if&nbsp;applicable).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dominance&nbsp;(int,&nbsp;optional):&nbsp;Priority&nbsp;for&nbsp;crossover&nbsp;(higher&nbsp;value&nbsp;dominates).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;generation&nbsp;(int,&nbsp;optional):&nbsp;Generation&nbsp;in&nbsp;which&nbsp;this&nbsp;gene&nbsp;was&nbsp;created.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;parent_ids&nbsp;(list,&nbsp;optional):&nbsp;List&nbsp;of&nbsp;parent&nbsp;gene&nbsp;names&nbsp;for&nbsp;lineage&nbsp;tracking.</tt></dd></dl>
+
+<dl><dt><a name="Gene-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;string&nbsp;of&nbsp;the&nbsp;gene.</tt></dd></dl>
+
+<dl><dt><a name="Gene-apply"><strong>apply</strong></a>(self, critter)</dt><dd><tt>this&nbsp;is&nbsp;used&nbsp;to&nbsp;apply&nbsp;the&nbsp;changes&nbsp;to&nbsp;a&nbsp;critter's&nbsp;stats&nbsp;<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;critter&nbsp;(_type_):&nbsp;_description_</tt></dd></dl>
+
+<dl><dt><a name="Gene-crossover"><strong>crossover</strong></a>(self, other)</dt><dd><tt>Perform&nbsp;crossover&nbsp;with&nbsp;another&nbsp;gene&nbsp;to&nbsp;create&nbsp;an&nbsp;offspring&nbsp;gene.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;other&nbsp;(<a href="#Gene">Gene</a>):&nbsp;The&nbsp;other&nbsp;parent&nbsp;gene.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Gene">Gene</a>:&nbsp;A&nbsp;new&nbsp;gene&nbsp;combining&nbsp;properties&nbsp;from&nbsp;both&nbsp;parents.</tt></dd></dl>
+
+<dl><dt><a name="Gene-decay"><strong>decay</strong></a>(self, rate=0.01)</dt><dd><tt>Simulate&nbsp;gene&nbsp;decay&nbsp;by&nbsp;gradually&nbsp;decreasing&nbsp;its&nbsp;value.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rate&nbsp;(float):&nbsp;The&nbsp;rate&nbsp;of&nbsp;decay&nbsp;(default&nbsp;is&nbsp;0.01).</tt></dd></dl>
+
+<dl><dt><a name="Gene-mutate"><strong>mutate</strong></a>(self)</dt><dd><tt>Mutate&nbsp;the&nbsp;gene's&nbsp;value&nbsp;based&nbsp;on&nbsp;its&nbsp;mutation&nbsp;rate&nbsp;and&nbsp;step&nbsp;size.<br>
+&nbsp;<br>
+Numeric&nbsp;genes&nbsp;are&nbsp;incremented/decremented&nbsp;within&nbsp;their&nbsp;bounds.<br>
+Categorical&nbsp;genes&nbsp;are&nbsp;randomly&nbsp;changed&nbsp;within&nbsp;their&nbsp;options.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>genes</strong> = []</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

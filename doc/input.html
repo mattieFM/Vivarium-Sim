@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module input</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>input</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:f%3A%5Cvivarium-sim%5Csrc%5Ccore%5Cinput.py">f:\vivarium-sim\src\core\input.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="input.html#Input">Input</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Input">class <strong>Input</strong></a>(<a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Input">Input</a>(base)<br>
+&nbsp;<br>
+the&nbsp;class&nbsp;that&nbsp;handles&nbsp;all&nbsp;input&nbsp;management&nbsp;in&nbsp;the&nbsp;game<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="input.html#Input">Input</a></dd>
+<dd><a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Input-__init__"><strong>__init__</strong></a>(self, base)</dt><dd><tt>_summary_<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;base&nbsp;(BaseApp):&nbsp;the&nbsp;base&nbsp;app&nbsp;reference</tt></dd></dl>
+
+<dl><dt><a name="Input-any_key_is_pressed"><strong>any_key_is_pressed</strong></a>(self, keys)</dt><dd><tt>check&nbsp;if&nbsp;any&nbsp;key&nbsp;in&nbsp;a&nbsp;list&nbsp;of&nbsp;KeyBoardKeys&nbsp;is&nbsp;held&nbsp;down<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;keys&nbsp;(KeyboardButton):&nbsp;_description_<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;weather&nbsp;any&nbsp;of&nbsp;the&nbsp;keys&nbsp;are&nbsp;held&nbsp;down</tt></dd></dl>
+
+<dl><dt><a name="Input-get_axis"><strong>get_axis</strong></a>(self, positiveKeys, negativeKeys)</dt><dd><tt>get&nbsp;the&nbsp;value&nbsp;of&nbsp;an&nbsp;axis&nbsp;of&nbsp;input,&nbsp;checking&nbsp;if&nbsp;positivekeys&nbsp;or&nbsp;negative&nbsp;keys&nbsp;are&nbsp;held<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;positiveKeys&nbsp;(ButtonHandle[]):&nbsp;what&nbsp;keys&nbsp;positively&nbsp;impact&nbsp;this&nbsp;axis<br>
+&nbsp;&nbsp;&nbsp;&nbsp;negativeKeys&nbsp;(ButtonHandle[]):&nbsp;what&nbsp;keys&nbsp;negatively&nbsp;impact&nbsp;this&nbsp;axis<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float:&nbsp;-1,&nbsp;0&nbsp;or&nbsp;1&nbsp;based&nbsp;on&nbsp;what&nbsp;inputs&nbsp;are&nbsp;held</tt></dd></dl>
+
+<dl><dt><a name="Input-get_horizontal_axis"><strong>get_horizontal_axis</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;horizontal&nbsp;input&nbsp;axis</tt></dd></dl>
+
+<dl><dt><a name="Input-get_vertical_axis"><strong>get_vertical_axis</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;vertical&nbsp;input&nbsp;axis</tt></dd></dl>
+
+<dl><dt><a name="Input-get_zoom_axis"><strong>get_zoom_axis</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;zoom&nbsp;input&nbsp;axis</tt></dd></dl>
+
+<dl><dt><a name="Input-on_mouse3_click"><strong>on_mouse3_click</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="Input-on_mouse_click"><strong>on_mouse_click</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="Input-on_mouse_scroll"><strong>on_mouse_scroll</strong></a>(self, event)</dt><dd><tt>handle&nbsp;mouse&nbsp;scroll&nbsp;wheel&nbsp;event&nbsp;by&nbsp;adding&nbsp;it&nbsp;into&nbsp;the&nbsp;stored&nbsp;value&nbsp;to&nbsp;be&nbsp;retrieved&nbsp;next&nbsp;time&nbsp;the&nbsp;axis&nbsp;is&nbsp;called<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event&nbsp;(string):&nbsp;the&nbsp;scroll&nbsp;event</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DOWN_BUTTONS</strong> = [s]</dl>
+
+<dl><dt><strong>HORIZONTAL_SPEED</strong> = 0.8</dl>
+
+<dl><dt><strong>INVERT_VERTICAL_AXIS</strong> = True</dl>
+
+<dl><dt><strong>LEFT_BUTTONS</strong> = [a]</dl>
+
+<dl><dt><strong>RIGHT_BUTTONS</strong> = [d]</dl>
+
+<dl><dt><strong>SCROLL_WHEEL_POWER</strong> = 3</dl>
+
+<dl><dt><strong>UP_BUTTONS</strong> = [w]</dl>
+
+<dl><dt><strong>VERTICAL_SPEED</strong> = 1</dl>
+
+<dl><dt><strong>ZOOM_IN_BUTTONS</strong> = [q]</dl>
+
+<dl><dt><strong>ZOOM_OUT_BUTTONS</strong> = [e]</dl>
+
+<dl><dt><strong>ZOOM_SPEED</strong> = 30</dl>
+
+<dl><dt><strong>mouse3_held</strong> = False</dl>
+
+<dl><dt><strong>mouse_held</strong> = False</dl>
+
+<dl><dt><strong>stored_scroll_value</strong> = 0</dl>
+
+<hr>
+Methods inherited from <a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>:<br>
+<dl><dt><a name="Input-accept"><strong>accept</strong></a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="Input-acceptOnce"><strong>acceptOnce</strong></a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="Input-accept_once"><strong>accept_once</strong></a> = <a href="#Input-acceptOnce">acceptOnce</a>(self, event, method, extraArgs=[])</dt></dl>
+
+<dl><dt><a name="Input-addTask"><strong>addTask</strong></a>(self, *args, **kwargs)</dt><dd><tt>#This&nbsp;function&nbsp;must&nbsp;be&nbsp;used&nbsp;if&nbsp;you&nbsp;want&nbsp;a&nbsp;managed&nbsp;task</tt></dd></dl>
+
+<dl><dt><a name="Input-add_task"><strong>add_task</strong></a> = <a href="#Input-addTask">addTask</a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Input-detectLeaks"><strong>detectLeaks</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Input-detect_leaks"><strong>detect_leaks</strong></a> = <a href="#Input-detectLeaks">detectLeaks</a>(self)</dt></dl>
+
+<dl><dt><a name="Input-doMethodLater"><strong>doMethodLater</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Input-do_method_later"><strong>do_method_later</strong></a> = <a href="#Input-doMethodLater">doMethodLater</a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Input-getAllAccepting"><strong>getAllAccepting</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Input-get_all_accepting"><strong>get_all_accepting</strong></a> = <a href="#Input-getAllAccepting">getAllAccepting</a>(self)</dt></dl>
+
+<dl><dt><a name="Input-ignore"><strong>ignore</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="Input-ignoreAll"><strong>ignoreAll</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Input-ignore_all"><strong>ignore_all</strong></a> = <a href="#Input-ignoreAll">ignoreAll</a>(self)</dt></dl>
+
+<dl><dt><a name="Input-isAccepting"><strong>isAccepting</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="Input-isIgnoring"><strong>isIgnoring</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="Input-is_accepting"><strong>is_accepting</strong></a> = <a href="#Input-isAccepting">isAccepting</a>(self, event)</dt></dl>
+
+<dl><dt><a name="Input-is_ignoring"><strong>is_ignoring</strong></a> = <a href="#Input-isIgnoring">isIgnoring</a>(self, event)</dt></dl>
+
+<dl><dt><a name="Input-removeAllTasks"><strong>removeAllTasks</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Input-removeTask"><strong>removeTask</strong></a>(self, taskOrName)</dt></dl>
+
+<dl><dt><a name="Input-remove_all_tasks"><strong>remove_all_tasks</strong></a> = <a href="#Input-removeAllTasks">removeAllTasks</a>(self)</dt></dl>
+
+<dl><dt><a name="Input-remove_task"><strong>remove_task</strong></a> = <a href="#Input-removeTask">removeTask</a>(self, taskOrName)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="direct.showbase.DirectObject.html#DirectObject">direct.showbase.DirectObject.DirectObject</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
