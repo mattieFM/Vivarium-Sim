@@ -47,11 +47,19 @@ class BaseApp(ShowBase):
     #enable simulation
     simulation_enabled = False
     
+    #did the simulation get started once
+    simulation_started = False
+    
+    #at one each critter has 1 food spawn for it
+    food_per_critter = 1
+    
     #how fast to build terrain
     edit_power = .5
     
     #how big to edit 
     edit_radius = 50
+    
+    gravity_strength = -9.81
     
     #the scale of z
     z_scale=500
@@ -125,7 +133,27 @@ class BaseApp(ShowBase):
         self.critters = []
         
         
-        
+    def handle_ga_loop(self,task):
+        if(self.simulation_enabled):
+            #--handle first time sim is enabled--
+            if(not self.simulation_started):
+                self.round_manager.run_init_phase()
+                self.simulation_started = True
+            else:
+                #main logic for phase switches
+                print(f"phase:{self.round_manager.current_phase_index}")
+                if(self.round_manager.is_simulation_phase_done()):
+                    #all critters return home now that the phase is over
+                    self.round_manager.next_phase()
+                    for critter in Critter.critters:
+                        critter.return_to_city()
+                elif(self.round_manager.is_evaluation_phase_done()):
+                    self.round_manager.next_phase()
+                elif(self.round_manager.is_reproduction_phase_done()):
+                    self.round_manager.next_phase()
+            
+            
+        return Task.again
         
     def event_handlers_setup(self):
         """set up all event handlers for the app"""
@@ -134,6 +162,10 @@ class BaseApp(ShowBase):
         
         #this makes sure when we stop looking at the ui it becomes unfocused
         self.task_mgr.add(self.handle_unfocus, "handle_unfocus")
+        
+        self.task_mgr.do_method_later(1, self.handle_ga_loop, "handle_main_loop")
+        
+        
         
         #handles all terrain editing 
         #self.task_mgr.add(self.handle_terrain_edit, "handleEnvironmentChange")
@@ -241,7 +273,7 @@ class BaseApp(ShowBase):
         """
         #create world
         self.world = BulletWorld()
-        self.world.setGravity(Vec3(0, 0, -9.81))
+        self.world.setGravity(Vec3(0, 0, self.gravity_strength))
         
         #set to update every frame. delta time is handled inside the update.
         self.taskMgr.add(self.update_grav, "Update_Grav")
@@ -522,6 +554,7 @@ class BaseApp(ShowBase):
             y = random.uniform(0, self.terrainController.heightmap.getYSize())
         
         food = Food(base=self).spawn(x=x,y=y)
+        return food
 
 
     def spawn_food_periodically(self, task):
@@ -552,10 +585,17 @@ class BaseApp(ShowBase):
         
         #remove all critters (IE: reset)
         Critter.remove_all_critters()
+        Food.remove_all_food()
         
         #spawn critters for each city
         for city in City.cities:
             self.spawn_initial_population(city)
+        
+        for i in range(int(self.food_per_critter*len(Critter.critters))):
+            f = self.spawn_food()
+            Critter.critters[i].target_food(f)
+            
+            
 
         if len(Critter.critters) == 0:
             # If no critters exist, spawn a default population

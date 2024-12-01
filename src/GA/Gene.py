@@ -1,3 +1,5 @@
+import random
+
 class Gene:
     """Class representing a single gene in a critter's genetic makeup."""
 

@@ -70,5 +70,5 @@ class City(Entity):
 
     def __str__(self):
         """Return a string representation of the critter for debugging."""
-        return (f"Food(ID={self.id}, Position={self.position}, Strength={self.strength}, "
-                f"Color={self.color}, Fitness={self.fitness})")
+        return (f"City(ID={self.id}, Position={self.position}, "
+                f"Color={self.color})")

@@ -6,6 +6,8 @@ from direct.showbase.ShowBaseGlobal import globalClock
 from panda3d.bullet import BulletBoxShape,BulletRigidBodyNode
 import random
 
+from CORE.util import Util
+
 class Entity(DirectObject):
     """the parent class of anything in the world that can move and interact"""
     entities = []
@@ -33,6 +35,7 @@ class Entity(DirectObject):
         self.model=model
         self.speed=100
         self.children = []
+        self.move_task_ref = None
         
         self.currentPath = [] #an array of the current path of vector3 nodes to follow
         self.currentDirection = (0,0,0)
@@ -87,7 +90,6 @@ class Entity(DirectObject):
         list_size = len(entities)
         while i in range(list_size):
             entity = entities[i]
-            print(entities)
             entity.remove()
             
             if(list_size != len(entities)):
@@ -95,15 +97,25 @@ class Entity(DirectObject):
             else:
                 i+=1
                 
+    def reset_move_task(self):
+        """remove the current move task """
+        if(self.move_task_ref != None):
+            self.base.taskMgr.remove(self.move_task_ref)
+                
     def move_to(self,vec2):
         """move from pos to target vec2 over s seconds
 
         Args:
             vec2 (vec2): vector2
         """
+        pos = vec2
+        if(hasattr(vec2,"get_pos")):
+            pos = vec2.get_pos()
         
-        self.currentGoal=vec2
-        self.base.task_mgr.add(self.move_task, f"entity{self.id}-move-task-to{vec2}")
+        self.currentGoal=Vec3(pos)
+        self.reset_move_task()
+        
+        self.move_task_ref = self.base.task_mgr.add(self.move_task, f"entity{self.id}-move-task-to{vec2}")
         
     def dist_to_point(self, point, threshold=10):
         """
@@ -116,14 +128,19 @@ class Entity(DirectObject):
         Returns:
             bool: True if within range, False otherwise.
         """
-        distance = np.linalg.norm(
-            np.array([self.get_pos().getX(), self.get_pos().getY()]) -
-            np.array([point.getX(), point.getY()])
-        )
-        return distance <= threshold
+        try:
+            pos = self.get_pos()
+            distance = np.linalg.norm(
+                np.array([pos.getX(), pos.getY()]) -
+                np.array([point.getX(), point.getY()])
+            )
+            return distance <= threshold
+        except Exception as e:
+            print(f"error in entity.get_pos:\n{e}")
+            return False
         
     def move_task(self,task):
-        if(not self.currentGoal or self.dist_to_point(self.currentGoal,100)):
+        if(not self.currentGoal or self.dist_to_point(self.currentGoal,10)):
             #reached goal
             self.currentGoal=None
             self.base.set_critter_height(self.body_np, self.get_pos().getX(), self.get_pos().getY())
@@ -137,28 +154,53 @@ class Entity(DirectObject):
             return Task.cont
         
     def move_tick(self,goal_point,extra_speed_mod=1,phys=True):
+        from main import BaseApp
         direction = (goal_point - self.get_pos()).normalized()
-        jump_strength = 1
+        jump_strength = -BaseApp.gravity_strength*1.1
         up_vector = Vec3(0,0,1)
         
         distance_to_move = self.speed * globalClock.getDt() * extra_speed_mod
-        target_pos = self.get_pos() + (direction*3)
+        target_pos = Vec3(self.get_pos()) + Vec3(direction*3)
+        should_jump = False
         
-        ahead_z_pos = self.base.terrainController.get_height_at(int(target_pos.getX()), int(target_pos.getY())) - self.base.terrainController.get_height_at(int(self.get_pos().getX()), int(self.get_pos().getY()))
+        #check ahead to see if we need to jump via sampling
+        linspace = np.linspace(.1,10,20)
+        for value in linspace:
+            target_pos = Vec3(self.get_pos()) + Vec3(direction*value)
+            ahead_z_pos = self.base.terrainController.get_height_at(int(target_pos.getX()), int(target_pos.getY())) - self.base.terrainController.get_height_at(int(self.get_pos().getX()), int(self.get_pos().getY()))
+            if ahead_z_pos > 0:
+                should_jump=True
+        
+        
         z_difference = self.get_pos().getZ() - self.base.terrainController.get_height_at(int(self.get_pos().getX()), int(self.get_pos().getY()))
         
         #print(f"aheadz:{ahead_z_pos}")
-        if(ahead_z_pos>0):
+        self.node.clear_forces()
+        
+        if(should_jump):
             #print("jump")
-            self.node.apply_central_impulse(up_vector*jump_strength)
+            #self.node.apply_central_impulse(up_vector*jump_strength)
+            direction+=up_vector*jump_strength
         elif(z_difference > 30):
-            print("fall faster")
-            self.node.apply_central_impulse(-up_vector*jump_strength)
+            #print("fall faster")
+            direction+=-up_vector*jump_strength
+            #self.node.apply_central_impulse()
+            
+        #random jumping to ensure no stuck
+        if(random.randint(0,100) == 2):
+            self.body_np.set_pos(self.get_pos()+Vec3(0,0,jump_strength))
+            
+        #cannot fall below 0
+        pos = self.body_np.get_pos()
+        pos[2]=Util.clamp(pos[2],0,999999)
+        self.body_np.set_pos(pos)
         
         self.node.active=True
         
+        #phys based movement or direct move?
         if(phys):
-            self.node.applyCentralForce(direction*distance_to_move*75)
+            self.node.apply_central_impulse(direction*distance_to_move)
+            self.node.setLinearVelocity(direction*distance_to_move*75)
            
         else:
             new_pos = self.get_pos() + (direction*distance_to_move)
@@ -189,6 +231,8 @@ class Entity(DirectObject):
         """Remove the spawned entity from the scene and physics world."""
         if not self.spawned:
             return  # If not spawned, nothing to remove
+        
+        self.reset_move_task()
 
         # Remove the entity's physics node from the physics world
         if self.node is not None:
@@ -202,7 +246,7 @@ class Entity(DirectObject):
 
         # Clear additional references
         self.spawned = False
-        self.position = None
+        self.position = (0,0,0)
         self.color = None
 
         # Remove from the entity list
@@ -214,7 +258,8 @@ class Entity(DirectObject):
         Returns:
             _type_: _description_
         """
-        self.position = self.body_np.get_pos()
+        if(self.body_np != None):
+            self.position = self.body_np.get_pos()
         return self.position
     
     def spawn(self, x=None, y=None, color=None):
@@ -282,6 +327,8 @@ class Entity(DirectObject):
             self.body_np = blob_np
             self.position=(x, y, z)
             self.spawned=True
+            
+            self.node.setAngularFactor(Vec3(0, 0, 0))
 
             # Create the critter instance and append to the critter list
             Entity.add_entity(self)
