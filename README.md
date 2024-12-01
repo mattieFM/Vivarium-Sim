@@ -1,3 +1,7 @@
+# Run Instructions
+to run the project simply clone the repo and run the compiled executable for your target OS.
+
+
 # Developer Run Instructions
 to run the project from source code:
 
