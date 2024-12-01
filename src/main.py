@@ -161,11 +161,21 @@ class BaseApp(ShowBase):
         data=[*[len(city.children) or 0 for city in City.cities], 1]
         labels=[*[self.rgba_to_name(city.color) for city in City.cities],"1 critter"]
         return (data,labels)
+    
+    def get_round_food_and_labels(self):
+        """get the population and label data for the current game state
+
+        Returns:
+            data,labels: int[],str[]
+        """
+        data=[*[sum(child.food_eaten for child in city.children) or 0 for city in City.cities], 1]
+        labels=[*[self.rgba_to_name(city.color) for city in City.cities],"1 food"]
+        return (data,labels)
         
     def handle_stats_panel_task(self,task):
-        if(self.pie):
-            data,labels = self.get_round_population_and_labels()
-            self.pie.update_pie(
+        for chart in self.charts:
+            data,labels = chart[1]()
+            chart[0].update_pie(
                     data=data,
                     labels=labels
                 ).show()
@@ -290,22 +300,24 @@ class BaseApp(ShowBase):
             
         def open_stats_panel(val):
             if(val == True):
-                self.pie = Pie_Chart_Data_Visualizer(
+                self.add_graph_to_stats_panel(
+                    Pie_Chart_Data_Visualizer(
                     pie_graph_title="Population",
                     colors=[*[city.color for city in City.cities], "black"],
                     data=[*[len(city.children) or 0 for city in City.cities], 1],
                     labels=[*[self.rgba_to_name(city.color) for city in City.cities],"1 critter"]
+                    ),self.get_round_population_and_labels
                 )
-                
-                print(self.pie.data)
-                print(self.pie.labels)
-                print(self.pie.colors)
-                
-                data,labels = self.get_round_population_and_labels()
-                self.pie.update_pie(
-                        data=data,
-                        labels=labels
-                    ).show()
+                # data,label = self.get_round_food_and_labels()
+                # self.add_graph_to_stats_panel(
+                #     Pie_Chart_Data_Visualizer(
+                #     pie_graph_title="Food Currently Held",
+                #     colors=[*[city.color for city in City.cities], "black"],
+                #     data=data,
+                #     labels=label
+                #     ),
+                #     self.get_round_food_and_labels
+                # )
             else:
                 if(self.pie != None):
                     self.pie.close()
