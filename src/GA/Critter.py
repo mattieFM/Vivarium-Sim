@@ -379,7 +379,7 @@ class Critter(Entity):
 
     def __str__(self):
         """Return a string representation of the critter for debugging."""
-        return (f"Alive:{not self.eaten},Fitness:{self.fitness}at_city:{self.at_city},Critter(food_eaten={self.food_eaten}\n" +
+        return (f"Critter(Alive:{not self.eaten},Fitness:{self.fitness}at_city:{self.at_city},food_eaten={self.food_eaten}\n" +
                 self.get_all_genes_as_str() +
                 ")"
                 
