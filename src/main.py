@@ -318,6 +318,7 @@ class BaseApp(ShowBase):
                 #     ),
                 #     self.get_round_food_and_labels
                 # )
+                #
             else:
                 if(self.pie != None):
                     self.pie.close()
