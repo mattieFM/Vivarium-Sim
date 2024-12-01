@@ -1,22 +1,28 @@
-# run instructions
-to run the project:
+# Developer Run Instructions
+to run the project from source code:
 
-install requirements.txt first via (for more detailed install instructions see the [INSTALL INSTRUCTION](INSTALL.md)):
+1) install requirements.txt first via (for more detailed install instructions see the [INSTALL INSTRUCTION](INSTALL.md)):
 ```bash
 pip install -r ./requirements
 ```
 
-Win:
+2) run the file itself, see the below commands:
+
+Win (pip install), On windows if you installed with pip simply run python with the file /src/main.py to run the project
 ```bash
-ppython ./file.py
+python ./src/main.py
 ```
 
-Linux:
+Win (Panda3d Install), On windows if you installed via the panda3d installer, it creates a installation of python renamed to ppython which contains
+all the dependancies that it installed, you will want to use that installation.
 ```bash
-python ./file.py
+ppython ./src/main.py
 ```
 
-ppython is needed for windows but not for linux or compiled bins, ppython is parellel enabled python for win.  
+Linux (pip install)
+```bash
+python ./src/main.py
+```
 
 # Dev Docs Build
 you may build/rebuild the developer docs via
