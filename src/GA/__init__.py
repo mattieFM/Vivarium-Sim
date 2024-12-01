@@ -1,6 +1,4 @@
 """
-GA
-
 The module for all Genetic Algorithm related classes.
 
 Broken down into:

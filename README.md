@@ -29,7 +29,8 @@ python ./src/main.py
 ```
 
 # Dev Docs Build
-you may build/rebuild the developer docs via
+you may build/rebuild the developer docs via. 
+pydoctor may or may not be included in requirements.txt so make sure to install it first. This module does not like to run from vs-code's terminal.
 ```bash
 ppython -m pydoctor --html-output=doc/ .\src\
 ```
@@ -39,6 +40,7 @@ ppython -m pydoctor --html-output=doc/ .\src\
 ```bash
 pip install -r ./requirements.txt
 ```
+(for more detailed install instructions see the [INSTALL INSTRUCTION](INSTALL.md))
 
 
 

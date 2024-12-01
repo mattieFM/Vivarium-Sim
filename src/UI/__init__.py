@@ -1,6 +1,4 @@
 """
-UI
-
 A small helper module for making the UI. This contains two classes
 UI and its child ConfigurableValues which are used together to create simple modular
 UIs
