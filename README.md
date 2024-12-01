@@ -1,5 +1,5 @@
 # Run Instructions
-Go to the release page, find the latest release, and then download the binary for your OS. once downloaded you may freely run the file.
+Go to the release page, find the latest release, and then download the binary for your OS. once downloaded you may freely run the file.  
 [Latest Release](https://github.com/mattieFM/Vivarium-Sim/releases/latest)  
 [Release Page](https://github.com/mattieFM/Vivarium-Sim/releases)  
 
