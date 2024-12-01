@@ -1,6 +1,11 @@
 # run instructions
 to run the project:
 
+install requirements.txt first via:
+```bash
+pip install -r ./requirements
+```
+
 Win:
 ```bash
 ppython ./file.py
@@ -12,6 +17,13 @@ python ./file.py
 ```
 
 ppython is needed for windows but not for linux or compiled bins, ppython is parellel enabled python for win.  
+
+# Dev Docs Build
+you may build/rebuild the developer docs via
+```bash
+ppython -m pydoctor --html-output=doc/ .\src\
+```
+
 
 # Install instructions
 ```bash
