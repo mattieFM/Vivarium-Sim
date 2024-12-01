@@ -1,7 +1,7 @@
 # run instructions
 to run the project:
 
-install requirements.txt first via:
+install requirements.txt first via (for more detailed install instructions see the INSTALL.md):
 ```bash
 pip install -r ./requirements
 ```
