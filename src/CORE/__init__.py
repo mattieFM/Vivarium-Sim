@@ -1,6 +1,4 @@
 """
-CORE
-
 This module contains all the core engine_level components and classes.
 
 Camera -- the class that handles all camera control
