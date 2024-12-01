@@ -29,3 +29,9 @@ Alternatively instead of pip panda3d may be installed with its own version of py
 sdk-1-10-15  
 python 3.7  
 installer: https://www.panda3d.org/download/sdk-1-10-15/    
+
+This installer will create a new version of python renamed as ppython and auto added to your path, to install all the depenancies you will then run
+```bash
+ppython -m pip install -r ./requirments.txt
+```
+which will install all remaining requirements to the panda3d copy of python 3.7 and then it will be ready to run.
