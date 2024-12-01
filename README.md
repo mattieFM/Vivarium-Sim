@@ -1,5 +1,8 @@
 # Run Instructions
-to run the project simply clone the repo and run the compiled executable for your target OS.
+Go to the release page, find the latest release, and then download the binary for your OS. once downloaded you may freely run the file.
+
+Alternatively to run the live branch you may clone the repo and then follow the build instructions: ([build instructions](BUILD.md))
+
 
 
 # Developer Run Instructions
