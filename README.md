@@ -63,3 +63,7 @@ Author: Pieter "Spiney" Verhoeven
 Source: https://opengameart.org/content/cloudy-skyboxes
 License: CC-BY 3.0
 
+All non-code assets that are not already bound by a different licence are licecned under CC BY-NC-SA 4.0.
+
+All code is licenced under the M.I.T licnece.
+
