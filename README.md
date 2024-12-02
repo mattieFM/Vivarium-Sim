@@ -5,7 +5,26 @@ Go to the release page, find the latest release, and then download the binary fo
 
 Alternatively to run the live branch you may clone the repo and then follow the build instructions: ([build instructions](BUILD.md))
 
+(Linux Only) Install the Necessary Graphics Drivers
+On Ubuntu, you may need to install or update your graphics drivers. Depending on your GPU (NVIDIA, AMD, or Intel), the drivers will vary. You can use the following commands to install or update them:
 
+For Intel graphics (Iris driver):
+```bash
+sudo apt update
+sudo apt install mesa-va-drivers mesa-vulkan-drivers libgl1-mesa-glx
+```
+
+For AMD graphics:
+```bash
+sudo apt update
+sudo apt install mesa-va-drivers mesa-vulkan-drivers xserver-xorg-video-amdgpu
+```
+
+For NVIDIA graphics:
+```bash
+sudo apt update
+sudo apt install nvidia-driver-460  # (or the latest version available)
+```
 
 # Developer Run Instructions
 to run the project from source code:
